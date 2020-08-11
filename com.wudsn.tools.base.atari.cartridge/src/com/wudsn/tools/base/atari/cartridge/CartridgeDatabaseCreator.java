@@ -84,7 +84,8 @@ public final class CartridgeDatabaseCreator extends Main {
 	    }
 	    if (qName.equals("table")) {
 		nesting++;
-		println("Table " + attributes.getValue("id") + " at " + nesting);
+		println("Table " + attributes.getValue("id") + " at "
+			+ nesting);
 
 	    }
 	}
@@ -99,18 +100,15 @@ public final class CartridgeDatabaseCreator extends Main {
 
     }
 
-    private final static String BASE_DIR = "C:\\jac\\system\\Java\\Programming\\Workspaces\\Productions\\com.wudsn.tools.base.atari.cartridge\\";
-    private final static String KROTKI_LIST = BASE_DIR
-	    + "tst\\crc\\Atari 8-bit ROM list\\List - Comparison.csv";
-    private final static String MAXFLASH_LIST = BASE_DIR
-	    + "tst\\crc\\Maxflash\\romlib.ini";
-    private final static String DATABASE_FILE = BASE_DIR + "src\\"
-	    + CartridgeDatabase.FILE_PATH;
-
     private Map<String, CartridgeType> mappings;
 
     public static void main(String[] args) {
-	new CartridgeDatabaseCreator().run();
+	if (args.length != 1) {
+	    throw new IllegalArgumentException(
+		    "Specify the base directory of the project as parameter.");
+	}
+	String baseDir = args[0];
+	new CartridgeDatabaseCreator().run(baseDir);
     }
 
     private CartridgeDatabaseCreator() {
@@ -138,7 +136,8 @@ public final class CartridgeDatabaseCreator extends Main {
 	addMapping("128KB/ATARIMAX", CartridgeType.CARTRIDGE_ATMAX_128);
 	addMapping("128KB/ATRAX", CartridgeType.CARTRIDGE_ATRAX_128);
 	addMapping("128KB/ATRAX SDX", CartridgeType.CARTRIDGE_ATRAX_SDX_128);
-	addMapping("128KB/DECODED ATRAX", CartridgeType.CARTRIDGE_ATRAX_DEC_128);
+	addMapping("128KB/DECODED ATRAX",
+		CartridgeType.CARTRIDGE_ATRAX_DEC_128);
 	addMapping("128KB/FOOCART", CartridgeType.UNKNOWN);
 	addMapping("128KB/MEGACART", CartridgeType.CARTRIDGE_MEGA_128);
 	addMapping("128KB/MYIDE+", CartridgeType.UNKNOWN);
@@ -219,39 +218,44 @@ public final class CartridgeDatabaseCreator extends Main {
 	addMapping("8KB/TELELINK II", CartridgeType.UNKNOWN);
     }
 
-    private void run() {
+    private void run(String baseDir) {
+
+	final String krotkiList = baseDir
+		+ "\\tst\\crc\\Atari 8-bit ROM list\\List - Comparison.csv";
+	final String maxFlashList = baseDir
+		+ "\\tst\\crc\\Maxflash\\romlib.ini";
+	final String databaseFile = baseDir + "\\src\\"
+		+ CartridgeDatabase.FILE_PATH;
+
 	logSkipped = true;
 
 	// Kro0ki's list is the best.
-	boolean krotkiList = true;
+	boolean addKrotkiList = true;
 
 	// The others are currently not used.
-	boolean atariManiaList = false;
-	boolean maxFlashList = false;
+	boolean addAtariManiaList = false;
+	boolean addMaxFlashList = false;
 
 	CartridgeDatabase database = new CartridgeDatabase();
-	if (atariManiaList) {
+	if (addAtariManiaList) {
 	    addAtariManiaList(database);
 	}
-	if (krotkiList) {
-	    addKrotkiList(database);
+	if (addKrotkiList) {
+	    addKrotkiList(krotkiList, database);
 	}
-	if (maxFlashList) {
-	    addMaxflashList(database);
+	if (addMaxFlashList) {
+	    addMaxflashList(maxFlashList, database);
 	}
 	try {
-	    File file = new File(DATABASE_FILE);
+	    File file = new File(databaseFile);
 	    database.save(file);
-	    logInfo("CRC database saved to '"
-		    + file
-		    + "' with "
-		    + TextUtility.formatAsDecimal(file.length())
-		    + " bytes, "
-		    + TextUtility.formatAsDecimal(database
-			    .getKnownTitelsCount())
+	    logInfo("CRC database saved to '" + file + "' with "
+		    + TextUtility.formatAsDecimal(file.length()) + " bytes, "
+		    + TextUtility
+			    .formatAsDecimal(database.getKnownTitelsCount())
 		    + " known entries and "
-		    + TextUtility.formatAsDecimal(database
-			    .getKnownCartridgeTypesCount())
+		    + TextUtility.formatAsDecimal(
+			    database.getKnownCartridgeTypesCount())
 		    + " known content types.");
 	} catch (CoreException ex) {
 	    logError(ex.getMessage());
@@ -348,12 +352,12 @@ public final class CartridgeDatabaseCreator extends Main {
 	}
     }
 
-    private void addKrotkiList(CartridgeDatabase database) {
+    private void addKrotkiList(String krotkiList, CartridgeDatabase database) {
 	if (database == null) {
 	    throw new IllegalArgumentException(
 		    "Parameter 'database' must not be null.");
 	}
-	File file = new File(KROTKI_LIST);
+	File file = new File(krotkiList);
 	logInfo("Reading '" + file.getAbsolutePath() + "'.");
 	CSVReader csvReader = new CSVReader();
 	csvReader.open(file, ',', Charset.defaultCharset().name());
@@ -383,10 +387,8 @@ public final class CartridgeDatabaseCreator extends Main {
 		    .toUpperCase();
 	    String sizeValue = csvReader.getColumnValue(sizeIndex).trim()
 		    .toUpperCase();
-	    String mappingValue = sizeValue
-		    + "/"
-		    + csvReader.getColumnValue(mappingIndex).trim()
-			    .toUpperCase();
+	    String mappingValue = sizeValue + "/" + csvReader
+		    .getColumnValue(mappingIndex).trim().toUpperCase();
 	    if (StringUtility.isEmpty(title)) {
 		if (StringUtility.isSpecified(publisher)
 			|| StringUtility.isSpecified(date)
@@ -424,15 +426,15 @@ public final class CartridgeDatabaseCreator extends Main {
 		sizeInKB = Integer.parseInt(sizeValue.substring(0,
 			sizeValue.length() - KB_SUFFIX.length()));
 	    } else {
-		throw new RuntimeException("Unknown size suffix in "
-			+ sizeValue + ".");
+		throw new RuntimeException(
+			"Unknown size suffix in " + sizeValue + ".");
 	    }
 
 	    CartridgeType cartridgeType = mappings.get(mappingValue);
 	    if (cartridgeType == null) {
-		throw new RuntimeException("Unknown mapping value "
-			+ mappingValue + " for " + title
-			+ ". Add a mapping definition.");
+		throw new RuntimeException(
+			"Unknown mapping value " + mappingValue + " for "
+				+ title + ". Add a mapping definition.");
 	    }
 	    if (cartridgeType == CartridgeType.UNKNOWN) {
 		logInfo("Value " + mappingValue + " for '" + title
@@ -456,13 +458,14 @@ public final class CartridgeDatabaseCreator extends Main {
 		+ " errors from Krotki's list.");
     }
 
-    private void addMaxflashList(CartridgeDatabase database) {
+    private void addMaxflashList(String maxFlashList,
+	    CartridgeDatabase database) {
 	if (database == null) {
 	    throw new IllegalArgumentException(
 		    "Parameter 'database' must not be null.");
 	}
 
-	File file = new File(MAXFLASH_LIST);
+	File file = new File(maxFlashList);
 	logInfo("Reading '" + file.getAbsolutePath() + "'.");
 	FileInputStream fis;
 	try {
