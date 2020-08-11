@@ -1,0 +1,898 @@
+sep=;
+16;'0x10CB0520;';"1400 Super SALT rev. C.01";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0xC63D9E1C;';"1400 Telecommunicator";"Atari";"1983-08-29";CARTRIDGE_STD_16;K
+4;'0x031D973B;';"3-D Tic-Tac-Toe";"Atari";"1979";CARTRIDGE_STD_4;K
+8;'0x4660C404;';"3-D Tic-Tac-Toe";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0x1CF50EBE;';"3-D Tic-Tac-Toe";"Atari";"1979";CARTRIDGE_STD_8;K
+4;'0xBE0CF388;';"400/800 SALT Diagnostic Cartridge 1.00";"Atari";"1979-10-15";CARTRIDGE_STD_4;K
+8;'0x1BD00850;';"400/800 SALT Diagnostic Cartridge 1.00";"Atari";"1979-10-15";CARTRIDGE_STD_8;K
+8;'0xA1E46A0D;';"400/800 SALT Diagnostic Cartridge 1.00";"Atari";"1979-10-15";CARTRIDGE_STD_8;K
+8;'0x3E304B52;';"400/800 SALT Diagnostic Cartridge 2.04";"Atari";"1981-09-09";CARTRIDGE_STD_8;K
+8;'0x6C40248F;';"400/800 SALT Diagnostic Cartridge 2.04";"Atari";"1981-09-09";CARTRIDGE_STD_8;K
+8;'0xF269CC0A;';"400/800 SALT Diagnostic Cartridge 2.05";"Atari";"1982-02-03";CARTRIDGE_STD_8;K
+8;'0xF4D1B192;';"400/800 SALT Diagnostic Cartridge 2.05";"Atari";"1982-02-03";CARTRIDGE_STD_8;K
+16;'0xDC1E9FD4;';"600/800 Super SALT (SE.02)";"Atari";"1983";CARTRIDGE_STD_16;K
+4;'0xF3627929;';"810 Disk Field Excerciser rev. 0";"Atari";"1982";CARTRIDGE_STD_4;K
+8;'0xB61F2A16;';"810 Disk Field Excerciser rev. 0";"Atari";"1982";CARTRIDGE_STD_8;K
+16;'0xC2B3CEFE;';"ABOS";"Advanco";"1984";CARTRIDGE_STD_16;K
+16;'0xA35C775D;';"Abracadabra!";"TG Software";"1983";CARTRIDGE_STD_16;K
+128;'0xEBAD3DDB;';"Ace of Aces";"Atari";"1988";CARTRIDGE_XEGS_128;K
+4;'0x5190F1D8;';"ACE-80 1.1";"ACE";"1985-03";UNKNOWN;K
+4;'0x0001CA94;';"ACE-80XL 1.1";"ACE";"1985-03";UNKNOWN;K
+16;'0x4D148A37;';"ACE-80XL 1.1";"ACE";"1985";CARTRIDGE_OSS_M091_16;K
+16;'0xAE298A33;';"Action! 3.5";"OSS";"1983-10-15";CARTRIDGE_OSS_043M_16;K
+16;'0xA1F90DFD;';"Action! 3.6";"OSS";"1984-01-17";CARTRIDGE_OSS_M091_16;K
+16;'0xB2611FD3;';"Action! 3.6";"OSS";"1984-01-17";CARTRIDGE_STD_16;K
+16;'0x549EB409;';"Action! 3.6";"OSS";"1984-01-17";CARTRIDGE_STD_16;K
+16;'0x0A27763C;';"Action! 3.6";"";"1986";CARTRIDGE_OSS_M091_16;K
+16;'0x0BCD70C6;';"Action! 3.6";"OSS";"1984-01-17";CARTRIDGE_OSS_M091_16;K
+16;'0xE9113178;';"Action! 3.6";"František Houra";"2009-07-29";CARTRIDGE_OSS_M091_16;K
+16;'0xEB905CB4;';"Action! 3.6";"OSS";"1984-01-17";CARTRIDGE_OSS_034M_16;K
+16;'0x532469B9;';"Action! 3.6";"OSS";"1984-01-17";CARTRIDGE_OSS_034M_16;K
+8;'0xC5A1BDF1;';"Activator Cartridge";"Big Five Software";"1984";CARTRIDGE_STD_8;K
+16;'0xAFFBE54B;';"Activision Decathlon [The]";"Activision";"1984";CARTRIDGE_STD_16;K
+16;'0x76845603;';"Activision Decathlon [The]";"Activision";"1984";CARTRIDGE_STD_16;K
+16;'0x8746D9DA;';"Adventure Creator";"Spinnaker";"1984";CARTRIDGE_STD_16;K
+128;'0xA0CCB3C1;';"Airball";"Atari";"1988";CARTRIDGE_XEGS_128;K
+16;'0x79DF7F9D;';"Alf in the Color Caves";"Spinnaker";"1984";CARTRIDGE_STD_16;K
+4;'0xE8069034;';"Alien Ambush";"DANA";"1983";CARTRIDGE_STD_4;K
+8;'0xAD7BC30B;';"Alien Ambush";"DANA";"1983";CARTRIDGE_STD_8;K
+8;'0xF7EE09B1;';"Alien Ambush";"DANA";"1983";CARTRIDGE_STD_8;K
+8;'0x3E27ED0F;';"Alien Garden";"Epyx";"1982";CARTRIDGE_STD_8;K
+4;'0x0D33D77C;';"Alpha Shield";"Sirius";"1983";CARTRIDGE_STD_4;K
+8;'0x484E8443;';"Alpha Shield";"Sirius";"1983";CARTRIDGE_STD_8;K
+8;'0x12DB4EF9;';"Alpha Shield";"Sirius";"1983";CARTRIDGE_STD_8;K
+8;'0xA7ADE454;';"Alpha Shield";"Sirius";"1983";CARTRIDGE_STD_8;K
+16;'0xC9613ECD;';"Alphabet Zoo";"Spinnaker";"1983";CARTRIDGE_STD_16;K
+1024;'0xC8E14CE2;';"Alternate Reality: The City";"Mark Keates";"2005-05-20";CARTRIDGE_ATMAX_1024;K
+1024;'0x52CBD474;';"Alternate Reality: The City";"Mark Keates";"2005-05-25";CARTRIDGE_ATMAX_1024;K
+16;'0x90F37AFE;';"Animated Puzzle";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0x1A4C75A7;';"Animated Puzzle";"Atari";"1984";CARTRIDGE_STD_16;K
+8;'0xC7290722;';"Ant Eater";"Romox";"1982";CARTRIDGE_STD_8;K
+8;'0x73A3A64C;';"Ant Eater";"Romox";"1982";CARTRIDGE_STD_8;K
+8;'0x18702A0F;';"Ant Eater";"Romox";"1982";CARTRIDGE_STD_8;K
+32;'0x2636829F;';"Archon: The Light and the Dark";"Atari";"1987";CARTRIDGE_XEGS_32;K
+16;'0x2A080E7D;';"Arex";"Adventure International";"1983";CARTRIDGE_STD_16;K
+8;'0x7DD6196C;';"Assembler Editor";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0xEE72EEEA;';"Assembler Editor rev. B";"Atari";"1980";CARTRIDGE_STD_8;K
+16;'0xE9DA4EAA;';"AST 2000";"";"19xx";CARTRIDGE_STD_16;K
+32;'0x6A295EB0;';"AST Multi-Cartridge 2.B";"Atari Studio";"1990";CARTRIDGE_AST_32;K
+8;'0xC9BCE220;';"AST Utility 1010";"Atari Studio";"1988";CARTRIDGE_PHOENIX_8;K
+8;'0x45C1FF0C;';"AST Utility XC12";"Atari Studio";"1988";CARTRIDGE_PHOENIX_8;K
+8;'0xF9FFF4A4;';"Asteroids";"Atari";"1981";CARTRIDGE_STD_8;K
+8;'0x7ED3E6A3;';"Asteroids";"Atari";"1981";CARTRIDGE_STD_8;K
+16;'0x11F1C7FA;';"Astro Chase";"Parker Brothers";"1983";CARTRIDGE_STD_16;K
+16;'0x18752991;';"Astro Chase";"First Star Software";"1984";CARTRIDGE_STD_16;K
+16;'0x85B67797;';"Astro-Grover";"CBS Software";"1984";CARTRIDGE_STD_16;K
+16;'0xF44A0AEB;';"Astro-Grover";"CBS Software";"1984";CARTRIDGE_STD_16;K
+32;'0xCD0D086F;';"Atari Blizzard Hit";"";"199x";CARTRIDGE_BLIZZARD_32;K
+16;'0x9663DB9D;';"Atari Logo";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x5BDFF48F;';"Atari Logo";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x242D5E2D;';"Atari Logo";"Atari France";"1983";CARTRIDGE_STD_16;K
+16;'0xA68AA4A5;';"Atari Turbo System Cartridge v.4.0";"Unerring Master";"19xx";CARTRIDGE_BLIZZARD_16;K
+16;'0xBBE37542;';"AtariArtist";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x50B573CD;';"AtariGraphics";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x6CCDB004;';"AtariGraphics";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0x9BE1C9E4;';"AtariLab Light Module";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0x4036E465;';"AtariLab Temperature Module";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0xDE1C1D12;';"AtariSchreiber";"Atari Germany";"1983";CARTRIDGE_STD_16;K
+16;'0xFABAF286;';"AtariTexte";"Atari France";"1984";CARTRIDGE_STD_16;K
+16;'0x2AFF4A94;';"AtariTexte";"Atari France";"1984";CARTRIDGE_STD_16;K
+16;'0x1C2498A4;';"AtariWriter rev. A";"Atari";"1982";CARTRIDGE_STD_16;K
+16;'0x7BE4533D;';"AtariWriter";"Atari";"1982";CARTRIDGE_STD_16;K
+16;'0xB4DDBEC7;';"AtariWriter rev. C";"Atari";"1984";CARTRIDGE_STD_16;K
+4;'0xBC54A730;';"Atlantis";"Imagic";"1983";CARTRIDGE_STD_4;K
+8;'0xF929F40F;';"Atlantis";"Imagic";"1983";CARTRIDGE_STD_8;K
+8;'0xA3BC3EB5;';"Atlantis";"Imagic";"";CARTRIDGE_STD_8;K
+8;'0xBE0B390C;';"Atlantis";"Imagic";"1983";CARTRIDGE_STD_8;K
+8;'0x6A9A1405;';"Atlantis";"Imagic";"1983";CARTRIDGE_STD_8;K
+128;'0xD3653F64;';"Atrax 1";"Atrax";"199x";CARTRIDGE_ATRAX_DEC_128;K
+128;'0x20422531;';"Atrax 2";"Atrax";"199x";CARTRIDGE_ATRAX_128;K
+128;'0xE34FACD9;';"Atrax 2";"Atrax";"199x";CARTRIDGE_ATRAX_DEC_128;K
+128;'0x7F5A2F67;';"Atrax 3";"Atrax";"199x";CARTRIDGE_ATRAX_128;K
+128;'0x55E39B41;';"Atrax 3";"Atrax";"199x";CARTRIDGE_ATRAX_DEC_128;K
+128;'0x0541F1A3;';"Atrax 4";"Atrax";"199x";CARTRIDGE_ATRAX_128;K
+128;'0xDC5A540B;';"Atrax 4";"Atrax";"199x";CARTRIDGE_ATRAX_DEC_128;K
+128;'0x2116088A;';"Atrax 5";"Atrax";"199x";CARTRIDGE_ATRAX_128;K
+128;'0xA599C16C;';"Atrax 5";"Atrax";"199x";CARTRIDGE_ATRAX_DEC_128;K
+128;'0xA051FE6B;';"Atrax 6";"Atrax";"199x";CARTRIDGE_ATRAX_128;K
+128;'0xECB27536;';"Atrax 6";"Atrax";"199x";CARTRIDGE_ATRAX_DEC_128;K
+128;'0x74DBA211;';"Atrax 6";"Atrax";"199x";CARTRIDGE_ATRAX_128;K
+128;'0xA5EC6435;';"Atrax 9";"Atrax";"199x";CARTRIDGE_ATRAX_128;K
+128;'0x0E99E18C;';"Atrax 9";"Atrax";"199x";CARTRIDGE_ATRAX_DEC_128;K
+128;'0x50A53CDC;';"Atrax 13";"Atrax";"199x";CARTRIDGE_ATRAX_128;K
+128;'0x800AB6D7;';"Atrax 13";"Atrax";"199x";CARTRIDGE_ATRAX_DEC_128;K
+128;'0x61D58B8A;';"Atrax 14";"Atrax";"199x";CARTRIDGE_ATRAX_128;K
+128;'0x21DB0D60;';"Atrax 14";"Atrax";"199x";CARTRIDGE_ATRAX_DEC_128;K
+128;'0xDBA94AFE;';"Atrax 15";"Atrax";"199x";CARTRIDGE_ATRAX_128;K
+128;'0x9543EF90;';"Atrax 15";"Atrax";"199x";CARTRIDGE_ATRAX_DEC_128;K
+128;'0x81051934;';"Atrax 16";"Atrax";"199x";CARTRIDGE_ATRAX_128;K
+128;'0x156E7460;';"Atrax 16";"Atrax";"199x";CARTRIDGE_ATRAX_DEC_128;K
+16;'0xDCA02CA0;';"Attack at EP-CYG-4";"Romox";"1982";CARTRIDGE_STD_16;K
+8;'0xC933D741;';"Attack of the Mutant Camels";"HES";"1983";CARTRIDGE_STD_8;K
+64;'0x820E5CE5;';"Ballblazer";"Atari";"1987";CARTRIDGE_XEGS_64;K
+128;'0x13AE30ED;';"Barnyard Blaster";"Atari";"1987";CARTRIDGE_XEGS_128;K
+16;'0x43C9D2A0;';"Baseball";"Inhome Software";"1983";CARTRIDGE_STD_16;K
+16;'0x065C3FD2;';"Baseball";"Inhome Software";"1983";CARTRIDGE_STD_16;K
+8;'0x4BEC4DE2;';"BASIC rev. A";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0xF0202FB3;';"BASIC rev. B";"Atari";"1983";CARTRIDGE_STD_8;K
+8;'0x7D684184;';"BASIC rev. C";"Atari";"1984";CARTRIDGE_STD_8;K
+16;'0x003D3A36;';"BASIC XE 4.1";"OSS";"1985";CARTRIDGE_OSS_M091_16;K
+16;'0x20A24AB3;';"BASIC XE 4.1";"OSS";"1985";CARTRIDGE_STD_16;K
+16;'0x3F06B111;';"BASIC XE 7.2";"";"";CARTRIDGE_OSS_M091_16;K
+16;'0x196ACB31;';"BASIC XL";"OSS";"1983";CARTRIDGE_OSS_043M_16;K
+16;'0x5752D29F;';"BASIC XL 1.02";"OSS";"1983";CARTRIDGE_OSS_043M_16;K
+16;'0xE8B3FC3C;';"BASIC XL 1.02";"OSS";"1983";CARTRIDGE_OSS_034M_16;K
+16;'0x81383E8B;';"BASIC XL 1.02";"OSS";"1983";CARTRIDGE_STD_16;K
+16;'0x94A05568;';"BASIC XL 1.03";"OSS";"1983";CARTRIDGE_OSS_M091_16;K
+16;'0x7D34B2DB;';"BASIC XL 1.03";"OSS";"1983";CARTRIDGE_STD_16;K
+16;'0xAF85EDFD;';"BASIC XL 1.03";"OSS";"1983";CARTRIDGE_OSS_M091_16;K
+4;'0x5ED58427;';"Basketball";"Atari";"1979";CARTRIDGE_STD_4;K
+8;'0x1BA8D718;';"Basketball";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0x230682EB;';"Basketball";"Atari";"1979";CARTRIDGE_STD_8;K
+4;'0x3CEE1B6E;';"Basketball";"Atari";"1979";CARTRIDGE_STD_4;K
+8;'0x79934851;';"Basketball";"Atari";"1979";CARTRIDGE_STD_8;K
+64;'0x692515F2;';"BattleZone";"Atari";"1987";CARTRIDGE_XEGS_64;K
+16;'0xDDDC6E36;';"BC's Quest for Tires";"Sierra On-Line";"1983";CARTRIDGE_STD_16;K
+16;'0x2B05B8DF;';"Beamrider";"Activision";"1984";CARTRIDGE_STD_16;K
+8;'0x1889C707;';"BearJam";"Chalk Board";"1983";CARTRIDGE_STD_8;K
+32;'0xD209E797;';"Beef Drop";"Ken Siders";"2004";CARTRIDGE_XEGS_32;K
+32;'0x6DD9E838;';"Beef Drop";"Ken Siders";"2005";CARTRIDGE_XEGS_32;K
+16;'0xB1DEDB79;';"Berzerk";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x5A8F3353;';"Berzerk";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x1921F704;';"Berzerk";"Atari";"1983";CARTRIDGE_STD_16;K
+32;'0x3219C681;';"BIG 2.0";"KNS Corp.";"199x";UNKNOWN;K
+16;'0x9FD095E0;';"Big Bird's Funhouse";"CBS Software";"1984";CARTRIDGE_STD_16;K
+16;'0x6D93B4FA;';"Big Bird's Special Delivery";"CBS Software";"1984";CARTRIDGE_STD_16;K
+16;'0xCE1126A2;';"Blaster";"Williams";"1984";CARTRIDGE_STD_16;K
+8;'0x26303AE4;';"Blizzard Super Cartridge 4.0";"KNS Corp.";"1990-02";CARTRIDGE_PHOENIX_8;K
+8;'0x925AD4F6;';"Blizzard Turbo 2.8";"Piotr Zubek & Janusz Zubek";"1990-08";CARTRIDGE_PHOENIX_8;K
+32;'0x003F41AC;';"Blue Max";"Atari";"1987";CARTRIDGE_XEGS_32;K
+128;'0xC365C709;';"BMX Simulator/Grand Prix Simulator/Red Max";"Mark Keates";"2007-09-28";CARTRIDGE_ATMAX_128;K
+520;'0x8E89CA50;';"Bomb Jake";"GR8 Software";"2009-11-14";UNKNOWN;K
+16;'0xAF778329;';"Boulder Dash";"First Star Software";"1984";CARTRIDGE_STD_16;K
+8;'0xD6D51D3E;';"Boulders and Bombs";"CBS Software";"1982";CARTRIDGE_STD_8;K
+16;'0xAB2EC21C;';"Boulders and Bombs";"CBS Software";"1982";CARTRIDGE_STD_16;K
+40;'0x0D00F072;';"Bounty Bob Strikes Back!";"Big Five Software";"1984";CARTRIDGE_BBSB_40;K
+40;'0xCC7912ED;';"Bounty Bob Strikes Back!";"Big Five Software";"1984";CARTRIDGE_BBSB_40;K
+16;'0x4263D64D;';"Bristles";"First Star Software";"1983";CARTRIDGE_STD_16;K
+64;'0x255DFC59;';"Bruce Lee";"Atari";"198x";CARTRIDGE_XEGS_64;K
+16;'0x84DD597C;';"Buck Rogers: Planet of Zoom";"SEGA";"1983";CARTRIDGE_STD_16;K
+64;'0x246F3872;';"Bug Hunt";"Atari";"1987";CARTRIDGE_XEGS_64;K
+128;'0xEF8C45F0;';"Bug Hunt";"Atari";"1987";CARTRIDGE_XEGS_128;K
+16;'0xAD8400B1;';"Captain Beeble";"Inhome Software";"1983";CARTRIDGE_STD_16;K
+16;'0xEA764851;';"Carnival Massacre";"Thorn EMI";"1983";CARTRIDGE_STD_16;K
+16;'0x0C8E8D5B;';"Carnival Massacre";"Thorn EMI";"1983";CARTRIDGE_STD_16;K
+16;'0x9CA5D00D;';"Cartridge dla Turbo 2000 1.0";"Domain Software";"1991?";CARTRIDGE_BLIZZARD_16;K
+16;'0xC848A61C;';"Cartridge dla Turbo 2000 1.0";"Domain Software";"1991?";CARTRIDGE_BLIZZARD_16;K
+16;'0xF80B8C8C;';"Cartridge System Turbo 2000";"Bartek Selinger";"1991?";CARTRIDGE_BLIZZARD_16;K
+16;'0xA407EEF0;';"Cartridge System Turbo 2000";"JK Soft";"";CARTRIDGE_BLIZZARD_16;K
+16;'0x60787A1A;';"Cartridge systemowy Turbo 2000";"RoboSoft";"1991?";CARTRIDGE_BLIZZARD_16;K
+16;'0x45A8B12E;';"Cartridge systemowy Turbo 2000";"RoboSoft";"1991?";CARTRIDGE_BLIZZARD_16;K
+16;'0xF25DA498;';"Cartridge Turbo 2000 3.16";"Info-Cell";"1989?";CARTRIDGE_BLIZZARD_16;K
+32;'0x7BC6E6DC;';"Castle Crisis";"AtariAge";"2003";CARTRIDGE_XEGS_32;K
+32;'0x47ACDA14;';"Castle Crisis";"Bryan Edewaard";"2003-12-03";CARTRIDGE_XEGS_32;K
+16;'0x5A9E938A;';"Castle Hassle";"Roklan";"1983";CARTRIDGE_STD_16;K
+16;'0x844F7294;';"Castle Hassle";"Roklan";"1983";CARTRIDGE_STD_16;K
+16;'0xBE14C091;';"Castles and Keys";"Romox";"1983";CARTRIDGE_STD_16;K
+16;'0x8B9B2F5E;';"Caverns of Mars";"Atari";"1982";CARTRIDGE_STD_16;K
+8;'0x44BB1842;';"Centipede";"Atari";"1982";CARTRIDGE_STD_8;K
+8;'0xD54F0200;';"Centipede";"Atari";"1981";CARTRIDGE_STD_8;K
+8;'0xD12471B7;';"Checkbook";"Atari";"1980-03-18";CARTRIDGE_STD_8;K
+16;'0x0C067251;';"Checkbook";"Atari";"1980-03-18";CARTRIDGE_STD_16;K
+8;'0x72860DB1;';"Chess";"Parker Brothers";"1983";CARTRIDGE_STD_8;K
+8;'0x1AB4D8D8;';"Chicken";"Synapse";"1982";CARTRIDGE_STD_8;K
+16;'0x3D8F5C25;';"Chiffres et des Lettres [Des]";"Atari France";"1983";CARTRIDGE_STD_16;K
+16;'0xC7705C53;';"Chiffres et des Lettres [Des]";"Atari France";"1983";CARTRIDGE_STD_16;K
+16;'0x3EBC05FF;';"Choplifter!";"Broderbund";"1982";CARTRIDGE_STD_16;K
+64;'0xD426ECCC;';"Choplifter!";"Atari";"1987";CARTRIDGE_XEGS_64;K
+16;'0x374D14D9;';"Claim Jumper";"Synapse";"1982";CARTRIDGE_STD_16;K
+16;'0x1A333C4A;';"Claim Jumper";"Synapse";"1982";CARTRIDGE_STD_16;K
+16;'0xFAE1B7E4;';"Claim Jumper";"Synapse";"1982";CARTRIDGE_STD_16;K
+8;'0x32E5629E;';"Cloudburst";"DANA";"1982";CARTRIDGE_STD_8;K
+8;'0x259AA18B;';"Cloudburst";"DANA";"1982";CARTRIDGE_STD_8;K
+16;'0xF93C615B;';"Coco-Notes";"CBS Software";"1984";CARTRIDGE_STD_16;K
+128;'0x28288DF4;';"Commando";"Atari";"1989";CARTRIDGE_XEGS_128;K
+512;'0x7E8A6881;';"Commando";"Sunmark";"2003-09-23";CARTRIDGE_MEGA_512;K
+8;'0x58CCF059;';"Compu=Prompt";"Compu=Prompt, Inc.";"1987";CARTRIDGE_STD_8;K
+4;'0x8C1C171C;';"Computer Chess";"Atari";"1979";CARTRIDGE_STD_4;K
+8;'0xC9614423;';"Computer Chess";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0x5CE06E94;';"Computer Chess";"Atari";"1979";CARTRIDGE_STD_8;K
+16;'0x33C838F5;';"Computer War";"Thorn EMI";"1983";CARTRIDGE_STD_16;K
+16;'0x4922AAC6;';"Computer War";"Thorn EMI";"1983";CARTRIDGE_STD_16;K
+16;'0x8A44D135;';"Computer War";"Thorn EMI";"1983";CARTRIDGE_STD_16;K
+16;'0xE88A2EA3;';"Computrac 4000-8000";"Computrac";"1983";CARTRIDGE_STD_16;K
+16;'0x7A588045;';"Congo Bongo";"SEGA";"1983";CARTRIDGE_STD_16;K
+16;'0x94F56B90;';"Conquest of the Crown";"LindaSoft";"1994";CARTRIDGE_STD_16;K
+8;'0xEC65758B;';"Cosmic Life";"Spinnaker";"1983";CARTRIDGE_STD_8;K
+16;'0x919EAAA9;';"Cosmic Life";"Spinnaker";"1983";CARTRIDGE_STD_16;K
+16;'0xAD56C2BF;';"Cosmic Tunnels";"Datamost";"1983";CARTRIDGE_STD_16;K
+16;'0x0D99E328;';"CPS Super SALT";"Atari [CPS]";"1983";CARTRIDGE_STD_16;K
+16;'0xDB114887;';"CPS Super SALT";"Atari [CPS]";"1983";CARTRIDGE_STD_16;K
+128;'0x143FBAD9;';"Crime Buster";"Atari";"1988";CARTRIDGE_XEGS_128;K
+128;'0x0557A91F;';"Crossbow";"Atari";"1988";CARTRIDGE_XEGS_128;K
+128;'0xFE69F354;';"Crossbow";"Atari";"1988";CARTRIDGE_XEGS_128;K
+8;'0x4D7E0503;';"Crossfire";"Sierra On-Line";"1981";CARTRIDGE_STD_8;K
+8;'0xF21AD23F;';"Crossfire";"mr-atari";"2013-01-23";CARTRIDGE_STD_8;K
+16;'0x89BB9431;';"Crystal Castles";"Atari";"1984-06-01";CARTRIDGE_STD_16;K
+16;'0x6C64892C;';"Crystal Castles";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0xE3EC1080;';"Crystal Castles";"Atari";"1984";CARTRIDGE_STD_16;K
+32;'0x998FA803;';"Crystal Castles";"Atari";"1988";CARTRIDGE_XEGS_32;K
+16;'0xF15B2306;';"Crystal Raider";"Video 61";"2001";CARTRIDGE_STD_16;K
+8;'0xBCDA6DBA;';"Da' Fuzz";"Roklan";"1983";CARTRIDGE_STD_8;K
+16;'0xB94F66EA;';"Da' Fuzz";"Roklan";"1983";CARTRIDGE_STD_16;K
+8;'0xFAEC94E7;';"Dance Fantasy";"Fisher-Price";"1984";CARTRIDGE_STD_8;K
+8;'0xF5497EF3;';"Danger Ranger";"Microdeal";"1984";CARTRIDGE_STD_8;K
+64;'0xFA2F132C;';"Dark Chambers";"Atari";"1988";CARTRIDGE_XEGS_64;K
+64;'0xB7CA61A2;';"David's Midnight Magic";"Atari";"1987";CARTRIDGE_XEGS_64;K
+16;'0xFCB4B36F;';"Defender Rev 2";"Atari";"1982-08";CARTRIDGE_STD_16;K
+16;'0x782A81E4;';"Defender";"Atari";"1982";CARTRIDGE_STD_16;K
+16;'0x161CBE09;';"Defender";"Atari";"1982";CARTRIDGE_STD_16;K
+64;'0x799EFE52;';"Deflektor";"Atari";"1989-06-29";CARTRIDGE_XEGS_64;K
+64;'0xE4ED154E;';"Deflektor";"Atari";"1989";CARTRIDGE_XEGS_64;K
+64;'0x7D1B61FC;';"Deflektor";"František Houra";"2008-06-22";CARTRIDGE_XEGS_64;K
+64;'0x76970C47;';"Deflektor";"František Houra";"2008-06-23";CARTRIDGE_XEGS_64;K
+8;'0x20CBAD07;';"Delta Drawing";"Spinnaker";"1983";CARTRIDGE_STD_8;K
+8;'0x15DC9B31;';"Deluxe Invaders";"Roklan";"1981";CARTRIDGE_STD_8;K
+4;'0x59C5E612;';"Demon Attack";"Imagic";"1982";CARTRIDGE_STD_4;K
+8;'0x1CB8B52D;';"Demon Attack";"Imagic";"1982";CARTRIDGE_STD_8;K
+8;'0x91328072;';"Demon Attack";"Imagic";"1982";CARTRIDGE_STD_8;K
+8;'0xF6471DD9;';"Demon Attack";"Imagic";"1982";CARTRIDGE_STD_8;K
+64;'0xA8F9324D;';"Desert Falcon";"Atari";"1988";CARTRIDGE_XEGS_64;K
+16;'0x6ED64678;';"Designer's Pencil [The]";"Activision";"1984";CARTRIDGE_STD_16;K
+16;'0x0C847BB3;';"Destiny: The Cruiser";"Adventure International";"1983";CARTRIDGE_STD_16;K
+64;'0xCDEB2C5C;';"Diamond GOS 1.0";"Reeve Software";"1988";CARTRIDGE_DIAMOND_64;K
+64;'0xFF169415;';"Diamond GOS 1.0";"Reeve Software";"1989";CARTRIDGE_DIAMOND_64;K
+64;'0x0EAD07F8;';"Diamond GOS 2.0";"Reeve Software";"1989";CARTRIDGE_DIAMOND_64;K
+64;'0x3671BDC5;';"Diamond GOS 3.0";"Reevesoft";"1989";CARTRIDGE_DIAMOND_64;K
+16;'0xD8F9B867;';"Diamond Mine";"Roklan";"1983";CARTRIDGE_STD_16;K
+16;'0x4F18F296;';"Dig Dug";"Atari";"1982";CARTRIDGE_STD_16;K
+16;'0x6D68114E;';"Dig Dug";"Atari";"1982";CARTRIDGE_STD_16;K
+16;'0x29B44FF6;';"Dig Dug";"Atari";"1982";CARTRIDGE_STD_16;K
+16;'0xFDBC57ED;';"Dig Dug";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0xBBDABFCB;';"Direct Access Atari 400 4118HSE330910438B";"Citibank";"1984-12-24";CARTRIDGE_STD_16;K
+16;'0x0B5C7BD3;';"Direct Access Atari 800 XL 4148HPC504910704B";"Citibank";"1984-12-03";CARTRIDGE_STD_16;K
+16;'0x8A406275;';"Donkey Kong";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0xF2B76A27;';"Donkey Kong";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0xA3E2D833;';"Donkey Kong Junior";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0xA4EB70EF;';"Donkey Kong Junior";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x2B04B4BC;';"Donkey Kong Junior";"Atari";"1983";CARTRIDGE_STD_16;K
+8;'0xC26FBB5B;';"Dreadnaught Factor [The]";"Activision";"1984";CARTRIDGE_STD_8;K
+8;'0x5BB0C159;';"Droids";"TG Software";"1983";CARTRIDGE_STD_8;K
+8;'0x440082E6;';"Droids";"TG Software";"1983";CARTRIDGE_STD_8;K
+64;'0x4870ED52;';"Dropzone";"Video 61";"";CARTRIDGE_WILL_64;K
+4;'0xE5319BE8;';"DT-80";"ACE";"1984";CARTRIDGE_STD_4;K
+8;'0x7840A595;';"DT-80";"ACE";"1984";CARTRIDGE_STD_8;K
+16;'0x4CDFCEB9;';"Ducks Ahoy!";"CBS Software";"1984";CARTRIDGE_STD_16;K
+16;'0x6B7A42BD;';"Ducks Ahoy!";"CBS Software";"1984";CARTRIDGE_STD_16;K
+64;'0xAD050724;';"DynaKillers";"Video 61";"1999";CARTRIDGE_WILL_64;K
+16;'0xBCE4EF51;';"E.T. Phone Home!";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0xCCFF4A03;';"Eastern Front (1941)";"Atari";"1982";CARTRIDGE_STD_16;K
+8;'0x7595EA16;';"Edit 6502";"LJK";"";CARTRIDGE_STD_8;K
+16;'0x364B7AC9;';"Edit 6502";"LJK";"";CARTRIDGE_STD_16;K
+2;'0x31D05F9E;';"Educational System Master Cartridge";"Atari";"1979";CARTRIDGE_STD_2;K
+8;'0xBAACBAD4;';"Educational System Master Cartridge";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0x18CC7C94;';"Educational System Master Cartridge";"Atari";"1979";CARTRIDGE_STD_8;K
+2;'0xF69F2824;';"Educational System Master Cartridge";"Dorsett Educational Systems";"1983";CARTRIDGE_STD_2;K
+8;'0xDF830B2E;';"Educational System Master Cartridge";"Dorsett Educational Systems";"1983";CARTRIDGE_STD_8;K
+8;'0x0DCC9ECC;';"Educational System Master Cartridge";"Dorsett Educational Systems";"1983";CARTRIDGE_STD_8;K
+128;'0x121DFBBA;';"Eidolon [The]";"Mark Keates";"2004-01-10";CARTRIDGE_MEGA_128;K
+128;'0x46F363F7;';"Eidolon [The]";"Mark Keates";"2004-01-14";CARTRIDGE_ATMAX_128;K
+128;'0x36D16BBB;';"Eidolon [The]";"Mark Keates";"2004-01-14";CARTRIDGE_SWXEGS_128;K
+128;'0x449B9284;';"Eidolon [The]";"Wilhelm";"2004-04-05";CARTRIDGE_ATRAX_128;K
+8;'0x07B1560C;';"Embargo";"Gebelli Software";"1982";CARTRIDGE_STD_8;K
+16;'0x435F5ABA;';"Ernie's Magic Shapes";"CBS Software";"1984";CARTRIDGE_STD_16;K
+16;'0xDCDE7482;';"Espial";"Tigervision";"1984";CARTRIDGE_STD_16;K
+8;'0xA854CC63;';"Excelsor";"Players";"1986";CARTRIDGE_STD_8;K
+8;'0x2343ACF3;';"Expando-Vision - Control Drinking/Responsibility";"Stimutech";"1983";CARTRIDGE_STD_8;K
+8;'0xEB8B49B9;';"Expando-Vision - Control Smoking/Calm Nerves";"Stimutech";"1983";CARTRIDGE_STD_8;K
+8;'0xB68B0A9B;';"Expando-Vision - Stress Control/Positive Thinking";"Stimutech";"1983";CARTRIDGE_STD_8;K
+8;'0x1B5848C0;';"Expando-Vision - Weight Control/Exercise";"Stimutech";"1983";CARTRIDGE_STD_8;K
+16;'0x98A4E5B7;';"Explorer";"Activision";"1984";CARTRIDGE_STD_16;K
+64;'0x4A5FCEFD;';"Express! 1.12";"Orion Micro Systems";"1989";CARTRIDGE_EXP_64;K
+8;'0x382D859E;';"FaceMaker";"Spinnaker";"1983";CARTRIDGE_STD_8;K
+4;'0x883FDD28;';"Fantastic Voyage";"Sirius";"1982";CARTRIDGE_STD_4;K
+8;'0xCD428E17;';"Fantastic Voyage";"Sirius";"1982";CARTRIDGE_STD_8;K
+8;'0x97D744AD;';"Fantastic Voyage";"Sirius";"1982";CARTRIDGE_STD_8;K
+16;'0xEA2C9B8F;';"Fantastic Voyage";"Sirius";"1982";CARTRIDGE_STD_16;K
+4;'0x4C44A1EF;';"Fast Eddie";"Sirius";"1982";CARTRIDGE_STD_4;K
+8;'0x0939F2D0;';"Fast Eddie";"Sirius";"1982";CARTRIDGE_STD_8;K
+8;'0x53AC386A;';"Fast Eddie";"Sirius";"1982";CARTRIDGE_STD_8;K
+128;'0x4440D167;';"Fight Night";"Atari";"1987";CARTRIDGE_XEGS_128;K
+16;'0x6BD0D8E4;';"Final Legacy";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0x506E4ED0;';"Final Legacy";"Atari";"1984";CARTRIDGE_STD_16;K
+4;'0x08989E6C;';"Final Orbit";"Sirius";"1983";CARTRIDGE_STD_4;K
+8;'0x4DE5CD53;';"Final Orbit";"Sirius";"1983";CARTRIDGE_STD_8;K
+8;'0x177007E9;';"Final Orbit";"Sirius";"1983";CARTRIDGE_STD_8;K
+4;'0xFC282C74;';"Firebird";"Gebelli Software";"1981";CARTRIDGE_STD_4;K
+8;'0xB9557F4B;';"Firebird";"Gebelli Software";"1981";CARTRIDGE_STD_8;K
+8;'0xAB4F2D14;';"Firebird";"Gebelli Software";"1981";CARTRIDGE_STD_8;K
+8;'0x97FE581C;';"Firebird";"Gebelli Software";"1981";CARTRIDGE_STD_8;K
+16;'0x18803C52;';"Flapper";"Romox";"1983";CARTRIDGE_STD_16;K
+128;'0x10CFC489;';"Flight Simulator II v. 1.07";"Atari";"1987";CARTRIDGE_XEGS_128;K
+64;'0x5133A213;';"Flight Simulator II v. 1.07";"Atari";"1987";CARTRIDGE_XEGS_64;K
+16;'0x8AE057BE;';"Flip and Flop";"First Star Software";"1983";CARTRIDGE_STD_16;K
+32;'0x4236F0EA;';"Food Fight";"Atari";"1987";CARTRIDGE_XEGS_32;K
+16;'0xF79B33F0;';"Fort Apoalypse";"Synapse";"1982";CARTRIDGE_STD_16;K
+8;'0x5CEE3180;';"Fortune Hunter";"Romox";"1982";CARTRIDGE_STD_8;K
+8;'0xC0FEA1F7;';"Fortune Hunter";"Romox";"1982";CARTRIDGE_STD_8;K
+8;'0x6F439F87;';"Fraction Fever";"Spinnaker";"1983";CARTRIDGE_STD_8;K
+16;'0xDF7CD92D;';"Fraction Fever";"Spinnaker";"1983";CARTRIDGE_STD_16;K
+8;'0x40E9476C;';"Frogger";"Parker Brothers";"1983";CARTRIDGE_STD_8;K
+8;'0xE924F2BC;';"Frogger II: ThreeeDeep!";"Parker Brothers";"1984";CARTRIDGE_STD_8;K
+16;'0x7A5B4F65;';"Frogger II: ThreeeDeep!";"Parker Brothers";"1984";CARTRIDGE_STD_16;K
+16;'0x6D55EE51;';"Frogger II: ThreeeDeep!";"Parker Brothers";"1984";CARTRIDGE_STD_16;K
+16;'0xDB730551;';"Fun with Art";"Epyx";"1983";CARTRIDGE_STD_16;K
+8;'0xD60027BE;';"Galaxian";"Atari";"1982";CARTRIDGE_STD_8;K
+16;'0x4CCDBEF0;';"Gateway To Apshai";"Epyx";"1983";CARTRIDGE_STD_16;K
+16;'0x3A0C6EB0;';"Gateway To Apshai";"Epyx";"1983";CARTRIDGE_STD_16;K
+128;'0xAB06A3F5;';"GATO";"Atari";"1987";CARTRIDGE_XEGS_128;K
+128;'0x48CFACE0;';"Gauntlet";"Mark Keates";"2005-04-12";CARTRIDGE_ATMAX_128;K
+128;'0x2FBFF9F8;';"Gauntlet";"Mark Keates";"2005-04-12";CARTRIDGE_ATMAX_128;K
+128;'0x0C245E29;';"Gauntlet";"Mark Keates";"2005-04-12";CARTRIDGE_MEGA_128;K
+128;'0x7CE53EED;';"Gauntlet";"Mark Keates";"2005-04-12";CARTRIDGE_SWXEGS_128;K
+8;'0x8459B11E;';"Gold Mine";"Spectravideo";"1983";CARTRIDGE_STD_8;K
+8;'0x90D0C7D7;';"Gorf";"Roklan";"1981";CARTRIDGE_STD_8;K
+4;'0x32F63576;';"Gridrunner";"HES";"1983";CARTRIDGE_STD_4;K
+8;'0x02F44555;';"Gridrunner";"HES";"1983";CARTRIDGE_STD_8;K
+4;'0x6AC54C7B;';"Gridrunner";"HES";"1983";CARTRIDGE_STD_4;K
+8;'0x752DD5FE;';"Gridrunner";"HES";"1983";CARTRIDGE_STD_8;K
+16;'0x1DA47D01;';"Gyruss";"Parker Brothers";"1984";CARTRIDGE_STD_16;K
+16;'0x6062D3CE;';"H.E.R.O.";"Activision";"1984";CARTRIDGE_STD_16;K
+16;'0x8D14B5D3;';"Halftime Battlin' Bands";"CBS Software";"1984";CARTRIDGE_STD_16;K
+8;'0x9825BDAC;';"Hamsoft";"Kantronics";"1982-06-09";CARTRIDGE_STD_8;K
+8;'0xE9BA99A6;';"Hamsoft/AMTOR 1.2";"Kantronics";"1984-04-01";CARTRIDGE_STD_8;K
+8;'0x3601B0FA;';"Hamtext 1.1";"Kantronics";"1984-04-01";CARTRIDGE_STD_8;K
+8;'0xA6D6FBBF;';"Hamtext 1.2A";"Kantronics";"1984-04-01";CARTRIDGE_STD_8;K
+16;'0x214BE698;';"Hard Hat Willy";"Inhome Software";"1983";CARTRIDGE_STD_16;K
+64;'0xBF0C6DF2;';"HardBall!";"Atari";"1987";CARTRIDGE_XEGS_64;K
+1024;'0x4440443C;';"Head over Heels";"Mark Keates";"2006-11-08";CARTRIDGE_ATMAX_1024;K
+128;'0x6E0FF58A;';"Head over Heels";"Mark Keates";"2006-11-08";CARTRIDGE_ATMAX_128;K
+8;'0x50592D93;';"Hitchhiker's Guide to the Galaxy [The]";"Mark Keates";"2003-08-25";CARTRIDGE_STD_8;K
+128;'0x14737299;';"Hitchhiker's Guide to the Galaxy [The]";"Mark Keates";"2003-08-25";CARTRIDGE_XEGS_128;K
+8;'0xB792D41E;';"Homebase";"Citibank";"1982";CARTRIDGE_STD_8;K
+16;'0x4FB75909;';"Hypnotic Land";"Lindasoft";"1992";CARTRIDGE_STD_16;K
+16;'0x9BEDCDF3;';"In-Store Demonstration";"Atari";"19xx";CARTRIDGE_STD_16;K
+8;'0x2DD21DF1;';"Info/Gen";"Cable Graphic Sciences";"1984";CARTRIDGE_STD_8;K
+16;'0x6C104750;';"INFO/soft 3000 v3.3";"INFO/soft Technology";"1986";CARTRIDGE_STD_16;K
+16;'0x910F39DB;';"INFO/soft 3000 v3.3";"INFO/soft Technology";"1986";CARTRIDGE_STD_16;K
+16;'0x66A53FA1;';"INFO/soft 5000 v5.3";"INFO/soft Technology";"1986";CARTRIDGE_STD_16;K
+16;'0xC7EDE6EF;';"INFO/soft 7000 v7.1";"INFO/soft Technology";"1988";CARTRIDGE_STD_16;K
+16;'0x60ABF733;';"INFO/soft 7000 v7.1";"INFO/soft Technology";"1988";CARTRIDGE_STD_16;K
+16;'0x0B413CCC;';"INFO/soft 7000 v7.1";"INFO/soft Technology";"1988";CARTRIDGE_STD_16;K
+16;'0xA96F1401;';"INFO/soft 7000 v7.1";"INFO/soft Technology";"1988";CARTRIDGE_STD_16;K
+16;'0x1003538A;';"InstaDOS";"Sunmark";"2002";CARTRIDGE_STD_16;K
+32;'0xF31321C2;';"Into the Eagle's Nest";"Atari";"1988";CARTRIDGE_XEGS_32;K
+16;'0x19B4E3A1;';"James Bond 007";"Parker Brothers";"1984";CARTRIDGE_STD_16;K
+16;'0x2F1F21FE;';"James Bond 007 WIP 6";"Parker Brothers";"1984";CARTRIDGE_STD_16;K
+8;'0xE2A63A2D;';"Jawbreaker II";"Sierra On-Line";"1982";CARTRIDGE_STD_8;K
+64;'0x39FE57EE;';"Jinks";"Video 61";"";CARTRIDGE_WILL_64;K
+16;'0xDCE59B65;';"Journey to the Planets";"Roklan";"1983";CARTRIDGE_STD_16;K
+16;'0xF6EC618C;';"Joust";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0xEBC1DB55;';"Jr. Pac-Man";"Atari";"1984-07-10";CARTRIDGE_STD_16;K
+16;'0xF046332B;';"Jumbo Jet Pilot";"Thorn EMI";"1982";CARTRIDGE_STD_16;K
+16;'0x6C79BBAD;';"Jumpman Junior";"Epyx";"1983";CARTRIDGE_STD_16;K
+16;'0xB2DCB43B;';"Jungle Hunt";"Atari";"1982";CARTRIDGE_STD_16;K
+16;'0x1847A7D4;';"Jungle Hunt";"Atari";"1983";CARTRIDGE_STD_16;K
+8;'0xAB7BDB79;';"K-Razy Antiks";"CBS Software";"1982";CARTRIDGE_STD_8;K
+8;'0x84AB21B0;';"K-Razy Antiks";"CBS Software";"1982";CARTRIDGE_STD_8;K
+8;'0x50354927;';"K-Razy Kritters";"K-Byte";"1982";CARTRIDGE_STD_8;K
+8;'0xF854A3B4;';"K-Razy Kritters";"CBS Software";"1982";CARTRIDGE_STD_8;K
+8;'0x0D7108D7;';"K-Razy Kritters";"CBS Software";"1982";CARTRIDGE_STD_8;K
+8;'0x4300F6FF;';"K-Razy Shoot Out";"K-Byte";"1981";CARTRIDGE_STD_8;K
+8;'0x636A01F5;';"K-Razy Shout Out";"CBS Software";"1982";CARTRIDGE_STD_8;K
+8;'0x2D8DBF16;';"K-Razy Shout Out";"CBS Software";"1982";CARTRIDGE_STD_8;K
+8;'0x89C82CC2;';"K-Star Patrol";"CBS Software";"1982";CARTRIDGE_STD_8;K
+8;'0x44C71FAE;';"K-Star Patrol";"CBS Software";"1982";CARTRIDGE_STD_8;K
+4;'0x879FB57A;';"Kaboom!";"Activision";"1983";CARTRIDGE_STD_4;K
+8;'0xC2E2E645;';"Kaboom!";"Activision";"1983";CARTRIDGE_STD_8;K
+8;'0x98772CFF;';"Kaboom!";"Activision";"1983";CARTRIDGE_STD_8;K
+16;'0x1EF94906;';"Kangaroo";"Atari";"1983";CARTRIDGE_STD_16;K
+128;'0x97646F16;';"Karateka";"Atari";"1988";CARTRIDGE_XEGS_128;K
+8;'0x465E1763;';"Keystone Kapers";"Activision";"1984";CARTRIDGE_STD_8;K
+8;'0x2480ED0A;';"Kickback";"Thorn EMI";"1982";CARTRIDGE_STD_8;K
+8;'0x60615A91;';"Kids on Keys";"Spinnaker";"1983";CARTRIDGE_STD_8;K
+8;'0x6DC54EA6;';"Kids on Keys";"";"1983";CARTRIDGE_STD_8;K
+16;'0x4A2738AA;';"Kids on Keys";"Spinnaker";"1983";CARTRIDGE_STD_16;K
+8;'0xF1C45E24;';"KinderComp";"Spinnaker";"1983";CARTRIDGE_STD_8;K
+16;'0x8C3F8106;';"KinderComp";"Spinnaker";"1983";CARTRIDGE_STD_16;K
+16;'0x4835333A;';"KoalaPainter";"Koala Technologies";"1983";CARTRIDGE_STD_16;K
+128;'0x8570B547;';"Koronis Rift";"Mark Keates";"2004-01-31";CARTRIDGE_ATMAX_128;K
+128;'0x7BC7BF65;';"Koronis Rift";"Mark Keates";"2004-01-31";CARTRIDGE_MEGA_128;K
+128;'0xF8759767;';"Koronis Rift";"Mark Keates";"2004-01-31";CARTRIDGE_SWXEGS_128;K
+128;'0xD385B89C;';"Koronis Rift";"Mark Keates";"2004-02-12";CARTRIDGE_ATMAX_128;K
+128;'0xECD69B9F;';"Koronis Rift";"Mark Keates";"2004-02-12";CARTRIDGE_MEGA_128;K
+128;'0xD6A37E9F;';"Koronis Rift";"Mark Keates";"2004-02-12";CARTRIDGE_SWXEGS_128;K
+2;'0xD349DBEF;';"KSO Turbo 2000";"";"";UNKNOWN;K
+2;'0x5BF9111C;';"KSO 2T09";"";"";UNKNOWN;K
+4;'0xB57EC5F1;';"KSO 2T12";"WZab";"1988";CARTRIDGE_STD_4;K
+16;'0xEA2A103E;';"Laser Gates";"Imagic";"1984";CARTRIDGE_STD_16;K
+16;'0x3267EBA7;';"Last Starfighter [The]";"Atari";"1984-05-29";CARTRIDGE_STD_16;K
+16;'0xB4C640F1;';"Last Starfighter [The]";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0x4DE95774;';"Last Starfighter [The]";"Maniax";"1989";CARTRIDGE_STD_16;K
+8;'0x5B101922;';"Learning Phone [The]";"Atari";"1985";CARTRIDGE_STD_8;K
+8;'0x7ED6DDEB;';"Learning Phone [The]";"tschak909";"2018-02-07";CARTRIDGE_STD_8;K
+8;'0x981A2792;';"Learning Phone [The]";"tschak909";"2018-02-08";CARTRIDGE_STD_8;K
+8;'0x79C5C9E0;';"Learning Phone [The]";"MrFish";"2018-02-09";CARTRIDGE_STD_8;K
+8;'0xBEA7197B;';"Learning Phone [The]";"a8isa1";"2018-02-09";CARTRIDGE_STD_8;K
+8;'0x48C4EB7B;';"Learning Phone [The]";"tschak909";"2018-02";CARTRIDGE_STD_8;K
+16;'0x5AF1B0EC;';"Learning with Leeper";"Sierra On-Line";"1983";CARTRIDGE_STD_16;K
+16;'0xA77B5C4C;';"Learning with Leeper";"Sierra On-Line";"1983";CARTRIDGE_STD_16;K
+16;'0xA445AF7D;';"Legacy rev. 7.1 [The]";"Atari";"1984";CARTRIDGE_STD_16;K
+8;'0xDA931CB5;';"Leo's 'Lectric Paintbrush";"Chalk Board";"1983";CARTRIDGE_STD_8;K
+8;'0x3C66EA77;';"Leo's 'Lectric Paintbrush";"Chalk Board";"1983";CARTRIDGE_STD_8;K
+8;'0x34C1701A;';"Letter Perfect (40 columns)";"LJK";"1981";CARTRIDGE_STD_8;K
+8;'0x88F5375F;';"Letter Perfect (40 columns)";"LJK";"198x";CARTRIDGE_STD_8;K
+8;'0x616E6CB0;';"Letter Perfect (80 columns)";"LJK";"198x";CARTRIDGE_STD_8;K
+8;'0x21111576;';"Letter Tutor";"Atari";"1984";CARTRIDGE_STD_8;K
+16;'0xF525B904;';"Letter-Go-Round";"CBS Software";"1984";CARTRIDGE_STD_16;K
+16;'0x5C68D891;';"Letter-Go-Round";"CBS Software";"1984";CARTRIDGE_STD_16;K
+16;'0xE4D62C12;';"Lifespan";"Roklan";"1983";CARTRIDGE_STD_16;K
+8;'0x2484BE4C;';"Linking Logic";"Fisher-Price";"1984";CARTRIDGE_STD_8;K
+64;'0xB9A89BBD;';"Lode Runner";"Atari";"1987";CARTRIDGE_XEGS_64;K
+128;'0x7790F474;';"Lode Runner";"Atari";"1987";CARTRIDGE_XEGS_128;K
+128;'0x724BE63F;';"Lode Runner";"Atari";"1987";CARTRIDGE_XEGS_128;K
+8;'0xC643F703;';"Logic Levels";"Fisher-Price";"1984";CARTRIDGE_STD_8;K
+8;'0x618BF3DB;';"LogicMaster";"Chalk Board";"1983";CARTRIDGE_STD_8;K
+8;'0x552127CE;';"LogicMaster";"Chalk Board";"1983";CARTRIDGE_STD_8;K
+8;'0xFA041093;';"M*A*S*H";"Romox";"1982";CARTRIDGE_STD_8;K
+16;'0xB8D8396D;';"M.Monitor 64kB";"M. Dadok";"1989";UNKNOWN;K
+16;'0x5E033719;';"MAC/65 1.00";"OSS";"1984";CARTRIDGE_OSS_043M_16;K
+16;'0xD69A28B6;';"MAC/65 1.00";"OSS";"1984";CARTRIDGE_OSS_034M_16;K
+16;'0x4102CA4F;';"MAC/65 1.01";"OSS";"1984";CARTRIDGE_OSS_M091_16;K
+16;'0xA91560AD;';"MAC/65 1.01";"OSS";"1984";CARTRIDGE_STD_16;K
+16;'0x51931A08;';"MAC/65 1.02";"OSS";"1984";CARTRIDGE_OSS_034M_16;K
+8;'0x8184C0D4;';"Magic Dump II";"Gemini Software";"1983";CARTRIDGE_RIGHT_8;K
+8;'0x4FFBC999;';"Major League Hockey";"Thorn EMI";"1983";CARTRIDGE_STD_8;K
+64;'0x7BA07C34;';"Mario Bros.";"Atari";"1988";CARTRIDGE_XEGS_64;K
+16;'0x972ED894;';"MasterType";"Scarborough Systems";"1983";CARTRIDGE_STD_16;K
+8;'0x9EABA275;';"Math Encounter";"Hsu Software";"1984";CARTRIDGE_STD_8;K
+8;'0xC8B311BF;';"Math Mileage";"CBS Software";"1983";CARTRIDGE_STD_8;K
+16;'0xBB135AAD;';"Math Mileage";"CBS Software";"1983";CARTRIDGE_STD_16;K
+8;'0xFB350372;';"Math Works - Addition";"Concepts for Darren";"1985";CARTRIDGE_STD_8;K
+8;'0x4BB5541A;';"Math Works - Subtraction";"Concepts for Darren";"1985";CARTRIDGE_STD_8;K
+16;'0xDCC308CF;';"Matterhorn";"Tigervision";"1984";CARTRIDGE_STD_16;K
+8;'0x209D2E17;';"McDonald's Pac-Mac";"Parker Brothers";"1983";CARTRIDGE_STD_8;K
+8;'0xCA961D16;';"McDonald's Pac-Mac";"Parker Brothers";"1983";CARTRIDGE_STD_8;K
+128;'0x0EE74A89;';"Mean 18";"Atari";"1989";CARTRIDGE_XEGS_128;K
+512;'0x1A85A04E;';"Mean 18";"Atari";"1989";CARTRIDGE_MEGA_512;K
+128;'0xAF2EA0EF;';"Mean 18";"František Houra";"2009-05-20";CARTRIDGE_XEGS_128;K
+64;'0xDA0A5AE4;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0x2D200F74;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0x914372C0;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0x8E12B596;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0xE4EE1623;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0x85ECBC95;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0xDEF97719;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0xA2B4EE4D;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0x00241602;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0x629BC83B;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0xAAFE6B95;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0x1014548A;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0xACBE80D9;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0x722E760E;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+64;'0x04D3A9FB;';"Mega Cartridge";"Willysoft";"2004";CARTRIDGE_WILL_64;K
+8;'0xB3C5130C;';"MegaMania";"Activision";"1983";CARTRIDGE_STD_8;K
+8;'0xAEDCBD0B;';"Memory Manor";"Fisher-Price";"1984";CARTRIDGE_STD_8;K
+8;'0xC27FF7DF;';"Meteor";"Germ-Soft";"198x";CARTRIDGE_STD_8;K
+16;'0x5D5F76F6;';"Micro Illustrator";"Chalk Board";"1983";CARTRIDGE_STD_16;K
+32;'0x44507065;';"MicroCalc v. Atari XE 2.2";"Grupo SITSA";"";CARTRIDGE_ULTRACART_32;K
+8;'0xC3B283E6;';"MicroFiler rev. 1.1";"MPP";"1983";CARTRIDGE_STD_8;K
+8;'0x98915118;';"MicroMaestro";"Chalk Board";"1983";CARTRIDGE_STD_8;K
+8;'0x1D45435F;';"MicroMaestro";"Chalk Board";"1983";CARTRIDGE_STD_8;K
+8;'0x89C66405;';"Microprinter System 400";"MSI";"1983";CARTRIDGE_STD_8;K
+8;'0x7B222136;';"Microprinter System 800";"MSI";"1983";CARTRIDGE_STD_8;K
+16;'0x24391FFB;';"Microsoft BASIC II 2.0";"Atari";"1982";CARTRIDGE_STD_16;K
+128;'0x193A53F6;';"MIDI Maze 1.00";"Atari";"1989";CARTRIDGE_XEGS_128;K
+128;'0x4695522F;';"MIDI Maze 1.00";"Atari";"1989";CARTRIDGE_XEGS_128;K
+512;'0x36D834A2;';"MIDI Maze 1.00";"Atari";"1989";CARTRIDGE_MEGA_512;K
+16;'0x82457872;';"Millipede";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0xFB7E45DA;';"Millipede";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0xEB770DF4;';"Miner 2049er";"Big Five Software";"1982";CARTRIDGE_STD_16;K
+16;'0x6B1478BF;';"Miner 2049er";"Big Five Software";"1982";CARTRIDGE_STD_16;K
+16;'0x7DF1ADFB;';"Miner 2049er";"Big Five Software";"1982";CARTRIDGE_STD_16;K
+16;'0xC46031CA;';"Miner 2049er";"Big Five Software";"1982";CARTRIDGE_STD_16;K
+8;'0xD2E36392;';"Missile Command";"Atari";"1981";CARTRIDGE_STD_8;K
+16;'0x2ACFD240;';"Missile Command+";"Paul Lee";"2006-06-09";CARTRIDGE_STD_16;K
+16;'0x0C391600;';"Mogul Maniac";"Romox";"1983";CARTRIDGE_STD_16;K
+4;'0x0B9DD821;';"Monkey Wrench [The]";"Eastern House";"1981";CARTRIDGE_RIGHT_4;K
+8;'0x4EE08B1E;';"Monkey Wrench [The]";"Eastern House";"1981";CARTRIDGE_RIGHT_8;K
+8;'0x147541A4;';"Monkey Wrench [The]";"Eastern House";"1981";CARTRIDGE_RIGHT_8;K
+8;'0x7191A903;';"Monkey Wrench II [The]";"Eastern House";"1983";CARTRIDGE_RIGHT_8;K
+8;'0x1E8D6042;';"Monkey Wrench II [The]";"Eastern House";"1983";CARTRIDGE_RIGHT_8;K
+8;'0xA315AFB6;';"Monkey Wrench II [The]";"Eastern House";"1983";CARTRIDGE_RIGHT_8;K
+8;'0x69FD5F8B;';"Monkey Wrench II for the Atari XL";"Eastern House";"1984";CARTRIDGE_RIGHT_8;K
+8;'0xC373E271;';"Monkey Wrench II for the Atari XL";"Eastern House";"1984";CARTRIDGE_RIGHT_8;K
+16;'0x16ACB9E2;';"Monkey Wrench II XL + BASIC C";"Doug Fuls";"1985";CARTRIDGE_STD_16;K
+8;'0x37049E57;';"Monster Maze";"Epyx";"1982";CARTRIDGE_STD_8;K
+16;'0xBD4404D9;';"Montezuma's Revenge";"Parker Brothers";"1984";CARTRIDGE_STD_16;K
+16;'0x0585FB5A;';"Moogles";"Sirius";"1983";CARTRIDGE_STD_16;K
+16;'0xB845EDB8;';"Moon Patrol";"Atari";"1983";CARTRIDGE_STD_16;K
+8;'0x79748C93;';"Mountain King";"CBS Software";"1983";CARTRIDGE_STD_8;K
+16;'0x0D8F719B;';"Movie Musical Madness";"CBS Software";"1984";CARTRIDGE_STD_16;K
+8;'0x1345D10C;';"Mr. Cool";"Sierra On-Line";"1983";CARTRIDGE_STD_8;K
+8;'0xABED3B88;';"Mr. Do!'s Castle";"Parker Brothers";"1984";CARTRIDGE_STD_8;K
+8;'0xF1B9A24A;';"Mr. Do!'s Castle";"Parker Brothers";"1984";CARTRIDGE_STD_8;K
+8;'0x701DBDEA;';"Mr. TNT";"HES";"1983";CARTRIDGE_STD_8;K
+16;'0xF91D18CF;';"Ms. Pac-Man";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x4AD748B2;';"Ms. Pac-Man";"Atari";"1983";CARTRIDGE_STD_16;K
+128;'0xB21DF3FD;';"Multicartridge";"";"";UNKNOWN;K
+8;'0x78E680DA;';"MultiFicha 1.0";"Grupo SITSA";"1985";CARTRIDGE_STD_8;K
+8;'0x2ACA9CEE;';"Music Composer";"Atari";"1979";CARTRIDGE_STD_8;K
+16;'0x462A3D98;';"MyDOS 3.116";"Wordmark";"1985";CARTRIDGE_STD_16;K
+128;'0xADD506C5;';"Mysterious Adventures";"Mark Keates";"2006-02-17";CARTRIDGE_ATMAX_128;K
+128;'0x7F7486A9;';"Mysterious Adventures";"Mark Keates";"2006-02-17";CARTRIDGE_XEGS_128;K
+16;'0x39250FF2;';"Necromancer";"Atari";"1988";CARTRIDGE_STD_16;K
+8;'0x61245A75;';"Night Strike!";"TG Software";"1983";CARTRIDGE_STD_8;K
+8;'0x42DA2CF3;';"Night Strike!";"TG Software";"1983";CARTRIDGE_STD_8;K
+16;'0x030ECAD6;';"Oil's Well";"Sierra On-Line";"1983";CARTRIDGE_STD_16;K
+128;'0x4AEB1D0F;';"One Moon and Two Suns";"Michał Luberda";"2006-01-20";CARTRIDGE_XEGS_128;K
+128;'0xB3F48A42;';"One Moon and Two Suns";"Michał Luberda";"2006-02-11";CARTRIDGE_XEGS_128;K
+128;'0xB091C549;';"One Moon and Two Suns";"Michał Luberda";"2006-02-11";CARTRIDGE_XEGS_128;K
+128;'0x57C245BF;';"One Moon and Two Suns";"Michał Luberda";"2009-07-04";CARTRIDGE_XEGS_128;K
+128;'0xD36A7135;';"One Moon and Two Suns";"Michał Luberda";"2009-07-04";CARTRIDGE_XEGS_128;K
+32;'0xAB060567;';"One-on-One";"Atari";"1987";CARTRIDGE_XEGS_32;K
+16;'0x5E9849B1;';"Orc Attack";"Thorn EMI";"1983";CARTRIDGE_STD_16;K
+16;'0xFBFAEFCD;';"Orc Attack";"Thorn EMI";"1983";CARTRIDGE_STD_16;K
+16;'0x1554B983;';"Ozzy's Orchard";"TG Software";"1983";CARTRIDGE_STD_16;K
+8;'0x61CF6167;';"Pac-Man";"Atari";"1982";CARTRIDGE_STD_8;K
+128;'0x7F50E746;';"Pac-Man Arcade";"TEP392";"2012-04-24";CARTRIDGE_ATMAX_128;K
+128;'0x05682BD8;';"Pac-Man Arcade";"TEP392";"2012-04-24";CARTRIDGE_ATMAX_128;K
+128;'0x19BC1482;';"Pac-Man Arcade 2.0";"TEP392";"2015-08-26";CARTRIDGE_ATMAX_128;K
+16;'0x0366DB59;';"Paddle Jitter Test rev. C";"Atari";"1982-11-24";CARTRIDGE_STD_16;K
+16;'0x14FDDFB8;';"Pastfinder";"Activision";"1984";CARTRIDGE_STD_16;K
+16;'0x12694C3F;';"Pastfinder";"Activision";"1984";CARTRIDGE_STD_16;K
+8;'0xCDEB7759;';"Peanut Butter Panic";"CBS Software";"1984";CARTRIDGE_STD_8;K
+16;'0xD8A9FE0A;';"Pengo";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0xC8C03765;';"Phoenix 1.0";"Roman Huras";"1989-09";CARTRIDGE_BLIZZARD_16;K
+16;'0xCE14288F;';"Phoenix 1.0";"";"19xx";CARTRIDGE_BLIZZARD_16;K
+16;'0xE386A621;';"Picnic Paranoia";"Synapse";"1982";CARTRIDGE_STD_16;K
+8;'0x3A695B4C;';"Pilot";"Atari";"1980";CARTRIDGE_STD_8;K
+16;'0x1668CF3B;';"Pitfall II: Lost Caverns";"Activision";"1984";CARTRIDGE_STD_16;K
+8;'0xB58BDF1C;';"Pitfall!";"Activision";"1984";CARTRIDGE_STD_8;K
+16;'0xD49EBF91;';"Pitstop";"Epyx";"1983";CARTRIDGE_STD_16;K
+8;'0x47B49425;';"PLATO";"Atari";"1984-02-09";CARTRIDGE_STD_8;K
+8;'0x6CEF6F94;';"PlatterMania";"Epyx";"1982";CARTRIDGE_STD_8;K
+8;'0x710AEA7A;';"Pocket Modem Software v. 2.08";"BOT Engineering";"1984";CARTRIDGE_STD_8;K
+16;'0x581570C4;';"Pole Position";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x82CE0CA6;';"Pole Position";"Atari";"1983";CARTRIDGE_STD_16;K
+8;'0xA6C2130F;';"Pool 400";"IDSI";"1982";CARTRIDGE_STD_8;K
+16;'0xDA07E268;';"Popeye";"Parker Brothers";"1983";CARTRIDGE_STD_16;K
+16;'0x00FCE79A;';"Popeye";"Parker Brothers";"1983";CARTRIDGE_STD_16;K
+16;'0xA35D5E6A;';"Popeye";"Parker Brothers";"1983";CARTRIDGE_STD_16;K
+16;'0x1733D3FC;';"Porky's";"Romox";"1983";CARTRIDGE_STD_16;K
+16;'0xDC0DCA6E;';"Powerstar";"Pandora Software";"1985";CARTRIDGE_STD_16;K
+16;'0x52AE50E3;';"Preppie";"Video 61";"2001";CARTRIDGE_STD_16;K
+16;'0xE09633A6;';"Prevue rev. 06";"Prevue Networks";"1991";CARTRIDGE_STD_16;K
+16;'0x677FCD39;';"Prevue rev. 06";"Prevue Networks";"1991";CARTRIDGE_STD_16;K
+4;'0xC45B9101;';"Princess and the Frog [The]";"Romox";"1982";CARTRIDGE_STD_4;K
+8;'0x7CE79281;';"Princess and the Frog [The]";"Romox";"1982";CARTRIDGE_STD_8;K
+8;'0xDBB30884;';"Princess and the Frog [The]";"Romox";"1982";CARTRIDGE_STD_8;K
+64;'0xFC2F3210;';"Prisma 1";"Prismasoft";"";CARTRIDGE_WILL_64;K
+64;'0x6C79351E;';"Prisma 2";"Prismasoft";"";CARTRIDGE_WILL_64;K
+64;'0xA136FEF3;';"Prisma 3";"Prismasoft";"1992";CARTRIDGE_WILL_64;K
+64;'0x670C49C6;';"Prisma 4";"Prismasoft";"1992";CARTRIDGE_WILL_64;K
+64;'0xAB71896A;';"Prisma 5";"Prismasoft";"1992";CARTRIDGE_WILL_64;K
+64;'0x8F7E24DF;';"Prisma 6";"Prismasoft";"1992";CARTRIDGE_WILL_64;K
+64;'0x62A7B77E;';"Prisma Super 15-2";"Prismasoft";"1992";CARTRIDGE_WILL_64;K
+16;'0x60094848;';"Pronto: The Home Information System 1.7";"Pronto";"1983";CARTRIDGE_STD_16;K
+16;'0xF87E5A14;';"Pronto: The Home Information System";"Pronto";"1985";CARTRIDGE_STD_16;K
+16;'0x374F311F;';"Protector II";"Synapse";"1982";CARTRIDGE_STD_16;K
+8;'0xFF3F0472;';"Q*bert";"Parker Brothers";"1983";CARTRIDGE_STD_8;K
+8;'0x967B8051;';"Qix";"Atari";"1982";CARTRIDGE_STD_8;K
+8;'0xBA7CAC35;';"Qix";"Atari";"1982";CARTRIDGE_STD_8;K
+16;'0x5335D935;';"Rack 'em Up!";"Roklan";"1983";CARTRIDGE_STD_16;K
+16;'0x92B875F5;';"Rack 'em Up!";"Roklan";"1983";CARTRIDGE_STD_16;K
+16;'0x0A0F6EA2;';"Rally Speedway";"Adventure International";"1983";CARTRIDGE_STD_16;K
+16;'0xE97BBC03;';"RealSports Football Rev#0";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x5E8951F4;';"RealSports Football";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x9A34CBDC;';"RealSports Tennis";"Atari";"1983";CARTRIDGE_STD_16;K
+64;'0x1CA549AD;';"Rescue on Fractalus!";"Atari";"1987";CARTRIDGE_XEGS_64;K
+8;'0x688B0A0C;';"Risk";"Parker Brothers";"1983";CARTRIDGE_STD_8;K
+8;'0x6E601D81;';"River Raid";"Activision";"1983";CARTRIDGE_STD_8;K
+8;'0xCC076816;';"River Raid";"Activision";"1983";CARTRIDGE_STD_8;K
+16;'0xA7D2E0E8;';"River Rescue";"Thorn EMI";"1983";CARTRIDGE_STD_16;K
+16;'0xC018C8A0;';"River Rescue";"Thorn EMI";"1983";CARTRIDGE_STD_16;K
+16;'0x1BDD7E47;';"River Rescue";"Thorn EMI";"1983";CARTRIDGE_STD_16;K
+16;'0x528FC44A;';"Robotron: 2084";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0xEE9D43C4;';"Robotron: 2084";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x0F7C7934;';"Satan's Hollow";"CBS Software";"1982";CARTRIDGE_STD_16;K
+8;'0x99B5A1DD;';"Sea Chase";"Romox";"1983";CARTRIDGE_STD_8;K
+16;'0x52964146;';"Sea Horse Hide'n Seek";"CBS Software";"1984";CARTRIDGE_STD_16;K
+16;'0x932CC9A8;';"Seafox";"Broderbund";"1982";CARTRIDGE_STD_16;K
+8;'0x1B555B41;';"Serpentine";"Broderbund";"1982";CARTRIDGE_STD_8;K
+16;'0xBD3F06EE;';"Shamus";"Synapse";"1982";CARTRIDGE_STD_16;K
+64;'0xD2159969;';"Sistema controlado por computadora";"ZZ Top Soft";"1992";CARTRIDGE_WILL_64;K
+16;'0xA7ECC8F7;';"Silicon Warrior";"Epyx";"1983";CARTRIDGE_STD_16;K
+128;'0xCC09D669;';"Sinistar";"Dutchman2000";"2010-06-16";CARTRIDGE_ATMAX_128;K
+32;'0x6092C611;';"Sinistar";"František Houra";"2010-07-11";CARTRIDGE_XEGS_32;K
+16;'0x0A73A8F5;';"Sky Writer";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x1BABCAD6;';"Slime";"Synapse";"1982";CARTRIDGE_STD_16;K
+16;'0xD68915FA;';"SmartDOS 6.1D";"Rana Systems";"1984";CARTRIDGE_STD_16;K
+8;'0xF5C34344;';"Smart Terminal 4.1";"MPP";"1983";CARTRIDGE_STD_8;K
+8;'0x9B2D017B;';"Smart Terminal 5.0";"MPP";"1983";CARTRIDGE_STD_8;K
+8;'0x784C7060;';"Soccer";"Thorn EMI";"1982";CARTRIDGE_STD_8;K
+1024;'0xF4E7003B;';"Space Harrier";"Chris Hutt";"2011-07-05";CARTRIDGE_ATMAX_1024;K
+1024;'0x04EB781E;';"Space Harrier";"Chris Hutt";"2011-07-23";CARTRIDGE_ATMAX_1024;K
+1024;'0xCA98ABFC;';"Space Harrier";"Chris Hutt";"2011-08-30";CARTRIDGE_ATMAX_1024;K
+4;'0x73698395;';"Space Invaders";"Atari";"1980";CARTRIDGE_STD_4;K
+8;'0x3614D0AA;';"Space Invaders";"Atari";"1980";CARTRIDGE_STD_8;K
+8;'0x6C811A10;';"Space Invaders";"Atari";"1980";CARTRIDGE_STD_8;K
+16;'0x8A761BBA;';"Space Journey";"Roklan";"1983";CARTRIDGE_STD_16;K
+16;'0x161657F0;';"Space Journey";"Roklan";"1983";CARTRIDGE_STD_16;K
+16;'0x66832F68;';"Space Shuttle: a Journey into Space";"Activision";"1983";CARTRIDGE_STD_16;K
+8;'0xF56ECED2;';"Spark Bugs";"Romox";"1983";CARTRIDGE_STD_8;K
+64;'0xC0F83256;';"SpartaDOS X";"";"";UNKNOWN;K
+64;'0xD0FBD52B;';"SpartaDOS X 4.20";"Atrax";"199x";CARTRIDGE_ATRAX_SDX_64;K
+64;'0xE825E9AB;';"SpartaDOS X 4.18";"ICD";"1988-10-29";CARTRIDGE_SDX_64;K
+64;'0x6BB5733C;';"SpartaDOS X 4.19";"ICD";"1989-01-16";CARTRIDGE_SDX_64;K
+64;'0x781E045C;';"SpartaDOS X 4.20";"ICD";"1989-02-06";CARTRIDGE_SDX_64;K
+64;'0xDB0CA1EB;';"SpartaDOS X 4.21";"ICD";"1989-07-10";CARTRIDGE_SDX_64;K
+64;'0xDE1EBECE;';"SpartaDOS X 4.22";"FTe";"1995-11-05";CARTRIDGE_SDX_64;K
+64;'0xE9F82C76;';"SpartaDOS X 4.2a";"ICD";"1989-02-06";CARTRIDGE_SDX_64;K
+128;'0x0112BC56;';"SpartaDOS X 4.39rc";"DLT";"2006-10-01";CARTRIDGE_ATRAX_SDX_128;K
+128;'0xA3EC2E58;';"SpartaDOS X 4.39rc";"DLT";"2006-10-01";CARTRIDGE_SDX_128;K
+128;'0x687C7A15;';"SpartaDOS X 4.41";"DLT";"2008-02-07";CARTRIDGE_SDX_128;K
+128;'0x73B3F78B;';"SpartaDOS X 4.41";"DLT";"2008-02-07";CARTRIDGE_ATRAX_SDX_128;K
+128;'0xB37300B1;';"SpartaDOS X 4.41";"DLT";"2008-02-07";UNKNOWN;K
+1024;'0xFC932508;';"SpartaDOS X 4.42";"DLT";"2008-12-25";CARTRIDGE_ATMAX_1024;K
+128;'0x0B4BCFC5;';"SpartaDOS X 4.42";"DLT";"2008-12-25";CARTRIDGE_SDX_128;K
+128;'0x3524F02F;';"SpartaDOS X 4.42";"DLT";"2008-12-25";CARTRIDGE_ATRAX_SDX_128;K
+128;'0xCC83ADCA;';"SpartaDOS X 4.42";"DLT";"2008-12-25";UNKNOWN;K
+128;'0xED264BEE;';"SpartaDOS X 4.42";"DLT";"2009-01-14";CARTRIDGE_ATMAX_128;K
+128;'0xA286952C;';"SpartaDOS X 4.43";"DLT";"2011-04-14";CARTRIDGE_ATMAX_128;K
+1024;'0x29D88D03;';"SpartaDOS X 4.43";"DLT";"2011-04-14";CARTRIDGE_ATMAX_1024;K
+128;'0x48BE5D1E;';"SpartaDOS X 4.43";"DLT";"2011-04-14";CARTRIDGE_SDX_128;K
+128;'0x53056C55;';"SpartaDOS X 4.43";"DLT";"2011-04-14";CARTRIDGE_SIC_128;K
+128;'0x66A7E7B4;';"SpartaDOS X 4.43";"DLT";"2011-04-14";CARTRIDGE_ATRAX_SDX_128;K
+256;'0x6DDD360B;';"SpartaDOS X 4.43";"DLT";"2011-04-14";CARTRIDGE_SIC_256;K
+512;'0xC960F45C;';"SpartaDOS X 4.43";"DLT";"2011-04-14";UNKNOWN;K
+128;'0xDC759362;';"SpartaDOS X 4.43";"DLT";"2011-04-14";UNKNOWN;K
+128;'0x4A549541;';"SpartaDOS X 4.44";"DLT";"2011-06-03";CARTRIDGE_ATMAX_128;K
+128;'0x337516B0;';"SpartaDOS X 4.44";"DLT";"2011-06-03";CARTRIDGE_SDX_128;K
+256;'0x0B264E0C;';"SpartaDOS X 4.44";"DLT";"2011-06-03";CARTRIDGE_SIC_256;K
+1024;'0x4B9AC7ED;';"SpartaDOS X 4.44";"DLT";"2011-06-03";CARTRIDGE_ATMAX_1024;K
+512;'0x5827C624;';"SpartaDOS X 4.44";"DLT";"2011-06-03";UNKNOWN;K
+128;'0x94008FB5;';"SpartaDOS X 4.44";"DLT";"2011-06-03";CARTRIDGE_SIC_128;K
+1024;'0x9BA302BE;';"SpartaDOS X 4.44";"DLT";"2011-06-03";UNKNOWN;K
+128;'0xA065B756;';"SpartaDOS X 4.44";"DLT";"2011-06-03";UNKNOWN;K
+128;'0xC95D7BA8;';"SpartaDOS X 4.44";"DLT";"2011-06-03";UNKNOWN;K
+128;'0xD84F66B6;';"SpartaDOS X 4.44";"DLT";"2011-06-03";UNKNOWN;K
+512;'0xE57BC552;';"SpartaDOS X 4.45";"DLT";"2011-11-04";UNKNOWN;K
+128;'0xF00EFB19;';"SpartaDOS X 4.45";"DLT";"2011-11-04";CARTRIDGE_ATMAX_128;K
+1024;'0xA41B3975;';"SpartaDOS X 4.45";"DLT";"2011-11-04";CARTRIDGE_ATMAX_1024;K
+128;'0x395E7560;';"SpartaDOS X 4.45";"DLT";"2011-11-04";UNKNOWN;K
+128;'0xDF4520C1;';"SpartaDOS X 4.45";"DLT";"2011-11-04";CARTRIDGE_SDX_128;K
+256;'0x583A8962;';"SpartaDOS X 4.45";"DLT";"2011-11-04";CARTRIDGE_SIC_256;K
+128;'0x01449084;';"SpartaDOS X 4.45";"DLT";"2011-11-04";CARTRIDGE_SIC_128;K
+256;'0x1A29459A;';"SpartaDOS X 4.45";"DLT";"2011-11-04";UNKNOWN;K
+256;'0x579DFFF1;';"SpartaDOS X 4.45";"DLT";"2011-11-04";UNKNOWN;K
+512;'0x36901F97;';"SpartaDOS X 4.46";"DLT";"2013-01-02";UNKNOWN;K
+128;'0xFC744D17;';"SpartaDOS X 4.46";"DLT";"2013-01-02";CARTRIDGE_ATMAX_128;K
+1024;'0x50043FF5;';"SpartaDOS X 4.46";"DLT";"2013-01-02";CARTRIDGE_ATMAX_1024;K
+128;'0xA6BB7D96;';"SpartaDOS X 4.46";"DLT";"2013-01-02";UNKNOWN;K
+128;'0xC57DBC3B;';"SpartaDOS X 4.46";"DLT";"2013-01-02";UNKNOWN;K
+128;'0x6A267110;';"SpartaDOS X 4.46";"DLT";"2013-01-02";CARTRIDGE_SIC_128;K
+256;'0x21053DE7;';"SpartaDOS X 4.46";"DLT";"2013-01-02";CARTRIDGE_SIC_256;K
+256;'0xD7B0374F;';"SpartaDOS X 4.46";"DLT";"2013-01-02";UNKNOWN;K
+128;'0x3254EE87;';"SpartaDOS X 4.46";"DLT";"2013-01-02";CARTRIDGE_SDX_128;K
+256;'0xF5732576;';"SpartaDOS X 4.46";"DLT";"2013-01-02";UNKNOWN;K
+256;'0x69002180;';"SpartaDOS X 4.46";"DLT";"2013-01-02";UNKNOWN;K
+16;'0x77C75598;';"SpectraView II v201r101";"Display Systems International";"1984";CARTRIDGE_OSS_034M_16;K
+8;'0x8E67192B;';"Speedway Blast";"IDSI";"1982";CARTRIDGE_STD_8;K
+8;'0xF895CC47;';"Speedway Blast";"IDSI";"1982";CARTRIDGE_STD_8;K
+4;'0x9064A1C4;';"Spider City";"Sirius";"1983";CARTRIDGE_STD_4;K
+8;'0xD519F2FB;';"Spider City";"Sirius";"1983";CARTRIDGE_STD_8;K
+8;'0x8F8C3841;';"Spider City";"Sirius";"1983";CARTRIDGE_STD_8;K
+16;'0x81466B55;';"Springer";"Tigervision";"1983";CARTRIDGE_STD_16;K
+16;'0x34DF8FFC;';"Spy Hunter";"SEGA";"1984";CARTRIDGE_STD_16;K
+4;'0xB5286E53;';"Squish'em";"Sirius";"1983";CARTRIDGE_STD_4;K
+8;'0xF0553D6C;';"Squish'em";"Sirius";"1983";CARTRIDGE_STD_8;K
+8;'0xAAC0F7D6;';"Squish'em";"Sirius";"1983";CARTRIDGE_STD_8;K
+16;'0x6FD9DAFF;';"Star Maze";"Roklan";"1984";CARTRIDGE_STD_16;K
+8;'0x5EC023BA;';"Star Raiders";"Atari";"1979";CARTRIDGE_STD_8;K
+32;'0x737D4196;';"Star Raiders II";"Atari";"1987";CARTRIDGE_XEGS_32;K
+64;'0x57F0B5CA;';"Star Raiders II";"Atari";"1987";CARTRIDGE_XEGS_64;K
+16;'0x9DF169D9;';"Star Trek: Strategic Operations Simulator";"SEGA";"1983";CARTRIDGE_STD_16;K
+8;'0x8212C4B7;';"Star Trux";"Atari";"1982";CARTRIDGE_STD_8;K
+8;'0xA40E15E5;';"Star Wars: Return of the Jedi - Death Star Battle";"Parker Brothers";"1983";CARTRIDGE_STD_8;K
+16;'0xD9F5CAC7;';"Star Wars: Return of the Jedi - Death Star Battle";"Parker Brothers";"1983";CARTRIDGE_STD_16;K
+16;'0xAEA795F7;';"Star Wars: the Arcade Game";"Parker Brothers";"1984";CARTRIDGE_STD_16;K
+16;'0xF527B721;';"Stargate";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0x23FAF9B3;';"Starion";"Romox";"1983";CARTRIDGE_STD_16;K
+16;'0xB3E7FE47;';"Story Machine";"Spinnaker";"1983";CARTRIDGE_STD_16;K
+16;'0xCE9562EB;';"Submarine Commander";"Thorn EMI";"1982";CARTRIDGE_STD_16;K
+16;'0x77198B2B;';"Submarine Commander";"Thorn EMI";"1982";CARTRIDGE_STD_16;K
+128;'0xEF60ACD9;';"Summer Games";"Atari";"1988";CARTRIDGE_XEGS_128;K
+128;'0x95E6932D;';"Summer Games";"Atari";"1988";CARTRIDGE_XEGS_128;K
+4;'0x08DC1FC6;';"Super Breakout";"Atari";"1979";CARTRIDGE_STD_4;K
+8;'0x4DA14CF9;';"Super Breakout";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0x17348643;';"Super Breakout";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0xC9066F06;';"Super Breakout";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0x1CD5A5E0;';"Super Cartridge v.3";"Unerring Master";"19xx";CARTRIDGE_PHOENIX_8;K
+8;'0x2AF38D2F;';"Super Cobra";"Parker Brothers";"1983";CARTRIDGE_STD_8;K
+8;'0x21516E15;';"Super E-Burner";"CSS";"1992";CARTRIDGE_STD_8;K
+16;'0xB985BE78;';"Super Pac-Man";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0x3EF05469;';"Super Pac-Man";"Atari";"1984-06-14";CARTRIDGE_STD_16;K
+16;'0xB518DDA8;';"Super Pac-Man";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0x4B9B00F5;';"Super Pac-Man";"Atari";"1984";CARTRIDGE_STD_16;K
+8;'0x0E1C20C5;';"Super Sketch Graphics Master";"PPI";"1984";CARTRIDGE_STD_8;K
+4;'0xBDC3E42D;';"Super Turbo Cartridge 2.2";"Minisoft";"1989";UNKNOWN;K
+16;'0x2D4234F5;';"Super Turbo";"JNsoft";"1990";CARTRIDGE_STD_16;K
+16;'0x9E64E13B;';"Super Zaxxon";"SEGA";"1983";CARTRIDGE_STD_16;K
+16;'0x1EA4A1B5;';"Superman III";"Atari";"1983-05-10";CARTRIDGE_STD_16;K
+16;'0x53CB8B49;';"Superman III";"Atari";"1983";CARTRIDGE_STD_16;K
+16;'0x639846D6;';"Superman III";"Atari";"1983";CARTRIDGE_STD_16;K
+4;'0x60A06240;';"Survival of the Fittest";"IDSI";"1982";CARTRIDGE_STD_4;K
+8;'0x7F48FBC5;';"Survival of the Fittest";"IDSI";"1982";CARTRIDGE_STD_8;K
+8;'0xDB1283EF;';"SynAssembler";"Synapse";"1982";CARTRIDGE_STD_8;K
+8;'0x8640BC1A;';"SynAssembler";"Synapse";"1982";CARTRIDGE_STD_8;K
+8;'0x971E7561;';"SynAssembler";"Synapse";"1982";CARTRIDGE_STD_8;K
+8;'0x240CEA4A;';"SynAssembler";"Synapse";"1982";CARTRIDGE_STD_8;K
+8;'0x6CB2E695;';"SynAssembler";"Synapse";"1982";CARTRIDGE_STD_8;K
+8;'0x669CBC7B;';"SynAssembler";"Synapse";"1982";CARTRIDGE_STD_8;K
+8;'0x52C0DB3F;';"SynAssembler";"Synapse";"1982";CARTRIDGE_STD_8;K
+8;'0x9C8D3369;';"SynAssembler";"Synapse";"1982";CARTRIDGE_STD_8;K
+8;'0x086F3927;';"SynAssembler";"Synapse";"1982";CARTRIDGE_STD_8;K
+8;'0x6AA6B6D6;';"SynAssembler";"Synapse";"1982";CARTRIDGE_STD_8;K
+8;'0xB89AD267;';"SynAssembler XL";"Synapse";"1983";CARTRIDGE_STD_8;K
+8;'0x4F11F3D3;';"SynAssembler XL";"Synapse";"1983";CARTRIDGE_STD_8;K
+8;'0xD125AABA;';"SynAssembler XL";"Synapse";"1983";CARTRIDGE_STD_8;K
+8;'0xF49624E9;';"SynAssembler XL";"Synapse";"1983";CARTRIDGE_STD_8;K
+8;'0x4784BBC2;';"SynAssembler XL";"Synapse";"1983";CARTRIDGE_STD_8;K
+8;'0x0514EDF3;';"SynAssembler XL";"Synapse";"1983";CARTRIDGE_STD_8;K
+8;'0x31488AB7;';"SynAssembler XL";"Synapse";"1983";CARTRIDGE_STD_8;K
+8;'0xFF0562E1;';"SynAssembler XL";"Synapse";"1983";CARTRIDGE_STD_8;K
+8;'0x6BE768AF;';"SynAssembler XL";"Synapse";"1983";CARTRIDGE_STD_8;K
+64;'0xEFF12440;';"Tapper";"Video 61";"";CARTRIDGE_XEGS_64;K
+16;'0x60C2A5AE;';"Target 1.15";"COVIDEA";"1986";CARTRIDGE_STD_16;K
+2;'0x30186F2B;';"Telelink I";"Atari";"1981";CARTRIDGE_STD_2;K
+8;'0xBB648A61;';"Telelink I";"Atari";"1981";CARTRIDGE_STD_8;K
+8;'0x19044C21;';"Telelink I";"Atari";"1981";CARTRIDGE_STD_8;K
+8;'0xF0163F90;';"Telelink II";"Atari";"1982";UNKNOWN;K
+16;'0xC11D10AC;';"Telelink II";"Atari";"1982";CARTRIDGE_STD_16;K
+8;'0x0B0B43F8;';"Test Atari 65-130XE R.2";"Atari";"1986";CARTRIDGE_STD_8;K
+8;'0x10DF011F;';"Thera-Med Zahnschutz-Spiel [Das]";"Henkel Cosmetics";"1984";CARTRIDGE_STD_8;K
+64;'0xB15CCEF2;';"Thunderfox";"Atari";"1988";CARTRIDGE_XEGS_64;K
+16;'0xD3E98044;';"Timebound";"CBS Software";"1984";CARTRIDGE_STD_16;K
+16;'0x0286EEA6;';"Topper";"Romox";"1982";CARTRIDGE_STD_16;K
+64;'0x6B5333BD;';"Tower Toppler";"Atari";"1988";CARTRIDGE_XEGS_64;K
+64;'0x8332C109;';"Tower Toppler";"František Houra";"2006-10-12";CARTRIDGE_XEGS_64;K
+64;'0x1A1786BF;';"Tower Toppler";"Atari";"1989";CARTRIDGE_XEGS_64;K
+64;'0x68FE079D;';"Tower Toppler";"Atari";"1989";CARTRIDGE_XEGS_64;K
+16;'0x9E2484C8;';"Track & Field";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0xA73D1276;';"Track & Field";"Atari";"1984";CARTRIDGE_STD_16;K
+16;'0x2C42362F;';"Trion";"Romox";"1983";CARTRIDGE_STD_16;K
+8;'0xE6E33539;';"Turbo 2000 / Super Turbo";"";"1989";CARTRIDGE_STD_8;K
+4;'0xE58883A6;';"Turbo 2000F";"Mini Soft";"198x";CARTRIDGE_STD_4;K
+4;'0x67D2D2E0;';"Turbo 2000F";"MUEL";"198x";CARTRIDGE_STD_4;K
+8;'0xBDF6BC5F;';"Turbo Blizzard";"Atares";"";CARTRIDGE_PHOENIX_8;K
+8;'0xECACD6E1;';"Turbo Blizzard";"";"19xx";CARTRIDGE_PHOENIX_8;K
+16;'0x318ED507;';"Turbo Blizzard";"";"19xx";CARTRIDGE_BLIZZARD_16;K
+64;'0xB2B45500;';"Turbocartridge C1";"Turbosoft";"";CARTRIDGE_WILL_64;K
+64;'0x360A47B3;';"Turbocartridge C1";"Turbosoft";"";CARTRIDGE_WILL_64;K
+64;'0xADE93E66;';"Turbocartridge C2";"Turbosoft";"";CARTRIDGE_TURBOSOFT_64;K
+64;'0xBEDF99FE;';"Turbocartridge C3";"Turbosoft";"";CARTRIDGE_WILL_64;K
+64;'0x97A8C904;';"Turbocartridge C4";"Turbosoft";"";CARTRIDGE_WILL_64;K
+64;'0x78DBB563;';"Turbocartridge C5";"Turbosoft";"";CARTRIDGE_WILL_64;K
+64;'0x49E18F6E;';"Turbocartridge C6";"Turbosoft";"";CARTRIDGE_WILL_64;K
+128;'0x4D1DD418;';"Turbocartridge D1";"Turbosoft";"";CARTRIDGE_TURBOSOFT_128;K
+128;'0x025AB67A;';"Turbocartridge D2";"Turbosoft";"";CARTRIDGE_TURBOSOFT_128;K
+128;'0xBCA7D11B;';"Turbocartridge D3";"Turbosoft";"";CARTRIDGE_TURBOSOFT_128;K
+128;'0x72DF4A5E;';"Turbocartridge D4";"Turbosoft";"";CARTRIDGE_TURBOSOFT_128;K
+128;'0xA5AEE6FD;';"Turbocartridge D5";"Turbosoft";"";CARTRIDGE_TURBOSOFT_128;K
+128;'0x5498C7DC;';"Turbocartridge D6";"Turbosoft";"";CARTRIDGE_TURBOSOFT_128;K
+128;'0x3FB92D9E;';"Turbocartridge D7";"Turbosoft";"";CARTRIDGE_TURBOSOFT_128;K
+64;'0x3D68152E;';"Turbocartridge D8";"Turbosoft";"";CARTRIDGE_TURBOSOFT_64;K
+128;'0xFA100CBF;';"Turbocartridge E1";"Turbosoft";"";CARTRIDGE_TURBOSOFT_128;K
+128;'0xBEDE95CD;';"Turbocartridge E2";"Turbosoft";"";CARTRIDGE_TURBOSOFT_128;K
+64;'0x1DCCC2C7;';"Turbocartridge X1";"Turbosoft";"";CARTRIDGE_TURBOSOFT_64;K
+64;'0x11F334DC;';"Turbocartridge X2";"Turbosoft";"";CARTRIDGE_WILL_64;K
+4;'0x0326BB69;';"Turbo Cartridge +";"KNS Corp.";"1988-10-01";CARTRIDGE_BLIZZARD_4;K
+8;'0x28E8EFDE;';"Turbo DOS 2.0";"Piotr Zubek & Janusz Zubek";"1989";CARTRIDGE_PHOENIX_8;K
+8;'0xDDE4D4B5;';"Turbo DOS 2.5";"KNS Corp.";"1989";CARTRIDGE_PHOENIX_8;K
+8;'0x7D2AAC13;';"Turbo ROM Plus (3)";"Zakład Elektroniki Użytkowej Kraków";"1990";CARTRIDGE_PHOENIX_8;K
+8;'0xDA021439;';"Turbo System 3.0";"M. Dadok";"1993";CARTRIDGE_PHOENIX_8;K
+8;'0x93FB882D;';"??? TURKUJDY";"Robert Kujda";"1989";CARTRIDGE_STD_8;K
+4;'0xBB35F9E0;';"Turmoil";"Sirius";"1982";CARTRIDGE_STD_4;K
+8;'0xFE48AADF;';"Turmoil";"Sirius";"1982";CARTRIDGE_STD_8;K
+8;'0xA4DD6065;';"Turmoil";"Sirius";"1982";CARTRIDGE_STD_8;K
+8;'0xCD9F91CB;';"Twin Pack";"Video 61";"1998";CARTRIDGE_STD_8;K
+64;'0x240D95E3;';"Twin Pack";"Video 61";"1998";CARTRIDGE_WILL_64;K
+8;'0x70585854;';"Typo";"Romox";"1982";CARTRIDGE_STD_8;K
+8;'0xFE47D621;';"Typo";"Romox";"1982";CARTRIDGE_STD_8;K
+8;'0xED6F714C;';"Typo Attack";"Atari";"1984";CARTRIDGE_STD_8;K
+8;'0x4BA52450;';"Typo Attack";"Atari";"1984";CARTRIDGE_STD_8;K
+8;'0xEC41CA33;';"Universal RAM Copy 1.3";"M.S.";"1990";UNKNOWN;K
+16;'0x53EA3BF6;';"Up'n Down";"SEGA";"1984";CARTRIDGE_STD_16;K
+8;'0x9893AE7A;';"Up for Grabs";"Spinnaker";"1983";CARTRIDGE_STD_8;K
+8;'0xFC62C1CE;';"Up for Grabs";"Spinnaker";"1983";CARTRIDGE_STD_8;K
+16;'0xA8261044;';"Up Up and Away";"Ringblack Software";"1983";CARTRIDGE_STD_16;K
+64;'0x688EF8BD;';"Vanguard";"Video 61";"";CARTRIDGE_XEGS_64;K
+16;'0xDC492963;';"Vegas Poker";"Atari";"198x";CARTRIDGE_STD_16;K
+4;'0xA59FAF2A;';"Video Chess";"Atari";"1979";CARTRIDGE_STD_4;K
+4;'0x621029F3;';"Video Easel";"Atari";"1979";CARTRIDGE_STD_4;K
+8;'0x276D7ACC;';"Video Easel";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0x7DC702A7;';"Video Easel";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0xFB45DAE5;';"Video Easel";"Atari";"1979";CARTRIDGE_STD_8;K
+8;'0x0AA5FFDB;';"VisiCopy III";"JRC";"1993";CARTRIDGE_PHOENIX_8;K
+8;'0x6FFFB4A9;';"Webster - The Word Game";"CBS Software";"1983";CARTRIDGE_STD_8;K
+8;'0x06FD2CDB;';"Weltraumkolonie";"Ravensburger";"1984";CARTRIDGE_STD_8;K
+16;'0x12B9D599;';"Weltraumkolonie";"Ravensburger";"1984";CARTRIDGE_STD_16;K
+16;'0xED31A86F;';"WFMH Demo";"WFMH";"";CARTRIDGE_BLIZZARD_16;K
+8;'0x11C2C963;';"Whiz Kid";"Romox";"1983";CARTRIDGE_STD_8;K
+8;'0x4B0634D5;';"Whiz Kid";"Romox";"1983";CARTRIDGE_STD_8;K
+16;'0x8017E56A;';"Wizard of Wor";"Roklan";"1981";CARTRIDGE_STD_16;K
+4;'0x9CCC73CB;';"Worm War I";"Sirius";"1982";CARTRIDGE_STD_4;K
+8;'0xD9B120F4;';"Worm War I";"Sirius";"1982";CARTRIDGE_STD_8;K
+8;'0x8324EA4E;';"Worm War I";"Sirius";"1982";CARTRIDGE_STD_8;K
+8;'0x13BCF201;';"Writer's Tool [The] 2.1";"OSS";"1984-09-15";CARTRIDGE_OSS_8;K
+16;'0xA1CB09BC;';"Writer's Tool [The] 2.1";"OSS";"1984-09-15";CARTRIDGE_OSS_034M_16;K
+16;'0x4538FE81;';"Writer's Tool [The] 2.1";"OSS";"1984-09-15";CARTRIDGE_OSS_034M_16;K
+16;'0x57C097C9;';"Writer's Tool [The] 2.1";"OSS";"1984-09-15";CARTRIDGE_OSS_M091_16;K
+128;'0x68466666;';"Xenophobe";"Atari";"1989";CARTRIDGE_XEGS_128;K
+1032;'0x8ED7DA2D;';"Yie Another Kung Fu";"Krzysztof Góra";"2010-09-01";UNKNOWN;K
+4;'0xC222609A;';"??? ZABEZTUR";"";"";CARTRIDGE_STD_4;K
+16;'0x21579706;';"Zaxxon";"SEGA";"1983";CARTRIDGE_STD_16;K
+8;'0xEBC6EC2E;';"Zenji";"Activision";"1984";CARTRIDGE_STD_8;K
+16;'0x1B6C7B78;';"Zone Ranger";"Activision";"1984";CARTRIDGE_STD_16;K
+16;'0x8F1E72E7;';"Zone Ranger";"Activision";"1984";CARTRIDGE_STD_16;K
+64;'0xC1DA182C;';"Zybex";"Video 61";"1999";CARTRIDGE_WILL_64;K
+16;'0xF7DA90B0;';"תמלילן �?ט�?רי";"Aram (?)";"";CARTRIDGE_STD_16;K
+32;'0x0483FA8B;';"الطاقة";"aDawliah";"198x";CARTRIDGE_ADAWLIAH_32;K
+32;'0xB793B32E;';"كي�? يعمل الكمبيوتر";"aDawliah";"198x";CARTRIDGE_ADAWLIAH_32;K
+32;'0x79457426;';"قاموس نجم";"aDawliah";"198x";CARTRIDGE_ADAWLIAH_32;K
+32;'0xD37256B6;';"3D-Pac";"";"";CARTRIDGE_WILL_32;K
+32;'0xA1612B25;';"Attack of the Mutant Camels";"";"";CARTRIDGE_WILL_32;K
+32;'0x46D272E3;';"Blue Max 2001";"";"";CARTRIDGE_WILL_32;K
+32;'0x31115943;';"Bomb Fusion";"";"";CARTRIDGE_WILL_32;K
+32;'0x2A508A45;';"Boulder Dash 2";"";"";CARTRIDGE_WILL_32;K
+32;'0x2C361C39;';"Bristles";"";"";CARTRIDGE_WILL_32;K
+32;'0x500EFBBC;';"Bugoff";"";"";CARTRIDGE_WILL_32;K
+32;'0xBFDCE756;';"C'est La Vie";"";"";CARTRIDGE_WILL_32;K
+32;'0x71153D42;';"Cavern of Death, The";"";"";CARTRIDGE_WILL_32;K
+32;'0xC55717C8;';"Chop Suey";"";"";CARTRIDGE_WILL_32;K
+32;'0x5A1E7362;';"Cohen's Towers";"";"";CARTRIDGE_WILL_32;K
+32;'0x63F50299;';"Collosial Chess 4";"";"";CARTRIDGE_WILL_32;K
+32;'0xCF296227;';"Despatch Rider";"";"";CARTRIDGE_WILL_32;K
+32;'0x7ADEE126;';"Encounter";"";"";CARTRIDGE_WILL_32;K
+32;'0xB4DC4565;';"Fire Chief";"";"";CARTRIDGE_WILL_32;K
+32;'0xE702B5AC;';"Forbid";"";"";CARTRIDGE_WILL_32;K
+32;'0xAC4C9C4C;';"Frensis";"";"";CARTRIDGE_WILL_32;K
+32;'0x45517D77;';"Fruit Machine Simulator";"";"";CARTRIDGE_WILL_32;K
+32;'0x5D0FEB20;';"House of Usher";"";"";CARTRIDGE_WILL_32;K
+32;'0xA117BA25;';"Hover Bover";"";"";CARTRIDGE_WILL_32;K
+32;'0x23F29374;';"Huey";"";"";CARTRIDGE_WILL_32;K
+32;'0x443737C0;';"Invasion";"";"";CARTRIDGE_WILL_32;K
+32;'0x659E62B1;';"Joe Blade";"";"";CARTRIDGE_WILL_32;K
+32;'0x3E2F6B70;';"Joe Blade 2";"";"";CARTRIDGE_WILL_32;K
+32;'0x72D219B2;';"Jungle Boy";"";"";CARTRIDGE_WILL_32;K
+32;'0xEB0878D1;';"Kik-Start";"";"";CARTRIDGE_WILL_32;K
+32;'0xA48BDD13;';"LazerBase";"";"";CARTRIDGE_WILL_32;K
+32;'0x401FAAD3;';"LeaderBoard";"";"";CARTRIDGE_WILL_32;K
+32;'0x757D803A;';"Leaper";"";"";CARTRIDGE_WILL_32;K
+32;'0x0B97A5DA;';"Little Devil";"";"";CARTRIDGE_WILL_32;K
+32;'0xCB94A107;';"Master Chess";"";"";CARTRIDGE_WILL_32;K
+32;'0xD442DF33;';"Maxwell Manor";"";"";CARTRIDGE_WILL_32;K
+32;'0x02718F8B;';"Milk Race";"";"";CARTRIDGE_WILL_32;K
+32;'0x515A42C1;';"Monkey Magic";"";"";CARTRIDGE_WILL_32;K
+32;'0x9D0D1C6A;';"Mr Robbot";"";"";CARTRIDGE_WILL_32;K
+32;'0x85EC9C35;';"Nautilus";"";"";CARTRIDGE_WILL_32;K
+32;'0x2571A9E1;';"Panic Express";"";"";CARTRIDGE_WILL_32;K
+32;'0xFC146BAA;';"Pool 87";"";"";CARTRIDGE_WILL_32;K
+32;'0x70407994;';"Power Dawn";"";"";CARTRIDGE_WILL_32;K
+32;'0x2B6CB0C9;';"Prepii";"";"";CARTRIDGE_WILL_32;K
+32;'0x7FFB5454;';"Progolf";"";"";CARTRIDGE_WILL_32;K
+32;'0x741A3483;';"Protector";"";"";CARTRIDGE_WILL_32;K
+32;'0x60608B2F;';"Rebound";"";"";CARTRIDGE_WILL_32;K
+32;'0x5EB35C38;';"Robin Hood";"";"";CARTRIDGE_WILL_32;K
+32;'0xAFB6FC65;';"Rogue";"";"";CARTRIDGE_WILL_32;K
+32;'0xD09152A0;';"Scooter";"";"";CARTRIDGE_WILL_32;K
+32;'0x38B096DF;';"Shadow World";"";"";CARTRIDGE_WILL_32;K
+32;'0x8E26D344;';"Sidewinder 2";"";"";CARTRIDGE_WILL_32;K
+32;'0xD9C82BE0;';"Space Rider";"";"";CARTRIDGE_WILL_32;K
+32;'0x30AFCE90;';"Speed King";"";"";CARTRIDGE_WILL_32;K
+32;'0xB5018C9F;';"Speed Zone";"";"";CARTRIDGE_WILL_32;K
+32;'0x88D16560;';"Spider";"";"";CARTRIDGE_WILL_32;K
+32;'0x94737EFB;';"Stranded";"";"";CARTRIDGE_WILL_32;K
+32;'0x6D3F9171;';"Super Zaxxon";"";"";CARTRIDGE_WILL_32;K

@@ -1,0 +1,740 @@
+2018-04-24
+----------
+
+- Renamed entries:
+Abracadabra [a35c775d] -> Abracadabra!
+Atari Schreiber [de1c1d12] -> AtariSchreiber
+Legacy [The] [a445af7d] -> Legacy rev. 7.1 [The]
+MultiFicha [78e680da] -> MultiFicha 1.0
+Target v. 0115 [60c2a5ae] -> Target 1.15
+Writer's Tool [The] -> Writer's Tool [The] 2.1
+
+- Added new entries:
+AtariEscritor [Prototype]
+AtariWriter (Prisma Soft)
+[Bankul Ma'aloomat]
+BearJam (the known ROM image is a hack of another ROM)
+Final Legacy [Prototype]
+[Ikhtabir Thaka'ak]
+[Labibah was-Sanafir]
+Legacy rev. 5.3 [The]
+Legacy [The]
+MultiEditor (Multisoft)
+
+- Added new dumps:
+Asteroids [7ed3e6a3]
+Atrax 1 [d3653f64]
+Atrax 2 [20422531]
+Atrax 2 [e34facd9]
+Atrax 3 [7f5a2f67]
+Atrax 3 [55e39b41]
+Atrax 4 [0541f1a3]
+Atrax 4 [dc5a540b]
+Atrax 5 [2116088a]
+Atrax 5 [a599c16c]
+Atrax 6 [a051fe6b]
+Atrax 6 [ecb27536]
+Atrax 6 [74dba211]
+Atrax 9 [a5ec6435]
+Atrax 9 [0e99e18c]
+Atrax 13 [50a53cdc]
+Atrax 13 [800ab6d7]
+Atrax 14 [61d58b8a]
+Atrax 14 [21db0d60]
+Atrax 15 [dba94afe]
+Atrax 15 [9543ef90]
+Atrax 16 [81051934]
+Atrax 16 [156e7460]
+[at-taaqah] [0483fa8b]
+Defender Rev 2 [fcb4b36f]
+Diamond GOS 3.0 [3671bdc5]
+Dig Dug [4f18f296]
+Frogger II: ThreeeDeep! [e924f2bc]
+Gridrunner [6ac54c7b]
+Hamtext 1.2A [a6d6fbbf]
+Info/Gen [2dd21df1]
+INFO/soft 7000 v7.1 [c7ede6ef]
+INFO/soft 7000 v7.1 [60abf733]
+INFO/soft 7000 v7.1 [0b413ccc]
+INFO/soft 7000 v7.1 [a96f1401]
+Jungle Hunt [b2dcb43b]
+[kayfa ya'amalul computer] [b793b32e]
+KinderComp [8c3f8106]
+Learning Phone, The [7ed6ddeb]
+Learning Phone, The [981a2792]
+Learning Phone, The [79c5c9e0]
+Learning Phone, The [bea7197b]
+Learning Phone, The [48c4eb7b]
+Pac-Man Arcade 2.0 [19bc1482]
+Princess and the Frog [The] [c45b9101]
+[qamusu najm] [79457426]
+SpectraView II v201r101 [77c75598]
+Star Raiders II [57f0b5ca]
+Superman III [1ea4a1b5]
+SynAssembler [db1283ef]
+SynAssembler [8640bc1a]
+SynAssembler [971e7561]
+SynAssembler [240cea4a]
+SynAssembler [6cb2e695]
+SynAssembler [669cbc7b]
+SynAssembler [52c0db3f]
+SynAssembler [9c8d3369]
+SynAssembler [086f3927]
+SynAssembler XL [b89ad267]
+SynAssembler XL [4f11f3d3]
+SynAssembler XL [d125aaba]
+SynAssembler XL [f49624e9]
+SynAssembler XL [4784bbc2]
+SynAssembler XL [0514edf3]
+SynAssembler XL [31488ab7]
+SynAssembler XL [ff0562e1]
+SynAssembler XL [6be768af]
+Track & Field [a73d1276]
+Video Chess [a59faf2a]
+
+- Marked as verified:
+Diamond GOS 2.0 [0ead07f8]
+Hamtext 1.1 [3601b0fa]
+
+- Removed the verified [!] flag from 810 Disk Field Excerciser rev. 0 [f3627929], which was added by mistake.
+- Marked SynAssembler [6aa6b6d6] as [b] instead of [u] and updated its description.
+
+2014-11-29
+----------
+
+- Removed the verified [!] flag from Action! 3.6 [eb905cb4], which was added by mistake.
+
+- Added new dumps:
+ABOS [c2b3cefe]
+ACE-80 1.1 [5190f1d8]
+ACE-80XL 1.1 [0001ca94]
+Atari Blizzard Hit [cd0d086f]
+Atari Schreiber [de1c1d12]
+Bomb Jake [8e89ca50]
+Cartridge dla Turbo 2000 1.0 [9ca5d00d]
+Cartridge Turbo 2000 3.16 [f25da498]
+Crossfire [f21ad23f]
+Direct Access Atari 400 4118HSE330910438B [bbdabfcb]
+DT-80 [e5319be8]
+James Bond 007 WIP 6 [2f1f21fe]
+Letter Perfect (80 columns) [616e6cb0]
+M.Monitor 64kB [b8d8396d]
+MAC/65 1.02 [51931a08]
+PLATO [47b49425]
+Sinistar [cc09d669]
+Sinistar [6092c611]
+SpartaDOS X 4.46 [36901f97]
+SpartaDOS X 4.46 [fc744d17]
+SpartaDOS X 4.46 [50043ff5]
+SpartaDOS X 4.46 [a6bb7d96]
+SpartaDOS X 4.46 [c57dbc3b]
+SpartaDOS X 4.46 [6a267110]
+SpartaDOS X 4.46 [21053de7]
+SpartaDOS X 4.46 [d7b0374f]
+SpartaDOS X 4.46 [3254ee87]
+SpartaDOS X 4.46 [f5732576]
+SpartaDOS X 4.46 [69002180]
+Super Turbo Cartridge 2.2 [bdc3e42d]
+SynAssembler [6aa6b6d6]
+Super Cartridge v.3 [1cd5a5e0]
+Turbo Blizzard [ecacd6e1]
+Turbo Blizzard [318ed507]
+Turbo System 3.0 [da021439]
+
+- Added new entries:
+810 Disk Manufacturing Test E00.13
+Automatic Downfeed
+Obibok
+Falcon v1.4
+Falcon v1.5
+RealSports Football Rev#0 - might exist, currently only a bad dump is known
+Summer Games (AtariMax)
+Warlords
+
+- Marked as overdumps:
+ACE-80XL 1.1 [4d148a37]
+DT-80 [7840a595]
+
+2013-02-27
+----------
+
+- Added new dumps:
+Dropzone [4870ed52]
+Pac-Man Arcade [7f50e746]
+Pac-Man Arcade [05682bd8]
+Phoenix 1.0 [ce14288f]
+Turbo 2000 / Super Turbo [e6e33539]
+Turbo 2000F [e58883a6]
+Twin Pack [cd9f91cb]
+Twin Pack [240d95e3]
+Universal RAM Copy 1.3 [ec41ca33]
+
+- Marked as verified:
+Educational System Master Cartridge f69f2824 (verified with the 0dcc9ecc overdump)
+
+2012-12-08
+----------
+
+- Added new dumps:
+Edit 6502 [7595ea16]
+Edit 6502 [364b7ac9]
+Hamtext 1.1 [3601b0fa]
+
+2012-09-09
+----------
+
+- Again, added new entries for cartridges mentioned in Checksum Verifier, but different from the currently known images:
+AtariArtist (ATARI ARTIST (A), checksum $169E)
+Dig Dug (DIG DUG, checksum $F841)
+
+- Added two prototype revisions of AtariWriter, based on information at DigitPress.com:
+AtariWriter rev. #3
+AtariWriter rev. #16
+
+- Marked as verified:
+Action! 3.6 [eb905cb4]
+AtariWriter [7be4533d]
+
+2012-09-08
+----------
+
+- Renamed several entries based on names found in Checksum Verifier:
+Assembler Editor ee72eeea -> Assembler Editor rev. B
+AtariWriter (ver A) [1c2498a4] -> AtariWriter rev. A
+AtariWriter (ver B) [7be4533d] -> AtariWriter
+AtariWriter (ver C) [b4ddbec7] -> AtariWriter rev. C
+
+- Added new entries for cartridges mentioned in Checksum Verifier, but different from the currently known images:
+1200 PITS rev 1.2
+1200 PITS rev 1.3
+1400 Super SALT rev. C.01
+400/800 SALT Diagnostic cartridge 3.01
+810 Disk Burn-In Test rev. E
+810 Disk Burn-In Test rev. F
+AtariWriter rev. B
+Eastern Front (1941)
+Qix rev. 7
+SALT A.01
+SALT A.02
+
+- Added other new entries:
+Line Runner
+Bio-Defense
+
+- Some 8KB images were overdumps. Support for 2KB and 4KB images has been just added to Atari800, so I have added the non-overdump versions of those images to the list:
+3-D Tic-Tac-Toe [031d973b]
+400/800 SALT Diagnostic Cartridge 1.00 [be0cf388]
+Alien Ambush [e8069034]
+Alpha Shield [0d33d77c]
+Atlantis [bc54a730]
+Basketball [5ed58427]
+Basketball [3cee1b6e]
+Computer Chess [8c1c171c]
+Demon Attack [59c5e612]
+Educational System Master Cartridge [31d05f9e]
+Educational System Master Cartridge f69f2824]
+Fantastic Voyage [883fdd28]
+Fast Eddie [4c44a1ef]
+Final Orbit [08989e6c]
+Firebird [fc282c74]
+Gridrunner [32f63576]
+Kaboom! [879fb57a]
+Monkey Wrench [The] [0b9dd821]
+Space Invaders [73698395]
+Spider City [9064a1c4]
+Squish 'Em! [B5286e53]
+Super Breakout [08dc1fc6]
+Survival of the Fittest [60a06240]
+Turmoil [bb35f9e0]
+Video Easel [621029f3]
+Worm War 1 [9ccc73cb]
+
+- Updated the MESS ID column based on the current MESS database.
+
+- Added new dumps:
+Activator Cartridge [c5a1bdf1]
+AtariGraphics [50b573cd]
+Bounty Bob Strikes Back! [cc7912ed]
+Deflektor [799efe52]
+Explorer [98a4e5b7]
+Hamsoft/AMTOR 1.2 [e9ba99a6]
+Leo's 'Lectric Paintbrush [618bf3db]
+Mean 18 [1a85a04e]
+MIDI Maze 1.00 [36d834a2]
+Popeye [da07e268]
+RealSports Football [e97bbc03]
+Risk [688b0a0c]
+Super Pac-Man [3ef05469]
+
+- Marked as verified:
+Fortune Hunter [5cee3180]
+Gateway to Apshai [4ccdbef0]
+Matterhorm [dcc308cf]
+Speedway Blast [8e67192b]
+Squish 'Em! [f0553d6c]
+Zone Ranger [1b6c7b78]
+
+- Removed "Leo's Links" from the list - there is no confirmation that this piece ever existed for the Atari. See also http://www.atariage.com/forums/topic/39867-were-the-chalkboard-games-really-released/#entry475536
+
+2012-04-09
+----------
+
+- Added new dumps:
+Donkey Kong Junior [2b04b4bc]
+Last Starfighter [The] [3267eba7]. Marked the previous dump [b4c640f1] with [b].
+Mr. Do!'s Castle [abed3b88]. Marked the previous dump [f1b9a24a] with [cr].
+Star Trux [8212c4b7]
+Up for Grabs [9893ae7a]. Marked the previous dump [fc62c1ce] with [cr].
+
+- Marked as verified:
+Activision Decathlon [The] [affbe54b]
+Gold Mine [8459b11e]
+Math Mileage [c8b311bf]
+Monkey Wrench II [The] [7191a903]
+Mr TNT [701dbdea]
+Topper [0286eea6]
+
+- Added ROM-less cartridges:
+R-Time 8
+WAM
+
+2012-03-31
+----------
+
+- Added new dumps:
+Ant Eater [73a3a64c]
+Computrac 4000-8000 [e88a2ea3]
+Mega Cartridge [da0a5ae4]
+Mega Cartridge [2d200f74]
+Mega Cartridge [914372c0]
+Mega Cartridge [8e12b596]
+Mega Cartridge [e4ee1623]
+Mega Cartridge [85ecbc95]
+Mega Cartridge [def97719]
+Mega Cartridge [a2b4ee4d]
+Mega Cartridge [00241602]
+Mega Cartridge [629bc83b]
+Mega Cartridge [aafe6b95]
+Mega Cartridge [1014548a]
+Mega Cartridge [acbe80d9]
+Mega Cartridge [722e760e]
+Mega Cartridge [04d3a9fb]
+MicroCalc v. Atari XE 2.2 [44507065]
+Prisma 1 [fc2f3210]
+Prisma 2 [6c79351e]
+Prisma 4 [670c49c6]
+Prisma 5 [ab71896a]
+Prisma 6 [8f7e24df]
+Prisma Super 15-2 [62a7b77e]
+Turbocartridge X1 [1dccc2c7]
+
+- Marked as verified:
+Astro Chase [18752991]
+Boulder Dash [af778329]
+Bristles [4263d64d]
+Chiffres et des Lettres [Des] [3d8f5c25]
+Droids [5bb0c159]
+Flip and Flop [8ae057be]
+Hypnotic Land [4fb75909]
+Letter-Go-Round [f525b904]
+
+- Added new entries:
+K-Star Patrol (K-Byte)
+Multiescritor
+
+2012-03-11
+----------
+
+- Added new dumps:
+Kids on Keys [6dc54ea6]
+VisiCopy III [0aa5ffdb]
+
+- Marked as verified:
+Kids on Keys [60615a91]
+K-Star Patrol [89c82cc2]
+Smart Terminal 4.1 [f5c34344]
+
+- Removed the verified flag from Microprinter 800 [7b222136] - both dumps probably come from the same person.
+
+- Added entries for Ravensburger cartridges:
+Bilderregen
+Fratzenchneider
+KinderComp
+Springteufel
+2012-03-10
+----------
+
+- Added new dumps:
+1400 Super SALT rev. C.01 [10cb0520]
+1400 Telecommunicator [c63d9e1c]
+Diamond GOS 1.0 [cdeb2c5c]
+Miner 2049er [eb770df4]
+
+2012-03-03
+----------
+
+- Added a new spreadsheet, "ROM-less cartridges", to list cartridges such as The Pill that don't contain ROM.
+
+- Added new dumps:
+400/800 SALT Diagnostic Cartridge 1.00 [1bd00850]
+400/800 SALT Diagnostic Cartridge 2.05 [f269cc0a]
+Cartridge dla Turbo 2000 1.0 [c848a61c]
+Cartridge System Turbo 2000 [f80b8c8c]
+Cartridge System Turbo 2000 [a407eef0]
+Cartridge systemowy Turbo 2000 [60787a1a]
+Cartridge systemowy Turbo 2000 [45a8b12e]
+CPS Super SALT [0d99e328]
+DT-80 [7840a595 (formerly 80-Column Dumb Terminal Emulator)
+Microprinter System 400 [89c66405]
+MyDOS 3.116 [462a3d98]
+Pronto: The Home Information System 1.7 [60094848]
+SmartDOS 6.1D [d68915fa]
+WFMH Demo [ed31a86f]
+
+- Marked as verified:
+AtariTexte [2aff4a94]
+Attack of the Mutant Camels [c933d741]
+Microprinter System 800 [7b222136]
+Pastfinder [14fddfb8]
+Super Zaxxon [9e64e13b]
+Topper [0286eea6]
+
+2012-02-28
+----------
+
+- Added new dumps:
+Animated Puzzle [90f37afe]
+Jinks [39fe57ee]
+MIDI Maze 1.00 [4695522f]
+Pastfinder [14fddfb8]
+Tapper [eff12440]
+Zybex [c1da182c]
+
+- Marked as verified:
+INFO/soft 3000 v3.3 [6c104750]
+
+- Marked as cracks:
+Animated Puzzle [1a4c75a7]
+Pastfinder [12694c3f]
+
+2012-02-24
+----------
+
+- Added new dumps:
+Checkbook [0c067251]
+Checkbook [d12471b7]
+Super Turbo [2d4234f5]
+
+- Added new entries:
+Express! “initial version”
+Gremlins
+
+2011-11-08
+
+- Marked as verified:
+Alien Ambush [ad7bc30b]
+Jawbreaker II [e2a63a2d]
+Sea Chase [99b5a1dd]
+
+- Added new URLs for several cartridges. Since they are prototypes, they cannot be marked as verified (see Notes):
+Kangaroo [1ef94906]
+Letter Tutor [21111576]
+Stargate [f527b721]
+Vegas Poker [dc492963]
+
+- Added new dumps:
+Berzerk [b1dedb79]
+Prisma '92 [a136fef3]
+Sistema controlado por computadora [d2159969]
+SpartaDOS X 4.45 [e57bc552]
+SpartaDOS X 4.45 [f00efb19]
+SpartaDOS X 4.45 [a41b3975]
+SpartaDOS X 4.45 [395e7560]
+SpartaDOS X 4.45 [df4520c1]
+SpartaDOS X 4.45 [583a8962]
+SpartaDOS X 4.45 [01449084]
+SpartaDOS X 4.45 [1a29459a]
+SpartaDOS X 4.45 [579dfff1]
+Super Pac-Man [b518dda8]
+Superman III [53cb8b49]
+Turbocartridge C1 [b2b45500]
+Turbocartridge C1 [360a47b3]
+Turbocartridge C2 [ade93e66]
+Turbocartridge C3 [bedf99fe]
+Turbocartridge C4 [97a8c904]
+Turbocartridge C5 [78dbb563]
+Turbocartridge C6 [49e18f6e]
+Turbocartridge D1 [4d1dd418]
+Turbocartridge D2 [025ab67a]
+Turbocartridge D3 [bca7d11b]
+Turbocartridge D4 [72df4a5e]
+Turbocartridge D5 [a5aee6fd]
+Turbocartridge D6 [5498c7dc]
+Turbocartridge D7 [3fb92d9e]
+Turbocartridge D8 [3d68152e]
+Turbocartridge E1 [fa100cbf]
+Turbocartridge E2 [bede95cd]
+Turbocartridge X2 [11f334dc]
+
+- Renamed the following entries:
+SpartaDOS X [d0fbd52b] -> SpartaDOS X 4.20
+
+- Added entries for all 16 Atrax multicartridges, based on a scan of their catalog, available at atarionline.pl
+
+- Added entries for Chilean cartridges:
+Super Examinador
+Banco en Casa por Computador
+Galaga Utilitarios Edicion 1
+
+2011-09-04
+----------
+
+- Added new dumps:
+Action! 3.6 [0a27763c]
+Atari LOGO [5bdff48f]
+BASIC XL [af85edfd]
+BASIC XE 7.2 [3f06b111]
+KSO 2T09 [5bf9111c]
+KSO Turbo 2000 [d349dbef]
+Multicartridge [b21df3fd]
+Space Harrier [ca98abfc]
+SpartaDOS X [c0f83256]
+SpartaDOS X [d0fbd52b]
+Telelink I [30186f2b]
+Turbo 2000F [67d2d2e0]
+Turbo DOS 2.0 [28e8efde]
+??? TURKUJDY [93fb882d]
+??? ZABEZTUR [c222609a]
+
+- Replaced the 8KB dump of "KSO Turbo 2000 [67f2e98e]" with a 4KB image, "KSO 2T12 [b57ec5f1]" (also note the name change). The original 16 KB image (AST 2000 [e9da4eaa]) contained 2 copies of the same 4KB.
+
+- Marked the following cartridges as [!]:
+SpartaDOS X 4.20 [781e045c]
+
+2011-08-25
+----------
+
+- Added new dumps:
+AST Multi-Cartridge 2.B [6a295eb0]
+Direct Access [0b5c7bd3]
+INFO/soft 3000 v3.3 [6c104750]
+MAC/65 1.00 [d69a28b6]
+
+- For each OSS cartridge that was dumped to both 034M and 043M formats, I marked it as verified (the banks in images are identical, only their order is different):
+BASIC XL 1.02 [5752d29f] and [e8b3fc3c]
+MAC/65 1.00 [5e033719] and [d69a28b6]
+
+- Marked the following cartridges as [b]:
+INFO/soft 3000 v3.3 [910f39db]
+
+- Adjusted company names:
+INFO/soft -> INFO/soft Technology
+Inhome -> Inhome Software
+Stimultech -> Stimutech
+HSU Software -> Hsu Software.
+
+2011-08-16
+----------
+
+- Added a new entry based on an article in ANTIC vol. 4 no. 7 p. 38:
+Hamtext
+
+- Added new dumps:
+400/800 SALT Diagnostic Cartridge 2.04 [3e304b52]
+Conquest of the Crown [94f56b90]
+Hamsoft [9825bdac]
+INFO/soft 3000 [910f39db]
+Moogles [0585fb5a]
+Pocket Modem Software v. 2.08 [710aea7a]
+Prevue rev. 06 [e09633a6]
+Prevue rev. 06 [677fcd39]
+Telelink II [c11d10ac]
+Worm War 1 [d9b120f4]
+תמלילן אטארי [f7da90b0]
+
+- Marked the following as verified:
+Action! 3.6 [a1f90dfd]
+AtariArtist [bbe37542]
+AtariGraphics [6ccdb004]
+Fast Eddie [0939f2d0]
+KoalaPainter [4835333a]
+Micro Illustrator [5d5f76f6]
+MicroFiler rev. 1.1 [c3b283e6]
+Telelink I [bb648a61]
+Writer's Tool [The] [13bcf201]
+
+- Adjusted cartridge names:
+600/800XL SALT (SE.02) -> 600/800 Super SALT (SE.02)
+Flight Simulator 2 -> Flight Simulator II v. 1.07
+Hamsoft/Amtor -> Hamsoft/AMTOR
+Microfiler -> MicroFiler rev. 1.1
+Pocket Modem -> Pocket Modem Software v. 2.08
+Sea Fox -> Seafox
+XE Demo Flight Simulator 2 -> Flight Simulator II v. 1.07
+
+2011-08-07
+----------
+
+- Reworked the Notes section a bit.
+
+- Marked k1w1's "zeroed" images as [h]acks.
+
+- Added new cartridge images:
+Action! 3.6 [532469b9]
+Alternate Reality: The City c8e14ce2]
+Alternate Reality: The City [52cbd474]
+Atari Turbo System Cartridge v. 4.0 [a68aa4a5]
+BIG 2.0 [3219c681]
+Blizzard Super Cartridge 4.0 [26303ae4]
+Blizzard Turbo 2.8 [925ad4f6]
+BMX Simulator/Grand Prix Simulator/Red Max [c365c709]
+Eidolon [The] [121dfbba]
+Eidolon [The] [46f363f7]
+Eidolon [The] [36d16bbb]
+Eidolon [The] [449b9284]
+Gauntlet [2fbff9f8]
+Gauntlet [0c245e29]
+Gauntlet [7ce53eed]
+Head over Heels [4440443c]
+Head over Heels [6e0ff58a]
+Hitchhiker's Guide to the Galaxy [The] [50592d93]
+Hitchhiker's Guide to the Galaxy [The] [14737299]
+Koronis Rift [8570b547]
+Koronis Rift [7bc7bf65]
+Koronis Rift [f8759767]
+Koronis Rift [d385b89c]
+Koronis Rift [ecd69b9f]
+Koronis Rift [d6a37e9f]
+KSO Turbo 2000 [67f2e98e]
+Mysterious Adventures [add506c5]
+Mysterious Adventures [7f7486a9]
+Phoenix 1.0 [c8c03765]
+River Raid [cc076816]
+Turbo Blizzard [bdf6bc5f]
+Turbo Cartridge + [0326bb69]
+Turbo DOS 2.5 [dde4d4b5]
+Turbo ROM Plus (3) [7d2aac13]
+Yie Another Kung Fu [8ed7da2d]
+
+- Discovered new dumps of known cartridges, marked them as verified:
+BASIC XE 4.1 [003d3a36]
+BASIC XL 1.03 [94a05568]
+
+- Stopped differentiating between raw dumps and CART files - see Notes. Because of this, one cartridge got marked as verified:
+Summer Games [ef60acd9]
+
+- Marked all DLT SpartaDOS X cartridges as verified, since they are homebrews.
+
+- Merged two entries for Jr Pac-Man into one; same for INFO/soft 3000, Rally Speedway and Squish 'Em!/Smush.
+
+- Added links to Jindroush's Atari Cartridge Dumping Project for many cartridges with missing ROM dumps.
+
+- Added new entries based on Jindroush's website:
+Action! 3.4
+INFO/soft 5000 v5.1
+INFO/soft 7000
+KISS
+Magic Dump
+Magic Dump II
+MD DOS
+Learning Phone [The] (1983)
+
+- Updated the Date field based on Jindroush's screenshots, for:
+Multi I/O Diagnostics
+Paddle Jitter Test (REV A)
+Paddle Jitter Test (REV C with games)
+Parrot Phone Test 1.1
+Proburner
+
+- Added other new entries:
+Bomb Jake
+Hobgoblin
+Isora & Loops DX
+Robbo Forever
+Yoomp! 1.1
+
+- Fixed name of the company Chalk Board - previously it was either Chalkboard or Chalkboard Inc.
+
+- Adjusted cartridge names:
+Clash of the Kings -> Clash of Kings [The]
+Getaway -> Getaway!
+Hearts Card Game -> Hearts
+INFO/soft 3000 Text Generator -> INFO/soft 3000
+INFO/soft 5000 Graphics Genlock v5.3 -> INFO/soft 5000 v5.3
+MicroCalc XE version 2.2 -> MicroCalc XE v. 2.2
+Montana Solitaire Card Game -> Montana Solitaire
+Mr. Robot -> Mr Robot and His Robot Factory
+Solitaire Card Game -> Solitaire
+
+2011-08-03
+----------
+
+- Removed columns “Atarimania”, “Mitch”, “FULS”. Instead added column “Link” with links to cartridge images.
+
+- Updated the MESS ID column acording to k1w1's latest XMLs.
+
+- The [m] and [a] tags now refer to other ROM images by their CRC-32. See Notes for examples.
+
+- Adjusted cartridge names:
+1090XL 64k RAM Test -> 1090XL 64KMR Test rev. 1.0
+1200 SALT (A.02) -> 1200 Super SALT rev. A.02
+1200 SALT (Preliminary 2.99) -> 1200 SALT Preliminary rev. 2.99
+1400 Burn In (D.R1) -> 1400 Burn In D.R1
+1400 Burn In (D.XX) -> 1400 Burn In D.XX
+1400 SALT (C.01) -> 1400 Super SALT rev. C.01
+Crystal Raiders -> Crystal Raider
+Homebase Electronic Banking -> Homebase
+Multi Fischa -> Multi Ficha
+Target Electronic Banking -> Target v. 0115
+Tennis -> RealSports Tennis
+
+- Added new entry for Ithix, a Romox ECPC cartridge which should exist according to Atarimania.
+
+- Added several "zeroed" ROM images from k1w1's old collection (http://www.atariage.com/forums/topic/161828-hooked-on-8-bit-carts/page__view__findpost__p__2240191):
+3-D Tic-Tac-Toe [1cf50ebe]
+Alpha Shield [12db4ef9]
+Atlantis [a3bc3eb5]
+Atlantis [6a9a1405]
+Basketball [230682eb]
+Computer War [8a44d135]
+Demon Attack [f6471dd9]
+Educational System Master Cartridge [18cc7c94]
+Fantastic Voyage [97d744ad]
+Final Orbit [177007e9]
+Firebird [97fe581c]
+Frogger II: Threeedeep! [6d55ee51]
+Kaboom! [98772cff]
+Princess and the Frog [dbb30884]
+Super Breakout [17348643]
+Telelink I [19044c21]
+Turmoil [a4dd6065]
+Worm War 1 [8324ea4e]
+
+- Added new cartridge images from various places on the Net:
+Action! 3.6 [e13e3bbe]
+Action! 3.6 [eb905cb4]
+Action! 3.6 [03e27a00]
+Action! 3.6 [06de1bc5]
+Commando [7e8a6881]
+CPS SuperSALT [db114887]
+Deflektor [125d2006]
+Deflektor [d5980c1e]
+Lode Runner [7790f474]
+Mean 18 [af2ea0ef]
+Monkey Wrench [The] [147541a4]
+Monkey Wrench II [The] [a315afb6]
+Monkey Wrench II for the Atari XL [69fd5f8b]
+Monkey Wrench II for the Atari XL [c373e271]
+Monkey Wrench II XL + BASIC C [16acb9e2]
+One Moon and Two Suns [4aeb1d0f]
+One Moon and Two Suns [b3f48a42]
+One Moon and Two Suns [57c245bf]
+One Moon and Two Suns [d36a7135]
+Tower Toppler [68fe079d]
+Tower Toppler [1a1786bf]
+Tower Toppler [0c88269a]
+Tower Toppler [a1bdc996]
+Tower Toppler [8332c109]
+Video Easel [7dc702a7]
+
+- Various changes in the Description column.
