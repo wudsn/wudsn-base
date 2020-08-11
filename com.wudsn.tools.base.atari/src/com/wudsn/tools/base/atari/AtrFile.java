@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - 2018 <a href="http://www.wudsn.com" target="_top">Peter Dell</a>
+ * Copyright (C) 2013 - 2020 <a href="https://www.wudsn.com" target="_top">Peter Dell</a>
  *
  * This file is part of The!Cart Studio distribution.
  * 
@@ -14,7 +14,7 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with The!Cart Studio. If not, see <http://www.gnu.org/licenses/>.
+ * along with The!Cart Studio. If not, see <https://www.gnu.org/licenses/>.
  */
 
 package com.wudsn.tools.base.atari;
@@ -136,7 +136,7 @@ public final class AtrFile {
 	    sectorCount = dataSize / SECTOR_SIZE_SD;
 	}
 
-	// From http://atari.kensclassics.org/dos.htm
+	// From https://atari.kensclassics.org/dos.htm
 	int vtocSector = 0x168;
 	DosVersion dosVersion = DosVersion.UNKNOWN;
 	if (sectorCount > vtocSector) {
@@ -151,7 +151,7 @@ public final class AtrFile {
 	    }
 	    int vtoc0 = data[vtocSectorOffset] & MASK_FF;
 
-	    // From http://guryus.tripod.com/hints.htm, 1995 = 0x7cb
+	    // From https://guryus.tripod.com/hints.htm, 1995 = 0x7cb
 	    int offset1995 = HEADER_SIZE + 0x7cb - 0x700;
 	    int peek1995 = data[offset1995] & MASK_FF;
 

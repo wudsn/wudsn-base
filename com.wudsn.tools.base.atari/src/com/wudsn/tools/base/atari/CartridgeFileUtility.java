@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - 2018 <a href="http://www.wudsn.com" target="_top">Peter Dell</a>
+ * Copyright (C) 2013 - 2020 <a href="https://www.wudsn.com" target="_top">Peter Dell</a>
  *
  * This file is part of The!Cart Studio distribution.
  * 
@@ -14,7 +14,7 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with The!Cart Studio. If not, see <http://www.gnu.org/licenses/>.
+ * along with The!Cart Studio. If not, see <https://www.gnu.org/licenses/>.
  */
 
 package com.wudsn.tools.base.atari;
@@ -95,7 +95,7 @@ public final class CartridgeFileUtility {
 
     /**
      * Computes the 32 bit / 4 byte ROM checksum. See <a href=
-     * "http://atari800.cvs.sourceforge.net/viewvc/atari800/atari800/src/cartridge.c"
+     * "https://atari800.cvs.sourceforge.net/viewvc/atari800/atari800/src/cartridge.c"
      * >Atari800</a>.
      * 
      * @param content

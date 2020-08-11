@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - 2018 <a href="http://www.wudsn.com" target="_top">Peter Dell</a>
+ * Copyright (C) 2013 - 2020 <a href="https://www.wudsn.com" target="_top">Peter Dell</a>
  *
  * This file is part of The!Cart Studio distribution.
  * 
@@ -14,7 +14,7 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with The!Cart Studio. If not, see <http://www.gnu.org/licenses/>.
+ * along with The!Cart Studio. If not, see <https://www.gnu.org/licenses/>.
  */
 
 package com.wudsn.tools.base.atari.cartridge;
@@ -288,7 +288,7 @@ public final class CartridgeDatabaseCreator extends Main {
 	URL url;
 	try {
 	    url = new URL(
-		    "http://www.atarimania.com/list_games_atari-400-800-xl-xe-p_total-page-step-cartridge_380-2-200-1_8_G.html");
+		    "https://www.atarimania.com/list_games_atari-400-800-xl-xe-p_total-page-step-cartridge_380-2-200-1_8_G.html");
 	} catch (MalformedURLException ex) {
 	    throw new RuntimeException(ex);
 	}
@@ -303,32 +303,32 @@ public final class CartridgeDatabaseCreator extends Main {
 		parser = factory.newSAXParser();
 		reader = parser.getXMLReader();
 
-		reader.setFeature("http://xml.org/sax/features/validation",
+		reader.setFeature("https://xml.org/sax/features/validation",
 			false);
 		reader.setFeature(
-			"http://apache.org/xml/features/nonvalidating/load-dtd-grammar",
+			"https://apache.org/xml/features/nonvalidating/load-dtd-grammar",
 			false);
 		reader.setFeature(
-			"http://apache.org/xml/features/nonvalidating/load-external-dtd",
+			"https://apache.org/xml/features/nonvalidating/load-external-dtd",
 			false);
 		reader.setFeature(
-			"http://xml.org/sax/features/external-general-entities",
+			"https://xml.org/sax/features/external-general-entities",
 			false);
 		reader.setFeature(
-			"http://xml.org/sax/features/external-parameter-entities",
+			"https://xml.org/sax/features/external-parameter-entities",
 			false);
 		reader.setFeature(
-			"http://xml.org/sax/features/use-entity-resolver2",
+			"https://xml.org/sax/features/use-entity-resolver2",
 			false);
-		// reader.setFeature("http://apache.org/xml/features/validation/unparsed-entity-checking",
+		// reader.setFeature("https://apache.org/xml/features/validation/unparsed-entity-checking",
 		// false);
 		reader.setFeature(
-			"http://xml.org/sax/features/resolve-dtd-uris", false);
+			"https://xml.org/sax/features/resolve-dtd-uris", false);
 		reader.setFeature(
-			"http://apache.org/xml/features/validation/dynamic",
+			"https://apache.org/xml/features/validation/dynamic",
 			false);
 		reader.setFeature(
-			"http://apache.org/xml/features/validation/schema/augment-psvi",
+			"https://apache.org/xml/features/validation/schema/augment-psvi",
 			false);
 
 	    } catch (ParserConfigurationException ex) {

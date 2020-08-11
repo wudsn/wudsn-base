@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 - 2014 <a href="http://www.wudsn.com" target="_top">Peter Dell</a>
+ * Copyright (C) 2013 - 2014 <a href="https://www.wudsn.com" target="_top">Peter Dell</a>
  *
  * This file is part of a WUDSN software distribution.
  * 
@@ -14,7 +14,7 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with the WUDSN software distribution. If not, see <http://www.gnu.org/licenses/>.
+ * along with the WUDSN software distribution. If not, see <https://www.gnu.org/licenses/>.
  */
 
 package com.wudsn.tools.base.gui;
@@ -39,7 +39,7 @@ import com.wudsn.tools.base.repository.DataType;
 
 /**
  * This class is based on the <a href=
- * "http://www.jroller.com/santhosh/entry/let_user_choose_their_favourite"
+ * "https://www.jroller.com/santhosh/entry/let_user_choose_their_favourite"
  * >excellent blog</a> by Santhosh Kumar.
  * 
  * @author Santhosh Kumar

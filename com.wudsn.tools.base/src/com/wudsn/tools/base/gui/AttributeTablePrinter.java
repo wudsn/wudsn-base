@@ -22,7 +22,7 @@ import com.wudsn.tools.base.common.TextUtility;
  * @author Peter Dell
  * 
  * @see <a
- *      href="http://wiki.byte-welt.de/wiki/JTable_Druckfunktion_anpassen">JTable
+ *      href="https://wiki.byte-welt.de/wiki/JTable_Druckfunktion_anpassen">JTable
  *      wiki</a>
  */
 final class AttributeTablePrinter implements Printable {

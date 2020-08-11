@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2013 - 2014 <a href="http://www.wudsn.com" target="_top">Peter Dell</a>
+ * Copyright (C) 2013 - 2014 <a href="https://www.wudsn.com" target="_top">Peter Dell</a>
  *
  * This file is part of a WUDSN software distribution.
  * 
@@ -14,7 +14,7 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with the WUDSN software distribution. If not, see <http://www.gnu.org/licenses/>.
+ * along with the WUDSN software distribution. If not, see <https://www.gnu.org/licenses/>.
  */
 
 package com.wudsn.tools.base.common;
@@ -193,7 +193,7 @@ public final class ResourceUtility {
 
     /**
      * Self implemented logic to bypass the bug described in <a
-     * href="http://bugs.sun.com/view_bug.do?bug_id=4523159">JDK-4523159 :
+     * href="https://bugs.sun.com/view_bug.do?bug_id=4523159">JDK-4523159 :
      * getResourceAsStream on jars in path with "!"</a>.
      * 
      * @param path

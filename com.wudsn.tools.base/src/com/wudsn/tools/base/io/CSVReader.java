@@ -1,7 +1,7 @@
 package com.wudsn.tools.base.io;
 
 /**
- * Copyright (C) 2013 - 2014 <a href="http://www.wudsn.com" target="_top">Peter Dell</a>
+ * Copyright (C) 2013 - 2014 <a href="https://www.wudsn.com" target="_top">Peter Dell</a>
  *
  * This file is part of a WUDSN software distribution.
  * 
@@ -16,7 +16,7 @@ package com.wudsn.tools.base.io;
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with the WUDSN software distribution. If not, see <http://www.gnu.org/licenses/>.
+ * along with the WUDSN software distribution. If not, see <https://www.gnu.org/licenses/>.
  */
 
 import java.io.File;

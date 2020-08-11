@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 <a href="http://www.wudsn.com" target="_top">Peter Dell</a>
+ * Copyright (C) 2014 <a href="https://www.wudsn.com" target="_top">Peter Dell</a>
  *
  * This file is part of ROM Checker.
  * 
@@ -14,7 +14,7 @@
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with ROM Checker.  If not, see <http://www.gnu.org/licenses/>.
+ * along with ROM Checker.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package com.wudsn.tools.base.gui;
