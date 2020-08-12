@@ -221,10 +221,10 @@ public final class CartridgeDatabaseCreator extends Main {
     private void run(String baseDir) {
 
 	final String krotkiList = baseDir
-		+ "\\tst\\crc\\Atari 8-bit ROM list\\List - Comparison.csv";
+		+ "/tst/crc/Atari 8-bit ROM list/List - Comparison.csv";
 	final String maxFlashList = baseDir
-		+ "\\tst\\crc\\Maxflash\\romlib.ini";
-	final String databaseFile = baseDir + "\\src\\"
+		+ "/tst/crc/Maxflash/romlib.ini";
+	final String databaseFile = baseDir + "/src/"
 		+ CartridgeDatabase.FILE_PATH;
 
 	logSkipped = true;
