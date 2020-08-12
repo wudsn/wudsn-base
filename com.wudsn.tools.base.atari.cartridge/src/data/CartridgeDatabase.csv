@@ -838,9 +838,9 @@ sep=;
 16;'0x1B6C7B78;';"Zone Ranger";"Activision";"1984";CARTRIDGE_STD_16;K
 16;'0x8F1E72E7;';"Zone Ranger";"Activision";"1984";CARTRIDGE_STD_16;K
 64;'0xC1DA182C;';"Zybex";"Video 61";"1999";CARTRIDGE_WILL_64;K
-16;'0xF7DA90B0;';"תמלילן �?ט�?רי";"Aram (?)";"";CARTRIDGE_STD_16;K
+16;'0xF7DA90B0;';"תמלילן אטארי";"Aram (?)";"";CARTRIDGE_STD_16;K
 32;'0x0483FA8B;';"الطاقة";"aDawliah";"198x";CARTRIDGE_ADAWLIAH_32;K
-32;'0xB793B32E;';"كي�? يعمل الكمبيوتر";"aDawliah";"198x";CARTRIDGE_ADAWLIAH_32;K
+32;'0xB793B32E;';"كيف يعمل الكمبيوتر";"aDawliah";"198x";CARTRIDGE_ADAWLIAH_32;K
 32;'0x79457426;';"قاموس نجم";"aDawliah";"198x";CARTRIDGE_ADAWLIAH_32;K
 32;'0xD37256B6;';"3D-Pac";"";"";CARTRIDGE_WILL_32;K
 32;'0xA1612B25;';"Attack of the Mutant Camels";"";"";CARTRIDGE_WILL_32;K
