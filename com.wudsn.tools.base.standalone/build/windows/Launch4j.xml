@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>@APPLICATION_STANDALONE_DIR@\out\@PLATFORM_ID@\@APPLICATION_NAME@.jar</jar>
+  <outfile>@APPLICATION_STANDALONE_DIR@\out\@PLATFORM_ID@\@APPLICATION_NAME@.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>https://java.com/download</downloadUrl>
+  <supportUrl>@APPLICATION_SUPPORT_URL@</supportUrl>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>@JAVAHEXEDTOR_STANDALONE_DIR@\icons\application.ico</icon>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <minVersion>@JRE_MIN_VERSION@</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>@JRE_RUNTIME_BITS@</runtimeBits>
+  </jre>
+  <versionInfo>
+    <fileVersion>@RELEASE@.0</fileVersion>
+    <txtFileVersion>@VERSION@</txtFileVersion>
+    <fileDescription>@APPLICATION_TITLE@ - Windows @JRE_RUNTIME_BITS@-Bit (@PLATFORM_ID@)</fileDescription>
+    <copyright>(C) @RELEASE_YEARS@ @AUTHORS@</copyright>
+    <productVersion>@RELEASE@.0</productVersion>
+    <txtProductVersion>@VERSION@</txtProductVersion>
+    <productName>@APPLICATION_TITLE@</productName>
+    <companyName></companyName>
+    <internalName>@APPLICATION_NAME@</internalName>
+    <originalFilename>@APPLICATION_NAME@.exe</originalFilename>
+  </versionInfo>
+</launch4jConfig>
