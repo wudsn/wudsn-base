@@ -27,56 +27,56 @@ import com.wudsn.tools.base.common.Log;
 @SuppressWarnings("serial")
 public abstract class AttributeTablePanel extends JScrollPane {
 
-    protected AttributeTableModel tableModel;
-    protected AttributeTable table;
+	protected AttributeTableModel tableModel;
+	protected AttributeTable table;
 
-    public AttributeTablePanel(AttributeTableModel tableModel, AttributeTablePreferences preferences,
-	    String preferencesPrefix) {
-	if (tableModel == null) {
-	    throw new IllegalArgumentException("Parameter 'tableModel' must not be null.");
+	public AttributeTablePanel(AttributeTableModel tableModel, AttributeTablePreferences preferences,
+			String preferencesPrefix) {
+		if (tableModel == null) {
+			throw new IllegalArgumentException("Parameter 'tableModel' must not be null.");
+		}
+		if (preferences == null) {
+			throw new IllegalArgumentException("Parameter 'preferences' must not be null.");
+		}
+		if (preferencesPrefix == null) {
+			throw new IllegalArgumentException("Parameter 'preferencesPrefix' must not be null.");
+		}
+
+		table = new AttributeTable(tableModel, preferences, preferencesPrefix);
+		tableModel.setTable(table);
+
+		table.setSurrendersFocusOnKeystroke(true);
+
+		setViewportView(table);
 	}
-	if (preferences == null) {
-	    throw new IllegalArgumentException("Parameter 'preferences' must not be null.");
+
+	/**
+	 * Gets the entries table.
+	 * 
+	 * @return The entries table, not <code>null</code>.
+	 */
+	public final AttributeTable getTable() {
+		return table;
 	}
-	if (preferencesPrefix == null) {
-	    throw new IllegalArgumentException("Parameter 'preferencesPrefix' must not be null.");
+
+	/**
+	 * Update columns and value helps which depend of the workbook root.
+	 */
+	public void dataToUI() {
 	}
 
-	table = new AttributeTable(tableModel, preferences, preferencesPrefix);
-	tableModel.setTable(table);
-
-	table.setSurrendersFocusOnKeystroke(true);
-
-	setViewportView(table);
-    }
-
-    /**
-     * Gets the entries table.
-     * 
-     * @return The entries table, not <code>null</code>.
-     */
-    public final AttributeTable getTable() {
-	return table;
-    }
-
-    /**
-     * Update columns and value helps which depend of the workbook root.
-     */
-    public void dataToUI() {
-    }
-
-    /**
-     * Stop editing and transfer cell contents to model.
-     */
-    public final void dataFromUI() {
-	CellEditor cellEditor = table.getCellEditor();
-	if (cellEditor != null) {
-	    try {
-		cellEditor.stopCellEditing();
-	    } catch (RuntimeException ignore) {
-		Log.logError("Inconsistent entries table", null, ignore);
-	    }
+	/**
+	 * Stop editing and transfer cell contents to model.
+	 */
+	public final void dataFromUI() {
+		CellEditor cellEditor = table.getCellEditor();
+		if (cellEditor != null) {
+			try {
+				cellEditor.stopCellEditing();
+			} catch (RuntimeException ignore) {
+				Log.logError("Inconsistent entries table", null, ignore);
+			}
+		}
 	}
-    }
 
 }

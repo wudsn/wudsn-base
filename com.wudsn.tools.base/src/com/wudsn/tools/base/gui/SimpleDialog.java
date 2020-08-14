@@ -41,74 +41,74 @@ import com.wudsn.tools.base.Actions;
 @SuppressWarnings("serial")
 public abstract class SimpleDialog {
 
-    public static final String ACTION_COMMAND_OK = "OK";
-    public static final String ACTION_COMMAND_CANCEL = "CANCEL";
+	public static final String ACTION_COMMAND_OK = "OK";
+	public static final String ACTION_COMMAND_CANCEL = "CANCEL";
 
-    private final JFrame parent;
-    private final String title;
-    private final boolean modal;
+	private final JFrame parent;
+	private final String title;
+	private final boolean modal;
 
-    JDialog dialog;
-    private JButton okButton;
-    private Action cancelAction;
+	JDialog dialog;
+	private JButton okButton;
+	private Action cancelAction;
 
-    protected SimpleDialog(JFrame parent, String title, boolean modal) {
-	if (parent == null) {
-	    throw new IllegalArgumentException("Parameter 'parent' must not be null.");
+	protected SimpleDialog(JFrame parent, String title, boolean modal) {
+		if (parent == null) {
+			throw new IllegalArgumentException("Parameter 'parent' must not be null.");
+		}
+
+		if (title == null) {
+			throw new IllegalArgumentException("Parameter 'title' must not be null.");
+		}
+		this.parent = parent;
+		this.title = title;
+		this.modal = modal;
 	}
 
-	if (title == null) {
-	    throw new IllegalArgumentException("Parameter 'title' must not be null.");
+	public void show() {
+		if (dialog == null) {
+			dialog = new JDialog(parent, title, modal);
+			dialog.setIconImage(parent.getIconImage());
+			initComponents(dialog);
+		}
+		dataToUI();
+		dialog.getRootPane().getDefaultButton().requestFocusInWindow();
+		dialog.setVisible(true);
 	}
-	this.parent = parent;
-	this.title = title;
-	this.modal = modal;
-    }
 
-    public void show() {
-	if (dialog == null) {
-	    dialog = new JDialog(parent, title, modal);
-	    dialog.setIconImage(parent.getIconImage());
-	    initComponents(dialog);
+	protected void initComponents(JDialog dialog) {
 	}
-	dataToUI();
-	dialog.getRootPane().getDefaultButton().requestFocusInWindow();
-	dialog.setVisible(true);
-    }
 
-    protected void initComponents(JDialog dialog) {
-    }
-    
-    protected void dataToUI(){
-	
-    }
+	protected void dataToUI() {
 
-    protected final void initButtonBar() {
+	}
 
-	Container pane = dialog.getContentPane();
+	protected final void initButtonBar() {
 
-	okButton = ElementFactory.createButton(Actions.ButtonBar_OK, false);
-	Box buttonBar = ElementFactory.createButtonBar();
-	buttonBar.add(okButton);
-	pane.add(buttonBar, BorderLayout.SOUTH);
+		Container pane = dialog.getContentPane();
 
-	okButton.addActionListener(new ActionListener() {
-	    @Override
-	    public void actionPerformed(ActionEvent evt) {
-		dialog.setVisible(false);
-	    }
-	});
+		okButton = ElementFactory.createButton(Actions.ButtonBar_OK, false);
+		Box buttonBar = ElementFactory.createButtonBar();
+		buttonBar.add(okButton);
+		pane.add(buttonBar, BorderLayout.SOUTH);
 
-	cancelAction = new AbstractAction() {
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		dialog.setVisible(false);
-	    }
-	};
-	ElementFactory.setDialogDefaultButtons(dialog.getRootPane(), okButton, cancelAction);
-	okButton.requestFocus();
+		okButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				dialog.setVisible(false);
+			}
+		});
 
-	dialog.pack();
-	dialog.setLocationRelativeTo(dialog.getParent());
-    }
+		cancelAction = new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dialog.setVisible(false);
+			}
+		};
+		ElementFactory.setDialogDefaultButtons(dialog.getRootPane(), okButton, cancelAction);
+		okButton.requestFocus();
+
+		dialog.pack();
+		dialog.setLocationRelativeTo(dialog.getParent());
+	}
 }

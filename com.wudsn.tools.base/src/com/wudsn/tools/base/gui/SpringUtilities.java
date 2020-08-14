@@ -51,15 +51,12 @@ import com.wudsn.tools.base.repository.ValueSet;
  */
 public final class SpringUtilities {
 
-	public static JTextField createTextField(JPanel fieldsPane,
-			DataType dataType) {
+	public static JTextField createTextField(JPanel fieldsPane, DataType dataType) {
 		if (fieldsPane == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'fieldsPane' must not be null.");
+			throw new IllegalArgumentException("Parameter 'fieldsPane' must not be null.");
 		}
 		if (dataType == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'dataType' must not be null.");
+			throw new IllegalArgumentException("Parameter 'dataType' must not be null.");
 		}
 		JTextField field = new JTextField();
 		JLabel label = ElementFactory.createLabel(dataType, field);
@@ -68,15 +65,12 @@ public final class SpringUtilities {
 		return field;
 	}
 
-	public static IntegerField createIntegerField(JPanel fieldsPane,
-			DataType dataType) {
+	public static IntegerField createIntegerField(JPanel fieldsPane, DataType dataType) {
 		if (fieldsPane == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'fieldsPane' must not be null.");
+			throw new IllegalArgumentException("Parameter 'fieldsPane' must not be null.");
 		}
 		if (dataType == null) {
-			throw new IllegalArgumentException(
-					"dataType 'labelText' must not be null.");
+			throw new IllegalArgumentException("dataType 'labelText' must not be null.");
 		}
 		IntegerField field = new IntegerField();
 		JLabel label = ElementFactory.createLabel(dataType, field);
@@ -86,15 +80,12 @@ public final class SpringUtilities {
 		return field;
 	}
 
-	public static MemorySizeField createMemorySizeField(JPanel fieldsPane,
-			DataType dataType) {
+	public static MemorySizeField createMemorySizeField(JPanel fieldsPane, DataType dataType) {
 		if (fieldsPane == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'fieldsPane' must not be null.");
+			throw new IllegalArgumentException("Parameter 'fieldsPane' must not be null.");
 		}
 		if (dataType == null) {
-			throw new IllegalArgumentException(
-					"dataType 'labelText' must not be null.");
+			throw new IllegalArgumentException("dataType 'labelText' must not be null.");
 		}
 		MemorySizeField field = new MemorySizeField();
 		JLabel label = ElementFactory.createLabel(dataType, field);
@@ -103,19 +94,16 @@ public final class SpringUtilities {
 		return field;
 	}
 
-	public static <E extends ValueSet> ValueSetField<E> createValueSetField(
-			JPanel fieldsPane, DataType dataType, Class<E> valueSetClass) {
+	public static <E extends ValueSet> ValueSetField<E> createValueSetField(JPanel fieldsPane, DataType dataType,
+			Class<E> valueSetClass) {
 		if (fieldsPane == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'fieldsPane' must not be null.");
+			throw new IllegalArgumentException("Parameter 'fieldsPane' must not be null.");
 		}
 		if (dataType == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'dataType' must not be null.");
+			throw new IllegalArgumentException("Parameter 'dataType' must not be null.");
 		}
 		if (valueSetClass == null) {
-			throw new IllegalArgumentException(
-					"Parameter ' valueSetClass' must not be null.");
+			throw new IllegalArgumentException("Parameter ' valueSetClass' must not be null.");
 		}
 		ValueSetField<E> field = new ValueSetField<E>(valueSetClass);
 		JLabel label = ElementFactory.createLabel(dataType, field);
@@ -124,15 +112,12 @@ public final class SpringUtilities {
 		return field;
 	}
 
-	public static ColorField createColorField(JPanel fieldsPane,
-			DataType dataType) {
+	public static ColorField createColorField(JPanel fieldsPane, DataType dataType) {
 		if (fieldsPane == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'fieldsPane' must not be null.");
+			throw new IllegalArgumentException("Parameter 'fieldsPane' must not be null.");
 		}
 		if (dataType == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'dataType' must not be null.");
+			throw new IllegalArgumentException("Parameter 'dataType' must not be null.");
 		}
 		ColorField field = new ColorField();
 		JLabel label = ElementFactory.createLabel(dataType, field);
@@ -144,12 +129,10 @@ public final class SpringUtilities {
 
 	public static JCheckBox createCheckBox(JPanel fieldsPane, DataType dataType) {
 		if (fieldsPane == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'fieldsPane' must not be null.");
+			throw new IllegalArgumentException("Parameter 'fieldsPane' must not be null.");
 		}
 		if (dataType == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'dataTypet' must not be null.");
+			throw new IllegalArgumentException("Parameter 'dataTypet' must not be null.");
 		}
 		JCheckBox field = new JCheckBox();
 		JLabel label = ElementFactory.createLabel(dataType, field);
@@ -159,8 +142,7 @@ public final class SpringUtilities {
 	}
 
 	// Used by makeCompactGrid.
-	private static SpringLayout.Constraints getConstraintsForCell(int row,
-			int col, Container parent, int cols) {
+	private static SpringLayout.Constraints getConstraintsForCell(int row, int col, Container parent, int cols) {
 		SpringLayout layout = (SpringLayout) parent.getLayout();
 		Component c = parent.getComponent(row * cols + col);
 		return layout.getConstraints(c);
@@ -168,10 +150,9 @@ public final class SpringUtilities {
 
 	/**
 	 * Aligns the first <code>rows</code> * <code>cols</code> components of
-	 * <code>parent</code> in a grid. Each component in a column is as wide as
-	 * the maximum preferred width of the components in that column; height is
-	 * similarly determined for each row. The parent is made just big enough to
-	 * fit them all.
+	 * <code>parent</code> in a grid. Each component in a column is as wide as the
+	 * maximum preferred width of the components in that column; height is similarly
+	 * determined for each row. The parent is made just big enough to fit them all.
 	 * 
 	 * @param parent
 	 *            The parent container, not <code>null</code>.
@@ -189,19 +170,16 @@ public final class SpringUtilities {
 	 * @param yPad
 	 *            y padding between cells
 	 */
-	public static void makeCompactGrid(Container parent, int rows, int cols,
-			int initialX, int initialY, int xPad, int yPad) {
+	public static void makeCompactGrid(Container parent, int rows, int cols, int initialX, int initialY, int xPad,
+			int yPad) {
 		if (parent == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'parent' must not be null.");
+			throw new IllegalArgumentException("Parameter 'parent' must not be null.");
 		}
 		SpringLayout layout;
 		try {
 			layout = (SpringLayout) parent.getLayout();
 		} catch (ClassCastException ex) {
-			throw new RuntimeException(
-					"The first argument to makeCompactGrid must use SpringLayout.",
-					ex);
+			throw new RuntimeException("The first argument to makeCompactGrid must use SpringLayout.", ex);
 		}
 
 		// Align all cells in each column and make them the same width.
@@ -209,12 +187,10 @@ public final class SpringUtilities {
 		for (int c = 0; c < cols; c++) {
 			Spring width = Spring.constant(0);
 			for (int r = 0; r < rows; r++) {
-				width = Spring.max(width,
-						getConstraintsForCell(r, c, parent, cols).getWidth());
+				width = Spring.max(width, getConstraintsForCell(r, c, parent, cols).getWidth());
 			}
 			for (int r = 0; r < rows; r++) {
-				SpringLayout.Constraints constraints = getConstraintsForCell(r,
-						c, parent, cols);
+				SpringLayout.Constraints constraints = getConstraintsForCell(r, c, parent, cols);
 				constraints.setX(x);
 				constraints.setWidth(width);
 			}
@@ -226,12 +202,10 @@ public final class SpringUtilities {
 		for (int r = 0; r < rows; r++) {
 			Spring height = Spring.constant(0);
 			for (int c = 0; c < cols; c++) {
-				height = Spring.max(height,
-						getConstraintsForCell(r, c, parent, cols).getHeight());
+				height = Spring.max(height, getConstraintsForCell(r, c, parent, cols).getHeight());
 			}
 			for (int c = 0; c < cols; c++) {
-				SpringLayout.Constraints constraints = getConstraintsForCell(r,
-						c, parent, cols);
+				SpringLayout.Constraints constraints = getConstraintsForCell(r, c, parent, cols);
 				constraints.setY(y);
 				constraints.setHeight(height);
 			}

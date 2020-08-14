@@ -32,8 +32,7 @@ public final class Console implements MessageQueueRenderer {
 	@Override
 	public void displayMessageQueue(MessageQueue messageQueue) {
 		if (messageQueue == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'messageQueue' must not be null.");
+			throw new IllegalArgumentException("Parameter 'messageQueue' must not be null.");
 		}
 		for (MessageQueueEntry messageQueueEntry : messageQueue.getEntries()) {
 
@@ -44,8 +43,7 @@ public final class Console implements MessageQueueRenderer {
 	@Override
 	public void displayStatusMessage(MessageQueueEntry messageQueueEntry) {
 		if (messageQueueEntry == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'messageQueueEntry' must not be null.");
+			throw new IllegalArgumentException("Parameter 'messageQueueEntry' must not be null.");
 		}
 		setStatus(messageQueueEntry);
 
@@ -53,8 +51,7 @@ public final class Console implements MessageQueueRenderer {
 
 	private void setStatus(MessageQueueEntry messageQueueEntry) {
 		int severity = messageQueueEntry.getMessage().getSeverity();
-		String messageText = messageQueueEntry.getMessage().getId() + " - "
-				+ messageQueueEntry.getMessageText();
+		String messageText = messageQueueEntry.getMessage().getId() + " - " + messageQueueEntry.getMessageText();
 		switch (severity) {
 		case Message.STATUS:
 		case Message.INFO:
@@ -65,16 +62,14 @@ public final class Console implements MessageQueueRenderer {
 			System.err.flush();
 			break;
 		default:
-			throw new IllegalStateException(
-					"Field 'severity' has illegal value " + severity + ".");
+			throw new IllegalStateException("Field 'severity' has illegal value " + severity + ".");
 		}
 	}
 
 	@SuppressWarnings("static-method")
 	public void println(String string) {
 		if (string == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'string' must not be null.");
+			throw new IllegalArgumentException("Parameter 'string' must not be null.");
 		}
 		System.out.println(string);
 		System.out.flush();

@@ -48,143 +48,143 @@ import com.wudsn.tools.base.repository.DataType;
  */
 final class AttributeTableColumnChooser extends MouseAdapter implements ActionListener {
 
-    // Client property used to specify fixed columns which cannot be toggled.
-    // The value is of type int[]
-    // which is sorted.
-    public static final String FIXED_COLUMNS = "FixedColumns"; // NOI18N
+	// Client property used to specify fixed columns which cannot be toggled.
+	// The value is of type int[]
+	// which is sorted.
+	public static final String FIXED_COLUMNS = "FixedColumns"; // NOI18N
 
-    // Client property used to pass column index to action listener
-    private static final String COLUMN_INDEX = "ColumnIndex";
+	// Client property used to pass column index to action listener
+	private static final String COLUMN_INDEX = "ColumnIndex";
 
-    // Client property used to pass the AttributeTable to the action listener.
-    private static final String JTABLE = "AttributeTable";
+	// Client property used to pass the AttributeTable to the action listener.
+	private static final String JTABLE = "AttributeTable";
 
-    // Action command for menu.
-    private static final String SET_COLUMN_DEFAULTS = "setColumnDefaults";
+	// Action command for menu.
+	private static final String SET_COLUMN_DEFAULTS = "setColumnDefaults";
 
-    /*-------------------------------------------------[ Singleton ]---------------------------------------------------*/
+	/*-------------------------------------------------[ Singleton ]---------------------------------------------------*/
 
-    private static WeakReference<AttributeTableColumnChooser> ref = null; // favour
-									  // gc
+	private static WeakReference<AttributeTableColumnChooser> ref = null; // favour
+	// gc
 
-    private AttributeTableColumnChooser() {
-    }
-
-    private static AttributeTableColumnChooser getInstance() {
-	if (ref == null || ref.get() == null) {
-	    ref = new WeakReference<AttributeTableColumnChooser>(new AttributeTableColumnChooser());
+	private AttributeTableColumnChooser() {
 	}
-	return ref.get();
-    }
 
-    /*-------------------------------------------------[ Usage ]---------------------------------------------------*/
-
-    public static void install(AttributeTable table) {
-	table.getTableHeader().addMouseListener(getInstance());
-    }
-
-    public static void uninstall(AttributeTable table) {
-	table.getTableHeader().removeMouseListener(getInstance());
-    }
-
-    public static void hideColumns(TableColumnModel columnModel, int modelColumnIndexes[]) {
-	if (columnModel == null) {
-	    throw new IllegalArgumentException("Parameter 'columnModel' must not be null.");
-	}
-	if (modelColumnIndexes == null) {
-	    throw new IllegalArgumentException("Parameter 'modelColumnIndexes' must not be null.");
-	}
-	TableColumn column[] = new TableColumn[modelColumnIndexes.length];
-	for (int i = 0, j = 0; i < columnModel.getColumnCount(); i++) {
-	    TableColumn col = columnModel.getColumn(i);
-	    if (col.getModelIndex() == modelColumnIndexes[j]) {
-		column[j++] = col;
-		if (j >= modelColumnIndexes.length) {
-		    break;
+	private static AttributeTableColumnChooser getInstance() {
+		if (ref == null || ref.get() == null) {
+			ref = new WeakReference<AttributeTableColumnChooser>(new AttributeTableColumnChooser());
 		}
-	    }
-	}
-	for (int i = 0; i < column.length; i++) {
-	    columnModel.removeColumn(column[i]);
-	}
-    }
-
-    private static boolean isVisibleColumn(TableColumnModel model, int modelCol) {
-	for (int i = 0; i < model.getColumnCount(); i++) {
-	    if (model.getColumn(i).getModelIndex() == modelCol) {
-		return true;
-	    }
-	}
-	return false;
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent me) {
-	maybePopup(me);
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-	maybePopup(e);
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-	maybePopup(e);
-    }
-
-    private void maybePopup(MouseEvent me) {
-	if (!me.isPopupTrigger()) {
-	    return;
+		return ref.get();
 	}
 
-	JTableHeader header = (JTableHeader) me.getComponent();
-	AttributeTable table = (AttributeTable) header.getTable();
-	AttributeTableModel tableModel = (AttributeTableModel) table.getModel();
-	TableColumnModel columnModel = table.getColumnModel();
+	/*-------------------------------------------------[ Usage ]---------------------------------------------------*/
 
-	JPopupMenu popup = new JPopupMenu();
-	for (int i = 0; i < tableModel.getColumnCount(); i++) {
-	    Column column = tableModel.getColumn(i);
-	    DataType dataType = column.getAttribute().getDataType();
-	    JCheckBoxMenuItem item = new JCheckBoxMenuItem();
-	    Action action = new Action(dataType.getLabel(), dataType.getToolTip(), null);
-	    ElementFactory.setButtonTextAndMnemonic(item, action);
-	    item.setSelected(isVisibleColumn(columnModel, i));
-	    item.setEnabled(!column.isFixed());
-	    item.putClientProperty(COLUMN_INDEX, Integer.valueOf((i)));
-	    item.putClientProperty(JTABLE, header.getTable());
-	    item.addActionListener(this);
-	    popup.add(item);
-	}
-	popup.addSeparator();
-	JMenuItem item = ElementFactory.createMenuItem(Actions.AttributeTable_HeaderPopupMenuSetColumnDefaults,
-		SET_COLUMN_DEFAULTS);
-	item.putClientProperty(JTABLE, header.getTable());
-
-	item.addActionListener(this);
-	popup.add(item);
-
-	popup.show(header, me.getX(), me.getY());
-    }
-
-    /**
-     * Menu item clicked.
-     * 
-     * @param actionEvent
-     *            The action event, not <code>null</code>.
-     */
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-	JMenuItem item = (JMenuItem) actionEvent.getSource();
-	AttributeTable table = (AttributeTable) item.getClientProperty(JTABLE);
-
-	if (actionEvent.getActionCommand().equals(SET_COLUMN_DEFAULTS)) {
-	    table.setColumnDefaults();
-	} else {
-	    Integer columnIndex = (Integer) item.getClientProperty(COLUMN_INDEX);
-	    table.setColumnVisible(columnIndex.intValue(), item.isSelected());
+	public static void install(AttributeTable table) {
+		table.getTableHeader().addMouseListener(getInstance());
 	}
 
-    }
+	public static void uninstall(AttributeTable table) {
+		table.getTableHeader().removeMouseListener(getInstance());
+	}
+
+	public static void hideColumns(TableColumnModel columnModel, int modelColumnIndexes[]) {
+		if (columnModel == null) {
+			throw new IllegalArgumentException("Parameter 'columnModel' must not be null.");
+		}
+		if (modelColumnIndexes == null) {
+			throw new IllegalArgumentException("Parameter 'modelColumnIndexes' must not be null.");
+		}
+		TableColumn column[] = new TableColumn[modelColumnIndexes.length];
+		for (int i = 0, j = 0; i < columnModel.getColumnCount(); i++) {
+			TableColumn col = columnModel.getColumn(i);
+			if (col.getModelIndex() == modelColumnIndexes[j]) {
+				column[j++] = col;
+				if (j >= modelColumnIndexes.length) {
+					break;
+				}
+			}
+		}
+		for (int i = 0; i < column.length; i++) {
+			columnModel.removeColumn(column[i]);
+		}
+	}
+
+	private static boolean isVisibleColumn(TableColumnModel model, int modelCol) {
+		for (int i = 0; i < model.getColumnCount(); i++) {
+			if (model.getColumn(i).getModelIndex() == modelCol) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent me) {
+		maybePopup(me);
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		maybePopup(e);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		maybePopup(e);
+	}
+
+	private void maybePopup(MouseEvent me) {
+		if (!me.isPopupTrigger()) {
+			return;
+		}
+
+		JTableHeader header = (JTableHeader) me.getComponent();
+		AttributeTable table = (AttributeTable) header.getTable();
+		AttributeTableModel tableModel = (AttributeTableModel) table.getModel();
+		TableColumnModel columnModel = table.getColumnModel();
+
+		JPopupMenu popup = new JPopupMenu();
+		for (int i = 0; i < tableModel.getColumnCount(); i++) {
+			Column column = tableModel.getColumn(i);
+			DataType dataType = column.getAttribute().getDataType();
+			JCheckBoxMenuItem item = new JCheckBoxMenuItem();
+			Action action = new Action(dataType.getLabel(), dataType.getToolTip(), null);
+			ElementFactory.setButtonTextAndMnemonic(item, action);
+			item.setSelected(isVisibleColumn(columnModel, i));
+			item.setEnabled(!column.isFixed());
+			item.putClientProperty(COLUMN_INDEX, Integer.valueOf((i)));
+			item.putClientProperty(JTABLE, header.getTable());
+			item.addActionListener(this);
+			popup.add(item);
+		}
+		popup.addSeparator();
+		JMenuItem item = ElementFactory.createMenuItem(Actions.AttributeTable_HeaderPopupMenuSetColumnDefaults,
+				SET_COLUMN_DEFAULTS);
+		item.putClientProperty(JTABLE, header.getTable());
+
+		item.addActionListener(this);
+		popup.add(item);
+
+		popup.show(header, me.getX(), me.getY());
+	}
+
+	/**
+	 * Menu item clicked.
+	 * 
+	 * @param actionEvent
+	 *            The action event, not <code>null</code>.
+	 */
+	@Override
+	public void actionPerformed(ActionEvent actionEvent) {
+		JMenuItem item = (JMenuItem) actionEvent.getSource();
+		AttributeTable table = (AttributeTable) item.getClientProperty(JTABLE);
+
+		if (actionEvent.getActionCommand().equals(SET_COLUMN_DEFAULTS)) {
+			table.setColumnDefaults();
+		} else {
+			Integer columnIndex = (Integer) item.getClientProperty(COLUMN_INDEX);
+			table.setColumnVisible(columnIndex.intValue(), item.isSelected());
+		}
+
+	}
 }

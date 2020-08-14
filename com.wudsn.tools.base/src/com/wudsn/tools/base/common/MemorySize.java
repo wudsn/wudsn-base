@@ -27,11 +27,11 @@ package com.wudsn.tools.base.common;
  */
 public final class MemorySize {
 
-    /**
-     * Creation is private.
-     */
-    private MemorySize() {
+	/**
+	 * Creation is private.
+	 */
+	private MemorySize() {
 
-    }
+	}
 
 }

@@ -21,56 +21,51 @@ package com.wudsn.tools.base.atari;
 
 public final class ExecutableFile {
 
-    /**
-     * Determines if a byte array contains a valid Atari executable file.
-     * 
-     * @param data
-     *            The data, not <code>null</code>.
-     * @param offset
-     *            The offset to start the comparison from, a non-negative
-     *            integer.
-     * @return <code>true</code> If data has the required length, starts with
-     *         the executable magic bytes and has correct segments,
-     *         <code>false</code> otherwise.
-     */
-    public static boolean isHeader(byte[] data, int offset) {
-	if (data == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'data' must not be null.");
-	}
-	if (offset < 0) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'data' must not be negative.");
-	}
-	int i = offset;
-
-	while (i < data.length) {
-	    if (i + 2 < data.length) {
-		if ((data[i] & 0xff) == 0xff || (data[i + 1] & 0xff) == 0xff) {
-		    i = i + 2;
-		} else {
-		    if (i == offset) {
-			return false; // No valid header at first index
-		    }
+	/**
+	 * Determines if a byte array contains a valid Atari executable file.
+	 * 
+	 * @param data
+	 *            The data, not <code>null</code>.
+	 * @param offset
+	 *            The offset to start the comparison from, a non-negative integer.
+	 * @return <code>true</code> If data has the required length, starts with the
+	 *         executable magic bytes and has correct segments, <code>false</code>
+	 *         otherwise.
+	 */
+	public static boolean isHeader(byte[] data, int offset) {
+		if (data == null) {
+			throw new IllegalArgumentException("Parameter 'data' must not be null.");
 		}
-	    } else {
-		return false; // Too short, no header
-	    }
-	    if (i + 4 < data.length) {
-
-		int startAddress = (data[i] & 0xff) + 256
-			* (data[i + 1] & 0xff);
-		int endAddress = (data[i + 2] & 0xff) + 256
-			* (data[i + 3] & 0xff);
-		int length = endAddress - startAddress + 1;
-		if (length < 1) {
-		    return false;
+		if (offset < 0) {
+			throw new IllegalArgumentException("Parameter 'data' must not be negative.");
 		}
-		i = i + 4 + length;
-	    } else {
-		return false; // Too short, no address or data
-	    }
+		int i = offset;
+
+		while (i < data.length) {
+			if (i + 2 < data.length) {
+				if ((data[i] & 0xff) == 0xff || (data[i + 1] & 0xff) == 0xff) {
+					i = i + 2;
+				} else {
+					if (i == offset) {
+						return false; // No valid header at first index
+					}
+				}
+			} else {
+				return false; // Too short, no header
+			}
+			if (i + 4 < data.length) {
+
+				int startAddress = (data[i] & 0xff) + 256 * (data[i + 1] & 0xff);
+				int endAddress = (data[i + 2] & 0xff) + 256 * (data[i + 3] & 0xff);
+				int length = endAddress - startAddress + 1;
+				if (length < 1) {
+					return false;
+				}
+				i = i + 4 + length;
+			} else {
+				return false; // Too short, no address or data
+			}
+		}
+		return true;
 	}
-	return true;
-    }
 }

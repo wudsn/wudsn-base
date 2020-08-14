@@ -32,46 +32,45 @@ import com.wudsn.tools.base.common.TextUtility;
 @SuppressWarnings("serial")
 public final class MemorySizeField extends JTextField {
 
-    /**
-     * Creation is public.
-     */
-    public MemorySizeField() {
+	/**
+	 * Creation is public.
+	 */
+	public MemorySizeField() {
 
-    }
-
-    /**
-     * Sets the numeric value with locale dependent formatting.
-     * 
-     * @param value
-     *            The integer value.
-     */
-    public void setValue(int value) {
-	setText(TextUtility.formatAsMemorySize(value));
-    }
-
-    /**
-     * Gets the numeric value by parsing the input with locale dependent
-     * formatting.
-     * 
-     * @return value The integer value, or 0 the the input could not be parsed..
-     */
-    public int getValue() {
-	int result;
-
-	String text = getText();
-	NumberFormat numberFormat = NumberFormat.getNumberInstance();
-	ParsePosition parsePosition = new ParsePosition(0);
-	Number number = numberFormat.parse(text, parsePosition);
-	if (number == null) {
-	    return 0;
 	}
-	result = number.intValue();
-	String suffix = text.substring(parsePosition.getIndex()).trim().toUpperCase();
-	if (suffix.equals("KB")) {
-	    result *= KB;
-	} else if (suffix.equals("MB")) {
-	    result *= MB;
+
+	/**
+	 * Sets the numeric value with locale dependent formatting.
+	 * 
+	 * @param value
+	 *            The integer value.
+	 */
+	public void setValue(int value) {
+		setText(TextUtility.formatAsMemorySize(value));
 	}
-	return result;
-    }
+
+	/**
+	 * Gets the numeric value by parsing the input with locale dependent formatting.
+	 * 
+	 * @return value The integer value, or 0 the the input could not be parsed..
+	 */
+	public int getValue() {
+		int result;
+
+		String text = getText();
+		NumberFormat numberFormat = NumberFormat.getNumberInstance();
+		ParsePosition parsePosition = new ParsePosition(0);
+		Number number = numberFormat.parse(text, parsePosition);
+		if (number == null) {
+			return 0;
+		}
+		result = number.intValue();
+		String suffix = text.substring(parsePosition.getIndex()).trim().toUpperCase();
+		if (suffix.equals("KB")) {
+			result *= KB;
+		} else if (suffix.equals("MB")) {
+			result *= MB;
+		}
+		return result;
+	}
 }

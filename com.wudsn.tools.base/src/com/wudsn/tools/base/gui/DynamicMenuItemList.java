@@ -26,42 +26,42 @@ import javax.swing.JMenuItem;
 
 public final class DynamicMenuItemList {
 
-    private JMenu menu;
-    private int startIndex;
-    private int itemCount;
+	private JMenu menu;
+	private int startIndex;
+	private int itemCount;
 
-    /**
-     * Creation is public.
-     * 
-     * @param menu
-     */
-    public DynamicMenuItemList(JMenu menu) {
-	if (menu == null) {
-	    throw new IllegalArgumentException("Parameter 'menu' must not be null.");
+	/**
+	 * Creation is public.
+	 * 
+	 * @param menu
+	 */
+	public DynamicMenuItemList(JMenu menu) {
+		if (menu == null) {
+			throw new IllegalArgumentException("Parameter 'menu' must not be null.");
+		}
+		this.menu = menu;
+		startIndex = menu.getItemCount();
+		itemCount = 0;
 	}
-	this.menu = menu;
-	startIndex = menu.getItemCount();
-	itemCount = 0;
-    }
 
-    public void setMenuItems(List<JMenuItem> menuItems, boolean enabled) {
-	if (menuItems == null) {
-	    throw new IllegalArgumentException("Parameter 'menuItems' must not be null.");
+	public void setMenuItems(List<JMenuItem> menuItems, boolean enabled) {
+		if (menuItems == null) {
+			throw new IllegalArgumentException("Parameter 'menuItems' must not be null.");
+		}
+		if (itemCount > 0) {
+			for (int i = 0; i < itemCount + 1; i++) {
+				menu.remove(startIndex);
+			}
+		}
+		itemCount = menuItems.size();
+		if (itemCount > 0) {
+			menu.insertSeparator(startIndex);
+			for (int i = 0; i < itemCount; i++) {
+				JMenuItem menuItem = menuItems.get(i);
+				menuItem.setEnabled(enabled);
+				menu.insert(menuItem, startIndex + 1 + i);
+			}
+		}
 	}
-	if (itemCount > 0) {
-	    for (int i = 0; i < itemCount + 1; i++) {
-		menu.remove(startIndex);
-	    }
-	}
-	itemCount = menuItems.size();
-	if (itemCount > 0) {
-	    menu.insertSeparator(startIndex);
-	    for (int i = 0; i < itemCount; i++) {
-		JMenuItem menuItem = menuItems.get(i);
-		menuItem.setEnabled(enabled);
-		menu.insert(menuItem, startIndex + 1 + i);
-	    }
-	}
-    }
 
 }

@@ -24,24 +24,24 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public final class Desktop {
-    public static boolean openBrowser(String url) {
-	if (url == null) {
-	    throw new IllegalArgumentException("Parameter 'url' must not be null.");
+	public static boolean openBrowser(String url) {
+		if (url == null) {
+			throw new IllegalArgumentException("Parameter 'url' must not be null.");
+		}
+
+		try {
+			java.awt.Desktop.getDesktop().browse(new URI(url));
+			return true;
+		} catch (IOException ignore) {
+		} catch (URISyntaxException ignore) {
+		}
+		return false;
 	}
 
-	try {
-	    java.awt.Desktop.getDesktop().browse(new URI(url));
-	    return true;
-	} catch (IOException ignore) {
-	} catch (URISyntaxException ignore) {
+	public static void openFile(File file) throws IOException {
+		if (file == null) {
+			throw new IllegalArgumentException("Parameter 'file' must not be null.");
+		}
+		java.awt.Desktop.getDesktop().open(file);
 	}
-	return false;
-    }
-
-    public static void openFile(File file) throws IOException {
-	if (file == null) {
-	    throw new IllegalArgumentException("Parameter 'file' must not be null.");
-	}
-	java.awt.Desktop.getDesktop().open(file);
-    }
 }

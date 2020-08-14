@@ -32,141 +32,134 @@ import com.wudsn.tools.base.repository.Attribute;
 @SuppressWarnings("serial")
 public abstract class AttributeTableModel extends AbstractTableModel {
 
-    public static final class Column {
+	public static final class Column {
 
-	public static final int HIDDEN = 0x00;
-	public static final int FIXED = 0x01;
-	public static final int VISIBLE = 0x02;
-	public static final int SORTABLE = 0x04;
+		public static final int HIDDEN = 0x00;
+		public static final int FIXED = 0x01;
+		public static final int VISIBLE = 0x02;
+		public static final int SORTABLE = 0x04;
 
-	private Attribute attribute;
-	private int flags;
-	private Comparator<?> comparator;
-	private DefaultTableCellRenderer defaultTableCellRenderer;
-	private DefaultCellEditor defaultCellEditor;
+		private Attribute attribute;
+		private int flags;
+		private Comparator<?> comparator;
+		private DefaultTableCellRenderer defaultTableCellRenderer;
+		private DefaultCellEditor defaultCellEditor;
 
-	Column(Attribute attribute, int flags, Comparator<?> comparator,
-		DefaultTableCellRenderer defaultTableCellRenderer,
-		DefaultCellEditor defaultCellEditor) {
-	    this.attribute = attribute;
-	    this.flags = flags;
-	    this.comparator = comparator;
-	    this.defaultTableCellRenderer = defaultTableCellRenderer;
-	    this.defaultCellEditor = defaultCellEditor;
+		Column(Attribute attribute, int flags, Comparator<?> comparator,
+				DefaultTableCellRenderer defaultTableCellRenderer, DefaultCellEditor defaultCellEditor) {
+			this.attribute = attribute;
+			this.flags = flags;
+			this.comparator = comparator;
+			this.defaultTableCellRenderer = defaultTableCellRenderer;
+			this.defaultCellEditor = defaultCellEditor;
+		}
+
+		public Attribute getAttribute() {
+			return attribute;
+		}
+
+		public boolean isFixed() {
+			return (flags & FIXED) == FIXED;
+		}
+
+		public boolean isVisible() {
+			return isFixed() || (flags & VISIBLE) == VISIBLE;
+		}
+
+		public boolean isSortable() {
+			return (flags & SORTABLE) == SORTABLE;
+		}
+
+		public Comparator<?> getComparator() {
+			return comparator;
+		}
+
+		public DefaultTableCellRenderer getDefaultTableCellRenderer() {
+			return defaultTableCellRenderer;
+		}
+
+		public DefaultCellEditor getDefaultCellEditor() {
+			return defaultCellEditor;
+		}
 	}
 
-	public Attribute getAttribute() {
-	    return attribute;
+	private final List<Column> columns;
+	protected AttributeTable table;
+
+	protected AttributeTableModel() {
+		columns = new ArrayList<Column>();
 	}
 
-	public boolean isFixed() {
-	    return (flags & FIXED) == FIXED;
+	protected final void addColumn(Attribute attribute, int flags) {
+		addColumn(attribute, flags, null, null, null);
 	}
 
-	public boolean isVisible() {
-	    return isFixed() || (flags & VISIBLE) == VISIBLE;
+	protected final void addColumn(Attribute attribute, int flags, Comparator<?> comparator,
+			DefaultTableCellRenderer defaultTableCellRenderer, DefaultCellEditor defaultCellEditor) {
+		columns.add(new Column(attribute, flags, comparator, defaultTableCellRenderer, defaultCellEditor));
 	}
 
-	public boolean isSortable() {
-	    return (flags & SORTABLE) == SORTABLE;
+	@Override
+	public final int getColumnCount() {
+		return columns.size();
 	}
 
-	public Comparator<?> getComparator() {
-	    return comparator;
+	// Used by the JTable object to set the column names
+	@Override
+	public final String getColumnName(int column) {
+		return columns.get(column).getAttribute().getDataType().getLabelWithoutMnemonics();
 	}
 
-	public DefaultTableCellRenderer getDefaultTableCellRenderer() {
-	    return defaultTableCellRenderer;
+	// Used by the JTable object to render different
+	// functionality based on the data type
+	@Override
+	public final Class<? extends Object> getColumnClass(int column) {
+		return columns.get(column).getAttribute().getDataType().getValueClass();
 	}
 
-	public DefaultCellEditor getDefaultCellEditor() {
-	    return defaultCellEditor;
+	/**
+	 * Gets the column definition at an index.
+	 * 
+	 * @param index
+	 *            The index, a non-negative integer..
+	 * @return The column, not <code>null</code>.
+	 */
+	public final Column getColumn(int index) {
+		return columns.get(index);
 	}
-    }
 
-    private final List<Column> columns;
-    protected AttributeTable table;
-
-    protected AttributeTableModel() {
-	columns = new ArrayList<Column>();
-    }
-
-    protected final void addColumn(Attribute attribute, int flags) {
-	addColumn(attribute, flags, null, null, null);
-    }
-
-    protected final void addColumn(Attribute attribute, int flags,
-	    Comparator<?> comparator,
-	    DefaultTableCellRenderer defaultTableCellRenderer,
-	    DefaultCellEditor defaultCellEditor) {
-	columns.add(new Column(attribute, flags, comparator,
-		defaultTableCellRenderer, defaultCellEditor));
-    }
-
-    @Override
-    public final int getColumnCount() {
-	return columns.size();
-    }
-
-    // Used by the JTable object to set the column names
-    @Override
-    public final String getColumnName(int column) {
-	return columns.get(column).getAttribute().getDataType()
-		.getLabelWithoutMnemonics();
-    }
-
-    // Used by the JTable object to render different
-    // functionality based on the data type
-    @Override
-    public final Class<? extends Object> getColumnClass(int column) {
-	return columns.get(column).getAttribute().getDataType().getValueClass();
-    }
-
-    /**
-     * Gets the column definition at an index.
-     * 
-     * @param index
-     *            The index, a non-negative integer..
-     * @return The column, not <code>null</code>.
-     */
-    public final Column getColumn(int index) {
-	return columns.get(index);
-    }
-
-    /**
-     * Gets the column index of an attribute.
-     * 
-     * @param attribute
-     *            The attribute, not <code>null</code>.
-     * @return The column index of an attribute or <code>-1</code> if there is
-     *         no column for that attribute.
-     */
-    public final int getColumnIndex(Attribute attribute) {
-	if (attribute == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'attribute' must not be null.");
+	/**
+	 * Gets the column index of an attribute.
+	 * 
+	 * @param attribute
+	 *            The attribute, not <code>null</code>.
+	 * @return The column index of an attribute or <code>-1</code> if there is no
+	 *         column for that attribute.
+	 */
+	public final int getColumnIndex(Attribute attribute) {
+		if (attribute == null) {
+			throw new IllegalArgumentException("Parameter 'attribute' must not be null.");
+		}
+		int index = -1;
+		for (int i = 0; i < columns.size() && index == -1; i++) {
+			if (columns.get(i).getAttribute() == attribute) {
+				index = i;
+			}
+		}
+		return index;
 	}
-	int index = -1;
-	for (int i = 0; i < columns.size() && index == -1; i++) {
-	    if (columns.get(i).getAttribute() == attribute) {
-		index = i;
-	    }
-	}
-	return index;
-    }
 
-    /**
-     * Sets the attribute table used to display the table. This is used to
-     * compute the line numbering.
-     * 
-     * @param table
-     *            The table, not <code>null</code>.
-     */
-    public final void setTable(AttributeTable table) {
-	if (table == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'table' must not be null.");
+	/**
+	 * Sets the attribute table used to display the table. This is used to compute
+	 * the line numbering.
+	 * 
+	 * @param table
+	 *            The table, not <code>null</code>.
+	 */
+	public final void setTable(AttributeTable table) {
+		if (table == null) {
+			throw new IllegalArgumentException("Parameter 'table' must not be null.");
+		}
+		this.table = table;
 	}
-	this.table = table;
-    }
 }

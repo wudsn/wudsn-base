@@ -27,85 +27,85 @@ import com.wudsn.tools.base.repository.Message;
 
 public final class MessageQueue {
 
-    private MessageQueueRenderer renderer;
-    private List<MessageQueueEntry> entries;
-    private boolean entriesChanged;
-    private MessageQueueEntry firstErrorStatus;
-    private MessageQueueEntry firstInfoStatus;
+	private MessageQueueRenderer renderer;
+	private List<MessageQueueEntry> entries;
+	private boolean entriesChanged;
+	private MessageQueueEntry firstErrorStatus;
+	private MessageQueueEntry firstInfoStatus;
 
-    public MessageQueue() {
-	renderer = null;
-	entries = new ArrayList<MessageQueueEntry>();
-    }
-
-    /**
-     * Sets the renderer for status messages.
-     * 
-     * @param renderer
-     *            The status receiver or <code>null</code>.
-     */
-    public void setMessageQueueRenderer(MessageQueueRenderer renderer) {
-	this.renderer = renderer;
-    }
-
-    public void clear() {
-	entries.clear();
-	entriesChanged = false;
-	firstErrorStatus = null;
-	firstInfoStatus = null;
-    }
-
-    public void sendMessage(Object owner, Attribute attribute, Message message, String... parameters) {
-	if (message == null) {
-	    throw new IllegalArgumentException("Parameter 'message' must not be null.");
-	}
-	MessageQueueEntry messageQueueEntry = new MessageQueueEntry(owner, attribute, message, parameters);
-	sendMessage(messageQueueEntry);
-    }
-
-    public void sendMessage(MessageQueueEntry messageQueueEntry) {
-	if (messageQueueEntry == null) {
-	    throw new IllegalArgumentException("Parameter 'status' must not be null.");
+	public MessageQueue() {
+		renderer = null;
+		entries = new ArrayList<MessageQueueEntry>();
 	}
 
-	if (renderer != null && messageQueueEntry.getMessage().getSeverity() == Message.STATUS) {
-	    renderer.displayStatusMessage(messageQueueEntry);
-	} else {
-	    entries.add(messageQueueEntry);
-	    entriesChanged = true;
-	    if (firstErrorStatus == null && messageQueueEntry.getMessage().getSeverity() == Message.ERROR) {
-		firstErrorStatus = messageQueueEntry;
-	    }
-	    if (firstInfoStatus == null && messageQueueEntry.getMessage().getSeverity() == Message.INFO) {
-		firstInfoStatus = messageQueueEntry;
-	    }
+	/**
+	 * Sets the renderer for status messages.
+	 * 
+	 * @param renderer
+	 *            The status receiver or <code>null</code>.
+	 */
+	public void setMessageQueueRenderer(MessageQueueRenderer renderer) {
+		this.renderer = renderer;
 	}
-    }
 
-    public boolean containsError() {
-	return firstErrorStatus != null;
-    }
+	public void clear() {
+		entries.clear();
+		entriesChanged = false;
+		firstErrorStatus = null;
+		firstInfoStatus = null;
+	}
 
-    public boolean areEntriesChanged() {
-	boolean result = entriesChanged;
-	entriesChanged = false;
-	return result;
-    }
+	public void sendMessage(Object owner, Attribute attribute, Message message, String... parameters) {
+		if (message == null) {
+			throw new IllegalArgumentException("Parameter 'message' must not be null.");
+		}
+		MessageQueueEntry messageQueueEntry = new MessageQueueEntry(owner, attribute, message, parameters);
+		sendMessage(messageQueueEntry);
+	}
 
-    public MessageQueueEntry getFirstError() {
-	return firstErrorStatus;
-    }
+	public void sendMessage(MessageQueueEntry messageQueueEntry) {
+		if (messageQueueEntry == null) {
+			throw new IllegalArgumentException("Parameter 'status' must not be null.");
+		}
 
-    public boolean containsInfo() {
-	return firstInfoStatus != null;
-    }
+		if (renderer != null && messageQueueEntry.getMessage().getSeverity() == Message.STATUS) {
+			renderer.displayStatusMessage(messageQueueEntry);
+		} else {
+			entries.add(messageQueueEntry);
+			entriesChanged = true;
+			if (firstErrorStatus == null && messageQueueEntry.getMessage().getSeverity() == Message.ERROR) {
+				firstErrorStatus = messageQueueEntry;
+			}
+			if (firstInfoStatus == null && messageQueueEntry.getMessage().getSeverity() == Message.INFO) {
+				firstInfoStatus = messageQueueEntry;
+			}
+		}
+	}
 
-    public MessageQueueEntry getFirstInfo() {
-	return firstInfoStatus;
-    }
+	public boolean containsError() {
+		return firstErrorStatus != null;
+	}
 
-    public List<MessageQueueEntry> getEntries() {
-	return entries;
-    }
+	public boolean areEntriesChanged() {
+		boolean result = entriesChanged;
+		entriesChanged = false;
+		return result;
+	}
+
+	public MessageQueueEntry getFirstError() {
+		return firstErrorStatus;
+	}
+
+	public boolean containsInfo() {
+		return firstInfoStatus != null;
+	}
+
+	public MessageQueueEntry getFirstInfo() {
+		return firstInfoStatus;
+	}
+
+	public List<MessageQueueEntry> getEntries() {
+		return entries;
+	}
 
 }

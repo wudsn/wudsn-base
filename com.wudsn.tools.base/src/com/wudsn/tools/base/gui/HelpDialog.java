@@ -51,112 +51,112 @@ import com.wudsn.tools.base.repository.NLS;
  */
 public final class HelpDialog extends SimpleDialog {
 
-    public final static class VersionResourceModifier implements ResourceModifier {
-	public VersionResourceModifier() {
+	public final static class VersionResourceModifier implements ResourceModifier {
+		public VersionResourceModifier() {
 
+		}
+
+		@Override
+		public byte[] modifyResource(URL url, byte[] data) {
+			if (url.getFile().toLowerCase().endsWith(".html")) {
+				try {
+					Charset charset = Charset.forName("UTF-8");
+					String html = new String(data, charset);
+					String localVersion = Application.getInstance().getLocalVersion();
+					html = html.replaceAll("\\$\\{version\\}", localVersion);
+					data = html.getBytes(charset);
+				} catch (UnsupportedCharsetException ex) {
+					throw new RuntimeException(ex);
+				}
+
+			}
+			return data;
+		}
+	}
+
+	private String path;
+	private int width;
+	private int height;
+	private ResourceModifier resourceModifier;
+
+	JEditorPane jep;
+
+	public HelpDialog(JFrame parent, String path, int width, int height, ResourceModifier resourceModifier) {
+		super(parent, Texts.HelpDialog_Title, false);
+		if (path == null) {
+			throw new IllegalArgumentException("Parameter 'path' must not be null.");
+		}
+		this.path = path;
+		this.width = width;
+		this.height = height;
+		resourceModifier = new VersionResourceModifier();
+		this.resourceModifier = resourceModifier;
 	}
 
 	@Override
-	public byte[] modifyResource(URL url, byte[] data) {
-	    if (url.getFile().toLowerCase().endsWith(".html")) {
-		try {
-		    Charset charset = Charset.forName("UTF-8");
-		    String html = new String(data, charset);
-		    String localVersion = Application.getInstance().getLocalVersion();
-		    html=html.replaceAll("\\$\\{version\\}", localVersion);
-		    data = html.getBytes(charset);
-		} catch (UnsupportedCharsetException ex) {
-		    throw new RuntimeException(ex);
+	protected void initComponents(JDialog dialog) {
+
+		Container pane = dialog.getContentPane();
+
+		jep = new JEditorPane();
+		jep.setEditable(false);
+
+		JScrollPane scrollPane = new JScrollPane(jep);
+		pane.add(scrollPane, BorderLayout.CENTER);
+
+		String fullPath = NLS.getResourcePath(path);
+		if (fullPath == null) {
+			throw new RuntimeException("Help resource '" + path + "' not found in path.");
 		}
+		URL url = ClassPathUtility.class.getClassLoader().getResource(fullPath);
+		setPage(url);
+		jep.setPreferredSize(new Dimension(width, height));
 
-	    }
-	    return data;
-	}
-    }
+		// Add listener for hyperlinks in the text.
+		jep.addHyperlinkListener(new HyperlinkListener() {
 
-    private String path;
-    private int width;
-    private int height;
-    private ResourceModifier resourceModifier;
+			@Override
+			public void hyperlinkUpdate(HyperlinkEvent e) {
+				if (e.getEventType() == EventType.ACTIVATED) {
+					URL url = e.getURL();
+					String protocol = url.getProtocol();
+					if (protocol.equals("file") || protocol.equals("jar")) {
+						setPage(url);
+						jep.scrollToReference(e.getDescription());
+						return;
+					} else if (protocol.equals("http") || protocol.equals("https")) {
+						if (Desktop.isDesktopSupported()) {
+							try {
+								Desktop.getDesktop().browse(url.toURI());
+							} catch (IOException ex) {
+								throw new RuntimeException("Cannot load page '" + url + "'.", ex);
+							} catch (URISyntaxException ex) {
+								throw new RuntimeException("Cannot load page '" + url + "'.", ex);
+							}
+						}
+					}
+				}
 
-    JEditorPane jep;
-
-    public HelpDialog(JFrame parent, String path, int width, int height, ResourceModifier resourceModifier) {
-	super(parent, Texts.HelpDialog_Title, false);
-	if (path == null) {
-	    throw new IllegalArgumentException("Parameter 'path' must not be null.");
-	}
-	this.path = path;
-	this.width = width;
-	this.height = height;
-	resourceModifier = new VersionResourceModifier();
-	this.resourceModifier = resourceModifier;
-    }
-
-    @Override
-    protected void initComponents(JDialog dialog) {
-
-	Container pane = dialog.getContentPane();
-
-	jep = new JEditorPane();
-	jep.setEditable(false);
-	
-	JScrollPane scrollPane = new JScrollPane(jep);
-	pane.add(scrollPane, BorderLayout.CENTER);
-
-	String fullPath = NLS.getResourcePath(path);
-	if (fullPath == null) {
-	    throw new RuntimeException("Help resource '" + path + "' not found in path.");
-	}
-	URL url = ClassPathUtility.class.getClassLoader().getResource(fullPath);
-	setPage(url);
-	jep.setPreferredSize(new Dimension(width, height));
-
-	// Add listener for hyperlinks in the text.
-	jep.addHyperlinkListener(new HyperlinkListener() {
-
-	    @Override
-	    public void hyperlinkUpdate(HyperlinkEvent e) {
-		if (e.getEventType() == EventType.ACTIVATED) {
-		    URL url = e.getURL();
-		    String protocol = url.getProtocol();
-		    if (protocol.equals("file") || protocol.equals("jar")) {
-			setPage(url);
-			jep.scrollToReference(e.getDescription());
-			return;
-		    } else if (protocol.equals("http") || protocol.equals("https")) {
-			if (Desktop.isDesktopSupported()) {
-			    try {
-				Desktop.getDesktop().browse(url.toURI());
-			    } catch (IOException ex) {
-				throw new RuntimeException("Cannot load page '" + url + "'.", ex);
-			    } catch (URISyntaxException ex) {
-				throw new RuntimeException("Cannot load page '" + url + "'.", ex);
-			    }
 			}
-		    }
+		});
+		initButtonBar();
+	}
+
+	/**
+	 * Sets the page content based on an URL.
+	 * 
+	 * @param url
+	 *            The URL, not <code>null</code>.
+	 */
+	void setPage(URL url) {
+		if (url == null) {
+			throw new IllegalArgumentException("Parameter 'url' must not be null.");
 		}
-
-	    }
-	});
-	initButtonBar();
-    }
-
-    /**
-     * Sets the page content based on an URL.
-     * 
-     * @param url
-     *            The URL, not <code>null</code>.
-     */
-    void setPage(URL url) {
-	if (url == null) {
-	    throw new IllegalArgumentException("Parameter 'url' must not be null.");
+		try {
+			url = new URL(url, "", ResourceUtility.createStreamHandler(resourceModifier));
+			jep.setPage(url);
+		} catch (IOException ex) {
+			jep.setText(ex.getMessage());
+		}
 	}
-	try {
-	    url = new URL(url, "", ResourceUtility.createStreamHandler(resourceModifier));
-	    jep.setPage(url);
-	} catch (IOException ex) {
-	    jep.setText(ex.getMessage());
-	}
-    }
 }

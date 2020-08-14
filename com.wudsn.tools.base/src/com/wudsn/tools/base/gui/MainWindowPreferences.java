@@ -32,49 +32,49 @@ import javax.swing.JFrame;
  */
 public interface MainWindowPreferences {
 
-    /**
-     * Sets the main window extended state.
-     * 
-     * @param mainWindowExtendedState
-     *            The main window extended state, see
-     *            {@link JFrame#getExtendedState()}.
-     */
-    public void setMainWindowExtendedState(int mainWindowExtendedState);
+	/**
+	 * Sets the main window extended state.
+	 * 
+	 * @param mainWindowExtendedState
+	 *            The main window extended state, see
+	 *            {@link JFrame#getExtendedState()}.
+	 */
+	public void setMainWindowExtendedState(int mainWindowExtendedState);
 
-    /**
-     * Gets the main window extended state.
-     * 
-     * @return The main window extended state.
-     */
-    public int getMainWindowExtendedState();
+	/**
+	 * Gets the main window extended state.
+	 * 
+	 * @return The main window extended state.
+	 */
+	public int getMainWindowExtendedState();
 
-    /**
-     * Sets the main window location.
-     * 
-     * @param mainWindowLocation
-     *            The main window location, not <code>null</code>.
-     */
-    public void setMainWindowLocation(Point mainWindowLocation);
+	/**
+	 * Sets the main window location.
+	 * 
+	 * @param mainWindowLocation
+	 *            The main window location, not <code>null</code>.
+	 */
+	public void setMainWindowLocation(Point mainWindowLocation);
 
-    /**
-     * Gets the main window location.
-     * 
-     * @return The main window location or <code>null</code>.
-     */
-    public Point getMainWindowLocation();
+	/**
+	 * Gets the main window location.
+	 * 
+	 * @return The main window location or <code>null</code>.
+	 */
+	public Point getMainWindowLocation();
 
-    /**
-     * Sets the main window size.
-     * 
-     * @param mainWindowSize
-     *            The main window size, not <code>null</code>.
-     */
-    public void setMainWindowSize(Dimension mainWindowSize);
+	/**
+	 * Sets the main window size.
+	 * 
+	 * @param mainWindowSize
+	 *            The main window size, not <code>null</code>.
+	 */
+	public void setMainWindowSize(Dimension mainWindowSize);
 
-    /**
-     * Gets the main window size.
-     * 
-     * @return The main window size or <code>null</code>.
-     */
-    public Dimension getMainWindowSize();
+	/**
+	 * Gets the main window size.
+	 * 
+	 * @return The main window size or <code>null</code>.
+	 */
+	public Dimension getMainWindowSize();
 }

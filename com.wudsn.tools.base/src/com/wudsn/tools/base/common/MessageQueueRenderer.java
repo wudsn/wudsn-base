@@ -19,9 +19,8 @@
 
 package com.wudsn.tools.base.common;
 
-
 public interface MessageQueueRenderer {
-    public void displayMessageQueue(MessageQueue messageQueue);
+	public void displayMessageQueue(MessageQueue messageQueue);
 
-    public void displayStatusMessage(MessageQueueEntry messageQueueEntry);
+	public void displayStatusMessage(MessageQueueEntry messageQueueEntry);
 }

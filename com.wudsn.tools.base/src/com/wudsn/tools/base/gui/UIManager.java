@@ -22,22 +22,22 @@ package com.wudsn.tools.base.gui;
 import com.wudsn.tools.base.common.Log;
 
 public final class UIManager {
-    
-    /**
-     * Creation is private.
-     */
-    private UIManager() {
 
-    }
+	/**
+	 * Creation is private.
+	 */
+	private UIManager() {
 
-    /**
-     * Try to set the system look and feel.
-     */
-    public static void init() {
-	try {
-	    javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
-	} catch (Exception ignore) {
-	    Log.logError("Cannot set system look and feel.", null, ignore);
 	}
-    }
+
+	/**
+	 * Try to set the system look and feel.
+	 */
+	public static void init() {
+		try {
+			javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception ignore) {
+			Log.logError("Cannot set system look and feel.", null, ignore);
+		}
+	}
 }

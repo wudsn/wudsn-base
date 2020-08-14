@@ -22,51 +22,51 @@ import com.wudsn.tools.base.repository.Attribute;
 
 public final class ConsoleCommandParameter {
 
-    public static final class Cardinality {
-	/**
-	 * Creation is private.
-	 */
-	private Cardinality() {
+	public static final class Cardinality {
+		/**
+		 * Creation is private.
+		 */
+		private Cardinality() {
+		}
+
+		public static final int OPTIONAL = 1;
+		public static final int MANDATORY = 2;
+		public static final int MULTIPLE = 2;
 	}
 
-	public static final int OPTIONAL = 1;
-	public static final int MANDATORY = 2;
-	public static final int MULTIPLE = 2;
-    }
+	private Attribute attribute;
+	private int cardinality;
 
-    private Attribute attribute;
-    private int cardinality;
+	/**
+	 * Used by {@link ConsoleCommand#addParameter(Attribute, int)}.
+	 * 
+	 * @param attribute
+	 *            The defining attribute or <code>null</code>.
+	 * @param cardinality
+	 *            The cardinality of the parameter, see {@link Cardinality}
+	 */
+	ConsoleCommandParameter(Attribute attribute, int cardinality) {
+		this.attribute = attribute;
+		this.cardinality = cardinality;
 
-    /**
-     * Used by {@link ConsoleCommand#addParameter(Attribute, int)}.
-     * 
-     * @param attribute
-     *            The defining attribute or <code>null</code>.
-     * @param cardinality
-     *            The cardinality of the parameter, see {@link Cardinality}
-     */
-    ConsoleCommandParameter(Attribute attribute, int cardinality) {
-	this.attribute = attribute;
-	this.cardinality = cardinality;
+	}
 
-    }
+	/**
+	 * Gets the defining attribute of the parameter.
+	 * 
+	 * @return The defining attribute, not <code>null</code>.
+	 */
+	public Attribute getAttribute() {
+		return attribute;
+	}
 
-    /**
-     * Gets the defining attribute of the parameter.
-     * 
-     * @return The defining attribute, not <code>null</code>.
-     */
-    public Attribute getAttribute() {
-	return attribute;
-    }
-
-    /**
-     * Gets the cardinality of the parameter.
-     * 
-     * @return See {@link Cardinality}.
-     */
-    public int getCardinality() {
-	return cardinality;
-    }
+	/**
+	 * Gets the cardinality of the parameter.
+	 * 
+	 * @return See {@link Cardinality}.
+	 */
+	public int getCardinality() {
+		return cardinality;
+	}
 
 }

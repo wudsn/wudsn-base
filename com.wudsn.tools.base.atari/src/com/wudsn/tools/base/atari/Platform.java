@@ -47,10 +47,8 @@ public final class Platform extends ValueSet {
 		values = new TreeMap<String, Platform>();
 
 		UNKNOWN = add("UNKNOWN", "");
-		ATARI_5200 = add("ATARI_5200",
-				"data/CartridgeTypeSampleCreator-Atari5200.rom");
-		ATARI_800 = add("ATARI_800",
-				"data/CartridgeTypeSampleCreator-Atari800.rom");
+		ATARI_5200 = add("ATARI_5200", "data/CartridgeTypeSampleCreator-Atari5200.rom");
+		ATARI_800 = add("ATARI_800", "data/CartridgeTypeSampleCreator-Atari800.rom");
 
 		initializeClass(Platform.class, ValueSets.class);
 	}
@@ -62,12 +60,10 @@ public final class Platform extends ValueSet {
 
 	private static Platform add(String id, String cartridgeTypeSampleCreatorPath) {
 		if (id == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'id' must not be null.");
+			throw new IllegalArgumentException("Parameter 'id' must not be null.");
 		}
 		if (cartridgeTypeSampleCreatorPath == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'cartridgeTypeSampleCreatorPath' must not be null.");
+			throw new IllegalArgumentException("Parameter 'cartridgeTypeSampleCreatorPath' must not be null.");
 		}
 		Platform result;
 		result = new Platform(id, cartridgeTypeSampleCreatorPath);
@@ -81,8 +77,7 @@ public final class Platform extends ValueSet {
 	 * @return The unmodifiable list of all values, not <code>null</code>.
 	 */
 	public static List<Platform> getValues() {
-		return Collections.unmodifiableList(new ArrayList<Platform>(values
-				.values()));
+		return Collections.unmodifiableList(new ArrayList<Platform>(values.values()));
 	}
 
 	/**
@@ -94,8 +89,7 @@ public final class Platform extends ValueSet {
 	 */
 	public static Platform getInstance(String id) {
 		if (id == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'id' must not be null.");
+			throw new IllegalArgumentException("Parameter 'id' must not be null.");
 		}
 		return values.get(id);
 	}

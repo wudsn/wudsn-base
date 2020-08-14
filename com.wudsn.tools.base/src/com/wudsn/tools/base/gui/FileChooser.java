@@ -39,263 +39,262 @@ import com.wudsn.tools.base.common.FileUtility.FileExtensionFileFilter;
  */
 public abstract class FileChooser {
 
-    /**
-     * Wrapper class for standard JFileChooser.
-     */
-    private static final class FileChooserWrapper extends FileChooser {
-	private JFileChooser fileChooser;
+	/**
+	 * Wrapper class for standard JFileChooser.
+	 */
+	private static final class FileChooserWrapper extends FileChooser {
+		private JFileChooser fileChooser;
 
-	public FileChooserWrapper() {
-	    fileChooser = new JFileChooser();
-	}
+		public FileChooserWrapper() {
+			fileChooser = new JFileChooser();
+		}
 
-	@Override
-	public void setDialogTitle(String dialogTitle) {
-	    fileChooser.setDialogTitle(dialogTitle);
-	}
+		@Override
+		public void setDialogTitle(String dialogTitle) {
+			fileChooser.setDialogTitle(dialogTitle);
+		}
 
-	@Override
-	public void setMultiSelectionEnabled(boolean multiSelectionEnabled) {
-	    fileChooser.setMultiSelectionEnabled(multiSelectionEnabled);
+		@Override
+		public void setMultiSelectionEnabled(boolean multiSelectionEnabled) {
+			fileChooser.setMultiSelectionEnabled(multiSelectionEnabled);
 
-	}
+		}
 
-	@Override
-	public void setCurrentDirectory(File dir) {
-	    fileChooser.setCurrentDirectory(dir);
-	}
+		@Override
+		public void setCurrentDirectory(File dir) {
+			fileChooser.setCurrentDirectory(dir);
+		}
 
-	@Override
-	public File getCurrentDirectory() {
-	    File result;
-	    result = fileChooser.getCurrentDirectory();
-	    return result;
-	}
-
-	@Override
-	public void setSelectedFile(File file) {
-	    fileChooser.setSelectedFile(file);
-
-	}
-
-	@Override
-	public void setFileFilter(FileFilter filefilter) {
-	    fileChooser.setFileFilter(filefilter);
-	}
-
-	@Override
-	public File getSelectedFile() {
-	    File result;
-
-	    result = fileChooser.getSelectedFile();
-	    return result;
-	}
-
-	@Override
-	public File[] getSelectedFiles() {
-	    File result[];
-
-	    result = fileChooser.getSelectedFiles();
-	    return result;
-	}
-
-	@Override
-	public int showOpenDialog(JFrame parent) {
-	    int result = fileChooser.showOpenDialog(parent);
-	    return result;
-	}
-
-	@Override
-	public int showSaveDialog(JFrame parent) {
-	    int result;
-	    result = fileChooser.showSaveDialog(parent);
-	    return result;
-	}
-    }
-
-    /**
-     * Wrapper class for standard JFileChooser.
-     */
-    private static final class FileDialogWrapper extends FileChooser {
-
-	private String dialogTitle;
-	private boolean multiSelectionEnabled;
-	private File currentDirectory;
-	FileFilter fileFilter;
-	private File selectedFile;
-	private File[] selectedFiles;
-
-	public FileDialogWrapper() {
-
-	}
-
-	@Override
-	public void setDialogTitle(String dialogTitle) {
-	    this.dialogTitle = dialogTitle;
-	}
-
-	@Override
-	public void setMultiSelectionEnabled(boolean multiSelectionEnabled) {
-	    this.multiSelectionEnabled = multiSelectionEnabled;
-
-	}
-
-	@Override
-	public void setCurrentDirectory(File currentDirectory) {
-	    this.currentDirectory = currentDirectory;
-	}
-
-	@Override
-	public File getCurrentDirectory() {
-	    if (currentDirectory == null) {
-		currentDirectory = new File(System.getProperty("user.home"));
-	    }
-	    return currentDirectory;
-	}
-
-	@Override
-	public void setSelectedFile(File selectedFile) {
-	    this.selectedFile = selectedFile;
-
-	}
-
-	@Override
-	public void setFileFilter(FileFilter fileFilter) {
-	    this.fileFilter = fileFilter;
-	}
-
-	@Override
-	public File getSelectedFile() {
-	    return selectedFile;
-	}
-
-	@Override
-	public File[] getSelectedFiles() {
-	    return selectedFiles;
-
-	}
-
-	@Override
-	public int showOpenDialog(JFrame parent) {
-	    return showDialog(parent, FileDialog.LOAD);
-	}
-
-	@Override
-	public int showSaveDialog(JFrame parent) {
-	    return showDialog(parent, FileDialog.SAVE);
-	}
-
-	private int showDialog(JFrame parent, int mode) {
-	    FileDialog fileDialog = new FileDialog(parent, dialogTitle, mode);
-
-	    JDK.FileDialog.setMultipleMode(fileDialog, multiSelectionEnabled);
-
-	    
-	    // Create file name file wrapper. Note that this does not work in
-	    // Windows. Therefore the file will be called, but no filtering will
-	    // be active. Therefore the additional file extension filter support
-	    // (see below) was added.
-	    FilenameFilter fileNameFilter = null;
-	    if (fileFilter != null) {
-		fileNameFilter = new FilenameFilter() {
-
-		    @Override
-		    public boolean accept(File dir, String name) {
-			boolean result = fileFilter.accept(new File(dir, name));
+		@Override
+		public File getCurrentDirectory() {
+			File result;
+			result = fileChooser.getCurrentDirectory();
 			return result;
+		}
 
-		    }
-		};
-	    }
-	    fileDialog.setFilenameFilter(fileNameFilter);
+		@Override
+		public void setSelectedFile(File file) {
+			fileChooser.setSelectedFile(file);
 
-	    // Preset current directory.
-	    File currentDirectory = getCurrentDirectory();
-	    if (currentDirectory != null) {
-		fileDialog.setDirectory(currentDirectory.getAbsolutePath());
-	    } else {
-		fileDialog.setDirectory(null);
-	    }
+		}
 
-	    // Preset current select file.
-	    if (selectedFile != null) {
-		fileDialog.setFile(selectedFile.getName());
-	    } else {
-		if (fileFilter instanceof FileExtensionFileFilter) {
-		    FileExtensionFileFilter fileExtensionFileFilter = (FileExtensionFileFilter) fileFilter;
-		    fileDialog.setFile("*" + fileExtensionFileFilter.getFileExtension());
+		@Override
+		public void setFileFilter(FileFilter filefilter) {
+			fileChooser.setFileFilter(filefilter);
+		}
+
+		@Override
+		public File getSelectedFile() {
+			File result;
+
+			result = fileChooser.getSelectedFile();
+			return result;
+		}
+
+		@Override
+		public File[] getSelectedFiles() {
+			File result[];
+
+			result = fileChooser.getSelectedFiles();
+			return result;
+		}
+
+		@Override
+		public int showOpenDialog(JFrame parent) {
+			int result = fileChooser.showOpenDialog(parent);
+			return result;
+		}
+
+		@Override
+		public int showSaveDialog(JFrame parent) {
+			int result;
+			result = fileChooser.showSaveDialog(parent);
+			return result;
+		}
+	}
+
+	/**
+	 * Wrapper class for standard JFileChooser.
+	 */
+	private static final class FileDialogWrapper extends FileChooser {
+
+		private String dialogTitle;
+		private boolean multiSelectionEnabled;
+		private File currentDirectory;
+		FileFilter fileFilter;
+		private File selectedFile;
+		private File[] selectedFiles;
+
+		public FileDialogWrapper() {
+
+		}
+
+		@Override
+		public void setDialogTitle(String dialogTitle) {
+			this.dialogTitle = dialogTitle;
+		}
+
+		@Override
+		public void setMultiSelectionEnabled(boolean multiSelectionEnabled) {
+			this.multiSelectionEnabled = multiSelectionEnabled;
+
+		}
+
+		@Override
+		public void setCurrentDirectory(File currentDirectory) {
+			this.currentDirectory = currentDirectory;
+		}
+
+		@Override
+		public File getCurrentDirectory() {
+			if (currentDirectory == null) {
+				currentDirectory = new File(System.getProperty("user.home"));
+			}
+			return currentDirectory;
+		}
+
+		@Override
+		public void setSelectedFile(File selectedFile) {
+			this.selectedFile = selectedFile;
+
+		}
+
+		@Override
+		public void setFileFilter(FileFilter fileFilter) {
+			this.fileFilter = fileFilter;
+		}
+
+		@Override
+		public File getSelectedFile() {
+			return selectedFile;
+		}
+
+		@Override
+		public File[] getSelectedFiles() {
+			return selectedFiles;
+
+		}
+
+		@Override
+		public int showOpenDialog(JFrame parent) {
+			return showDialog(parent, FileDialog.LOAD);
+		}
+
+		@Override
+		public int showSaveDialog(JFrame parent) {
+			return showDialog(parent, FileDialog.SAVE);
+		}
+
+		private int showDialog(JFrame parent, int mode) {
+			FileDialog fileDialog = new FileDialog(parent, dialogTitle, mode);
+
+			JDK.FileDialog.setMultipleMode(fileDialog, multiSelectionEnabled);
+
+			// Create file name file wrapper. Note that this does not work in
+			// Windows. Therefore the file will be called, but no filtering will
+			// be active. Therefore the additional file extension filter support
+			// (see below) was added.
+			FilenameFilter fileNameFilter = null;
+			if (fileFilter != null) {
+				fileNameFilter = new FilenameFilter() {
+
+					@Override
+					public boolean accept(File dir, String name) {
+						boolean result = fileFilter.accept(new File(dir, name));
+						return result;
+
+					}
+				};
+			}
+			fileDialog.setFilenameFilter(fileNameFilter);
+
+			// Preset current directory.
+			File currentDirectory = getCurrentDirectory();
+			if (currentDirectory != null) {
+				fileDialog.setDirectory(currentDirectory.getAbsolutePath());
+			} else {
+				fileDialog.setDirectory(null);
+			}
+
+			// Preset current select file.
+			if (selectedFile != null) {
+				fileDialog.setFile(selectedFile.getName());
+			} else {
+				if (fileFilter instanceof FileExtensionFileFilter) {
+					FileExtensionFileFilter fileExtensionFileFilter = (FileExtensionFileFilter) fileFilter;
+					fileDialog.setFile("*" + fileExtensionFileFilter.getFileExtension());
+				} else {
+					fileDialog.setFile(null);
+				}
+			}
+
+			int result = JFileChooser.CANCEL_OPTION;
+			fileDialog.setVisible(true);
+
+			// Take over new current directory.
+			String currentDirectoryPath = fileDialog.getDirectory();
+			if (currentDirectoryPath == null || StringUtility.isEmpty(currentDirectoryPath)) {
+				setCurrentDirectory(null);
+
+			} else {
+				setCurrentDirectory(new File(currentDirectoryPath));
+			}
+
+			// Take over new select file(s).
+			selectedFile = null;
+			selectedFiles = null;
+			if (multiSelectionEnabled) {
+				selectedFiles = JDK.FileDialog.getFiles(fileDialog);
+				if (selectedFiles.length > 0) {
+					result = JFileChooser.APPROVE_OPTION;
+				}
+			} else {
+				String selectedFileName = fileDialog.getFile();
+				if (selectedFileName != null) {
+					result = JFileChooser.APPROVE_OPTION;
+					selectedFile = new File(currentDirectoryPath, selectedFileName);
+				}
+			}
+
+			return result;
+		}
+	}
+
+	/**
+	 * Factory method the returns the correct implementation.
+	 * 
+	 * @return The new instance, not <code>null</code>.
+	 */
+	public static FileChooser createInstance() {
+		FileChooser result;
+
+		boolean useFileChooser = false;
+		if (useFileChooser) {
+			result = new FileChooserWrapper();
 		} else {
-		    fileDialog.setFile(null);
+			result = new FileDialogWrapper();
 		}
-	    }
-
-	    int result = JFileChooser.CANCEL_OPTION;
-	    fileDialog.setVisible(true);
-
-	    // Take over new current directory.
-	    String currentDirectoryPath = fileDialog.getDirectory();
-	    if (currentDirectoryPath == null || StringUtility.isEmpty(currentDirectoryPath)) {
-		setCurrentDirectory(null);
-
-	    } else {
-		setCurrentDirectory(new File(currentDirectoryPath));
-	    }
-
-	    // Take over new select file(s).
-	    selectedFile = null;
-	    selectedFiles = null;
-	    if (multiSelectionEnabled) {
-		selectedFiles = JDK.FileDialog.getFiles(fileDialog);
-		if (selectedFiles.length > 0) {
-		    result = JFileChooser.APPROVE_OPTION;
-		}
-	    } else {
-		String selectedFileName = fileDialog.getFile();
-		if (selectedFileName != null) {
-		    result = JFileChooser.APPROVE_OPTION;
-		    selectedFile = new File(currentDirectoryPath, selectedFileName);
-		}
-	    }
-
-	    return result;
+		return result;
 	}
-    }
 
-    /**
-     * Factory method the returns the correct implementation.
-     * 
-     * @return The new instance, not <code>null</code>.
-     */
-    public static FileChooser createInstance() {
-	FileChooser result;
+	public abstract void setDialogTitle(String dialogTitle);
 
-	boolean useFileChooser = false;
-	if (useFileChooser) {
-	    result = new FileChooserWrapper();
-	} else {
-	    result = new FileDialogWrapper();
-	}
-	return result;
-    }
+	public abstract void setMultiSelectionEnabled(boolean multiSelectionEnabled);
 
-    public abstract void setDialogTitle(String dialogTitle);
+	public abstract void setCurrentDirectory(File dir);
 
-    public abstract void setMultiSelectionEnabled(boolean multiSelectionEnabled);
+	public abstract File getCurrentDirectory();
 
-    public abstract void setCurrentDirectory(File dir);
+	public abstract void setSelectedFile(File file);
 
-    public abstract File getCurrentDirectory();
+	public abstract void setFileFilter(FileFilter filefilter);
 
-    public abstract void setSelectedFile(File file);
+	public abstract File getSelectedFile();
 
-    public abstract void setFileFilter(FileFilter filefilter);
+	public abstract File[] getSelectedFiles();
 
-    public abstract File getSelectedFile();
+	public abstract int showOpenDialog(JFrame parent);
 
-    public abstract File[] getSelectedFiles();
-
-    public abstract int showOpenDialog(JFrame parent);
-
-    public abstract int showSaveDialog(JFrame parent);
+	public abstract int showSaveDialog(JFrame parent);
 
 }

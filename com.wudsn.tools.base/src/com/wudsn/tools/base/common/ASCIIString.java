@@ -32,88 +32,84 @@ import java.util.Comparator;
  */
 public final class ASCIIString {
 
-    public static Comparator<String> COMPARATOR;
-    public static Comparator<String> CASE_INSENSITIVE_COMPARATOR;
+	public static Comparator<String> COMPARATOR;
+	public static Comparator<String> CASE_INSENSITIVE_COMPARATOR;
 
-    private String value;
+	private String value;
 
-    static {
-	COMPARATOR = new Comparator<String>() {
+	static {
+		COMPARATOR = new Comparator<String>() {
 
-	    @Override
-	    public int compare(String o1, String o2) {
-		return o1.compareTo(o2);
-	    }
-	};
+			@Override
+			public int compare(String o1, String o2) {
+				return o1.compareTo(o2);
+			}
+		};
 
-	CASE_INSENSITIVE_COMPARATOR = StringUtility.CASE_INSENSITIVE_COMPARATOR;
-    }
-
-    /**
-     * Creation is public, so it can be used in table cell editors.
-     * 
-     * @param value
-     *            The string value, may be null.
-     */
-    public ASCIIString(String value) {
-	this.value = value;
-
-    }
-
-    @Override
-    public String toString() {
-	return value;
-    }
-
-    /**
-     * Gets the bytes representing the ASCII string.
-     * 
-     * @param value
-     *            The value may be empty, not <code>null</code>.
-     * @return The bytes representing the ASCII string, maybe empty, not
-     *         <code>null</code>.
-     */
-    public static byte[] getBytes(String value) {
-	if (value == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'value2' must not be null.");
+		CASE_INSENSITIVE_COMPARATOR = StringUtility.CASE_INSENSITIVE_COMPARATOR;
 	}
-	try {
-	    return value.getBytes("US-ASCII");
-	} catch (UnsupportedEncodingException ex) {
-	    throw new RuntimeException("Unsupported non ASCII characters in '"
-		    + value + "'", ex);
-	}
-    }
 
-    /**
-     * Gets the bytes representing the ASCII string.
-     * 
-     * @param value
-     *            The value may be empty, not <code>null</code>.
-     * @param length
-     *            The length of the result, a non-negative integer.
-     * @return The bytes array with the specified length, not <code>null</code>.
-     */
-    public static byte[] getBytesCentered(String value, int length) {
-	if (value == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'value' must not be null.");
+	/**
+	 * Creation is public, so it can be used in table cell editors.
+	 * 
+	 * @param value
+	 *            The string value, may be null.
+	 */
+	public ASCIIString(String value) {
+		this.value = value;
+
 	}
-	if (length < 0) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'line_length' must not be negative. Specified valus is "
-			    + length + ".");
+
+	@Override
+	public String toString() {
+		return value;
 	}
-	if (value.length() > length) {
-	    value = value.substring(0, length);
+
+	/**
+	 * Gets the bytes representing the ASCII string.
+	 * 
+	 * @param value
+	 *            The value may be empty, not <code>null</code>.
+	 * @return The bytes representing the ASCII string, maybe empty, not
+	 *         <code>null</code>.
+	 */
+	public static byte[] getBytes(String value) {
+		if (value == null) {
+			throw new IllegalArgumentException("Parameter 'value2' must not be null.");
+		}
+		try {
+			return value.getBytes("US-ASCII");
+		} catch (UnsupportedEncodingException ex) {
+			throw new RuntimeException("Unsupported non ASCII characters in '" + value + "'", ex);
+		}
 	}
-	byte[] result = new byte[length];
-	Arrays.fill(result, (byte) ' ');
-	byte[] valueBytes = getBytes(value);
-	int middle = length / 2 - valueBytes.length / 2;
-	System.arraycopy(valueBytes, 0, result, middle, valueBytes.length);
-	return result;
-    }
+
+	/**
+	 * Gets the bytes representing the ASCII string.
+	 * 
+	 * @param value
+	 *            The value may be empty, not <code>null</code>.
+	 * @param length
+	 *            The length of the result, a non-negative integer.
+	 * @return The bytes array with the specified length, not <code>null</code>.
+	 */
+	public static byte[] getBytesCentered(String value, int length) {
+		if (value == null) {
+			throw new IllegalArgumentException("Parameter 'value' must not be null.");
+		}
+		if (length < 0) {
+			throw new IllegalArgumentException(
+					"Parameter 'line_length' must not be negative. Specified valus is " + length + ".");
+		}
+		if (value.length() > length) {
+			value = value.substring(0, length);
+		}
+		byte[] result = new byte[length];
+		Arrays.fill(result, (byte) ' ');
+		byte[] valueBytes = getBytes(value);
+		int middle = length / 2 - valueBytes.length / 2;
+		System.arraycopy(valueBytes, 0, result, middle, valueBytes.length);
+		return result;
+	}
 
 }

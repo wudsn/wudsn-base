@@ -31,117 +31,116 @@ import java.text.NumberFormat;
  */
 public final class TextUtility {
 
-    /**
-     * Parameter variable tokens.
-     */
-    private static final String[] PARAMETERS = { "{0}", "{1}", "{2}", "{3}", "{4}", "{5}", "{6}", "{7}", "{8}", "{9}" };
+	/**
+	 * Parameter variable tokens.
+	 */
+	private static final String[] PARAMETERS = { "{0}", "{1}", "{2}", "{3}", "{4}", "{5}", "{6}", "{7}", "{8}", "{9}" };
 
-    /**
-     * Creation is private.
-     */
-    private TextUtility() {
+	/**
+	 * Creation is private.
+	 */
+	private TextUtility() {
 
-    }
-
-    /**
-     * Formats a text with parameters "{0}" to "{9}".
-     * 
-     * @param text
-     *            The text with the parameters "{0}" to "{9}", may be empty, not
-     *            <code>null</code>.
-     * @param parameters
-     *            The parameters, may be empty or <code>null</code>.
-     * 
-     * @return The formatted text, may be empty, not <code>null</code>.
-     */
-    public static String format(String text, String... parameters) {
-	if (text == null) {
-	    throw new IllegalArgumentException("Parameter 'text' must not be null.");
 	}
-	if (parameters == null) {
-	    parameters = new String[0];
+
+	/**
+	 * Formats a text with parameters "{0}" to "{9}".
+	 * 
+	 * @param text
+	 *            The text with the parameters "{0}" to "{9}", may be empty, not
+	 *            <code>null</code>.
+	 * @param parameters
+	 *            The parameters, may be empty or <code>null</code>.
+	 * 
+	 * @return The formatted text, may be empty, not <code>null</code>.
+	 */
+	public static String format(String text, String... parameters) {
+		if (text == null) {
+			throw new IllegalArgumentException("Parameter 'text' must not be null.");
+		}
+		if (parameters == null) {
+			parameters = new String[0];
+		}
+		for (int i = 0; i < parameters.length; i++) {
+			String parameter = parameters[i];
+			if (parameter == null) {
+				parameter = "";
+			}
+			text = text.replace(PARAMETERS[i], parameter);
+		}
+		return text;
 	}
-	for (int i = 0; i < parameters.length; i++) {
-	    String parameter = parameters[i];
-	    if (parameter == null) {
-		parameter = "";
-	    }
-	    text = text.replace(PARAMETERS[i], parameter);
+
+	/**
+	 * Formats a long value as a decimal number of the current locale settings.
+	 * 
+	 * @param number
+	 *            The number.
+	 * @return The formatted number text, not empty, not <code>null</code>.
+	 */
+	public static String formatAsDecimal(long number) {
+		return NumberFormat.getNumberInstance().format(number);
 	}
-	return text;
-    }
 
-    /**
-     * Formats a long value as a decimal number of the current locale settings.
-     * 
-     * @param number
-     *            The number.
-     * @return The formatted number text, not empty, not <code>null</code>.
-     */
-    public static String formatAsDecimal(long number) {
-	return NumberFormat.getNumberInstance().format(number);
-    }
+	/**
+	 * Formats a long value as a percent value of a total long number of the current
+	 * locale settings.
+	 * 
+	 * @param number
+	 *            The number, a non-negative integer.
+	 * @param totalNumber
+	 *            The total number, a non-negative integer.
+	 * @return The formatted number text, not empty, not <code>null</code>.
+	 */
+	public static String formatAsDecimalPercent(long number, long totalNumber) {
 
-    /**
-     * Formats a long value as a percent value of a total long number of the
-     * current locale settings.
-     * 
-     * @param number
-     *            The number, a non-negative integer.
-     * @param totalNumber
-     *            The total number, a non-negative integer.
-     * @return The formatted number text, not empty, not <code>null</code>.
-     */
-    public static String formatAsDecimalPercent(long number, long totalNumber) {
-
-	int percent = 0;
-	if (totalNumber > 0) {
-	    percent = (int) ((1.0d * number) / totalNumber * 100);
-	    if (number > 0 && percent == 0) {
-		percent = 1;
-	    }
+		int percent = 0;
+		if (totalNumber > 0) {
+			percent = (int) ((1.0d * number) / totalNumber * 100);
+			if (number > 0 && percent == 0) {
+				percent = 1;
+			}
+		}
+		return formatAsDecimal(percent) + "%";
 	}
-	return formatAsDecimal(percent)+"%";
-    }
 
-    /**
-     * Formats a long value as a decimal number of the current locale settings.
-     * 
-     * @param number
-     *            The number.
-     * @return The formatted number text, not empty, not <code>null</code>.
-     */
-    public static String formatAsMemorySize(long number) {
-	String suffix = "B";
-	if (number > 0) {
-	    if (number % MB == 0) {
-		number = number / MB;
-		suffix = "MB";
-	    } else if (number % KB == 0) {
-		number = number / KB;
-		suffix = "KB";
+	/**
+	 * Formats a long value as a decimal number of the current locale settings.
+	 * 
+	 * @param number
+	 *            The number.
+	 * @return The formatted number text, not empty, not <code>null</code>.
+	 */
+	public static String formatAsMemorySize(long number) {
+		String suffix = "B";
+		if (number > 0) {
+			if (number % MB == 0) {
+				number = number / MB;
+				suffix = "MB";
+			} else if (number % KB == 0) {
+				number = number / KB;
+				suffix = "KB";
 
-	    }
+			}
+		}
+		return NumberFormat.getNumberInstance().format(number) + " " + suffix;
 	}
-	return NumberFormat.getNumberInstance().format(number) + " " + suffix;
-    }
 
-    /**
-     * Formats a long value as a hexa-decimal number of the current locale
-     * settings.
-     * 
-     * @param number
-     *            The number.
-     * @param maxValue
-     *            The maximum value to be assumed, it determines the number of
-     *            leading zeros that will be added.
-     * @return The formatted number text, not empty, not <code>null</code>.
-     */
-    public static String formatAsHexaDecimal(long number, long maxValue) {
-	String result;
-	int length = Long.toHexString(maxValue).length();
-	result = "$" + HexUtility.getLongValueHexString(number, length);
-	return result;
-    }
+	/**
+	 * Formats a long value as a hexa-decimal number of the current locale settings.
+	 * 
+	 * @param number
+	 *            The number.
+	 * @param maxValue
+	 *            The maximum value to be assumed, it determines the number of
+	 *            leading zeros that will be added.
+	 * @return The formatted number text, not empty, not <code>null</code>.
+	 */
+	public static String formatAsHexaDecimal(long number, long maxValue) {
+		String result;
+		int length = Long.toHexString(maxValue).length();
+		result = "$" + HexUtility.getLongValueHexString(number, length);
+		return result;
+	}
 
 }

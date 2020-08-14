@@ -30,32 +30,32 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public abstract class XMLHandler extends DefaultHandler {
 
-    /**
-     * Creation is protected.
-     */
-    protected XMLHandler() {
+	/**
+	 * Creation is protected.
+	 */
+	protected XMLHandler() {
 
-    }
+	}
 
-    /**
-     * Initialize before open.
-     * 
-     * @param messageQueue
-     *            The message, queue, not <code>null</code>.
-     */
-    public void startOpen(MessageQueue messageQueue) {
+	/**
+	 * Initialize before open.
+	 * 
+	 * @param messageQueue
+	 *            The message, queue, not <code>null</code>.
+	 */
+	public void startOpen(MessageQueue messageQueue) {
 
-    }
+	}
 
-    /**
-     * Initialize before save.
-     * 
-     * @param document
-     *            The document to serialize to, not <code>null</code>.
-     * 
-     * @param messageQueue
-     *            The message, queue, not <code>null</code>.
-     */
-    public abstract void startSave(Document document, MessageQueue messageQueue);
+	/**
+	 * Initialize before save.
+	 * 
+	 * @param document
+	 *            The document to serialize to, not <code>null</code>.
+	 * 
+	 * @param messageQueue
+	 *            The message, queue, not <code>null</code>.
+	 */
+	public abstract void startSave(Document document, MessageQueue messageQueue);
 
 }

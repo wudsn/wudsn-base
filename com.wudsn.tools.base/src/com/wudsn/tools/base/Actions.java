@@ -31,26 +31,25 @@ import com.wudsn.tools.base.repository.NLS;
  */
 public final class Actions extends NLS {
 
-    // Actions: Dialog Button Bar
-    public static Action ButtonBar_OK;
-    public static Action ButtonBar_Cancel;
-    public static Action ButtonBar_Yes;
-    public static Action ButtonBar_YesAll;
-    public static Action ButtonBar_No;
-    public static Action ButtonBar_NoAll;
+	// Actions: Dialog Button Bar
+	public static Action ButtonBar_OK;
+	public static Action ButtonBar_Cancel;
+	public static Action ButtonBar_Yes;
+	public static Action ButtonBar_YesAll;
+	public static Action ButtonBar_No;
+	public static Action ButtonBar_NoAll;
 
+	// Actions: AttributeTable
+	public static Action AttributeTable_HeaderPopupMenuSetColumnDefaults;
 
-    // Actions: AttributeTable
-    public static Action AttributeTable_HeaderPopupMenuSetColumnDefaults;
+	// Actions: Menu
+	public static Action MainMenu_File;
+	public static Action MainMenu_Edit;
+	public static Action MainMenu_Tools;
+	public static Action MainMenu_Help;
+	public static Action MainMenu_Help_HelpContents = new Action(KeyEvent.VK_F1, 0);
 
-    // Actions: Menu
-    public static Action MainMenu_File;
-    public static Action MainMenu_Edit;
-    public static Action MainMenu_Tools;
-    public static Action MainMenu_Help;
-    public static Action MainMenu_Help_HelpContents = new Action(KeyEvent.VK_F1, 0);
-
-    static {
-	initializeClass(Actions.class, null);
-    }
+	static {
+		initializeClass(Actions.class, null);
+	}
 }

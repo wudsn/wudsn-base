@@ -37,106 +37,106 @@ import javax.swing.JFrame;
  */
 public final class MainWindow {
 
-    JFrame frame;
-    int state;
-    Point actualLocation;
-    Dimension actualSize;
+	JFrame frame;
+	int state;
+	Point actualLocation;
+	Dimension actualSize;
 
-    public MainWindow() {
-	frame = new JFrame();
-	state = Frame.NORMAL;
-	actualLocation = null;
-	actualSize = new Dimension();
+	public MainWindow() {
+		frame = new JFrame();
+		state = Frame.NORMAL;
+		actualLocation = null;
+		actualSize = new Dimension();
 
-	frame.addWindowStateListener(new WindowStateListener() {
-	    @Override
-	    public void windowStateChanged(WindowEvent e) {
-		state = e.getNewState();
-	    }
-	});
+		frame.addWindowStateListener(new WindowStateListener() {
+			@Override
+			public void windowStateChanged(WindowEvent e) {
+				state = e.getNewState();
+			}
+		});
 
-	frame.addComponentListener(new ComponentAdapter() {
-	    @Override
-	    public void componentMoved(ComponentEvent e) {
-		// If location was never determined, we use it as it is.
-		if (actualLocation == null) {
-		    actualLocation = frame.getLocation();
-		}
-		// Ignore moves in iconfied state.
-		if ((state & Frame.ICONIFIED) == 1) {
-		    return;
-		}
-		// Ignore move event that occurs prior to "maximize".
-		// Works on windows, not sure about other OS types.
-		if (frame.getLocation().x < 0 || frame.getLocation().y < 0) {
-		    return;
-		}
-		// Take over horizontal resizing, if not maximized horizontally.
-		if ((state & Frame.MAXIMIZED_HORIZ) == 0) {
-		    actualLocation.x = frame.getLocation().x;
-		}
-		// Take over horizontal resizing, if not maximized horizontally.
-		if ((state & Frame.MAXIMIZED_VERT) == 0) {
-		    actualLocation.y = frame.getLocation().y;
-		}
+		frame.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentMoved(ComponentEvent e) {
+				// If location was never determined, we use it as it is.
+				if (actualLocation == null) {
+					actualLocation = frame.getLocation();
+				}
+				// Ignore moves in iconfied state.
+				if ((state & Frame.ICONIFIED) == 1) {
+					return;
+				}
+				// Ignore move event that occurs prior to "maximize".
+				// Works on windows, not sure about other OS types.
+				if (frame.getLocation().x < 0 || frame.getLocation().y < 0) {
+					return;
+				}
+				// Take over horizontal resizing, if not maximized horizontally.
+				if ((state & Frame.MAXIMIZED_HORIZ) == 0) {
+					actualLocation.x = frame.getLocation().x;
+				}
+				// Take over horizontal resizing, if not maximized horizontally.
+				if ((state & Frame.MAXIMIZED_VERT) == 0) {
+					actualLocation.y = frame.getLocation().y;
+				}
 
-	    }
+			}
 
-	    @Override
-	    public void componentResized(ComponentEvent e) {
-		// Ignore size changes in iconified state.
-		if ((state & Frame.ICONIFIED) == 1) {
-		    return;
-		}
-		// Take over horizontal resizing, if not maximized horizontally.
-		if ((state & Frame.MAXIMIZED_HORIZ) == 0) {
-		    actualSize.width = frame.getWidth();
-		}
-		// Take over horizontal resizing, if not maximized horizontally.
-		if ((state & Frame.MAXIMIZED_VERT) == 0) {
-		    actualSize.height = frame.getHeight();
-		}
-	    }
-	});
-    }
-
-    public JFrame getFrame() {
-	return frame;
-    }
-
-    public void dispose() {
-	frame.dispose();
-
-    }
-
-    public void setWindowFromPreferences(MainWindowPreferences preferences) {
-	if (preferences == null) {
-	    throw new IllegalArgumentException("Parameter 'preferences' must not be null.");
-	}
-	// Set window extended state, but ignore "iconfied".
-	frame.setExtendedState(preferences.getMainWindowExtendedState() & ~Frame.ICONIFIED);
-
-	// Set size first, so relative positions works correctly.
-	actualLocation = preferences.getMainWindowLocation();
-	actualSize = preferences.getMainWindowSize();
-	frame.setSize(actualSize);
-	if (actualLocation != null) {
-	    frame.setLocation(preferences.getMainWindowLocation());
-	} else {
-	    // This will center the JFrame in the middle of the screen
-	    frame.setLocationRelativeTo(null);
+			@Override
+			public void componentResized(ComponentEvent e) {
+				// Ignore size changes in iconified state.
+				if ((state & Frame.ICONIFIED) == 1) {
+					return;
+				}
+				// Take over horizontal resizing, if not maximized horizontally.
+				if ((state & Frame.MAXIMIZED_HORIZ) == 0) {
+					actualSize.width = frame.getWidth();
+				}
+				// Take over horizontal resizing, if not maximized horizontally.
+				if ((state & Frame.MAXIMIZED_VERT) == 0) {
+					actualSize.height = frame.getHeight();
+				}
+			}
+		});
 	}
 
-    }
-
-    public void setPreferencesFromWindow(MainWindowPreferences preferences) {
-	if (preferences == null) {
-	    throw new IllegalArgumentException("Parameter 'preferences' must not be null.");
+	public JFrame getFrame() {
+		return frame;
 	}
-	preferences.setMainWindowExtendedState(frame.getExtendedState());
-	preferences.setMainWindowLocation(actualLocation);
-	preferences.setMainWindowSize(actualSize);
 
-    }
+	public void dispose() {
+		frame.dispose();
+
+	}
+
+	public void setWindowFromPreferences(MainWindowPreferences preferences) {
+		if (preferences == null) {
+			throw new IllegalArgumentException("Parameter 'preferences' must not be null.");
+		}
+		// Set window extended state, but ignore "iconfied".
+		frame.setExtendedState(preferences.getMainWindowExtendedState() & ~Frame.ICONIFIED);
+
+		// Set size first, so relative positions works correctly.
+		actualLocation = preferences.getMainWindowLocation();
+		actualSize = preferences.getMainWindowSize();
+		frame.setSize(actualSize);
+		if (actualLocation != null) {
+			frame.setLocation(preferences.getMainWindowLocation());
+		} else {
+			// This will center the JFrame in the middle of the screen
+			frame.setLocationRelativeTo(null);
+		}
+
+	}
+
+	public void setPreferencesFromWindow(MainWindowPreferences preferences) {
+		if (preferences == null) {
+			throw new IllegalArgumentException("Parameter 'preferences' must not be null.");
+		}
+		preferences.setMainWindowExtendedState(frame.getExtendedState());
+		preferences.setMainWindowLocation(actualLocation);
+		preferences.setMainWindowSize(actualSize);
+
+	}
 
 }

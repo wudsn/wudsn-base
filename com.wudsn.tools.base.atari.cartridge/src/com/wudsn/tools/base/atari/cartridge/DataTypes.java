@@ -29,10 +29,9 @@ import com.wudsn.tools.base.repository.NLS;
  */
 public final class DataTypes extends NLS {
 
-    public static DataType CartridgeDatabaseEntry_Title = new DataType(
-	    String.class);
+	public static DataType CartridgeDatabaseEntry_Title = new DataType(String.class);
 
-    static {
-	initializeClass(DataTypes.class, null);
-    }
+	static {
+		initializeClass(DataTypes.class, null);
+	}
 }

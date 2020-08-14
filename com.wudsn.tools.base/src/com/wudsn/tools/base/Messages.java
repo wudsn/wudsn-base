@@ -29,45 +29,45 @@ import com.wudsn.tools.base.repository.NLS;
  */
 public final class Messages extends NLS {
 
-    // General file operations
-    public static Message E200;
-    public static Message E201;
-    public static Message E202;
-    public static Message E203;
-    public static Message E204;
-    public static Message E205;
-    public static Message E206;
-    public static Message E207;
-    public static Message E208;
-    public static Message E209;
-    public static Message E210;
-    public static Message E211;
-    public static Message E212;
-    public static Message E213;
-    public static Message E214;
-    public static Message E215;
-    public static Message E216;
-    public static Message E217;
-    public static Message E218;
-    public static Message E219;
+	// General file operations
+	public static Message E200;
+	public static Message E201;
+	public static Message E202;
+	public static Message E203;
+	public static Message E204;
+	public static Message E205;
+	public static Message E206;
+	public static Message E207;
+	public static Message E208;
+	public static Message E209;
+	public static Message E210;
+	public static Message E211;
+	public static Message E212;
+	public static Message E213;
+	public static Message E214;
+	public static Message E215;
+	public static Message E216;
+	public static Message E217;
+	public static Message E218;
+	public static Message E219;
 
-    // Console and parser
-    public static Message E250;
-    public static Message E251;
-    public static Message E252;
-    public static Message E253;
-    public static Message S254;
-    public static Message E255;
-    public static Message E256;
-    
-    // Repository validation
-    public static Message E300;
-    public static Message E301;
-    public static Message E302;
-    public static Message E303;
-    public static Message E304;
+	// Console and parser
+	public static Message E250;
+	public static Message E251;
+	public static Message E252;
+	public static Message E253;
+	public static Message S254;
+	public static Message E255;
+	public static Message E256;
 
-    static {
-	initializeClass(Messages.class, null);
-    }
+	// Repository validation
+	public static Message E300;
+	public static Message E301;
+	public static Message E302;
+	public static Message E303;
+	public static Message E304;
+
+	static {
+		initializeClass(Messages.class, null);
+	}
 }

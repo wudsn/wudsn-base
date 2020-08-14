@@ -24,57 +24,57 @@ import com.wudsn.tools.base.repository.Message;
 
 public final class MessageQueueEntry {
 
-    private Object owner;
-    private Attribute attribute;
-    private int severity;
-    private Message message;
-    private String[] parameters;
-    private Exception cause;
+	private Object owner;
+	private Attribute attribute;
+	private int severity;
+	private Message message;
+	private String[] parameters;
+	private Exception cause;
 
-    public MessageQueueEntry(Object owner, Attribute attribute, Message message, String... parameters) {
+	public MessageQueueEntry(Object owner, Attribute attribute, Message message, String... parameters) {
 
-	if (message == null) {
-	    throw new IllegalArgumentException("Parameter 'message' must not be null.");
+		if (message == null) {
+			throw new IllegalArgumentException("Parameter 'message' must not be null.");
+		}
+
+		this.owner = owner;
+		this.attribute = attribute;
+		this.message = message;
+		this.parameters = parameters;
+		this.cause = null;
 	}
 
-	this.owner = owner;
-	this.attribute = attribute;
-	this.message = message;
-	this.parameters = parameters;
-	this.cause = null;
-    }
-
-    public Object getOwner() {
-	return owner;
-    }
-
-    public Attribute getAttribute() {
-	return attribute;
-    }
-
-    public Message getMessage() {
-	return message;
-    }
-
-    public String getMessageText() {
-	return message.format(parameters);
-    }
-
-    public Exception getCause() {
-	return cause;
-    }
-
-    @Override
-    public String toString() {
-	String messageText = getMessageText();
-	switch (severity) {
-	case Message.STATUS:
-	    return "INFO: " + messageText;
-	case Message.INFO:
-	    return "INFO: " + messageText;
-	case Message.ERROR:
-	    return "ERROR: " + messageText;
+	public Object getOwner() {
+		return owner;
 	}
-	throw new IllegalStateException("Field 'severity' has illegal value " + severity + ".");
-    }
+
+	public Attribute getAttribute() {
+		return attribute;
+	}
+
+	public Message getMessage() {
+		return message;
+	}
+
+	public String getMessageText() {
+		return message.format(parameters);
+	}
+
+	public Exception getCause() {
+		return cause;
+	}
+
+	@Override
+	public String toString() {
+		String messageText = getMessageText();
+		switch (severity) {
+		case Message.STATUS:
+			return "INFO: " + messageText;
+		case Message.INFO:
+			return "INFO: " + messageText;
+		case Message.ERROR:
+			return "ERROR: " + messageText;
+		}
+		throw new IllegalStateException("Field 'severity' has illegal value " + severity + ".");
+	}
 }

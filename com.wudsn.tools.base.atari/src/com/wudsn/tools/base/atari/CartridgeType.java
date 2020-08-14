@@ -112,7 +112,7 @@ import com.wudsn.tools.base.repository.ValueSet;
  *        CARTRIDGE_ADAWLIAH_64    = 70,
  *        CARTRIDGE_LAST_SUPPORTED = 70
  * };
- * </pre>
+ *         </pre>
  * 
  *         <pre>
  * #define CARTRIDGE_STD_8_DESC         "Standard 8 KB cartridge"
@@ -185,7 +185,7 @@ import com.wudsn.tools.base.repository.ValueSet;
  * #define CARTRIDGE_ATRAX_128_DESC     "Atrax 128 KB cartridge"
  * #define CARTRIDGE_ADAWLIAH_32_DESC   "aDawliah 32 KB cartridge"
  * #define CARTRIDGE_ADAWLIAH_64_DESC   "aDawliah 64 KB cartridge"
- * </pre>
+ *         </pre>
  */
 public final class CartridgeType extends ValueSet {
 
@@ -328,239 +328,166 @@ public final class CartridgeType extends ValueSet {
 
 		values = new TreeMap<String, CartridgeType>();
 
-		UNKNOWN = add(0, "UNKNOWN", Platform.UNKNOWN, 0, 0x0000, 0x0000,
-				0x0000, initial_bank_0, block_size_none);
+		UNKNOWN = add(0, "UNKNOWN", Platform.UNKNOWN, 0, 0x0000, 0x0000, 0x0000, initial_bank_0, block_size_none);
 
-		CARTRIDGE_STD_8 = add(1, "CARTRIDGE_STD_8", Platform.ATARI_800, 8,
-				bank_size_2000, offset_0000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_STD_16 = add(2, "CARTRIDGE_STD_16", Platform.ATARI_800, 16,
-				bank_size_4000, offset_0000, adr_8000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_OSS_034M_16 = add(3, "CARTRIDGE_OSS_034M_16",
-				Platform.ATARI_800, 16, bank_size_1000, offset_3000, adr_b000,
-				initial_bank_1, block_size_none);
-		CARTRIDGE_5200_32 = add(4, "CARTRIDGE_5200_32", Platform.ATARI_5200,
-				32, bank_size_8000, offset_0000, adr_4000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_DB_32 = add(5, "CARTRIDGE_DB_32", Platform.ATARI_800, 32,
-				bank_size_2000, offset_6000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_5200_EE_16 = add(6, "CARTRIDGE_5200_EE_16",
-				Platform.ATARI_5200, 16, bank_size_4000, offset_0000, adr_4000,
+		CARTRIDGE_STD_8 = add(1, "CARTRIDGE_STD_8", Platform.ATARI_800, 8, bank_size_2000, offset_0000, adr_a000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_5200_40 = add(7, "CARTRIDGE_5200_40", Platform.ATARI_5200,
-				40, bank_size_2000, offset_8000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_WILL_64 = add(8, "CARTRIDGE_WILL_64", Platform.ATARI_800, 64,
-				bank_size_2000, offset_0000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_EXP_64 = add(9, "CARTRIDGE_EXP_64", Platform.ATARI_800, 64,
-				bank_size_2000, offset_0000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_DIAMOND_64 = add(10, "CARTRIDGE_DIAMOND_64",
-				Platform.ATARI_800, 64, bank_size_2000, offset_0000, adr_a000,
+		CARTRIDGE_STD_16 = add(2, "CARTRIDGE_STD_16", Platform.ATARI_800, 16, bank_size_4000, offset_0000, adr_8000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_SDX_64 = add(11, "CARTRIDGE_SDX_64", Platform.ATARI_800, 64,
-				bank_size_2000, offset_0000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_XEGS_32 = add(12, "CARTRIDGE_XEGS_32", Platform.ATARI_800,
-				32, bank_size_2000, offset_6000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_XEGS_64 = add(13, "CARTRIDGE_XEGS_64", Platform.ATARI_800,
-				64, bank_size_2000, offset_e000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_XEGS_128 = add(14, "CARTRIDGE_XEGS_128", Platform.ATARI_800,
-				128, bank_size_2000, offset_1e000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_OSS_M091_16 = add(15, "CARTRIDGE_OSS_M091_16",
-				Platform.ATARI_800, 16, bank_size_1000, offset_0000, adr_b000,
+		CARTRIDGE_OSS_034M_16 = add(3, "CARTRIDGE_OSS_034M_16", Platform.ATARI_800, 16, bank_size_1000, offset_3000,
+				adr_b000, initial_bank_1, block_size_none);
+		CARTRIDGE_5200_32 = add(4, "CARTRIDGE_5200_32", Platform.ATARI_5200, 32, bank_size_8000, offset_0000, adr_4000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_5200_NS_16 = add(16, "CARTRIDGE_5200_NS_16",
-				Platform.ATARI_5200, 16, bank_size_4000, offset_0000, adr_8000,
+		CARTRIDGE_DB_32 = add(5, "CARTRIDGE_DB_32", Platform.ATARI_800, 32, bank_size_2000, offset_6000, adr_a000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_ATRAX_DEC_128 = add(17, "CARTRIDGE_ATRAX_DEC_128",
-				Platform.ATARI_800, 128, bank_size_2000, offset_0000, adr_a000,
+		CARTRIDGE_5200_EE_16 = add(6, "CARTRIDGE_5200_EE_16", Platform.ATARI_5200, 16, bank_size_4000, offset_0000,
+				adr_4000, initial_bank_0, block_size_none);
+		CARTRIDGE_5200_40 = add(7, "CARTRIDGE_5200_40", Platform.ATARI_5200, 40, bank_size_2000, offset_8000, adr_a000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_BBSB_40 = add(18, "CARTRIDGE_BBSB_40", Platform.ATARI_800,
-				40, bank_size_2000, offset_8000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_5200_8 = add(19, "CARTRIDGE_5200_8", Platform.ATARI_5200, 8,
-				bank_size_2000, offset_0000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_5200_4 = add(20, "CARTRIDGE_5200_4", Platform.ATARI_5200, 4,
-				bank_size_1000, offset_0000, adr_a000, initial_bank_0,
-				block_size_none);
+		CARTRIDGE_WILL_64 = add(8, "CARTRIDGE_WILL_64", Platform.ATARI_800, 64, bank_size_2000, offset_0000, adr_a000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_EXP_64 = add(9, "CARTRIDGE_EXP_64", Platform.ATARI_800, 64, bank_size_2000, offset_0000, adr_a000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_DIAMOND_64 = add(10, "CARTRIDGE_DIAMOND_64", Platform.ATARI_800, 64, bank_size_2000, offset_0000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_SDX_64 = add(11, "CARTRIDGE_SDX_64", Platform.ATARI_800, 64, bank_size_2000, offset_0000, adr_a000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_XEGS_32 = add(12, "CARTRIDGE_XEGS_32", Platform.ATARI_800, 32, bank_size_2000, offset_6000, adr_a000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_XEGS_64 = add(13, "CARTRIDGE_XEGS_64", Platform.ATARI_800, 64, bank_size_2000, offset_e000, adr_a000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_XEGS_128 = add(14, "CARTRIDGE_XEGS_128", Platform.ATARI_800, 128, bank_size_2000, offset_1e000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_OSS_M091_16 = add(15, "CARTRIDGE_OSS_M091_16", Platform.ATARI_800, 16, bank_size_1000, offset_0000,
+				adr_b000, initial_bank_0, block_size_none);
+		CARTRIDGE_5200_NS_16 = add(16, "CARTRIDGE_5200_NS_16", Platform.ATARI_5200, 16, bank_size_4000, offset_0000,
+				adr_8000, initial_bank_0, block_size_none);
+		CARTRIDGE_ATRAX_DEC_128 = add(17, "CARTRIDGE_ATRAX_DEC_128", Platform.ATARI_800, 128, bank_size_2000,
+				offset_0000, adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_BBSB_40 = add(18, "CARTRIDGE_BBSB_40", Platform.ATARI_800, 40, bank_size_2000, offset_8000, adr_a000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_5200_8 = add(19, "CARTRIDGE_5200_8", Platform.ATARI_5200, 8, bank_size_2000, offset_0000, adr_a000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_5200_4 = add(20, "CARTRIDGE_5200_4", Platform.ATARI_5200, 4, bank_size_1000, offset_0000, adr_a000,
+				initial_bank_0, block_size_none);
 		// Autostart for CARTRIDGE_RIGHT_8 only works with Atari 800 / OS-A or
 		// OS-B.
-		CARTRIDGE_RIGHT_8 = add(21, "CARTRIDGE_RIGHT_8", Platform.ATARI_800, 8,
-				bank_size_2000, offset_0000, adr_8000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_WILL_32 = add(22, "CARTRIDGE_WILL_32", Platform.ATARI_800,
-				32, bank_size_2000, offset_0000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_XEGS_256 = add(23, "CARTRIDGE_XEGS_256", Platform.ATARI_800,
-				256, bank_size_2000, offset_3e000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_XEGS_512 = add(24, "CARTRIDGE_XEGS_512", Platform.ATARI_800,
-				512, bank_size_2000, offset_7e000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_XEGS_1024 = add(25, "CARTRIDGE_XEGS_1024",
-				Platform.ATARI_800, 1024, bank_size_2000, offset_fe000,
+		CARTRIDGE_RIGHT_8 = add(21, "CARTRIDGE_RIGHT_8", Platform.ATARI_800, 8, bank_size_2000, offset_0000, adr_8000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_WILL_32 = add(22, "CARTRIDGE_WILL_32", Platform.ATARI_800, 32, bank_size_2000, offset_0000, adr_a000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_XEGS_256 = add(23, "CARTRIDGE_XEGS_256", Platform.ATARI_800, 256, bank_size_2000, offset_3e000,
 				adr_a000, initial_bank_0, block_size_none);
-		CARTRIDGE_MEGA_16 = add(26, "CARTRIDGE_MEGA_16", Platform.ATARI_800,
-				16, bank_size_4000, offset_0000, adr_8000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_MEGA_32 = add(27, "CARTRIDGE_MEGA_32", Platform.ATARI_800,
-				32, bank_size_4000, offset_0000, adr_8000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_MEGA_64 = add(28, "CARTRIDGE_MEGA_64", Platform.ATARI_800,
-				64, bank_size_4000, offset_0000, adr_8000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_MEGA_128 = add(29, "CARTRIDGE_MEGA_128", Platform.ATARI_800,
-				128, bank_size_4000, offset_0000, adr_8000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_MEGA_256 = add(30, "CARTRIDGE_MEGA_256", Platform.ATARI_800,
-				256, bank_size_4000, offset_0000, adr_8000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_MEGA_512 = add(31, "CARTRIDGE_MEGA_512", Platform.ATARI_800,
-				512, bank_size_4000, offset_0000, adr_8000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_MEGA_1024 = add(32, "CARTRIDGE_MEGA_1024",
-				Platform.ATARI_800, 1024, bank_size_4000, offset_0000,
+		CARTRIDGE_XEGS_512 = add(24, "CARTRIDGE_XEGS_512", Platform.ATARI_800, 512, bank_size_2000, offset_7e000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_XEGS_1024 = add(25, "CARTRIDGE_XEGS_1024", Platform.ATARI_800, 1024, bank_size_2000, offset_fe000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_MEGA_16 = add(26, "CARTRIDGE_MEGA_16", Platform.ATARI_800, 16, bank_size_4000, offset_0000, adr_8000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_MEGA_32 = add(27, "CARTRIDGE_MEGA_32", Platform.ATARI_800, 32, bank_size_4000, offset_0000, adr_8000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_MEGA_64 = add(28, "CARTRIDGE_MEGA_64", Platform.ATARI_800, 64, bank_size_4000, offset_0000, adr_8000,
+				initial_bank_0, block_size_none);
+		CARTRIDGE_MEGA_128 = add(29, "CARTRIDGE_MEGA_128", Platform.ATARI_800, 128, bank_size_4000, offset_0000,
 				adr_8000, initial_bank_0, block_size_none);
-		CARTRIDGE_SWXEGS_32 = add(33, "CARTRIDGE_SWXEGS_32",
-				Platform.ATARI_800, 32, bank_size_2000, offset_6000, adr_a000,
-				initial_bank_0, block_size_none);
-		CARTRIDGE_SWXEGS_64 = add(34, "CARTRIDGE_SWXEGS_64",
-				Platform.ATARI_800, 64, bank_size_2000, offset_e000, adr_a000,
-				initial_bank_0, block_size_none);
-		CARTRIDGE_SWXEGS_128 = add(35, "CARTRIDGE_SWXEGS_128",
-				Platform.ATARI_800, 128, bank_size_2000, offset_1e000,
+		CARTRIDGE_MEGA_256 = add(30, "CARTRIDGE_MEGA_256", Platform.ATARI_800, 256, bank_size_4000, offset_0000,
+				adr_8000, initial_bank_0, block_size_none);
+		CARTRIDGE_MEGA_512 = add(31, "CARTRIDGE_MEGA_512", Platform.ATARI_800, 512, bank_size_4000, offset_0000,
+				adr_8000, initial_bank_0, block_size_none);
+		CARTRIDGE_MEGA_1024 = add(32, "CARTRIDGE_MEGA_1024", Platform.ATARI_800, 1024, bank_size_4000, offset_0000,
+				adr_8000, initial_bank_0, block_size_none);
+		CARTRIDGE_SWXEGS_32 = add(33, "CARTRIDGE_SWXEGS_32", Platform.ATARI_800, 32, bank_size_2000, offset_6000,
 				adr_a000, initial_bank_0, block_size_none);
-		CARTRIDGE_SWXEGS_256 = add(36, "CARTRIDGE_SWXEGS_256",
-				Platform.ATARI_800, 256, bank_size_2000, offset_3e000,
+		CARTRIDGE_SWXEGS_64 = add(34, "CARTRIDGE_SWXEGS_64", Platform.ATARI_800, 64, bank_size_2000, offset_e000,
 				adr_a000, initial_bank_0, block_size_none);
-		CARTRIDGE_SWXEGS_512 = add(37, "CARTRIDGE_SWXEGS_512",
-				Platform.ATARI_800, 512, bank_size_2000, offset_7e000,
+		CARTRIDGE_SWXEGS_128 = add(35, "CARTRIDGE_SWXEGS_128", Platform.ATARI_800, 128, bank_size_2000, offset_1e000,
 				adr_a000, initial_bank_0, block_size_none);
-		CARTRIDGE_SWXEGS_1024 = add(38, "CARTRIDGE_SWXEGS_1024",
-				Platform.ATARI_800, 1024, bank_size_2000, offset_fe000,
+		CARTRIDGE_SWXEGS_256 = add(36, "CARTRIDGE_SWXEGS_256", Platform.ATARI_800, 256, bank_size_2000, offset_3e000,
 				adr_a000, initial_bank_0, block_size_none);
-		CARTRIDGE_PHOENIX_8 = add(39, "CARTRIDGE_PHOENIX_8",
-				Platform.ATARI_800, 8, bank_size_2000, offset_0000, adr_a000,
-				initial_bank_0, block_size_none);
-		CARTRIDGE_BLIZZARD_16 = add(40, "CARTRIDGE_BLIZZARD_16",
-				Platform.ATARI_800, 16, bank_size_4000, offset_0000, adr_8000,
-				initial_bank_0, block_size_none);
-		CARTRIDGE_ATMAX_128 = add(41, "CARTRIDGE_ATMAX_128",
-				Platform.ATARI_800, 128, bank_size_2000, offset_0000, adr_a000,
-				initial_bank_0, block_size_10000);
-		CARTRIDGE_ATMAX_1024 = add(42, "CARTRIDGE_ATMAX_1024",
-				Platform.ATARI_800, 1024, bank_size_2000, offset_fe000,
+		CARTRIDGE_SWXEGS_512 = add(37, "CARTRIDGE_SWXEGS_512", Platform.ATARI_800, 512, bank_size_2000, offset_7e000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_SWXEGS_1024 = add(38, "CARTRIDGE_SWXEGS_1024", Platform.ATARI_800, 1024, bank_size_2000, offset_fe000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_PHOENIX_8 = add(39, "CARTRIDGE_PHOENIX_8", Platform.ATARI_800, 8, bank_size_2000, offset_0000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_BLIZZARD_16 = add(40, "CARTRIDGE_BLIZZARD_16", Platform.ATARI_800, 16, bank_size_4000, offset_0000,
+				adr_8000, initial_bank_0, block_size_none);
+		CARTRIDGE_ATMAX_128 = add(41, "CARTRIDGE_ATMAX_128", Platform.ATARI_800, 128, bank_size_2000, offset_0000,
+				adr_a000, initial_bank_0, block_size_10000);
+		CARTRIDGE_ATMAX_1024 = add(42, "CARTRIDGE_ATMAX_1024", Platform.ATARI_800, 1024, bank_size_2000, offset_fe000,
 				adr_a000, initial_bank_127, block_size_10000);
-		CARTRIDGE_SDX_128 = add(43, "CARTRIDGE_SDX_128", Platform.ATARI_800,
-				128, bank_size_2000, offset_0000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_OSS_8 = add(44, "CARTRIDGE_OSS_8", Platform.ATARI_800, 8,
-				bank_size_1000, offset_0000, adr_b000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_OSS_043M_16 = add(45, "CARTRIDGE_OSS_043M_16",
-				Platform.ATARI_800, 16, bank_size_1000, offset_3000, adr_b000,
+		CARTRIDGE_SDX_128 = add(43, "CARTRIDGE_SDX_128", Platform.ATARI_800, 128, bank_size_2000, offset_0000, adr_a000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_BLIZZARD_4 = add(46, "CARTRIDGE_BLIZZARD_4",
-				Platform.ATARI_800, 4, bank_size_1000, offset_0000, adr_a000,
+		CARTRIDGE_OSS_8 = add(44, "CARTRIDGE_OSS_8", Platform.ATARI_800, 8, bank_size_1000, offset_0000, adr_b000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_AST_32 = add(47, "CARTRIDGE_AST_32", Platform.ATARI_800, 32,
-				bank_size_0100, offset_0000, adr_a000, initial_bank_0,
-				block_size_none);
+		CARTRIDGE_OSS_043M_16 = add(45, "CARTRIDGE_OSS_043M_16", Platform.ATARI_800, 16, bank_size_1000, offset_3000,
+				adr_b000, initial_bank_0, block_size_none);
+		CARTRIDGE_BLIZZARD_4 = add(46, "CARTRIDGE_BLIZZARD_4", Platform.ATARI_800, 4, bank_size_1000, offset_0000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_AST_32 = add(47, "CARTRIDGE_AST_32", Platform.ATARI_800, 32, bank_size_0100, offset_0000, adr_a000,
+				initial_bank_0, block_size_none);
 		// This Atrax ROM uses interleaved address and data bits, otherwise it's
 		// equal to type type 11.
-		CARTRIDGE_ATRAX_SDX_64 = add(48, "CARTRIDGE_ATRAX_SDX_64",
-				Platform.ATARI_800, 64, bank_size_2000, offset_0000, adr_a000,
-				initial_bank_0, block_size_none);
+		CARTRIDGE_ATRAX_SDX_64 = add(48, "CARTRIDGE_ATRAX_SDX_64", Platform.ATARI_800, 64, bank_size_2000, offset_0000,
+				adr_a000, initial_bank_0, block_size_none);
 		// This Atrax ROM uses interleaved address and data bits, otherwise it's
 		// equal to type type 43.
-		CARTRIDGE_ATRAX_SDX_128 = add(49, "CARTRIDGE_ATRAX_SDX_128",
-				Platform.ATARI_800, 128, bank_size_2000, offset_0000, adr_a000,
+		CARTRIDGE_ATRAX_SDX_128 = add(49, "CARTRIDGE_ATRAX_SDX_128", Platform.ATARI_800, 128, bank_size_2000,
+				offset_0000, adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_TURBOSOFT_64 = add(50, "CARTRIDGE_TURBOSOFT_64", Platform.ATARI_800, 64, bank_size_2000, offset_0000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_TURBOSOFT_128 = add(51, "CARTRIDGE_TURBOSOFT_128", Platform.ATARI_800, 128, bank_size_2000,
+				offset_0000, adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_ULTRACART_32 = add(52, "CARTRIDGE_ULTRACART_32", Platform.ATARI_800, 32, bank_size_2000, offset_0000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_LOW_BANK_8 = add(53, "CARTRIDGE_LOW_BANK_8", Platform.ATARI_800, 8, bank_size_2000, offset_0000,
+				adr_8000, initial_bank_0, block_size_none);
+		CARTRIDGE_SIC_128 = add(54, "CARTRIDGE_SIC_128", Platform.ATARI_800, 128, bank_size_2000, offset_2000, adr_a000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_TURBOSOFT_64 = add(50, "CARTRIDGE_TURBOSOFT_64",
-				Platform.ATARI_800, 64, bank_size_2000, offset_0000, adr_a000,
+		CARTRIDGE_SIC_256 = add(55, "CARTRIDGE_SIC_256", Platform.ATARI_800, 256, bank_size_2000, offset_2000, adr_a000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_TURBOSOFT_128 = add(51, "CARTRIDGE_TURBOSOFT_128",
-				Platform.ATARI_800, 128, bank_size_2000, offset_0000, adr_a000,
+		CARTRIDGE_SIC_512 = add(56, "CARTRIDGE_SIC_512", Platform.ATARI_800, 512, bank_size_2000, offset_2000, adr_a000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_ULTRACART_32 = add(52, "CARTRIDGE_ULTRACART_32",
-				Platform.ATARI_800, 32, bank_size_2000, offset_0000, adr_a000,
+		CARTRIDGE_STD_2 = add(57, "CARTRIDGE_STD_2", Platform.ATARI_800, 2, bank_size_0800, offset_0000, adr_b800,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_LOW_BANK_8 = add(53, "CARTRIDGE_LOW_BANK_8",
-				Platform.ATARI_800, 8, bank_size_2000, offset_0000, adr_8000,
+		CARTRIDGE_STD_4 = add(58, "CARTRIDGE_STD_4", Platform.ATARI_800, 4, bank_size_1000, offset_0000, adr_b000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_SIC_128 = add(54, "CARTRIDGE_SIC_128", Platform.ATARI_800,
-				128, bank_size_2000, offset_2000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_SIC_256 = add(55, "CARTRIDGE_SIC_256", Platform.ATARI_800,
-				256, bank_size_2000, offset_2000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_SIC_512 = add(56, "CARTRIDGE_SIC_512", Platform.ATARI_800,
-				512, bank_size_2000, offset_2000, adr_a000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_STD_2 = add(57, "CARTRIDGE_STD_2", Platform.ATARI_800, 2,
-				bank_size_0800, offset_0000, adr_b800, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_STD_4 = add(58, "CARTRIDGE_STD_4", Platform.ATARI_800, 4,
-				bank_size_1000, offset_0000, adr_b000, initial_bank_0,
-				block_size_none);
 		// Autostart for CARTRIDGE_RIGHT_4 only works with Atari 800 / OS-A or
 		// OS-B.
-		CARTRIDGE_RIGHT_4 = add(59, "CARTRIDGE_RIGHT_4", Platform.ATARI_800, 4,
-				bank_size_1000, offset_0000, adr_9000, initial_bank_0,
-				block_size_none);
-		CARTRIDGE_BLIZZARD_32 = add(60, "CARTRIDGE_BLIZZARD_32",
-				Platform.ATARI_800, 32, bank_size_2000, offset_0000, adr_a000,
+		CARTRIDGE_RIGHT_4 = add(59, "CARTRIDGE_RIGHT_4", Platform.ATARI_800, 4, bank_size_1000, offset_0000, adr_9000,
 				initial_bank_0, block_size_none);
-		CARTRIDGE_MEGAMAX_2048 = add(61, "CARTRIDGE_MEGAMAX_2048",
-				Platform.ATARI_800, 2048, bank_size_4000, offset_0000,
-				adr_8000, initial_bank_0, block_size_none);
-		CARTRIDGE_THECART_128M = add(62, "CARTRIDGE_THECART_128M",
-				Platform.ATARI_800, 131072, bank_size_2000, offset_0000,
-				adr_a000, initial_bank_0, block_size_20000);
-		CARTRIDGE_MEGA_4096 = add(63, "CARTRIDGE_MEGA_4096",
-				Platform.ATARI_800, 4096, bank_size_4000, offset_3F8000,
+		CARTRIDGE_BLIZZARD_32 = add(60, "CARTRIDGE_BLIZZARD_32", Platform.ATARI_800, 32, bank_size_2000, offset_0000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_MEGAMAX_2048 = add(61, "CARTRIDGE_MEGAMAX_2048", Platform.ATARI_800, 2048, bank_size_4000,
+				offset_0000, adr_8000, initial_bank_0, block_size_none);
+		CARTRIDGE_THECART_128M = add(62, "CARTRIDGE_THECART_128M", Platform.ATARI_800, 131072, bank_size_2000,
+				offset_0000, adr_a000, initial_bank_0, block_size_20000);
+		CARTRIDGE_MEGA_4096 = add(63, "CARTRIDGE_MEGA_4096", Platform.ATARI_800, 4096, bank_size_4000, offset_3F8000,
 				adr_8000, initial_bank_254, block_size_10000);
-		CARTRIDGE_MEGA_2048 = add(64, "CARTRIDGE_MEGA_2048",
-				Platform.ATARI_800, 2048, bank_size_4000, offset_0000,
+		CARTRIDGE_MEGA_2048 = add(64, "CARTRIDGE_MEGA_2048", Platform.ATARI_800, 2048, bank_size_4000, offset_0000,
 				adr_8000, initial_bank_0, block_size_10000);
-		CARTRIDGE_THECART_32M = add(65, "CARTRIDGE_THECART_32M",
-				Platform.ATARI_800, 32768, bank_size_2000, offset_0000,
+		CARTRIDGE_THECART_32M = add(65, "CARTRIDGE_THECART_32M", Platform.ATARI_800, 32768, bank_size_2000, offset_0000,
 				adr_a000, initial_bank_0, block_size_20000);
-		CARTRIDGE_THECART_64M = add(66, "CARTRIDGE_THECART_64M",
-				Platform.ATARI_800, 65536, bank_size_2000, offset_0000,
+		CARTRIDGE_THECART_64M = add(66, "CARTRIDGE_THECART_64M", Platform.ATARI_800, 65536, bank_size_2000, offset_0000,
 				adr_a000, initial_bank_0, block_size_20000);
-		CARTRIDGE_XEGS_8F_64 = add(67, "CARTRIDGE_XEGS_8F_64",
-				Platform.ATARI_800, 64, bank_size_2000, offset_e000, adr_a000,
-				initial_bank_0, block_size_none);
+		CARTRIDGE_XEGS_8F_64 = add(67, "CARTRIDGE_XEGS_8F_64", Platform.ATARI_800, 64, bank_size_2000, offset_e000,
+				adr_a000, initial_bank_0, block_size_none);
 		// This Atrax ROM uses interleaved address and data bits, otherwise it's
 		// equal to type type 17.
-		CARTRIDGE_ATRAX_128 = add(68, "CARTRIDGE_ATRAX_128",
-				Platform.ATARI_800, 128, bank_size_2000, offset_0000, adr_a000,
-				initial_bank_0, block_size_none); 
-		CARTRIDGE_ADAWLIAH_32 = add(69, "CARTRIDGE_ADAWLIAH_32",
-				Platform.ATARI_800, 32, bank_size_2000, offset_0000, adr_a000,
-				initial_bank_0, block_size_none); 
-		CARTRIDGE_ADAWLIAH_64 = add(70, "CARTRIDGE_ADAWLIAH_64",
-				Platform.ATARI_800, 64, bank_size_2000, offset_0000, adr_a000,
-				initial_bank_0, block_size_none);
+		CARTRIDGE_ATRAX_128 = add(68, "CARTRIDGE_ATRAX_128", Platform.ATARI_800, 128, bank_size_2000, offset_0000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_ADAWLIAH_32 = add(69, "CARTRIDGE_ADAWLIAH_32", Platform.ATARI_800, 32, bank_size_2000, offset_0000,
+				adr_a000, initial_bank_0, block_size_none);
+		CARTRIDGE_ADAWLIAH_64 = add(70, "CARTRIDGE_ADAWLIAH_64", Platform.ATARI_800, 64, bank_size_2000, offset_0000,
+				adr_a000, initial_bank_0, block_size_none);
 		initializeClass(CartridgeType.class, ValueSets.class);
 	}
 
-	private CartridgeType(int numericId, String id, Platform platform,
-			int sizeInK, int bankSize, int initialBankOffset,
+	private CartridgeType(int numericId, String id, Platform platform, int sizeInK, int bankSize, int initialBankOffset,
 			int initialBankAddress, int initialBankNumber, int flashBlockSize) {
 		super(id, 0);
 		if (platform == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'platform' must not be null.");
+			throw new IllegalArgumentException("Parameter 'platform' must not be null.");
 		}
 		this.platform = platform;
 		this.numericId = numericId;
@@ -572,24 +499,19 @@ public final class CartridgeType extends ValueSet {
 		this.flashBlockSize = flashBlockSize;
 	}
 
-	private static CartridgeType add(int numericId, String id,
-			Platform platform, int sizeInKB, int bankSize,
-			int initialBankOffset, int initialBankAddress,
-			int initialBankNumber, int flashBlockSize) {
+	private static CartridgeType add(int numericId, String id, Platform platform, int sizeInKB, int bankSize,
+			int initialBankOffset, int initialBankAddress, int initialBankNumber, int flashBlockSize) {
 		if (numericId < 0) {
 			throw new IllegalArgumentException(
-					"Parameter 'numericId' must not be negative. Specified values is "
-							+ numericId + ".");
+					"Parameter 'numericId' must not be negative. Specified values is " + numericId + ".");
 		}
 		if (sizeInKB < 0) {
 			throw new IllegalArgumentException(
-					"Parameter 'sizeInKB' must not be negative. Specified values is "
-							+ sizeInKB + ".");
+					"Parameter 'sizeInKB' must not be negative. Specified values is " + sizeInKB + ".");
 		}
 		CartridgeType result;
-		result = new CartridgeType(numericId, id, platform, sizeInKB, bankSize,
-				initialBankOffset, initialBankAddress, initialBankNumber,
-				flashBlockSize);
+		result = new CartridgeType(numericId, id, platform, sizeInKB, bankSize, initialBankOffset, initialBankAddress,
+				initialBankNumber, flashBlockSize);
 		values.put(id, result);
 		return result;
 	}
@@ -600,8 +522,7 @@ public final class CartridgeType extends ValueSet {
 	 * @return The unmodifiable list of all values, not <code>null</code>.
 	 */
 	public static List<CartridgeType> getValues() {
-		return Collections.unmodifiableList(new ArrayList<CartridgeType>(values
-				.values()));
+		return Collections.unmodifiableList(new ArrayList<CartridgeType>(values.values()));
 	}
 
 	/**
@@ -629,8 +550,7 @@ public final class CartridgeType extends ValueSet {
 	 */
 	public static CartridgeType getInstance(String id) {
 		if (id == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'id' must not be null.");
+			throw new IllegalArgumentException("Parameter 'id' must not be null.");
 		}
 		return values.get(id);
 	}
@@ -654,12 +574,11 @@ public final class CartridgeType extends ValueSet {
 	}
 
 	/**
-	 * Gets the (file) size of the module in KB (1024 bytes). Note that this
-	 * size in larger than the CPU view of the module for all bank switching
-	 * cartridges.
+	 * Gets the (file) size of the module in KB (1024 bytes). Note that this size in
+	 * larger than the CPU view of the module for all bank switching cartridges.
 	 * 
-	 * @return The (file) size of the module in KB (1024 bytes) or 0 if the size
-	 *         is not defined/variable.
+	 * @return The (file) size of the module in KB (1024 bytes) or 0 if the size is
+	 *         not defined/variable.
 	 */
 	public int getSizeInKB() {
 		return sizeInKB;
@@ -695,18 +614,16 @@ public final class CartridgeType extends ValueSet {
 	/**
 	 * Determines the cartridge type is a The!Cart cartridge type.
 	 * 
-	 * @return <code>true</code> if the cartridge type is a The!Cart cartridge
-	 *         type.
+	 * @return <code>true</code> if the cartridge type is a The!Cart cartridge type.
 	 */
 	public boolean isTheCart() {
-		return this.equals(CARTRIDGE_THECART_32M)
-				|| this.equals(CARTRIDGE_THECART_64M)
+		return this.equals(CARTRIDGE_THECART_32M) || this.equals(CARTRIDGE_THECART_64M)
 				|| this.equals(CARTRIDGE_THECART_128M);
 	}
 
 	/**
-	 * Determines if incremental flashing is supported by the standard flasher
-	 * of this cartridge type.
+	 * Determines if incremental flashing is supported by the standard flasher of
+	 * this cartridge type.
 	 * 
 	 * @return <code>true</code> if incremental flashing is supported and banks
 	 *         should be kept stable.

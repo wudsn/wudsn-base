@@ -20,76 +20,76 @@ package com.wudsn.tools.base.common;
 
 public abstract class Log {
 
-    /**
-     * Creation is private.
-     */
-    private Log() {
-    }
-
-    /**
-     * Log a debug info message.
-     * 
-     * @param message
-     *            The message, not <code>null</code>.
-     * 
-     * @param parameters
-     *            The message parameters, may be empty or <code>null</code>.
-     */
-    public static void logInfo(String message, Object[] parameters) {
-	if (message == null) {
-	    throw new IllegalArgumentException("Parameter 'message' must not be null.");
-	}
-	message = format(message, parameters);
-	System.out.println(message);
-
-    }
-
-    /**
-     * Logs an error message and an exception to the plugin log and the standard
-     * error stream.
-     * 
-     * @param message
-     *            The message, not <code>null</code>.
-     * @param parameters
-     *            The message parameters, may be empty or <code>null</code>.
-     * @param th
-     *            The throwable or <code>null</code>.
-     */
-    public static void logError(String message, Object[] parameters, Throwable th) {
-	if (message == null) {
-	    throw new IllegalArgumentException("Parameter 'message' must not be null.");
+	/**
+	 * Creation is private.
+	 */
+	private Log() {
 	}
 
-	message = format(message, parameters);
-	if (th != null) {
-	    message = message + "\n" + th.getMessage();
+	/**
+	 * Log a debug info message.
+	 * 
+	 * @param message
+	 *            The message, not <code>null</code>.
+	 * 
+	 * @param parameters
+	 *            The message parameters, may be empty or <code>null</code>.
+	 */
+	public static void logInfo(String message, Object[] parameters) {
+		if (message == null) {
+			throw new IllegalArgumentException("Parameter 'message' must not be null.");
+		}
+		message = format(message, parameters);
+		System.out.println(message);
+
 	}
 
-	System.err.println("ERROR: " + message);
-	if (th != null) {
-	    th.printStackTrace(System.err);
-	    System.err.flush();
+	/**
+	 * Logs an error message and an exception to the plugin log and the standard
+	 * error stream.
+	 * 
+	 * @param message
+	 *            The message, not <code>null</code>.
+	 * @param parameters
+	 *            The message parameters, may be empty or <code>null</code>.
+	 * @param th
+	 *            The throwable or <code>null</code>.
+	 */
+	public static void logError(String message, Object[] parameters, Throwable th) {
+		if (message == null) {
+			throw new IllegalArgumentException("Parameter 'message' must not be null.");
+		}
+
+		message = format(message, parameters);
+		if (th != null) {
+			message = message + "\n" + th.getMessage();
+		}
+
+		System.err.println("ERROR: " + message);
+		if (th != null) {
+			th.printStackTrace(System.err);
+			System.err.flush();
+		}
+
 	}
 
-    }
-
-    private static String format(String message, Object... parameters) {
-	if (parameters == null) {
-	    parameters = new String[0];
+	private static String format(String message, Object... parameters) {
+		if (parameters == null) {
+			parameters = new String[0];
+		}
+		String[] stringParameters = new String[parameters.length];
+		for (int i = 0; i < parameters.length; i++) {
+			Object parameter = parameters[i];
+			String stringParameter;
+			if (parameter == null) {
+				stringParameter = "null";
+			} else {
+				stringParameter = parameter.toString();
+			}
+			stringParameters[i] = stringParameter;
+		}
+		message = TextUtility.format(message, stringParameters);
+		return message;
 	}
-	String[] stringParameters = new String[parameters.length];
-	for (int i = 0; i < parameters.length; i++) {
-	    Object parameter = parameters[i];
-	    String stringParameter;
-	    if (parameter == null) {
-		stringParameter = "null";
-	    } else {
-		stringParameter = parameter.toString();
-	    }
-	    stringParameters[i] = stringParameter;
-	}
-	message = TextUtility.format(message, stringParameters);
-	return message;
-    }
 
 }

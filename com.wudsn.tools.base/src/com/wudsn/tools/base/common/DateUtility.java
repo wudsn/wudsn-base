@@ -29,18 +29,18 @@ import java.util.Date;
  * @author Peter Dell
  */
 public final class DateUtility {
-    /**
-     * Creation is private,
-     */
-    private DateUtility() {
+	/**
+	 * Creation is private,
+	 */
+	private DateUtility() {
 
-    }
+	}
 
-    public static String getCurrentDateTimeString() {
-	// Use "y" instead of "Y", so it also works on Windows XP/older JDKs.
-	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	String dateTime = dateFormat.format(new Date());
-	return dateTime;
-    }
+	public static String getCurrentDateTimeString() {
+		// Use "y" instead of "Y", so it also works on Windows XP/older JDKs.
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String dateTime = dateFormat.format(new Date());
+		return dateTime;
+	}
 
 }

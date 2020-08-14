@@ -28,59 +28,57 @@ import com.wudsn.tools.base.repository.Attribute;
 
 public final class ConsoleCommand {
 
-    private Action action;
-    private String actionCommand;
-    private List<ConsoleCommandParameter> parameters;
-    private List<ConsoleCommandParameter> unmodifiableParameters;
+	private Action action;
+	private String actionCommand;
+	private List<ConsoleCommandParameter> parameters;
+	private List<ConsoleCommandParameter> unmodifiableParameters;
 
-    /**
-     * Used by
-     * {@link ConsoleCommandParser#addCommand(Action, String)}.
-     * 
-     * @param action
-     *            The action, not <code>null</code>.
-     * @param actionCommand
-     *            The console action command, not <code>null</code>.
-     */
-    ConsoleCommand(Action action, String actionCommand) {
-	if (action == null) {
-	    throw new IllegalArgumentException("Parameter 'action' must not be null.");
+	/**
+	 * Used by {@link ConsoleCommandParser#addCommand(Action, String)}.
+	 * 
+	 * @param action
+	 *            The action, not <code>null</code>.
+	 * @param actionCommand
+	 *            The console action command, not <code>null</code>.
+	 */
+	ConsoleCommand(Action action, String actionCommand) {
+		if (action == null) {
+			throw new IllegalArgumentException("Parameter 'action' must not be null.");
+		}
+		if (actionCommand == null) {
+			throw new IllegalArgumentException("Parameter 'actionCommand' must not be null.");
+		}
+		this.action = action;
+		this.actionCommand = actionCommand;
+		this.parameters = new ArrayList<ConsoleCommandParameter>();
+		this.unmodifiableParameters = Collections.unmodifiableList(parameters);
 	}
-	if (actionCommand == null) {
-	    throw new IllegalArgumentException("Parameter 'actionCommand' must not be null.");
+
+	/**
+	 * Add a parameter to the command.
+	 * 
+	 * @param attribute
+	 *            The defining attribute of the parameter, not <code>null</code> .
+	 * @param cardinality
+	 *            The cardinality of the parameter, see {@link Cardinality}.
+	 */
+	public void addParameter(Attribute attribute, int cardinality) {
+		if (attribute == null) {
+			throw new IllegalArgumentException("Parameter 'attribute' must not be null.");
+		}
+		parameters.add(new ConsoleCommandParameter(attribute, cardinality));
 	}
-	this.action = action;
-	this.actionCommand = actionCommand;
-	this.parameters = new ArrayList<ConsoleCommandParameter>();
-	this.unmodifiableParameters = Collections.unmodifiableList(parameters);
-    }
 
-    /**
-     * Add a parameter to the command.
-     * 
-     * @param attribute
-     *            The defining attribute of the parameter, not <code>null</code>
-     *            .
-     * @param cardinality
-     *            The cardinality of the parameter, see {@link Cardinality}.
-     */
-    public void addParameter(Attribute attribute, int cardinality) {
-	if (attribute == null) {
-	    throw new IllegalArgumentException("Parameter 'attribute' must not be null.");
+	public Action getAction() {
+		return action;
 	}
-	parameters.add(new ConsoleCommandParameter(attribute, cardinality));
-    }
 
-    public Action getAction() {
-	return action;
-    }
+	public String getActionCommand() {
+		return actionCommand;
+	}
 
-    public String getActionCommand() {
-	return actionCommand;
-    }
-
-    public List<ConsoleCommandParameter> getParameters() {
-	return unmodifiableParameters;
-    }
+	public List<ConsoleCommandParameter> getParameters() {
+		return unmodifiableParameters;
+	}
 
 }

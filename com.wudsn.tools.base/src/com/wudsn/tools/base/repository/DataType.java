@@ -27,85 +27,88 @@ import com.wudsn.tools.base.common.ASCIIString;
  */
 public final class DataType {
 
-    private Class<?> valueClass;
-    private String label;
-    private String toolTip;
-    private int maximumLength;
-    private String allowedCharacters;
+	private Class<?> valueClass;
+	private String label;
+	private String toolTip;
+	private int maximumLength;
+	private String allowedCharacters;
 
-    public DataType(Class<?> valueClass) {
+	public DataType(Class<?> valueClass) {
 
-	if (valueClass == null) {
-	    throw new IllegalArgumentException("Parameter 'valueClass' must not be null.");
+		if (valueClass == null) {
+			throw new IllegalArgumentException("Parameter 'valueClass' must not be null.");
+		}
+		this.valueClass = valueClass;
+		this.label = "";
+		this.toolTip = "";
+		maximumLength = -1;
+		allowedCharacters = null;
 	}
-	this.valueClass = valueClass;
-	this.label = "";
-	this.toolTip = "";
-	maximumLength = -1;
-	allowedCharacters = null;
-    }
 
-    public DataType(Class<String> valueClass, int maximumLength, String allowedCharacters) {
+	public DataType(Class<String> valueClass, int maximumLength, String allowedCharacters) {
 
-	this(valueClass);
-	this.maximumLength = maximumLength;
-	this.allowedCharacters = allowedCharacters;
+		this(valueClass);
+		this.maximumLength = maximumLength;
+		this.allowedCharacters = allowedCharacters;
 
-    }
-
-    public DataType(Class<ASCIIString> valueClass, int maximumLength, ASCIIString allowedCharacters) {
-
-	this(valueClass);
-	this.maximumLength = maximumLength;
-	this.allowedCharacters = allowedCharacters.toString();
-
-    }
-
-    public Class<?> getValueClass() {
-	return valueClass;
-    }
-
-    public String getLabel() {
-	return label;
-    }
-
-    public String getLabelWithoutMnemonics() {
-	return label.replaceAll("&", "");
-    }
-
-    public String getToolTip() {
-	return toolTip;
-    }
-
-    /**
-     * Sets the texts for the data type. This method is only public for the
-     * cases where data types are created dynamically. it must not be used to change data type constants.
-     * 
-     * @param label The label text, not <code>null</code>.
-     * @param toolTip The tool tip text, not <code>null</code>.
-     */
-    public void setTexts(String label, String toolTip) {
-	if (label == null) {
-	    throw new IllegalArgumentException("Parameter 'label' must not be null.");
 	}
-	if (toolTip == null) {
-	    throw new IllegalArgumentException("Parameter 'toolTip' must not be null.");
+
+	public DataType(Class<ASCIIString> valueClass, int maximumLength, ASCIIString allowedCharacters) {
+
+		this(valueClass);
+		this.maximumLength = maximumLength;
+		this.allowedCharacters = allowedCharacters.toString();
+
 	}
-	this.label = label;
-	this.toolTip = toolTip;
-    }
 
-    public String getAllowedCharacters() {
-	return allowedCharacters;
-    }
+	public Class<?> getValueClass() {
+		return valueClass;
+	}
 
-    public int getMaximumLength() {
-	return maximumLength;
-    }
+	public String getLabel() {
+		return label;
+	}
 
-    @Override
-    public String toString() {
-	return "label=" + label;
-    }
+	public String getLabelWithoutMnemonics() {
+		return label.replaceAll("&", "");
+	}
+
+	public String getToolTip() {
+		return toolTip;
+	}
+
+	/**
+	 * Sets the texts for the data type. This method is only public for the cases
+	 * where data types are created dynamically. it must not be used to change data
+	 * type constants.
+	 * 
+	 * @param label
+	 *            The label text, not <code>null</code>.
+	 * @param toolTip
+	 *            The tool tip text, not <code>null</code>.
+	 */
+	public void setTexts(String label, String toolTip) {
+		if (label == null) {
+			throw new IllegalArgumentException("Parameter 'label' must not be null.");
+		}
+		if (toolTip == null) {
+			throw new IllegalArgumentException("Parameter 'toolTip' must not be null.");
+		}
+		this.label = label;
+		this.toolTip = toolTip;
+	}
+
+	public String getAllowedCharacters() {
+		return allowedCharacters;
+	}
+
+	public int getMaximumLength() {
+		return maximumLength;
+	}
+
+	@Override
+	public String toString() {
+		return "label=" + label;
+	}
 
 }

@@ -28,65 +28,65 @@ import com.wudsn.tools.base.common.TextUtility;
  */
 public final class Message {
 
-    public static final int STATUS = 1;
-    public static final int INFO = 2;
-    public static final int ERROR = 3;
+	public static final int STATUS = 1;
+	public static final int INFO = 2;
+	public static final int ERROR = 3;
 
-    private String id;
-    private int severity;
-    private String shortText;
+	private String id;
+	private int severity;
+	private String shortText;
 
-    Message(String id, int severity, String shortText) {
-	if (id == null) {
-	    throw new IllegalArgumentException("Parameter 'id' must not be null.");
+	Message(String id, int severity, String shortText) {
+		if (id == null) {
+			throw new IllegalArgumentException("Parameter 'id' must not be null.");
+		}
+		if (StringUtility.isEmpty(id)) {
+			throw new IllegalArgumentException("Parameter 'id' must not be empty.");
+		}
+		switch (severity) {
+		case STATUS:
+		case INFO:
+		case ERROR:
+			break;
+		default:
+			throw new IllegalArgumentException("Parameter 'severity' has illegal value " + severity + ".");
+		}
+		if (shortText == null) {
+			throw new IllegalArgumentException("Parameter 'shortText' must not be null.");
+		}
+		if (StringUtility.isEmpty(shortText)) {
+			throw new IllegalArgumentException("Parameter 'shortText' must not be empty.");
+		}
+		this.id = id;
+		this.severity = severity;
+		this.shortText = shortText;
 	}
-	if (StringUtility.isEmpty(id)) {
-	    throw new IllegalArgumentException("Parameter 'id' must not be empty.");
-	}
-	switch (severity) {
-	case STATUS:
-	case INFO:
-	case ERROR:
-	    break;
-	default:
-	    throw new IllegalArgumentException("Parameter 'severity' has illegal value " + severity + ".");
-	}
-	if (shortText == null) {
-	    throw new IllegalArgumentException("Parameter 'shortText' must not be null.");
-	}
-	if (StringUtility.isEmpty(shortText)) {
-	    throw new IllegalArgumentException("Parameter 'shortText' must not be empty.");
-	}
-	this.id = id;
-	this.severity = severity;
-	this.shortText = shortText;
-    }
 
-    public String getId() {
-	return id;
-    }
-
-    public int getSeverity() {
-	return severity;
-    }
-
-    public String getShortText() {
-	return shortText;
-    }
-
-    @Override
-    public String toString() {
-	switch (severity) {
-	case INFO:
-	    return "INFO: " + shortText;
-	case ERROR:
-	    return "ERROR: " + shortText;
+	public String getId() {
+		return id;
 	}
-	throw new IllegalStateException("Field 'severity' has illegal value " + severity + ".");
-    }
 
-    public String format(String... parameters) {
-	return TextUtility.format(shortText, parameters);
-    }
+	public int getSeverity() {
+		return severity;
+	}
+
+	public String getShortText() {
+		return shortText;
+	}
+
+	@Override
+	public String toString() {
+		switch (severity) {
+		case INFO:
+			return "INFO: " + shortText;
+		case ERROR:
+			return "ERROR: " + shortText;
+		}
+		throw new IllegalStateException("Field 'severity' has illegal value " + severity + ".");
+	}
+
+	public String format(String... parameters) {
+		return TextUtility.format(shortText, parameters);
+	}
 
 }

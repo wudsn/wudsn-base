@@ -28,15 +28,14 @@ import com.wudsn.tools.base.repository.NLS;
  */
 public final class Texts extends NLS {
 
-    // UI Texts: Update 
-    public static String UpdateDialog_Title;
-    public static String UpdateDialog_Text;
+	// UI Texts: Update
+	public static String UpdateDialog_Title;
+	public static String UpdateDialog_Text;
 
-    // UI Texts: Dialogs
-    public static String HelpDialog_Title;
+	// UI Texts: Dialogs
+	public static String HelpDialog_Title;
 
-
-    static {
-	initializeClass(Texts.class, null);
-    }
+	static {
+		initializeClass(Texts.class, null);
+	}
 }

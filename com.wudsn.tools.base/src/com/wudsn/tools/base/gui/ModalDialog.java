@@ -80,22 +80,19 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 
 		okButton.addActionListener(this);
 
-		ElementFactory.setDialogDefaultButtons(getRootPane(), okButton,
-				cancelButton.getAction());
+		ElementFactory.setDialogDefaultButtons(getRootPane(), okButton, cancelButton.getAction());
 	}
 
 	protected final void addButtonBarButton(JButton button) {
 		if (button == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'button' must not be null.");
+			throw new IllegalArgumentException("Parameter 'button' must not be null.");
 		}
 		buttonBar.add(button, 0);
 	}
 
 	protected final void showModal(JComponent focusField) {
 		if (focusField == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'focusField' must not be null.");
+			throw new IllegalArgumentException("Parameter 'focusField' must not be null.");
 		}
 		dataToUi();
 		okPressed = false;

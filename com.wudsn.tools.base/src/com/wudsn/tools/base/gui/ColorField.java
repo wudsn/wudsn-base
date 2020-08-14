@@ -31,74 +31,74 @@ import javax.swing.JLabel;
 @SuppressWarnings("serial")
 public final class ColorField extends JButton {
 
-    private JLabel label;
-    private JColorChooser colorChooser;
-    private JDialog dialog;
+	private JLabel label;
+	private JColorChooser colorChooser;
+	private JDialog dialog;
 
-    /**
-     * Creation is public.
-     */
-    public ColorField() {
-	setContentAreaFilled(false);
-	setOpaque(true);
-	
-	colorChooser = new JColorChooser();
-	addActionListener(new ActionListener() {
+	/**
+	 * Creation is public.
+	 */
+	public ColorField() {
+		setContentAreaFilled(false);
+		setOpaque(true);
 
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		showColorChooserDialog();
-	    }
-	});
-    }
+		colorChooser = new JColorChooser();
+		addActionListener(new ActionListener() {
 
-    /**
-     * Sets the label for this field.
-     * 
-     * @param label
-     *            The label or <code>null</code>
-     */
-    public void setLabel(JLabel label) {
-	this.label = label;
-    }
-
-    @Override
-    public void setVisible(boolean visible) {
-	if (label != null) {
-	    label.setVisible(visible);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				showColorChooserDialog();
+			}
+		});
 	}
-	super.setVisible(visible);
-    }
 
-    /**
-     * Sets the numeric value with locale dependent formatting.
-     * 
-     * @param value
-     *            The color, not <code>null</code>.
-     */
-    public void setValue(Color value) {
-	if (value == null) {
-	    throw new IllegalArgumentException("Parameter 'value' must not be null.");
+	/**
+	 * Sets the label for this field.
+	 * 
+	 * @param label
+	 *            The label or <code>null</code>
+	 */
+	public void setLabel(JLabel label) {
+		this.label = label;
 	}
-	colorChooser.setColor(value);
-	setBackground(value);
-    }
 
-    /**
-     * Gets the currently selected color.
-     * 
-     * @return value The color, not <code>null</code>.
-     */
-    public Color getValue() {
-	Color result = colorChooser.getColor();
-	return result;
-    }
-
-    final void showColorChooserDialog() {
-	if (dialog == null) {
-	    dialog = JColorChooser.createDialog(colorChooser, label.getText(), true, colorChooser, null, null);
+	@Override
+	public void setVisible(boolean visible) {
+		if (label != null) {
+			label.setVisible(visible);
+		}
+		super.setVisible(visible);
 	}
-	dialog.setVisible(true);
-	setBackground(colorChooser.getColor());
-    }
+
+	/**
+	 * Sets the numeric value with locale dependent formatting.
+	 * 
+	 * @param value
+	 *            The color, not <code>null</code>.
+	 */
+	public void setValue(Color value) {
+		if (value == null) {
+			throw new IllegalArgumentException("Parameter 'value' must not be null.");
+		}
+		colorChooser.setColor(value);
+		setBackground(value);
+	}
+
+	/**
+	 * Gets the currently selected color.
+	 * 
+	 * @return value The color, not <code>null</code>.
+	 */
+	public Color getValue() {
+		Color result = colorChooser.getColor();
+		return result;
+	}
+
+	final void showColorChooserDialog() {
+		if (dialog == null) {
+			dialog = JColorChooser.createDialog(colorChooser, label.getText(), true, colorChooser, null, null);
+		}
+		dialog.setVisible(true);
+		setBackground(colorChooser.getColor());
+	}
 }

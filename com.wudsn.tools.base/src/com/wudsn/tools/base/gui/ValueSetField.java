@@ -30,62 +30,62 @@ import com.wudsn.tools.base.repository.ValueSet;
 @SuppressWarnings("serial")
 public final class ValueSetField<T extends ValueSet> extends JComboBox<T> {
 
-    boolean settingValue;
+	boolean settingValue;
 
-    /**
-     * Creates a value set field with all values of a value set class.
-     * 
-     * @param valueSetClass
-     *            The class of the value set, not <code>null</code>.
-     */
-    public ValueSetField(Class<T> valueSetClass) {
-	this(ValueSet.getValues(valueSetClass));
-    }
-
-    /**
-     * Creates a value set field with all values of a value set class.
-     * 
-     * @param values
-     *            The list of value, may be empty, not <code>null</code>.
-     */
-    public ValueSetField(List<T> values) {
-	if (values == null) {
-	    throw new IllegalArgumentException("Parameter 'values' must not be null.");
+	/**
+	 * Creates a value set field with all values of a value set class.
+	 * 
+	 * @param valueSetClass
+	 *            The class of the value set, not <code>null</code>.
+	 */
+	public ValueSetField(Class<T> valueSetClass) {
+		this(ValueSet.getValues(valueSetClass));
 	}
-	DefaultComboBoxModel<T> model = new DefaultComboBoxModel<T>();
-	for (T value : values) {
-	    model.addElement(value);
-	}
-	setModel(model);
 
-    }
-
-    public void setValue(T value) {
-	if (value == null) {
-	    throw new IllegalArgumentException("Parameter 'value' must not be null.");
-	}
-	settingValue = true;
-	setSelectedItem(value);
-	settingValue = false;
-    }
-
-    @Override
-    public void addActionListener(final ActionListener l) {
-	super.addActionListener(new ActionListener() {
-
-	    @Override
-	    public void actionPerformed(ActionEvent e) {
-		if (!settingValue) {
-		    l.actionPerformed(e);
+	/**
+	 * Creates a value set field with all values of a value set class.
+	 * 
+	 * @param values
+	 *            The list of value, may be empty, not <code>null</code>.
+	 */
+	public ValueSetField(List<T> values) {
+		if (values == null) {
+			throw new IllegalArgumentException("Parameter 'values' must not be null.");
 		}
+		DefaultComboBoxModel<T> model = new DefaultComboBoxModel<T>();
+		for (T value : values) {
+			model.addElement(value);
+		}
+		setModel(model);
 
-	    }
-	});
+	}
 
-    }
+	public void setValue(T value) {
+		if (value == null) {
+			throw new IllegalArgumentException("Parameter 'value' must not be null.");
+		}
+		settingValue = true;
+		setSelectedItem(value);
+		settingValue = false;
+	}
 
-    @SuppressWarnings("unchecked")
-    public T getValue() {
-	return (T) getSelectedItem();
-    }
+	@Override
+	public void addActionListener(final ActionListener l) {
+		super.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (!settingValue) {
+					l.actionPerformed(e);
+				}
+
+			}
+		});
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public T getValue() {
+		return (T) getSelectedItem();
+	}
 }

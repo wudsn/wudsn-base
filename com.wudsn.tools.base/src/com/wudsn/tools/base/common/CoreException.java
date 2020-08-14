@@ -24,19 +24,20 @@ import com.wudsn.tools.base.repository.Message;
 @SuppressWarnings("serial")
 public class CoreException extends Exception {
 
-    private Message message;
-    private String[] parameters;
+	private Message message;
+	private String[] parameters;
 
-    public CoreException(Message message, String... parameters) {
-	super(message.format(parameters));
-	this.message = message;
-	this.parameters = parameters;
-    }
+	public CoreException(Message message, String... parameters) {
+		super(message.format(parameters));
+		this.message = message;
+		this.parameters = parameters;
+	}
 
-    public int getSeverity(){
-	return message.getSeverity();
-    }
-    public MessageQueueEntry createMessageQueueEntry(Object owner, Attribute attribute) {
-	return new MessageQueueEntry(owner, attribute, message, parameters);
-    }
+	public int getSeverity() {
+		return message.getSeverity();
+	}
+
+	public MessageQueueEntry createMessageQueueEntry(Object owner, Attribute attribute) {
+		return new MessageQueueEntry(owner, attribute, message, parameters);
+	}
 }

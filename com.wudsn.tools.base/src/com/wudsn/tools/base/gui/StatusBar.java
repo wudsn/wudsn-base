@@ -31,86 +31,86 @@ import com.wudsn.tools.base.repository.Message;
 
 public final class StatusBar implements MessageQueueRenderer {
 
-    private Icon iconInfo;
-    private Icon iconError;
-    private JLabel label;
+	private Icon iconInfo;
+	private Icon iconError;
+	private JLabel label;
 
-    /**
-     * Creation is public.
-     */
-    public StatusBar() {
+	/**
+	 * Creation is public.
+	 */
+	public StatusBar() {
 
-	iconInfo = ElementFactory.createImageIcon("icons/status-info-16x16.png");
-	iconError = ElementFactory.createImageIcon("icons/status-error-16x16.png");
-	label = new JLabel();
-	label.setHorizontalAlignment(SwingConstants.LEADING);
-    }
-
-    /**
-     * Gets the component to be added to the container.
-     * 
-     * @return The component, not <code>null</code>.
-     */
-    public JComponent getComponent() {
-	return label;
-    }
-
-     @Override
-    public void displayMessageQueue(MessageQueue messageQueue) {
-	if (messageQueue == null) {
-	    throw new IllegalArgumentException("Parameter 'messageQueue' must not be null.");
+		iconInfo = ElementFactory.createImageIcon("icons/status-info-16x16.png");
+		iconError = ElementFactory.createImageIcon("icons/status-error-16x16.png");
+		label = new JLabel();
+		label.setHorizontalAlignment(SwingConstants.LEADING);
 	}
 
-	if (messageQueue.containsError()) {
-	    setStatus(messageQueue.getFirstError());
-	} else if (messageQueue.containsInfo()) {
-	    setStatus(messageQueue.getFirstInfo());
-	} else {
-	    setStatus(null);
-	}
-    }
-
-     @Override
-    public void displayStatusMessage(MessageQueueEntry messageQueueEntry) {
-	if (messageQueueEntry == null) {
-	    throw new IllegalArgumentException("Parameter 'messageQueueEntry' must not be null.");
+	/**
+	 * Gets the component to be added to the container.
+	 * 
+	 * @return The component, not <code>null</code>.
+	 */
+	public JComponent getComponent() {
+		return label;
 	}
 
-	setStatus(messageQueueEntry);
-    }
+	@Override
+	public void displayMessageQueue(MessageQueue messageQueue) {
+		if (messageQueue == null) {
+			throw new IllegalArgumentException("Parameter 'messageQueue' must not be null.");
+		}
 
-    /**
-     * Sets the status.
-     * 
-     * @param messageQueueEntry
-     *            The status or <code>null</code>.
-     */
-    private void setStatus(MessageQueueEntry messageQueueEntry) {
-
-	if (messageQueueEntry == null) {
-	    label.setIcon(null);
-	    label.setText(" ");
-	} else {
-	    int severity = messageQueueEntry.getMessage().getSeverity();
-	    Icon icon;
-	    switch (severity) {
-	    case Message.STATUS:
-		icon = iconInfo;
-		break;
-	    case Message.INFO:
-		icon = iconInfo;
-		break;
-	    case Message.ERROR:
-		icon = iconError;
-		break;
-	    default:
-		throw new IllegalStateException("Field 'severity' has illegal value " + severity + ".");
-	    }
-	    label.setIcon(icon);
-	    label.setText(messageQueueEntry.getMessageText());
-	    label.setToolTipText(messageQueueEntry.getMessage().getId() + ": " + label.getText());
+		if (messageQueue.containsError()) {
+			setStatus(messageQueue.getFirstError());
+		} else if (messageQueue.containsInfo()) {
+			setStatus(messageQueue.getFirstInfo());
+		} else {
+			setStatus(null);
+		}
 	}
 
-    }
+	@Override
+	public void displayStatusMessage(MessageQueueEntry messageQueueEntry) {
+		if (messageQueueEntry == null) {
+			throw new IllegalArgumentException("Parameter 'messageQueueEntry' must not be null.");
+		}
+
+		setStatus(messageQueueEntry);
+	}
+
+	/**
+	 * Sets the status.
+	 * 
+	 * @param messageQueueEntry
+	 *            The status or <code>null</code>.
+	 */
+	private void setStatus(MessageQueueEntry messageQueueEntry) {
+
+		if (messageQueueEntry == null) {
+			label.setIcon(null);
+			label.setText(" ");
+		} else {
+			int severity = messageQueueEntry.getMessage().getSeverity();
+			Icon icon;
+			switch (severity) {
+			case Message.STATUS:
+				icon = iconInfo;
+				break;
+			case Message.INFO:
+				icon = iconInfo;
+				break;
+			case Message.ERROR:
+				icon = iconError;
+				break;
+			default:
+				throw new IllegalStateException("Field 'severity' has illegal value " + severity + ".");
+			}
+			label.setIcon(icon);
+			label.setText(messageQueueEntry.getMessageText());
+			label.setToolTipText(messageQueueEntry.getMessage().getId() + ": " + label.getText());
+		}
+
+	}
 
 }

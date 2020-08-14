@@ -26,24 +26,23 @@ package com.wudsn.tools.base.common;
  */
 public abstract class Main {
 
+	public static void logInfo(String message) {
+		if (message == null) {
+			throw new IllegalArgumentException("Parameter 'message' must not be null.");
+		}
+		println("INFO : " + message);
 
-    public static void logInfo(String message) {
-	if (message == null) {
-	    throw new IllegalArgumentException("Parameter 'message' must not be null.");
 	}
-	println("INFO : " + message);
 
-    }
+	public static void logError(String message) {
+		if (message == null) {
+			throw new IllegalArgumentException("Parameter 'message' must not be null.");
+		}
+		println("ERROR: " + message);
 
-    public static void logError(String message) {
-	if (message == null) {
-	    throw new IllegalArgumentException("Parameter 'message' must not be null.");
 	}
-	println("ERROR: " + message);
 
-    }
-    
-    public static void println(Object o) {
-	System.out.println(o);
-    }
+	public static void println(Object o) {
+		System.out.println(o);
+	}
 }

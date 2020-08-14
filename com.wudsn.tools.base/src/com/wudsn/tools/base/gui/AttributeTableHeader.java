@@ -59,8 +59,8 @@ final class AttributeTableHeader {
 
 	private final static class AttributeSortKey extends SortKey {
 		/**
-		 * Creates a <code>SortKey</code> for the specified column with the
-		 * specified sort order.
+		 * Creates a <code>SortKey</code> for the specified column with the specified
+		 * sort order.
 		 * 
 		 * @param column
 		 *            index of the column, in terms of the model
@@ -75,26 +75,22 @@ final class AttributeTableHeader {
 
 		@Override
 		public String toString() {
-			return "column=" + getColumn() + ", sortOrder="
-					+ getSortOrder().toString();
+			return "column=" + getColumn() + ", sortOrder=" + getSortOrder().toString();
 		}
 	}
 
 	public static void install(JTable table) {
 		if (table == null) {
-			throw new IllegalArgumentException(
-					"Parameter 'table' must not be null.");
+			throw new IllegalArgumentException("Parameter 'table' must not be null.");
 		}
 		// React on view column changes.
-		table.getColumnModel().addColumnModelListener(
-				new CustomColumnModelListener(table));
+		table.getColumnModel().addColumnModelListener(new CustomColumnModelListener(table));
 
 		// Replace the header's mouse listener.
 		JTableHeader header = table.getTableHeader();
 		for (MouseListener ml : header.getMouseListeners()) {
 			if (ml instanceof BasicTableHeaderUI.MouseInputHandler) {
-				MouseListener altered = new CustomTableHeaderListener(table,
-						(BasicTableHeaderUI.MouseInputHandler) ml);
+				MouseListener altered = new CustomTableHeaderListener(table, (BasicTableHeaderUI.MouseInputHandler) ml);
 				header.removeMouseListener(ml);
 				header.addMouseListener(altered);
 			}
@@ -105,8 +101,7 @@ final class AttributeTableHeader {
 		header.setDefaultRenderer(new CustomerTableHeaderRenderer());
 	}
 
-	private final static class CustomColumnModelListener implements
-			TableColumnModelListener {
+	private final static class CustomColumnModelListener implements TableColumnModelListener {
 		private final JTable table;
 
 		public CustomColumnModelListener(JTable table) {
@@ -147,11 +142,9 @@ final class AttributeTableHeader {
 			}
 		}
 
-		private static SortKey getSortKeyWithColumn(int col,
-				List<? extends SortKey> oldKeys) {
+		private static SortKey getSortKeyWithColumn(int col, List<? extends SortKey> oldKeys) {
 			if (oldKeys == null) {
-				throw new IllegalArgumentException(
-						"Parameter 'oldKeys' must not be null.");
+				throw new IllegalArgumentException("Parameter 'oldKeys' must not be null.");
 			}
 			for (SortKey k : oldKeys) {
 				if (k.getColumn() == col) {
@@ -179,8 +172,7 @@ final class AttributeTableHeader {
 
 	}
 
-	private final static class CustomTableHeaderListener implements
-			MouseListener, MouseMotionListener {
+	private final static class CustomTableHeaderListener implements MouseListener, MouseMotionListener {
 
 		// Remember owning table.
 		private JTable table;
@@ -188,15 +180,12 @@ final class AttributeTableHeader {
 		private MouseListener original;
 		private MouseMotionListener originalMotion;
 
-		public CustomTableHeaderListener(JTable table,
-				BasicTableHeaderUI.MouseInputHandler original) {
+		public CustomTableHeaderListener(JTable table, BasicTableHeaderUI.MouseInputHandler original) {
 			if (table == null) {
-				throw new IllegalArgumentException(
-						"Parameter 'table' must not be null.");
+				throw new IllegalArgumentException("Parameter 'table' must not be null.");
 			}
 			if (original == null) {
-				throw new IllegalArgumentException(
-						"Parameter 'original' must not be null.");
+				throw new IllegalArgumentException("Parameter 'original' must not be null.");
 			}
 			this.table = table;
 			this.original = original;
@@ -214,8 +203,7 @@ final class AttributeTableHeader {
 			List<? extends SortKey> oldSortKeys = sorter.getSortKeys();
 			boolean extend = e.isShiftDown() || e.isControlDown();
 			List<SortKey> newSortKeys = new ArrayList<SortKey>();
-			AttributeTableModel tableModel = (AttributeTableModel) table
-					.getModel();
+			AttributeTableModel tableModel = (AttributeTableModel) table.getModel();
 			// Toggle sort order for this column?
 			if (tableModel.getColumn(modelColumn).isSortable()) {
 				boolean toggled = false;
@@ -225,8 +213,7 @@ final class AttributeTableHeader {
 						SortOrder oldSortOrder = sortKey.getSortOrder();
 						SortOrder newSortOrder = (oldSortOrder == SortOrder.ASCENDING ? SortOrder.DESCENDING
 								: SortOrder.ASCENDING);
-						newSortKeys.add(new AttributeSortKey(modelColumn,
-								newSortOrder));
+						newSortKeys.add(new AttributeSortKey(modelColumn, newSortOrder));
 						toggled = true;
 					} else {
 						// Copy as it is?
@@ -236,8 +223,7 @@ final class AttributeTableHeader {
 					}
 				}
 				if (!toggled) {
-					newSortKeys.add(new AttributeSortKey(modelColumn,
-							SortOrder.ASCENDING));
+					newSortKeys.add(new AttributeSortKey(modelColumn, SortOrder.ASCENDING));
 				}
 
 				// Update sorter.
@@ -279,8 +265,8 @@ final class AttributeTableHeader {
 	}
 
 	@SuppressWarnings("serial")
-	private final static class CustomerTableHeaderRenderer extends
-			DefaultTableCellRenderer implements javax.swing.plaf.UIResource {
+	private final static class CustomerTableHeaderRenderer extends DefaultTableCellRenderer
+			implements javax.swing.plaf.UIResource {
 
 		private final static class EmptyIcon implements Icon, Serializable {
 			int width = 0;
@@ -319,9 +305,8 @@ final class AttributeTableHeader {
 		}
 
 		@Override
-		public Component getTableCellRendererComponent(JTable table,
-				Object value, boolean isSelected, boolean hasFocus, int row,
-				int column) {
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+				int row, int column) {
 			Icon sortIcon = null;
 
 			boolean isPaintingForPrint = false;
@@ -332,10 +317,8 @@ final class AttributeTableHeader {
 					Color fgColor = null;
 					Color bgColor = null;
 					if (hasFocus) {
-						fgColor = UIManager
-								.getColor("TableHeader.focusCellForeground");
-						bgColor = UIManager
-								.getColor("TableHeader.focusCellBackground");
+						fgColor = UIManager.getColor("TableHeader.focusCellForeground");
+						bgColor = UIManager.getColor("TableHeader.focusCellBackground");
 					}
 					if (fgColor == null) {
 						fgColor = header.getForeground();
@@ -387,8 +370,7 @@ final class AttributeTableHeader {
 
 		private static SortOrder getColumnSortOrder(JTable table, int viewColumn) {
 			int modelColumn = table.convertColumnIndexToModel(viewColumn);
-			List<? extends SortKey> sortKeys = table.getRowSorter()
-					.getSortKeys();
+			List<? extends SortKey> sortKeys = table.getRowSorter().getSortKeys();
 			SortOrder sortOrder = SortOrder.UNSORTED;
 			for (SortKey sortKey : sortKeys) {
 				if (sortKey.getColumn() == modelColumn) {
@@ -423,10 +405,9 @@ final class AttributeTableHeader {
 			viewR.y = i.top;
 			viewR.width = getWidth() - (i.left + i.right);
 			viewR.height = getHeight() - (i.top + i.bottom);
-			SwingUtilities.layoutCompoundLabel(this, fontMetrics, getText(),
-					sortIcon, getVerticalAlignment(), getHorizontalAlignment(),
-					getVerticalTextPosition(), getHorizontalTextPosition(),
-					viewR, iconR, textR, getIconTextGap());
+			SwingUtilities.layoutCompoundLabel(this, fontMetrics, getText(), sortIcon, getVerticalAlignment(),
+					getHorizontalAlignment(), getVerticalTextPosition(), getHorizontalTextPosition(), viewR, iconR,
+					textR, getIconTextGap());
 			int x = getWidth() - i.right - sortIcon.getIconWidth();
 			int y = iconR.y;
 			return new Point(x, y);

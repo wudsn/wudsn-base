@@ -29,58 +29,55 @@ import java.util.Comparator;
  */
 public final class StringUtility {
 
-    private final static class CaseInsensitiveComparator implements
-	    Comparator<String> {
-	@Override
-	public int compare(String s1, String s2) {
-	    return s1.toUpperCase().compareTo(s2.toUpperCase());
+	private final static class CaseInsensitiveComparator implements Comparator<String> {
+		@Override
+		public int compare(String s1, String s2) {
+			return s1.toUpperCase().compareTo(s2.toUpperCase());
+		}
+	};
+
+	public final static Comparator<String> CASE_INSENSITIVE_COMPARATOR;
+
+	static {
+		CASE_INSENSITIVE_COMPARATOR = new CaseInsensitiveComparator();
 	}
-    };
 
-    public final static Comparator<String> CASE_INSENSITIVE_COMPARATOR;
+	/**
+	 * Creation is private.
+	 */
+	private StringUtility() {
 
-    static {
-	CASE_INSENSITIVE_COMPARATOR = new CaseInsensitiveComparator();
-    }
-
-    /**
-     * Creation is private.
-     */
-    private StringUtility() {
-
-    }
-
-    /**
-     * Determines if a string value is empty, i.e. has zero length or is only
-     * containing white spaces.
-     * 
-     * @param value
-     *            The string value, not <code>null</code>.
-     * @return <code>true</code> if the value is empty or only containing of
-     *         white spaces, <code>false</code> otherwise.
-     */
-    public static boolean isEmpty(String value) {
-	if (value == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'value' must not be null.");
 	}
-	return value.trim().length() == 0;
-    }
 
-    /**
-     * Determines if a string value is specified, i.e. not empty and not only
-     * containing white spaces.
-     * 
-     * @param value
-     *            The string value, not <code>null</code>.
-     * @return <code>true</code> if the value is not empty and not only
-     *         containing of white spaces, <code>false</code> otherwise.
-     */
-    public static boolean isSpecified(String value) {
-	if (value == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'value' must not be null.");
+	/**
+	 * Determines if a string value is empty, i.e. has zero length or is only
+	 * containing white spaces.
+	 * 
+	 * @param value
+	 *            The string value, not <code>null</code>.
+	 * @return <code>true</code> if the value is empty or only containing of white
+	 *         spaces, <code>false</code> otherwise.
+	 */
+	public static boolean isEmpty(String value) {
+		if (value == null) {
+			throw new IllegalArgumentException("Parameter 'value' must not be null.");
+		}
+		return value.trim().length() == 0;
 	}
-	return value.trim().length() > 0;
-    }
+
+	/**
+	 * Determines if a string value is specified, i.e. not empty and not only
+	 * containing white spaces.
+	 * 
+	 * @param value
+	 *            The string value, not <code>null</code>.
+	 * @return <code>true</code> if the value is not empty and not only containing
+	 *         of white spaces, <code>false</code> otherwise.
+	 */
+	public static boolean isSpecified(String value) {
+		if (value == null) {
+			throw new IllegalArgumentException("Parameter 'value' must not be null.");
+		}
+		return value.trim().length() > 0;
+	}
 }

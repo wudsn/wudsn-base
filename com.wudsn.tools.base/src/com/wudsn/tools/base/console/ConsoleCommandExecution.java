@@ -30,103 +30,103 @@ import com.wudsn.tools.base.repository.Attribute;
 
 public final class ConsoleCommandExecution {
 
-    private ConsoleCommand consoleCommand;
-    private Map<String, List<String>> parameterValues;
+	private ConsoleCommand consoleCommand;
+	private Map<String, List<String>> parameterValues;
 
-    ConsoleCommandExecution(ConsoleCommand consoleCommand, Map<String, List<String>> parameterValues) {
-	if (consoleCommand == null) {
-	    throw new IllegalArgumentException("Parameter 'consoleCommand' must not be null.");
+	ConsoleCommandExecution(ConsoleCommand consoleCommand, Map<String, List<String>> parameterValues) {
+		if (consoleCommand == null) {
+			throw new IllegalArgumentException("Parameter 'consoleCommand' must not be null.");
+		}
+		if (parameterValues == null) {
+			throw new IllegalArgumentException("Parameter 'parameterValues' must not be null.");
+		}
+		this.consoleCommand = consoleCommand;
+		this.parameterValues = Collections.unmodifiableMap(parameterValues);
 	}
-	if (parameterValues == null) {
-	    throw new IllegalArgumentException("Parameter 'parameterValues' must not be null.");
-	}
-	this.consoleCommand = consoleCommand;
-	this.parameterValues = Collections.unmodifiableMap(parameterValues);
-    }
 
-    public ConsoleCommand getConsoleCommand() {
-	return consoleCommand;
-    }
+	public ConsoleCommand getConsoleCommand() {
+		return consoleCommand;
+	}
 
-    public List<String> getParameterValuesAsString(Attribute attribute) {
-	if (attribute == null) {
-	    throw new IllegalArgumentException("Parameter 'attribute' must not be null.");
+	public List<String> getParameterValuesAsString(Attribute attribute) {
+		if (attribute == null) {
+			throw new IllegalArgumentException("Parameter 'attribute' must not be null.");
+		}
+		List<String> result = parameterValues.get(attribute.getName());
+		if (result == null) {
+			result = Collections.emptyList();
+		}
+		return result;
 	}
-	List<String> result = parameterValues.get(attribute.getName());
-	if (result == null) {
-	    result = Collections.emptyList();
-	}
-	return result;
-    }
 
-    public String getParameterValueAsString(Attribute attribute, boolean mandatory) throws CoreException {
-	if (attribute == null) {
-	    throw new IllegalArgumentException("Parameter 'attribute' must not be null.");
+	public String getParameterValueAsString(Attribute attribute, boolean mandatory) throws CoreException {
+		if (attribute == null) {
+			throw new IllegalArgumentException("Parameter 'attribute' must not be null.");
+		}
+		if (getParameterValuesAsString(attribute).isEmpty()) {
+			if (mandatory) {
+				// ERROR: No value specified for parameter '{0}' of command
+				// '{1}'.
+				throw new CoreException(Messages.E255, attribute.getName(), consoleCommand.getActionCommand());
+			}
+			return "";
+		}
+		String result = getParameterValuesAsString(attribute).get(0);
+		if (StringUtility.isEmpty(result)) {
+			if (mandatory) {
+				// ERROR: No value specified for parameter '{0}' of command
+				// '{1}'.
+				throw new CoreException(Messages.E255, attribute.getName(), consoleCommand.getActionCommand());
+			}
+		}
+		return result;
 	}
-	if (getParameterValuesAsString(attribute).isEmpty()) {
-	    if (mandatory) {
-		// ERROR: No value specified for parameter '{0}' of command
-		// '{1}'.
-		throw new CoreException(Messages.E255, attribute.getName(), consoleCommand.getActionCommand());
-	    }
-	    return "";
-	}
-	String result = getParameterValuesAsString(attribute).get(0);
-	if (StringUtility.isEmpty(result)) {
-	    if (mandatory) {
-		// ERROR: No value specified for parameter '{0}' of command
-		// '{1}'.
-		throw new CoreException(Messages.E255, attribute.getName(), consoleCommand.getActionCommand());
-	    }
-	}
-	return result;
-    }
 
-    public File getParameterValueAsFile(Attribute attribute, boolean mandatory) throws CoreException {
-	if (attribute == null) {
-	    throw new IllegalArgumentException("Parameter 'attribute' must not be null.");
+	public File getParameterValueAsFile(Attribute attribute, boolean mandatory) throws CoreException {
+		if (attribute == null) {
+			throw new IllegalArgumentException("Parameter 'attribute' must not be null.");
+		}
+		if (getParameterValuesAsString(attribute).isEmpty()) {
+			if (mandatory) {
+				// ERROR: No value specified for parameter '{0}' of command
+				// '{1}'.
+				throw new CoreException(Messages.E255, attribute.getName(), consoleCommand.getActionCommand());
+			}
+			return null;
+		}
+		return new File(getParameterValuesAsString(attribute).get(0));
 	}
-	if (getParameterValuesAsString(attribute).isEmpty()) {
-	    if (mandatory) {
-		// ERROR: No value specified for parameter '{0}' of command
-		// '{1}'.
-		throw new CoreException(Messages.E255, attribute.getName(), consoleCommand.getActionCommand());
-	    }
-	    return null;
-	}
-	return new File(getParameterValuesAsString(attribute).get(0));
-    }
 
-    public Integer getParameterValueAsInteger(Attribute attribute, boolean mandatory) throws CoreException {
-	if (attribute == null) {
-	    throw new IllegalArgumentException("Parameter 'attribute' must not be null.");
+	public Integer getParameterValueAsInteger(Attribute attribute, boolean mandatory) throws CoreException {
+		if (attribute == null) {
+			throw new IllegalArgumentException("Parameter 'attribute' must not be null.");
+		}
+		if (getParameterValuesAsString(attribute).isEmpty()) {
+			if (mandatory) {
+				// ERROR: No value specified for parameter '{0}' of command
+				// '{1}'.
+				throw new CoreException(Messages.E255, attribute.getName(), consoleCommand.getActionCommand());
+			}
+			return null;
+		}
+		String stringValue = getParameterValuesAsString(attribute).get(0);
+		try {
+			int intValue = Integer.parseInt(stringValue);
+			return Integer.valueOf(intValue);
+		} catch (NumberFormatException ex) {
+			// ERROR: Specified value '{0}' for parameter '{1}' of command '{2}'
+			// is not a number.
+			throw new CoreException(Messages.E256, stringValue, attribute.getName(), consoleCommand.getActionCommand());
+		}
 	}
-	if (getParameterValuesAsString(attribute).isEmpty()) {
-	    if (mandatory) {
-		// ERROR: No value specified for parameter '{0}' of command
-		// '{1}'.
-		throw new CoreException(Messages.E255, attribute.getName(), consoleCommand.getActionCommand());
-	    }
-	    return null;
-	}
-	String stringValue = getParameterValuesAsString(attribute).get(0);
-	try {
-	    int intValue = Integer.parseInt(stringValue);
-	    return Integer.valueOf(intValue);
-	} catch (NumberFormatException ex) {
-	    // ERROR: Specified value '{0}' for parameter '{1}' of command '{2}'
-	    // is not a number.
-	    throw new CoreException(Messages.E256, stringValue, attribute.getName(), consoleCommand.getActionCommand());
-	}
-    }
 
-    @Override
-    public String toString() {
-	String result = "-" + consoleCommand.getActionCommand();
-	if (!parameterValues.isEmpty()) {
-	    result += ":" + parameterValues.toString();
+	@Override
+	public String toString() {
+		String result = "-" + consoleCommand.getActionCommand();
+		if (!parameterValues.isEmpty()) {
+			result += ":" + parameterValues.toString();
+		}
+		return result;
 	}
-	return result;
-    }
 
 }

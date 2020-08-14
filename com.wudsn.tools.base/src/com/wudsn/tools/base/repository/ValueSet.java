@@ -28,102 +28,102 @@ import com.wudsn.tools.base.ValueSets;
 
 public abstract class ValueSet extends NLS implements Comparable<ValueSet> {
 
-    protected final String id;
-    protected String text;
-    protected final int sortKey;
+	protected final String id;
+	protected String text;
+	protected final int sortKey;
 
-    /**
-     * Initialize the given class from its properties files.
-     * 
-     * @param clazz
-     *            The class, not <code>null</code>.
-     * @param containerClazz
-     *            The contain class where the NLS information is stored.
-     */
-    protected static void initializeClass(Class<? extends ValueSet> clazz, Class<? extends ValueSets> containerClazz) {
-	NLS.initializeClass(clazz, containerClazz);
-    }
-
-    protected ValueSet(String id, int sortKey) {
-	this(id, id, sortKey);
-    }
-
-    protected ValueSet(String id, String text, int sortKey) {
-	if (id == null) {
-	    throw new IllegalArgumentException("Parameter 'id' must not be null.");
+	/**
+	 * Initialize the given class from its properties files.
+	 * 
+	 * @param clazz
+	 *            The class, not <code>null</code>.
+	 * @param containerClazz
+	 *            The contain class where the NLS information is stored.
+	 */
+	protected static void initializeClass(Class<? extends ValueSet> clazz, Class<? extends ValueSets> containerClazz) {
+		NLS.initializeClass(clazz, containerClazz);
 	}
-	if (text == null) {
-	    throw new IllegalArgumentException("Parameter 'text' must not be null.");
+
+	protected ValueSet(String id, int sortKey) {
+		this(id, id, sortKey);
 	}
-	this.id = id;
-	this.text = text;
-	this.sortKey = sortKey;
-    }
 
-    public final String getId() {
-	return id;
-    }
-
-    public final String getText() {
-	return text;
-    }
-
-    final void setText(String text) {
-	if (text == null) {
-	    throw new IllegalArgumentException("Parameter 'text' must not be null.");
+	protected ValueSet(String id, String text, int sortKey) {
+		if (id == null) {
+			throw new IllegalArgumentException("Parameter 'id' must not be null.");
+		}
+		if (text == null) {
+			throw new IllegalArgumentException("Parameter 'text' must not be null.");
+		}
+		this.id = id;
+		this.text = text;
+		this.sortKey = sortKey;
 	}
-	this.text = text;
-    }
 
-    @Override
-    public final boolean equals(Object o) {
-	return this == o;
-    }
-
-    @Override
-    public final int hashCode() {
-	return id.hashCode();
-    }
-
-    @Override
-    public final String toString() {
-	return text; // For use in value set fields and for debugging.
-    }
-
-    @Override
-    public final int compareTo(ValueSet o) {
-	int result = sortKey - o.sortKey;
-	if (result == 0) {
-	    result = text.compareToIgnoreCase(o.text);
+	public final String getId() {
+		return id;
 	}
-	return result;
-    }
 
-    public static final <T extends ValueSet> List<T> getValues(Class<T> valueSetClass) {
-	try {
-	    Method method = valueSetClass.getMethod("getValues");
-	    Object object = method.invoke(null);
-	    @SuppressWarnings("unchecked")
-	    List<T> result = (List<T>) object;
-	    result = new ArrayList<T>(result); // Mutable copy
-	    sort(result);
-	    return result;
-
-	} catch (NoSuchMethodException ex) {
-	    throw new RuntimeException(ex);
-	} catch (SecurityException ex) {
-	    throw new RuntimeException(ex);
-	} catch (IllegalAccessException ex) {
-	    throw new RuntimeException(ex);
-	} catch (IllegalArgumentException ex) {
-	    throw new RuntimeException(ex);
-	} catch (InvocationTargetException ex) {
-	    throw new RuntimeException(ex);
+	public final String getText() {
+		return text;
 	}
-    }
 
-    public static final void sort(List<? extends ValueSet> list) {
-	Collections.sort(list);
-    }
+	final void setText(String text) {
+		if (text == null) {
+			throw new IllegalArgumentException("Parameter 'text' must not be null.");
+		}
+		this.text = text;
+	}
+
+	@Override
+	public final boolean equals(Object o) {
+		return this == o;
+	}
+
+	@Override
+	public final int hashCode() {
+		return id.hashCode();
+	}
+
+	@Override
+	public final String toString() {
+		return text; // For use in value set fields and for debugging.
+	}
+
+	@Override
+	public final int compareTo(ValueSet o) {
+		int result = sortKey - o.sortKey;
+		if (result == 0) {
+			result = text.compareToIgnoreCase(o.text);
+		}
+		return result;
+	}
+
+	public static final <T extends ValueSet> List<T> getValues(Class<T> valueSetClass) {
+		try {
+			Method method = valueSetClass.getMethod("getValues");
+			Object object = method.invoke(null);
+			@SuppressWarnings("unchecked")
+			List<T> result = (List<T>) object;
+			result = new ArrayList<T>(result); // Mutable copy
+			sort(result);
+			return result;
+
+		} catch (NoSuchMethodException ex) {
+			throw new RuntimeException(ex);
+		} catch (SecurityException ex) {
+			throw new RuntimeException(ex);
+		} catch (IllegalAccessException ex) {
+			throw new RuntimeException(ex);
+		} catch (IllegalArgumentException ex) {
+			throw new RuntimeException(ex);
+		} catch (InvocationTargetException ex) {
+			throw new RuntimeException(ex);
+		}
+	}
+
+	public static final void sort(List<? extends ValueSet> list) {
+		Collections.sort(list);
+	}
 
 }

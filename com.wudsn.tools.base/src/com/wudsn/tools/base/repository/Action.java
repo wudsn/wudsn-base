@@ -29,59 +29,59 @@ import javax.swing.KeyStroke;
  */
 public final class Action {
 
-    private KeyStroke accelerator;
-    private String label;
-    private String toolTip;
+	private KeyStroke accelerator;
+	private String label;
+	private String toolTip;
 
-    /**
-     * Create an not yet initialized action with an accelerator.
-     * 
-     * @param keyCode
-     *            The key code, see @link {@link KeyEvent}.
-     * @param modifiers
-     *            The modifiers, see {@link com.wudsn.tools.base.gui.KeyStroke}.
-     */
-    public Action(int keyCode, int modifiers) {
-	label = "";
-	toolTip = "";
-	accelerator = KeyStroke.getKeyStroke(keyCode, modifiers);
-    }
-
-    public Action(String label, String toolTip, KeyStroke accelerator) {
-	if (label == null) {
-	    throw new IllegalArgumentException("Parameter 'label' must not be null.");
+	/**
+	 * Create an not yet initialized action with an accelerator.
+	 * 
+	 * @param keyCode
+	 *            The key code, see @link {@link KeyEvent}.
+	 * @param modifiers
+	 *            The modifiers, see {@link com.wudsn.tools.base.gui.KeyStroke}.
+	 */
+	public Action(int keyCode, int modifiers) {
+		label = "";
+		toolTip = "";
+		accelerator = KeyStroke.getKeyStroke(keyCode, modifiers);
 	}
-	if (toolTip == null) {
-	    throw new IllegalArgumentException("Parameter 'toolTip' must not be null.");
+
+	public Action(String label, String toolTip, KeyStroke accelerator) {
+		if (label == null) {
+			throw new IllegalArgumentException("Parameter 'label' must not be null.");
+		}
+		if (toolTip == null) {
+			throw new IllegalArgumentException("Parameter 'toolTip' must not be null.");
+		}
+		this.label = label;
+		this.toolTip = toolTip;
+		this.accelerator = accelerator;
 	}
-	this.label = label;
-	this.toolTip = toolTip;
-	this.accelerator = accelerator;
-    }
 
-    /**
-     * Gets the accelerator.
-     * 
-     * @return The accelerator or <code>null</code>.
-     */
-    public KeyStroke getAccelerator() {
-	return accelerator;
-    }
+	/**
+	 * Gets the accelerator.
+	 * 
+	 * @return The accelerator or <code>null</code>.
+	 */
+	public KeyStroke getAccelerator() {
+		return accelerator;
+	}
 
-    public String getLabel() {
-	return label;
-    }
+	public String getLabel() {
+		return label;
+	}
 
-    public String getLabelWithoutMnemonics() {
-	return label.replaceAll("&", "");
-    }
+	public String getLabelWithoutMnemonics() {
+		return label.replaceAll("&", "");
+	}
 
-    public String getToolTip() {
-	return toolTip;
-    }
+	public String getToolTip() {
+		return toolTip;
+	}
 
-    @Override
-    public String toString() {
-	return label;
-    }
+	@Override
+	public String toString() {
+		return label;
+	}
 }

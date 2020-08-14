@@ -23,107 +23,98 @@ import java.util.zip.CRC32;
 
 public final class ByteArrayUtility {
 
-    public static final int MASK_FF = 0xff;
+	public static final int MASK_FF = 0xff;
 
-    public static final int KB = 1024;
-    public static final int MB = KB * KB;
+	public static final int KB = 1024;
+	public static final int MB = KB * KB;
 
-    /**
-     * Static array of all one-byte upper case hex numbers (00...FF)
-     */
-    private static final String[] hexStrings;
+	/**
+	 * Static array of all one-byte upper case hex numbers (00...FF)
+	 */
+	private static final String[] hexStrings;
 
-    /**
-     * Static initialization.
-     */
-    static {
+	/**
+	 * Static initialization.
+	 */
+	static {
 
-	// Fill in the array of hex strings
-	hexStrings = new String[256];
-	for (int i = 0; i < 256; i++) {
-	    String s = Integer.toHexString(i).toUpperCase();
-	    hexStrings[i] = (s.length() < 2) ? ("0" + s) : s;
-	}
-    }
-
-    /**
-     * Creation is private.
-     */
-    private ByteArrayUtility() {
-
-    }
-
-    public static int getIndexOf(byte[] content, int startOffset, int length,
-	    byte[] pattern) {
-	if (content == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'content' must not be null.");
-	}
-	if (startOffset < 0) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'startOffset' must not be negative. Specified value is "
-			    + startOffset + ".");
-	}
-	if (length < 0) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'length' must not be negative. Specified value is "
-			    + length + ".");
+		// Fill in the array of hex strings
+		hexStrings = new String[256];
+		for (int i = 0; i < 256; i++) {
+			String s = Integer.toHexString(i).toUpperCase();
+			hexStrings[i] = (s.length() < 2) ? ("0" + s) : s;
+		}
 	}
 
-	if (pattern == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'pattern' must not be null.");
-	}
-	int endOffset = Math.min(startOffset + length - pattern.length,
-		content.length);
-	for (int i = startOffset; i < endOffset; i++) {
-	    if (content[i] == pattern[0]) {
-		boolean equal = true;
+	/**
+	 * Creation is private.
+	 */
+	private ByteArrayUtility() {
 
-		for (int j = 1; equal && j < pattern.length
-			&& (i + j) < endOffset; j++) {
-		    equal = (content[i + j] == pattern[j]);
+	}
+
+	public static int getIndexOf(byte[] content, int startOffset, int length, byte[] pattern) {
+		if (content == null) {
+			throw new IllegalArgumentException("Parameter 'content' must not be null.");
+		}
+		if (startOffset < 0) {
+			throw new IllegalArgumentException(
+					"Parameter 'startOffset' must not be negative. Specified value is " + startOffset + ".");
+		}
+		if (length < 0) {
+			throw new IllegalArgumentException(
+					"Parameter 'length' must not be negative. Specified value is " + length + ".");
 		}
 
-		if (equal) {
-		    return i;
+		if (pattern == null) {
+			throw new IllegalArgumentException("Parameter 'pattern' must not be null.");
 		}
-	    }
-	}
-	return -1;
-    }
+		int endOffset = Math.min(startOffset + length - pattern.length, content.length);
+		for (int i = startOffset; i < endOffset; i++) {
+			if (content[i] == pattern[0]) {
+				boolean equal = true;
 
-    public static String toHexString(byte[] content) {
-	if (content == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'content' must not be null.");
-	}
-	StringBuilder builder = new StringBuilder(content.length * 2);
-	for (int i = 0; i < content.length; i++) {
-	    builder.append(hexStrings[content[i] & 0xff]);
-	}
-	return builder.toString();
+				for (int j = 1; equal && j < pattern.length && (i + j) < endOffset; j++) {
+					equal = (content[i + j] == pattern[j]);
+				}
 
-    }
-
-    /**
-     * Compute the CRC32 values for a byte array.
-     * 
-     * @param content
-     *            The binary content, not <code>null</code>
-     * 
-     * @return The CRC32 value for the content.
-     */
-    public static int getCRC32(byte[] content) {
-	if (content == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'content' must not be null.");
+				if (equal) {
+					return i;
+				}
+			}
+		}
+		return -1;
 	}
 
-	CRC32 crc32 = new CRC32();
-	crc32.update(content, 0, content.length);
+	public static String toHexString(byte[] content) {
+		if (content == null) {
+			throw new IllegalArgumentException("Parameter 'content' must not be null.");
+		}
+		StringBuilder builder = new StringBuilder(content.length * 2);
+		for (int i = 0; i < content.length; i++) {
+			builder.append(hexStrings[content[i] & 0xff]);
+		}
+		return builder.toString();
 
-	int result = (int) crc32.getValue();
-	return result;
-    }
+	}
+
+	/**
+	 * Compute the CRC32 values for a byte array.
+	 * 
+	 * @param content
+	 *            The binary content, not <code>null</code>
+	 * 
+	 * @return The CRC32 value for the content.
+	 */
+	public static int getCRC32(byte[] content) {
+		if (content == null) {
+			throw new IllegalArgumentException("Parameter 'content' must not be null.");
+		}
+
+		CRC32 crc32 = new CRC32();
+		crc32.update(content, 0, content.length);
+
+		int result = (int) crc32.getValue();
+		return result;
+	}
 }

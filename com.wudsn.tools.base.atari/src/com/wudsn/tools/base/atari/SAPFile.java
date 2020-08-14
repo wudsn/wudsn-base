@@ -23,41 +23,40 @@ import java.nio.charset.Charset;
 
 public final class SAPFile {
 
-    /**
-     * Determines if a byte array contains a valid Atari music file.
-     * See https://asap.sourceforge.net/sap-format.html
-     * 
-     * @param data
-     *            The data, not <code>null</code>.
-     * @return <code>true</code> If data has the required length and starts with
-     *         the SAP magic bytes and has a correct binary part,
-     *         <code>false</code> otherwise.
-     */
-    public static boolean isHeader(byte[] data) {
-	if (data == null) {
-	    throw new IllegalArgumentException(
-		    "Parameter 'data' must not be null.");
-	}
-	Charset charset = Charset.forName("US-ASCII");
-	byte[] magicBytes = "SAP\n\r".getBytes(charset);
-	int i = 0;
-	if (i + magicBytes.length < data.length) {
-	    for (int j = 0; j < magicBytes.length; j++) {
-		if (data[i] != magicBytes[i]) {
-		    return false;
+	/**
+	 * Determines if a byte array contains a valid Atari music file. See
+	 * https://asap.sourceforge.net/sap-format.html
+	 * 
+	 * @param data
+	 *            The data, not <code>null</code>.
+	 * @return <code>true</code> If data has the required length and starts with the
+	 *         SAP magic bytes and has a correct binary part, <code>false</code>
+	 *         otherwise.
+	 */
+	public static boolean isHeader(byte[] data) {
+		if (data == null) {
+			throw new IllegalArgumentException("Parameter 'data' must not be null.");
 		}
-	    }
+		Charset charset = Charset.forName("US-ASCII");
+		byte[] magicBytes = "SAP\n\r".getBytes(charset);
+		int i = 0;
+		if (i + magicBytes.length < data.length) {
+			for (int j = 0; j < magicBytes.length; j++) {
+				if (data[i] != magicBytes[i]) {
+					return false;
+				}
+			}
+		}
+		i = i + magicBytes.length;
+		while (i + 5 < data.length) {
+			if ((data[i] & 0xff) == 0xff && (data[i + 1] & 0xff) == 0xff) {
+				break;
+			}
+			i++;
+		}
+		if (!ExecutableFile.isHeader(data, i)) {
+			return false;
+		}
+		return true;
 	}
-	i = i + magicBytes.length;
-	while (i + 5 < data.length) {
-	    if ((data[i] & 0xff) == 0xff && (data[i + 1] & 0xff) == 0xff) {
-		break;
-	    }
-	    i++;
-	}
-	if (!ExecutableFile.isHeader(data, i)) {
-	    return false;
-	}
-	return true;
-    }
 }

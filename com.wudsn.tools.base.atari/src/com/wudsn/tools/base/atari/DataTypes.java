@@ -30,12 +30,10 @@ import com.wudsn.tools.base.repository.NLS;
  */
 public final class DataTypes extends NLS {
 
-    public static DataType CartridgeType_BankSize = new DataType(
-	    MemorySize.class);
-    public static DataType CartridgeType_InitialBankNumber = new DataType(
-	    Integer.class);
+	public static DataType CartridgeType_BankSize = new DataType(MemorySize.class);
+	public static DataType CartridgeType_InitialBankNumber = new DataType(Integer.class);
 
-    static {
-	initializeClass(DataTypes.class, null);
-    }
+	static {
+		initializeClass(DataTypes.class, null);
+	}
 }

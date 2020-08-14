@@ -29,11 +29,11 @@ import java.util.Map;
  */
 public interface AttributeTablePreferences {
 
-    /**
-     * Gets the modifiable map of layout properties.
-     * 
-     * @return The modifiable map of layout properties, not <code>null</code>.
-     */
-    public Map<String, String> getLayoutProperties();
+	/**
+	 * Gets the modifiable map of layout properties.
+	 * 
+	 * @return The modifiable map of layout properties, not <code>null</code>.
+	 */
+	public Map<String, String> getLayoutProperties();
 
 }

@@ -28,30 +28,29 @@ import java.awt.event.ActionEvent;
  */
 public final class KeyStroke {
 
-    /**
-     * M1 is the COMMAND key on MacOS X, and the CTRL key on most other
-     * platforms.
-     */
-    public static final int M1;
+	/**
+	 * M1 is the COMMAND key on MacOS X, and the CTRL key on most other platforms.
+	 */
+	public static final int M1;
 
-    /**
-     * M2 is the SHIFT key.
-     */
-    public static final int M2;
+	/**
+	 * M2 is the SHIFT key.
+	 */
+	public static final int M2;
 
-    /**
-     * M3 is the Option key on MacOS X, and the ALT key on most other platforms.
-     */
-    public static final int M3;
+	/**
+	 * M3 is the Option key on MacOS X, and the ALT key on most other platforms.
+	 */
+	public static final int M3;
 
-    static {
+	static {
 
-	M1 = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
-	M2 = ActionEvent.SHIFT_MASK;
-	M3 = ActionEvent.ALT_MASK;
-    }
+		M1 = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
+		M2 = ActionEvent.SHIFT_MASK;
+		M3 = ActionEvent.ALT_MASK;
+	}
 
-    public static javax.swing.KeyStroke getKeyStroke(int keyCode, int modifiers) {
-	return javax.swing.KeyStroke.getKeyStroke(keyCode, modifiers);
-    }
+	public static javax.swing.KeyStroke getKeyStroke(int keyCode, int modifiers) {
+		return javax.swing.KeyStroke.getKeyStroke(keyCode, modifiers);
+	}
 }

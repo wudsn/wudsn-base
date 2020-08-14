@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jars" name="Create Runnable Jars for Project net.sourceforge.javahexeditor.standalone with Jar-in-Jar Loader">
+<project default="create_standalone_binaries" name="Create Runnable Jars with Jar-in-Jar Loader">
 	<!-- The .jar file with the jarbundler task must be add in the ANT path in the preferences  -->
 	<taskdef name="jarbundler" classname="com.ultramixer.jarbundler.JarBundler" />
 
 	<!-- ANT 1.7 is required  -->
-	<target name="create_run_jars">
+	<target name="create_standalone_binaries">
 
-		<!--It requires the "year", "release" (x.y.z format) and the "version" information passed as properties. -->
 		<fail unless="applicationName" />
 		<fail unless="applicationTitle" />
-		<fail unless="release_year" />
+
+		<!--It requires the "release_year", "release" (x.y.z format) and the "version" information passed as properties. -->
+		<fail unless="release_years" />
 		<fail unless="release" />
 		<fail unless="version" />
 
-		<echo message="Creating version '${version}' of release ${release} in year ${year}." />
+		<echo message="Creating version '${version}' of release ${release} in year ${release_year}." />
 
 		<mkdir dir="../out" />
 
@@ -53,10 +54,10 @@
 		</antcall>
 
 		<!-- Create Mac OS X app folder -->
-		<antcall target="create_macosx_app">
+		<antcall target="create_macos_app">
 			<param name="platform" value="macos-x86" />
 		</antcall>
-		<antcall target="create_macosx_app">
+		<antcall target="create_macos_app">
 			<param name="platform" value="macos-x86_64" />
 		</antcall>
 
@@ -70,14 +71,13 @@
 			<param name="runtime_bits" value="64" />
 		</antcall>
 
-
 		<!-- Remove jars that have been wrapped before zipping -->
-		<delete file="../out/linux-x86/JavaHexEditor.jar" failonerror="true" />
-		<delete file="../out/linux-x86_64/JavaHexEditor.jar" failonerror="true" />
-		<delete file="../out/macosx-x86/JavaHexEditor.jar" failonerror="true" />
-		<delete file="../out/macosx-x86_64/JavaHexEditor.jar" failonerror="true" />
-		<delete file="../out/win32-x86/JavaHexEditor.jar" failonerror="true" />
-		<delete file="../out/win32-x86_64/JavaHexEditor.jar" failonerror="true" />
+		<delete file="../out/linux-x86/${applicationName}.jar" failonerror="true" />
+		<delete file="../out/linux-x86_64/${applicationName}.jar" failonerror="true" />
+		<delete file="../out/macos-x86/${applicationName}.jar" failonerror="true" />
+		<delete file="../out/macos-x86_64/${applicationName}.jar" failonerror="true" />
+		<delete file="../out/win32-x86/${applicationName}.jar" failonerror="true" />
+		<delete file="../out/win32-x86_64/${applicationName}.jar" failonerror="true" />
 
 		<!-- Create zip files for upload -->
 		<antcall target="create_platform_zip">
@@ -87,10 +87,10 @@
 			<param name="platform" value="linux-x86_64" />
 		</antcall>
 		<antcall target="create_platform_zip">
-			<param name="platform" value="macosx-x86" />
+			<param name="platform" value="macos-x86" />
 		</antcall>
 		<antcall target="create_platform_zip">
-			<param name="platform" value="macosx-x86_64" />
+			<param name="platform" value="macos-x86_64" />
 		</antcall>
 		<antcall target="create_platform_zip">
 			<param name="platform" value="win32-x86" />
@@ -105,8 +105,8 @@
 		<echo message="Creating '${platform_text}' as ${platform}." />
 		<echo message="${platform_text}" file="..\..\javahexeditor\bin\net\sourceforge\javahexeditor\Manager.os" />
 		<mkdir dir="../out/${platform}" />
-		<delete file="../out/${platform}/JavaHexEditor.jar" />
-		<jar destfile="../out/${platform}/JavaHexEditor.jar">
+		<delete file="../out/${platform}/${applicationName}.jar" />
+		<jar destfile="../out/${platform}/${applicationName}.jar">
 			<manifest>
 				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
 				<attribute name="Class-Path" value="." />
@@ -126,21 +126,21 @@
 
 	<target name="create_linux_script">
 		<echo>Creating Linux script for ${platform}</echo>
-		<concat destfile="../out/${platform}/JavaHexEditor" binary="yes">
-			<fileset file="../build/stub.sh" />
-			<fileset file="../out/${platform}/JavaHexEditor.jar" />
+		<concat destfile="../out/${platform}/${applicationName}" binary="yes">
+			<fileset file="../build/linux/stub.sh" />
+			<fileset file="../out/${platform}/${applicationName}" />
 		</concat>
 	</target>
 
-	<target name="create_macosx_app">
+	<target name="create_macos_app">
 		<fail unless="platform" />
-		<mkdir dir="../out/${platform}/javahexeditor.app" />
-		<!-- See the "build/jarbundler.txt" fie for details on the task -->
+		<mkdir dir="../out/${platform}/${applicationName}.app" />
+		<!-- See the jarbundler documentation for details on the task -->
 		<!-- The ".icns" file was created using http://iconverticons.com/online -->
-		<jarbundler dir="../out/${platform}/" name="javahexeditor" copyright="(C) 2006 - ${year} Jordi Bergenthal and Peter Dell" shortname="Java Hex Editor" build="$${version}" icon="../../javahexeditor/src/images/javahexeditor-48x48.icns" useJavaXKey="true" mainclass="net.sourceforge.javahexeditor.standalone.HexEditor" jar="../out/${platform}/JavaHexEditor.jar" jvmversion="1.8+" vmoptions="-Xms256M -Xmx256M">
+		<jarbundler dir="../out/${platform}/" name="${applicationName}" copyright="(C) ${release_years} Jordi Bergenthal and Peter Dell" shortname="Java Hex Editor" build="$${version}" icon="../../javahexeditor/src/images/javahexeditor-48x48.icns" useJavaXKey="true" mainclass="net.sourceforge.javahexeditor.standalone.HexEditor" jar="../out/${platform}/JavaHexEditor.jar" jvmversion="1.8+" vmoptions="-Xms256M -Xmx256M">
 		</jarbundler>
-		<copy todir="../out/${platform}/javahexeditor.app/Contents/MacOS" overwrite="true">
-			<fileset file="./universalJavaApplicationStub" />
+		<copy todir="../out/${platform}/${applicationName}.app/Contents/MacOS" overwrite="true">
+			<fileset file="./macos/universalJavaApplicationStub" />
 		</copy>
 	</target>
 
@@ -151,12 +151,12 @@
 		<fail unless="version" />
 		<fail unless="platform" />
 	
-		<property name="xml" value="JavaHexEditor.launch4j.xml" />
+		<property name="xml" value="windows/Launch4j.xml" />
 		<copy todir="../out">
 			<fileset file="${xml}" />
 			<filterset>
 				<filter token="JAVAHEXEDTOR_STANDALONE_DIR" value="${basedir}/.." />
-				<filter token="YEAR" value="${year}" />
+				<filter token="RELEASE_YEAR" value="${release_year}" />
 				<filter token="RELEASE" value="${release}" />
 				<filter token="VERSION" value="${version}" />
 				<filter token="PLATFORM_ID" value="${platform}" />
