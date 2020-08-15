@@ -25,6 +25,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Properties;
+import java.util.TreeSet;
 
 import javax.swing.JOptionPane;
 
@@ -86,9 +89,17 @@ public final class Hello {
 			} catch (IOException e) {
 			}
 		}
-		String text = Texts.APPLICATION_TITLE + " - " + osVersion + " - " + this.getClass().getName() + " at "
-				+ (new Date()).toString();
+		String text = getClass().getName() + " on " + osVersion + " at " + (new Date()).toString();
 		System.out.println(text);
+		Properties properties = System.getProperties();
+		TreeSet<String> keys = new TreeSet<String>(properties.stringPropertyNames());
+		for (Iterator<String> i = keys.iterator(); i.hasNext();) {
+			String key = i.next();
+			System.out.println(key + "=" + String.valueOf(properties.getProperty(key)));
+		}
+
+		text = Texts.APPLICATION_TITLE + " - " + text;
+
 		JOptionPane.showMessageDialog(null, text, Texts.APPLICATION_TITLE, JOptionPane.INFORMATION_MESSAGE);
 	}
 
