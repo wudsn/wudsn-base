@@ -199,7 +199,7 @@ public final class Hello {
 	}
 
 	private void showLongTextMessageInDialog(Frame frame, String longMessage, String title) {
-		JTextArea textArea = new JTextArea(32, 80);
+		JTextArea textArea = new JTextArea(32, 64);
 		textArea.setText(longMessage);
 		textArea.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(textArea);
