@@ -129,13 +129,13 @@
 				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
 				<attribute name="Class-Path" value="." />
 				<attribute name="Rsrc-Main-Class" value="${applicationMainClass}" />
-				<attribute name="Rsrc-Class-Path" value="./ org.eclipse.equinox.common.jar org.eclipse.osgi.jar swt.jar" />
+				<attribute name="Rsrc-Class-Path" value="./ equinox.common.jar osgi.jar swt.jar" />
 			</manifest>
 			<zipfileset src="../lib/jar-in-jar-loader.zip" />
 			<fileset dir="${applicationBinFolder}" />
 			<fileset dir="../bin" />
-			<zipfileset dir="../lib" includes="org.eclipse.equinox.common.jar" />
-			<zipfileset dir="../lib" includes="org.eclipse.osgi.jar" />
+			<zipfileset dir="../lib" includes="equinox.common.jar" />
+			<zipfileset dir="../lib" includes="osgi.jar" />
 			<zipfileset dir="../lib/${platform}" includes="swt.jar" />
 		</jar>
 	</target>
