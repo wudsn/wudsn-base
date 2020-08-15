@@ -18,12 +18,16 @@
  */
 package com.wudsn.tools.base.hello;
 
+import java.awt.Frame;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Arrays;
@@ -33,6 +37,11 @@ import java.util.Properties;
 import java.util.TreeSet;
 
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.swt.SWT;
 
 /**
  * Stand-alone test program.
@@ -40,6 +49,9 @@ import javax.swing.JOptionPane;
  * @author Peter Dell
  */
 public final class Hello {
+
+	private ByteArrayOutputStream bos;
+	private PrintStream printStream;
 
 	/**
 	 * Point of entry to the stand-alone version
@@ -66,6 +78,18 @@ public final class Hello {
 	 * Creation is private.
 	 */
 	private Hello() {
+		bos = new ByteArrayOutputStream();
+		printStream = new PrintStream(bos) {
+			public void write(int b) {
+				super.write(b);
+			    System.out.write(b);
+			}
+			
+		    public void write(byte buf[], int off, int len) {
+				super.write(buf, off, len);
+			    System.out.write(buf, off, len); 
+		    }
+		};
 	}
 
 	/**
@@ -106,7 +130,7 @@ public final class Hello {
 		println();
 
 		println("Current Stack");
-		new Exception().printStackTrace(System.out);
+		new Exception().printStackTrace(printStream);
 		println();
 
 		println("System Properties");
@@ -119,19 +143,37 @@ public final class Hello {
 		try {
 			title = Texts.APPLICATION_TITLE;
 			text = Texts.APPLICATION_TITLE + " - " + text;
-			println(Texts.class.getName() + " loaded");
+			println(Texts.class.getName() + " loaded from org.eclipse.osgi.jar");
 		} catch (NoClassDefFoundError ex) {
-			ex.printStackTrace(System.out);
+			ex.printStackTrace(printStream);
 		}
-		JOptionPane.showMessageDialog(null, text, title, JOptionPane.INFORMATION_MESSAGE);
+		try {
+			println(CoreException.class.getName() + " loaded from org.eclipse.equinox.common.jar");
+		} catch (NoClassDefFoundError ex) {
+			ex.printStackTrace(printStream);
+		}
+		try {
+
+			println(SWT.class.getName() + " loaded from swt.jar");
+
+		} catch (NoClassDefFoundError ex) {
+			ex.printStackTrace(printStream);
+		}
+		try {
+			text = bos.toString("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		showLongTextMessageInDialog(null, text, title);
 	}
 
-	private static void println() {
-		System.out.println();
+	private void println() {
+		printStream.println();
 	}
 
-	private static void println(String message) {
-		System.out.println(message);
+	private void println(String message) {
+		printStream.print(message);
+		println();
 	}
 
 	private ClassLoader printClassLoader(ClassLoader classLoader) {
@@ -154,6 +196,14 @@ public final class Hello {
 			String key = i.next();
 			println(key + "=" + String.valueOf(properties.getProperty(key)));
 		}
+	}
+
+	private void showLongTextMessageInDialog(Frame frame, String longMessage, String title) {
+		JTextArea textArea = new JTextArea(32, 80);
+		textArea.setText(longMessage);
+		textArea.setEditable(false);
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		JOptionPane.showMessageDialog(frame, scrollPane);
 	}
 
 }

@@ -170,7 +170,7 @@
 		<mkdir dir="${appDir}" />
 		<!-- See the jarbundler documentation for details on the task -->
 		<!-- The ".icns" file was created using http://iconverticons.com/online -->
-		<jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${iconFilePath}" useJavaXKey="true" mainclass="${applicationMainClass}" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M" stubfile="${applicationName}">
+		<jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${iconFilePath}" useJavaXKey="true" mainclass="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M" stubfile="${applicationName}">
 		</jarbundler>
 		<copy tofile="${appDir}/Contents/MacOS/${applicationName}" overwrite="true">
 			<fileset file="./macos/universalJavaApplicationStub" />
