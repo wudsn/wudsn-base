@@ -113,9 +113,17 @@ public final class Hello {
 		printSystemProperties();
 		println();
 
-		text = Texts.APPLICATION_TITLE + " - " + text;
+		println("OSGI Classes");
+		String title = "";
 
-		JOptionPane.showMessageDialog(null, text, Texts.APPLICATION_TITLE, JOptionPane.INFORMATION_MESSAGE);
+		try {
+			title = Texts.APPLICATION_TITLE;
+			text = Texts.APPLICATION_TITLE + " - " + text;
+			println(Texts.class.getName() + " loaded");
+		} catch (NoClassDefFoundError ex) {
+			ex.printStackTrace(System.out);
+		}
+		JOptionPane.showMessageDialog(null, text, title, JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	private static void println() {
