@@ -112,7 +112,7 @@
 	</target>
 
 	<target name="create_platform_text_file" if="applicationPlatformTextFile">
-		<echo message="Creating platform text file ${applicationPlatformTextFile}"/>
+		<echo message="Creating platform text file ${applicationPlatformTextFile}" />
 		<echo message="${platformText}" file="${applicationPlatformTextFile}" />
 	</target>
 
@@ -129,13 +129,13 @@
 				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
 				<attribute name="Class-Path" value="." />
 				<attribute name="Rsrc-Main-Class" value="${applicationMainClass}" />
-				<attribute name="Rsrc-Class-Path" value="./ equinox.common.jar osgi.jar swt.jar" />
+				<attribute name="Rsrc-Class-Path" value="./ org.eclipse.equinox.common.jar org.eclipse.osgi.jar swt.jar" />
 			</manifest>
 			<zipfileset src="../lib/jar-in-jar-loader.zip" />
 			<fileset dir="${applicationBinFolder}" />
 			<fileset dir="../bin" />
-			<zipfileset dir="../lib" includes="equinox.common.jar" />
-			<zipfileset dir="../lib" includes="osgi.jar" />
+			<zipfileset dir="../lib" includes="org.eclipse.equinox.common.jar" />
+			<zipfileset dir="../lib" includes="org.eclipse.osgi.jar" />
 			<zipfileset dir="../lib/${platform}" includes="swt.jar" />
 		</jar>
 	</target>
@@ -226,6 +226,10 @@
 		<delete file="${outFolder}/${xml}" />
 	</target>
 
+	<target name="delete_platform_folder" unless="keepPlatformFolders">
+		<delete dir="${outFolder}/${platform}" />
+	</target>
+
 	<target name="create_platform_zip">
 		<fail unless="applicationNameLowerCase" />
 		<fail unless="platform" />
@@ -236,7 +240,7 @@
 
 		<zip destfile="${platformZipFile}" basedir="${outFolder}/${platform}" />
 
-		<delete dir="${outFolder}/${platform}" />
+		<antcall target="delete_platform_folder" />
 	</target>
 
 	<!-- ZIP code and source from Eclipse workspace to "out" folder.
@@ -258,7 +262,7 @@
 				<include name="*.txt" />
 			</tarfileset>
 		</tar>
-
-		<delete dir="${outFolder}/${platform}" />
+		
+		<antcall target="delete_platform_folder" />
 	</target>
 </project>
