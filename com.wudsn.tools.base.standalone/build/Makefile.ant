@@ -168,7 +168,6 @@
 		<property name="appDir" value="${applicationFile}.app" />
 
 		<mkdir dir="${appDir}" />
-		<move file="${jarFile}" todir="${appDir}" />
 		<!-- See the jarbundler documentation for details on the task -->
 		<!-- The ".icns" file was created using http://iconverticons.com/online -->
 		<jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${iconFilePath}" useJavaXKey="true" mainclass="${applicationMainClass}" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M">
