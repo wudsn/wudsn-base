@@ -34,7 +34,8 @@ public final class Hello {
 	/**
 	 * Point of entry to the stand-alone version
 	 *
-	 * @param args optional first String: name of a file to edit
+	 * @param args
+	 *            optional first String: name of a file to edit
 	 */
 	public static void main(String[] args) throws Throwable {
 		Hello instance = new Hello();
@@ -60,11 +61,13 @@ public final class Hello {
 	/**
 	 * Point of entry to the stand-alone version
 	 *
-	 * @param args The command line arguments, not <code>null</code>.
+	 * @param args
+	 *            The command line arguments, not <code>null</code>.
 	 */
 	private void run(String[] args) {
-		System.out
-				.println(Texts.APPLICATION_TITLE + " " + this.getClass().getName() + " at " + (new Date()).toString());
+		String text = Texts.APPLICATION_TITLE + " " + this.getClass().getName() + " at " + (new Date()).toString();
+		System.out.println(text);
+		JOptionPane.showMessageDialog(null, text, Texts.APPLICATION_TITLE, JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }

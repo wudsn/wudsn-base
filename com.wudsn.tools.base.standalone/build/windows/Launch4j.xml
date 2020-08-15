@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
-  <headerType>gui</headerType>
-  <jar>@APPLICATION_STANDALONE_DIR@\out\@PLATFORM_ID@\@APPLICATION_NAME@.jar</jar>
-  <outfile>@APPLICATION_STANDALONE_DIR@\out\@PLATFORM_ID@\@APPLICATION_NAME@.exe</outfile>
+  <headerType>@APPLICATION_HEADER_TYPE@</headerType>
+  <jar>@JAR_FILE_PATH@</jar>
+  <outfile>@OUT_FILE_PATH@</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -12,7 +12,7 @@
   <supportUrl>@APPLICATION_SUPPORT_URL@</supportUrl>
   <stayAlive>false</stayAlive>
   <manifest></manifest>
-  <icon>@JAVAHEXEDTOR_STANDALONE_DIR@\icons\application.ico</icon>
+  <icon>@ICON_FILE_PATH@</icon>
   <jre>
     <path></path>
     <bundledJre64Bit>false</bundledJre64Bit>
@@ -31,6 +31,6 @@
     <productName>@APPLICATION_TITLE@</productName>
     <companyName></companyName>
     <internalName>@APPLICATION_NAME@</internalName>
-    <originalFilename>@APPLICATION_NAME@.exe</originalFilename>
+    <originalFilename>@ORIGINAL_FILENAME@</originalFilename>
   </versionInfo>
 </launch4jConfig>

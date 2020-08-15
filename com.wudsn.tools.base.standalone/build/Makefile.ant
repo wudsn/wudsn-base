@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_standalone_binaries" name="Create Runnable Jars with Jar-in-Jar Loader">
+<project default="create_standalone_executables" name="Create Runnable Jars with Jar-in-Jar Loader">
 	<!-- The .jar file with the jarbundler task must be add in the ANT path in the preferences  -->
 	<taskdef name="jarbundler" classname="com.ultramixer.jarbundler.JarBundler" />
 
 	<!-- ANT 1.7 is required  -->
-	<target name="create_standalone_binaries">
+	<target name="create_standalone_executables">
 
 		<fail unless="applicationName" />
+		<fail unless="applicationNameLowerCase" />
 		<fail unless="applicationTitle" />
+		<fail unless="applicationSupportURL" />
+		<fail unless="applicationMainClass" />
 
-		<!--It requires the "release_year", "release" (x.y.z format) and the "version" information passed as properties. -->
-		<fail unless="release_years" />
+		<!--It requires the "releaseYears", "release" (x.y.z format) and the "version" information passed as properties. -->
+		<fail unless="releaseYears" />
 		<fail unless="release" />
 		<fail unless="version" />
 
-		<echo message="Creating version '${version}' of release ${release} in year ${release_year}." />
+		<echo message="Creating version '${version}' of release ${release} of '${applicationName}' in ${releaseYears} by ${authors}." />
 
 		<mkdir dir="../out" />
 
@@ -48,27 +51,31 @@
 		<!-- Copy Linux shell script -->
 		<antcall target="create_linux_script">
 			<param name="platform" value="linux-x86" />
+			<param name="jreRuntimeBits" value="32" />
 		</antcall>
 		<antcall target="create_linux_script">
 			<param name="platform" value="linux-x86_64" />
+			<param name="jreRuntimeBits" value="64" />
 		</antcall>
 
 		<!-- Create Mac OS X app folder -->
 		<antcall target="create_macos_app">
 			<param name="platform" value="macos-x86" />
+			<param name="jreRuntimeBits" value="32" />
 		</antcall>
 		<antcall target="create_macos_app">
 			<param name="platform" value="macos-x86_64" />
+			<param name="jreRuntimeBits" value="64" />
 		</antcall>
 
 		<!-- Create Windows executable -->
 		<antcall target="create_windows_executable">
 			<param name="platform" value="win32-x86" />
-			<param name="runtime_bits" value="32" />
+			<param name="jreRuntimeBits" value="32" />
 		</antcall>
 		<antcall target="create_windows_executable">
 			<param name="platform" value="win32-x86_64" />
-			<param name="runtime_bits" value="64" />
+			<param name="jreRuntimeBits" value="64" />
 		</antcall>
 
 		<!-- Remove jars that have been wrapped before zipping -->
@@ -80,16 +87,16 @@
 		<delete file="../out/win32-x86_64/${applicationName}.jar" failonerror="true" />
 
 		<!-- Create zip files for upload -->
-		<antcall target="create_platform_zip">
+		<antcall target="create_platform_tar_gz">
 			<param name="platform" value="linux-x86" />
 		</antcall>
-		<antcall target="create_platform_zip">
+		<antcall target="create_platform_tar_gz">
 			<param name="platform" value="linux-x86_64" />
 		</antcall>
-		<antcall target="create_platform_zip">
+		<antcall target="create_platform_tar_gz">
 			<param name="platform" value="macos-x86" />
 		</antcall>
-		<antcall target="create_platform_zip">
+		<antcall target="create_platform_tar_gz">
 			<param name="platform" value="macos-x86_64" />
 		</antcall>
 		<antcall target="create_platform_zip">
@@ -102,7 +109,10 @@
 	</target>
 
 	<target name="create_platform_jar">
+		<fail unless="applicationBinFolder" />
+
 		<echo message="Creating '${platform_text}' as ${platform}." />
+		<!-- TODO -->
 		<echo message="${platform_text}" file="..\..\javahexeditor\bin\net\sourceforge\javahexeditor\Manager.os" />
 		<mkdir dir="../out/${platform}" />
 		<delete file="../out/${platform}/${applicationName}.jar" />
@@ -110,13 +120,11 @@
 			<manifest>
 				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
 				<attribute name="Class-Path" value="." />
-				<attribute name="Rsrc-Main-Class" value="net.sourceforge.javahexeditor.standalone.HexEditor" />
+				<attribute name="Rsrc-Main-Class" value="${applicationMainClass}" />
 				<attribute name="Rsrc-Class-Path" value="./ org.eclipse.equinox.common.jar org.eclipse.osgi.jar swt.jar" />
 			</manifest>
 			<zipfileset src="../lib/jar-in-jar-loader.zip" />
-			<fileset dir="../../javahexeditor/bin">
-				<exclude name="net/sourceforge/javahexeditor/test/**" />
-			</fileset>
+			<fileset dir="${applicationBinFolder}" />
 			<fileset dir="../bin" />
 			<zipfileset dir="../lib" includes="org.eclipse.equinox.common.jar" />
 			<zipfileset dir="../lib" includes="org.eclipse.osgi.jar" />
@@ -125,19 +133,27 @@
 	</target>
 
 	<target name="create_linux_script">
-		<echo>Creating Linux script for ${platform}</echo>
+		<echo message="Creating executable for ${platform}, JRE ${jreMinVersion} (${jreRuntimeBits}-bit)" />
 		<concat destfile="../out/${platform}/${applicationName}" binary="yes">
 			<fileset file="../build/linux/stub.sh" />
-			<fileset file="../out/${platform}/${applicationName}" />
+			<fileset file="../out/${platform}/${applicationName}.jar" />
 		</concat>
 	</target>
 
 	<target name="create_macos_app">
+		<echo message="Creating executable for ${platform}, JRE ${jreMinVersion} (${jreRuntimeBits}-bit)" />
+
 		<fail unless="platform" />
-		<mkdir dir="../out/${platform}/${applicationName}.app" />
+		<fail unless="iconFilePath" />
+
+		<property name="jarFile" value="../out/${platform}/${applicationName}.jar" />
+		<property name="appDir" value="../out/${platform}/${applicationName}.app" />
+
+		<mkdir dir="${appDir}" />
+		<move file="${jarFile}" todir="${appDir}" />
 		<!-- See the jarbundler documentation for details on the task -->
 		<!-- The ".icns" file was created using http://iconverticons.com/online -->
-		<jarbundler dir="../out/${platform}/" name="${applicationName}" copyright="(C) ${release_years} Jordi Bergenthal and Peter Dell" shortname="Java Hex Editor" build="$${version}" icon="../../javahexeditor/src/images/javahexeditor-48x48.icns" useJavaXKey="true" mainclass="net.sourceforge.javahexeditor.standalone.HexEditor" jar="../out/${platform}/JavaHexEditor.jar" jvmversion="1.8+" vmoptions="-Xms256M -Xmx256M">
+		<jarbundler dir="../out/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${iconFilePath}" useJavaXKey="true" mainclass="${applicationMainClass}" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M">
 		</jarbundler>
 		<copy todir="../out/${platform}/${applicationName}.app/Contents/MacOS" overwrite="true">
 			<fileset file="./macos/universalJavaApplicationStub" />
@@ -145,24 +161,48 @@
 	</target>
 
 	<target name="create_windows_executable">
+		<echo message="Creating executable for ${platform}, JRE ${jreMinVersion} (${jreRuntimeBits}-bit)" />
+
 		<fail unless="basedir" />
-		<fail unless="basedir" />
-		<fail unless="year" />
+		<fail unless="applicationName" />
+		<fail unless="applicationTitle" />
+		<fail unless="applicationSupportURL" />
+
+		<fail unless="authors" />
+		<fail unless="releaseYears" />
+		<fail unless="release" />
 		<fail unless="version" />
 		<fail unless="platform" />
-	
-		<property name="xml" value="windows/Launch4j.xml" />
+
+		<fail unless="jreMinVersion" />
+		<fail unless="jreRuntimeBits" />
+
+
+		<property name="xml" value="Launch4j.xml" />
+		<property name="applicationFolder" value="${basedir}\.." />
+		<property name="applicationExecutableName" value="${applicationName}.exe" />
+
 		<copy todir="../out">
-			<fileset file="${xml}" />
+			<fileset file="windows/${xml}" />
 			<filterset>
-				<filter token="JAVAHEXEDTOR_STANDALONE_DIR" value="${basedir}/.." />
-				<filter token="RELEASE_YEAR" value="${release_year}" />
+				<filter token="APPLICATION_HEADER_TYPE" value="${applicationHeaderType}" />
+				<filter token="APPLICATION_NAME" value="${applicationName}" />
+				<filter token="APPLICATION_TITLE" value="${applicationTitle}" />
+				<filter token="APPLICATION_SUPPORT_URL" value="${applicationSupportURL}" />
+				<filter token="AUTHORS" value="${authors}" />
+				<filter token="RELEASE_YEARS" value="${releaseYears}" />
 				<filter token="RELEASE" value="${release}" />
 				<filter token="VERSION" value="${version}" />
 				<filter token="PLATFORM_ID" value="${platform}" />
-				<filter token="RUNTIME_BITS" value="${runtime_bits}" />
+				<filter token="JRE_MIN_VERSION" value="${jreMinVersion}" />
+				<filter token="JRE_RUNTIME_BITS" value="${jreRuntimeBits}" />
+				<filter token="JAR_FILE_PATH" value="${applicationFolder}\out\${platform}\${applicationName}.jar" />
+				<filter token="ICON_FILE_PATH" value="${applicationFolder}\icons\application.ico" />
+				<filter token="OUT_FILE_PATH" value="${applicationFolder}\out\${platform}\${applicationExecutableName}" />
+				<filter token="ORIGINAL_FILENAME" value="${applicationExecutableName}" />
 			</filterset>
 		</copy>
+
 		<exec executable="C:\jac\system\Java\Tools\RUN\launch4j\launch4jc.exe">
 			<arg value="../out/${xml}" />
 		</exec>
@@ -170,21 +210,35 @@
 	</target>
 
 	<target name="create_platform_zip">
+		<fail unless="applicationNameLowerCase" />
 		<fail unless="platform" />
 
-		<delete file="../out/javahexeditor-${platform}.zip"/>
-		
-		<!-- ZIP code and source from Eclipse workspace to "out" folder -->
-		<!-- The regular ZIP task cannot preserve the executable flags for Unix, therefore we use a native Unix zip 
-		 	 <zip destfile="../out/javahexeditor-${platform}.zip" basedir="../out/${platform}" />
-		-->
-		<exec executable="C:\jac\cygwin\bin\zip.exe" dir="../out/${platform}" failonerror="true">
-			<arg value="../javahexeditor-${platform}.zip" />
-			<arg value="-r" />
-			<arg value="*" />
-		</exec>
+		<property name="platformZipFile" value="../out/${applicationNameLowerCase}-${platform}.zip" />
+		<echo message="Creating platform archive ${platformZipFile}" />
+		<delete file="${platformZipFile}" />
+
+		<zip destfile="${platformZipFile}" basedir="../out/${platform}" />
 
 		<delete dir="../out/${platform}" />
 	</target>
 
+	<!-- ZIP code and source from Eclipse workspace to "out" folder.
+	     The regular "zip" task cannot preserve the executable flags for Unix, therefore we use a "tar "
+	-->
+	<target name="create_platform_tar_gz">
+		<fail unless="applicationNameLowerCase" />
+		<fail unless="platform" />
+
+		<property name="platformZipFile" value="../out/${applicationNameLowerCase}-${platform}.tar.gz" />
+		<echo message="Creating platform archive ${platformZipFile}" />
+		<delete file="${platformZipFile}" />
+
+		<tar destfile="${platformZipFile}" compression="gzip">
+			<tarfileset dir="../out/${platform}" filemode="755">
+				<include name="*" />
+			</tarfileset>
+		</tar>
+
+		<delete dir="../out/${platform}" />
+	</target>
 </project>
