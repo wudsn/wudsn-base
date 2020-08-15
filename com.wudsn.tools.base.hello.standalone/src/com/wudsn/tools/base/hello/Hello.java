@@ -24,6 +24,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Properties;
@@ -72,10 +75,11 @@ public final class Hello {
 	 *            The command line arguments, not <code>null</code>.
 	 */
 	private void run(String[] args) {
-		String osResourcePath = getClass().getName().replace('.', '/') + ".os";
+		Class<?> clazz = getClass();
+		String osResourcePath = clazz.getName().replace('.', '/') + ".os";
 		String osVersion = "Unknown version";
 
-		InputStream is = getClass().getClassLoader().getResourceAsStream(osResourcePath);
+		InputStream is = clazz.getClassLoader().getResourceAsStream(osResourcePath);
 		if (is != null) {
 			InputStreamReader isReader = new InputStreamReader(is);
 			BufferedReader reader = new BufferedReader(isReader);
@@ -89,18 +93,59 @@ public final class Hello {
 			} catch (IOException e) {
 			}
 		}
-		String text = getClass().getName() + " on " + osVersion + " at " + (new Date()).toString();
-		System.out.println(text);
-		Properties properties = System.getProperties();
-		TreeSet<String> keys = new TreeSet<String>(properties.stringPropertyNames());
-		for (Iterator<String> i = keys.iterator(); i.hasNext();) {
-			String key = i.next();
-			System.out.println(key + "=" + String.valueOf(properties.getProperty(key)));
-		}
+		String text = clazz.getName() + " on " + osVersion + " at " + (new Date()).toString();
+		println(text);
+		println();
+
+		println("System Class Loader");
+		printClassLoader(ClassLoader.getSystemClassLoader());
+		println();
+
+		println("Class Loader");
+		printClassLoader(clazz.getClassLoader());
+		println();
+
+		println("Current Stack");
+		new Exception().printStackTrace(System.out);
+		println();
+
+		println("System Properties");
+		printSystemProperties();
+		println();
 
 		text = Texts.APPLICATION_TITLE + " - " + text;
 
 		JOptionPane.showMessageDialog(null, text, Texts.APPLICATION_TITLE, JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	private static void println() {
+		System.out.println();
+	}
+
+	private static void println(String message) {
+		System.out.println(message);
+	}
+
+	private ClassLoader printClassLoader(ClassLoader classLoader) {
+		while (classLoader != null) {
+			String classPath = "?";
+			if (classLoader instanceof URLClassLoader) {
+				URL[] urls = ((URLClassLoader) classLoader).getURLs();
+				classPath = Arrays.toString(urls);
+			}
+			println("Loaded by " + classLoader.getClass().getName() + " with class path " + classPath);
+			classLoader = classLoader.getParent();
+		}
+		return classLoader;
+	}
+
+	private void printSystemProperties() {
+		Properties properties = System.getProperties();
+		TreeSet<String> keys = new TreeSet<String>(properties.stringPropertyNames());
+		for (Iterator<String> i = keys.iterator(); i.hasNext();) {
+			String key = i.next();
+			println(key + "=" + String.valueOf(properties.getProperty(key)));
+		}
 	}
 
 }
