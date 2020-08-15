@@ -18,6 +18,10 @@
  */
 package com.wudsn.tools.base.hello;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Date;
@@ -65,7 +69,25 @@ public final class Hello {
 	 *            The command line arguments, not <code>null</code>.
 	 */
 	private void run(String[] args) {
-		String text = Texts.APPLICATION_TITLE + " " + this.getClass().getName() + " at " + (new Date()).toString();
+		String osResourcePath = getClass().getName().replace('.', '/') + ".os";
+		String osVersion = "Unknown version";
+
+		InputStream is = getClass().getClassLoader().getResourceAsStream(osResourcePath);
+		if (is != null) {
+			InputStreamReader isReader = new InputStreamReader(is);
+			BufferedReader reader = new BufferedReader(isReader);
+			StringBuffer sb = new StringBuffer();
+			String str;
+			try {
+				while ((str = reader.readLine()) != null) {
+					sb.append(str);
+				}
+				osVersion = sb.toString();
+			} catch (IOException e) {
+			}
+		}
+		String text = Texts.APPLICATION_TITLE + " - " + osVersion + " - " + this.getClass().getName() + " at "
+				+ (new Date()).toString();
 		System.out.println(text);
 		JOptionPane.showMessageDialog(null, text, Texts.APPLICATION_TITLE, JOptionPane.INFORMATION_MESSAGE);
 	}
