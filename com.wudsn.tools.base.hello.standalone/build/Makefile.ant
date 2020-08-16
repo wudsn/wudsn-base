@@ -18,12 +18,9 @@
 		<property name="releaseYears" value="2019 - 2020" />
 		<property name="release" value="0.1.2" />
 		<property name="version" value="Test" />
-
 		<property name="jreMinVersion" value="1.8.0" />
 
-		<ant dir="..\..\com.wudsn.tools.base.standalone\build" antfile="Makefile.ant" target="create_standalone_executables">
-
-		</ant>
+		<ant dir="..\..\com.wudsn.tools.base.standalone\build" antfile="Makefile.ant" target="create_standalone_executables"/>
 	</target>
 
 
