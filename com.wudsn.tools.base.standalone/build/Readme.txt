@@ -39,4 +39,3 @@ Files
 * macosx/universalJavaApplicationStub - The executable /bin/bash shell stub script used by the Mac OS X build. The file is encoded in UTF-8 without BOM.
 * windows/Launch4j.xml - Launch4j configuration file with @EXAMPLE@ place holders replaced by the ANT script
 * Makefile.ant - The ANT makefile to build the binaries for all platforms
-

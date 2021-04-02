@@ -82,13 +82,13 @@ public final class Hello {
 		printStream = new PrintStream(bos) {
 			public void write(int b) {
 				super.write(b);
-			    System.out.write(b);
+				System.out.write(b);
 			}
-			
-		    public void write(byte buf[], int off, int len) {
+
+			public void write(byte buf[], int off, int len) {
 				super.write(buf, off, len);
-			    System.out.write(buf, off, len); 
-		    }
+				System.out.write(buf, off, len);
+			}
 		};
 	}
 
@@ -146,10 +146,15 @@ public final class Hello {
 			println(Texts.class.getName() + " loaded from org.eclipse.osgi.jar");
 		} catch (NoClassDefFoundError ex) {
 			ex.printStackTrace(printStream);
+		} catch (UnsupportedClassVersionError ex) {
+			ex.printStackTrace(printStream);
 		}
+
 		try {
 			println(CoreException.class.getName() + " loaded from org.eclipse.equinox.common.jar");
 		} catch (NoClassDefFoundError ex) {
+			ex.printStackTrace(printStream);
+		} catch (UnsupportedClassVersionError ex) {
 			ex.printStackTrace(printStream);
 		}
 		try {
@@ -157,6 +162,8 @@ public final class Hello {
 			println(SWT.class.getName() + " loaded from swt.jar");
 
 		} catch (NoClassDefFoundError ex) {
+			ex.printStackTrace(printStream);
+		} catch (UnsupportedClassVersionError ex) {
 			ex.printStackTrace(printStream);
 		}
 		try {

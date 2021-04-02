@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.equinox.common.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.osgi.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/win32-x86_64/swt.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

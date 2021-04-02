@@ -13,19 +13,28 @@
 		<fail unless="applicationSupportURL" />
 		<fail unless="applicationMainClass" />
 
-		<!--It requires the "releaseYears", "release" (x.y.z format) and the "version" information passed as properties. -->
+		<!-- Library related properies must be defined, but can be empty. -->
+		<fail unless="applicationLibFolder" />
+		<fail unless="applicationLibList" />
+		<fail unless="applicationPlatformLib" />
+		
+		<fail unless="iconFilePath" />
+		<fail unless="icnsFilePath" />
+
+		<fail unless="authors" />
+		<!-- Requires the "releaseYears", "release" (x.y.z format) and the "version" information passed as properties. -->
 		<fail unless="releaseYears" />
 		<fail unless="release" />
 		<fail unless="version" />
 
-		<property name="outFolder" value="${applicationFolder}/out" />
+		<fail unless="outFolder" />
 
 		<echo message="Creating version '${version}' of release ${release} of '${applicationName}' in ${releaseYears} by ${authors}." />
 
 		<mkdir dir="${outFolder}" />
 
 		<antcall target="create_platform_jar">
-			<param name="platform" value="linux-x86" />
+			<param name="platform" value="linux-x86_32" />
 			<param name="platformText" value="Linux - x86 (32-bit)" />
 		</antcall>
 		<antcall target="create_platform_jar">
@@ -33,7 +42,7 @@
 			<param name="platformText" value="Linux - x86 (64-bit)" />
 		</antcall>
 		<antcall target="create_platform_jar">
-			<param name="platform" value="macos-x86" />
+			<param name="platform" value="macos-x86_32" />
 			<param name="platformText" value="Mac OS - x86 (32-bit)" />
 		</antcall>
 		<antcall target="create_platform_jar">
@@ -41,7 +50,7 @@
 			<param name="platformText" value="Mac OS - x86 (64-bit)" />
 		</antcall>
 		<antcall target="create_platform_jar">
-			<param name="platform" value="win32-x86" />
+			<param name="platform" value="win32-x86_32" />
 			<param name="platformText" value="Windows - x86 (32-bit)" />
 		</antcall>
 		<antcall target="create_platform_jar">
@@ -53,7 +62,7 @@
 
 		<!-- Copy Linux shell script -->
 		<antcall target="create_linux_script">
-			<param name="platform" value="linux-x86" />
+			<param name="platform" value="linux-x86_32" />
 			<param name="jreRuntimeBits" value="32" />
 		</antcall>
 		<antcall target="create_linux_script">
@@ -63,7 +72,7 @@
 
 		<!-- Create Mac OS X app folder -->
 		<antcall target="create_macos_app">
-			<param name="platform" value="macos-x86" />
+			<param name="platform" value="macos-x86_32" />
 			<param name="jreRuntimeBits" value="32" />
 		</antcall>
 		<antcall target="create_macos_app">
@@ -73,7 +82,7 @@
 
 		<!-- Create Windows executable -->
 		<antcall target="create_windows_executable">
-			<param name="platform" value="win32-x86" />
+			<param name="platform" value="win32-x86_32" />
 			<param name="jreRuntimeBits" value="32" />
 		</antcall>
 		<antcall target="create_windows_executable">
@@ -82,28 +91,28 @@
 		</antcall>
 
 		<!-- Remove jars that have been wrapped before zipping -->
-		<delete file="${outFolder}/linux-x86/${applicationName}.jar" failonerror="true" />
+		<delete file="${outFolder}/linux-x86_32/${applicationName}.jar" failonerror="true" />
 		<delete file="${outFolder}/linux-x86_64/${applicationName}.jar" failonerror="true" />
-		<delete file="${outFolder}/macos-x86/${applicationName}.jar" failonerror="true" />
+		<delete file="${outFolder}/macos-x86_32/${applicationName}.jar" failonerror="true" />
 		<delete file="${outFolder}/macos-x86_64/${applicationName}.jar" failonerror="true" />
-		<delete file="${outFolder}/win32-x86/${applicationName}.jar" failonerror="true" />
+		<delete file="${outFolder}/win32-x86_32/${applicationName}.jar" failonerror="true" />
 		<delete file="${outFolder}/win32-x86_64/${applicationName}.jar" failonerror="true" />
 
 		<!-- Create zip files for upload -->
 		<antcall target="create_platform_tar_gz">
-			<param name="platform" value="linux-x86" />
+			<param name="platform" value="linux-x86_32" />
 		</antcall>
 		<antcall target="create_platform_tar_gz">
 			<param name="platform" value="linux-x86_64" />
 		</antcall>
 		<antcall target="create_platform_tar_gz">
-			<param name="platform" value="macos-x86" />
+			<param name="platform" value="macos-x86_32" />
 		</antcall>
 		<antcall target="create_platform_tar_gz">
 			<param name="platform" value="macos-x86_64" />
 		</antcall>
 		<antcall target="create_platform_zip">
-			<param name="platform" value="win32-x86" />
+			<param name="platform" value="win32-x86_32" />
 		</antcall>
 		<antcall target="create_platform_zip">
 			<param name="platform" value="win32-x86_64" />
@@ -129,14 +138,12 @@
 				<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" />
 				<attribute name="Class-Path" value="." />
 				<attribute name="Rsrc-Main-Class" value="${applicationMainClass}" />
-				<attribute name="Rsrc-Class-Path" value="./ org.eclipse.equinox.common.jar org.eclipse.osgi.jar swt.jar" />
+				<attribute name="Rsrc-Class-Path" value="./ ${applicationLibList} ${applicationPlatformLib}" />
 			</manifest>
 			<zipfileset src="../lib/jar-in-jar-loader.zip" />
 			<fileset dir="${applicationBinFolder}" />
-			<fileset dir="../bin" />
-			<zipfileset dir="../lib" includes="org.eclipse.equinox.common.jar" />
-			<zipfileset dir="../lib" includes="org.eclipse.osgi.jar" />
-			<zipfileset dir="../lib/${platform}" includes="swt.jar" />
+			<zipfileset dir="${applicationLibFolder}" includes="*.jar"/>
+			<zipfileset dir="../lib/${platform}" includes="${applicationPlatformLib}" />
 		</jar>
 	</target>
 
@@ -162,15 +169,15 @@
 		<property name="applicationFile" value="${outFolder}/${platform}/${applicationName}" />
 
 		<fail unless="platform" />
-		<fail unless="iconFilePath" />
+		<fail unless="icnsFilePath" />
 
 		<property name="jarFile" value="${applicationFile}.jar" />
 		<property name="appDir" value="${applicationFile}.app" />
 
 		<mkdir dir="${appDir}" />
 		<!-- See the jarbundler documentation for details on the task -->
-		<!-- The ".icns" file was created using http://iconverticons.com/online -->
-		<jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${iconFilePath}" useJavaXKey="true" mainclass="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M" stubfile="${applicationName}">
+		<!-- The ".icns" file was created using https://iconverticons.com/online/ -->
+		<jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${icnsFilePath}" useJavaXKey="true" mainclass="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M" stubfile="${applicationName}">
 		</jarbundler>
 		<copy tofile="${appDir}/Contents/MacOS/${applicationName}" overwrite="true">
 			<fileset file="./macos/universalJavaApplicationStub" />
@@ -185,6 +192,7 @@
 		<fail unless="applicationName" />
 		<fail unless="applicationTitle" />
 		<fail unless="applicationSupportURL" />
+		<fail unless="iconFilePath" />
 
 		<fail unless="authors" />
 		<fail unless="releaseYears" />
@@ -199,7 +207,7 @@
 		<property name="xml" value="Launch4j.xml" />
 		<property name="applicationExecutableName" value="${applicationName}.exe" />
 
-		<copy todir="${outFolder}">
+		<copy todir="${outFolder}" overwrite="true">
 			<fileset file="windows/${xml}" />
 			<filterset>
 				<filter token="APPLICATION_HEADER_TYPE" value="${applicationHeaderType}" />
@@ -214,13 +222,13 @@
 				<filter token="JRE_MIN_VERSION" value="${jreMinVersion}" />
 				<filter token="JRE_RUNTIME_BITS" value="${jreRuntimeBits}" />
 				<filter token="JAR_FILE_PATH" value="${outFolder}\${platform}\${applicationName}.jar" />
-				<filter token="ICON_FILE_PATH" value="${applicationFolder}\icons\application.ico" />
+				<filter token="ICON_FILE_PATH" value="${iconFilePath}" />
 				<filter token="OUT_FILE_PATH" value="${outFolder}\${platform}\${applicationExecutableName}" />
 				<filter token="ORIGINAL_FILENAME" value="${applicationExecutableName}" />
 			</filterset>
 		</copy>
 
-		<exec executable="C:\jac\system\Java\Tools\RUN\launch4j\launch4jc.exe">
+		<exec executable="C:\jac\system\Java\Tools\RUN\launch4j\launch4jc.exe" failifexecutionfails="true" failonerror="true">
 			<arg value="${outFolder}/${xml}" />
 		</exec>
 		<delete file="${outFolder}/${xml}" />
@@ -262,7 +270,7 @@
 				<include name="*.txt" />
 			</tarfileset>
 		</tar>
-		
+
 		<antcall target="delete_platform_folder" />
 	</target>
 </project>
