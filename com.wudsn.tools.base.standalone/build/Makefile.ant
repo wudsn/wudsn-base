@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_standalone_executables" name="Create Executables based on runnable Jars with Jar-in-Jar Loader">
+<project name="Create Executables based on runnable Jars" basedir=".." default="create_standalone_executables">
 	<!-- The .jar file with the jarbundler task must be add in the ANT path in the preferences  -->
 	<taskdef name="jarbundler" classname="com.ultramixer.jarbundler.JarBundler" />
 
@@ -17,7 +17,7 @@
 		<fail unless="applicationLibFolder" />
 		<fail unless="applicationLibList" />
 		<fail unless="applicationPlatformLib" />
-		
+
 		<fail unless="iconFilePath" />
 		<fail unless="icnsFilePath" />
 
@@ -131,6 +131,22 @@
 		<echo message="Creating '${platformText}' as ${platform}." />
 		<antcall target="create_platform_text_file" />
 
+		<property name="applicationPlatformLibFolder" location="lib/${platform}" />
+		<zipfileset id="lib.fileset1" dir="${applicationLibFolder}">
+			<include name="*.jar" />
+		</zipfileset>
+		<zipfileset id="lib.fileset2" dir="${applicationPlatformLibFolder}">
+			<include name="${applicationPlatformLib}" />
+		</zipfileset>
+
+		<pathconvert property="applicationLibFileList" pathsep=" ">
+			<fileset refid="lib.fileset1" />
+			<map from="${applicationLibFolder}${file.separator}" to="" />
+			<map from="${applicationPlatformLibFolder}${file.separator}" to="" />
+			<fileset refid="lib.fileset2" />
+		</pathconvert>
+
+
 		<mkdir dir="${outFolder}/${platform}" />
 		<delete file="${outFolder}/${platform}/${applicationName}.jar" />
 		<jar destfile="${outFolder}/${platform}/${applicationName}.jar">
@@ -140,10 +156,10 @@
 				<attribute name="Rsrc-Main-Class" value="${applicationMainClass}" />
 				<attribute name="Rsrc-Class-Path" value="./ ${applicationLibList} ${applicationPlatformLib}" />
 			</manifest>
-			<zipfileset src="../lib/jar-in-jar-loader.zip" />
+			<zipfileset src="lib/jar-in-jar-loader.zip" />
 			<fileset dir="${applicationBinFolder}" />
-			<zipfileset dir="${applicationLibFolder}" includes="*.jar"/>
-			<zipfileset dir="../lib/${platform}" includes="${applicationPlatformLib}" />
+			<zipfileset refid="lib.fileset1" />
+			<zipfileset refid="lib.fileset2" />
 		</jar>
 	</target>
 
@@ -159,7 +175,7 @@
 		<property name="applicationFile" value="${outFolder}/${platform}/${applicationName}" />
 
 		<concat destfile="${applicationFile}" binary="yes">
-			<fileset file="../build/linux/stub.sh" />
+			<fileset file="build/linux/stub.sh" />
 			<fileset file="${applicationFile}.jar" />
 		</concat>
 	</target>
@@ -180,7 +196,7 @@
 		<jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${icnsFilePath}" useJavaXKey="true" mainclass="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M" stubfile="${applicationName}">
 		</jarbundler>
 		<copy tofile="${appDir}/Contents/MacOS/${applicationName}" overwrite="true">
-			<fileset file="./macos/universalJavaApplicationStub" />
+			<fileset file="build/macos/universalJavaApplicationStub" />
 		</copy>
 	</target>
 
@@ -208,7 +224,7 @@
 		<property name="applicationExecutableName" value="${applicationName}.exe" />
 
 		<copy todir="${outFolder}" overwrite="true">
-			<fileset file="windows/${xml}" />
+			<fileset file="build/windows/${xml}" />
 			<filterset>
 				<filter token="APPLICATION_HEADER_TYPE" value="${applicationHeaderType}" />
 				<filter token="APPLICATION_NAME" value="${applicationName}" />
