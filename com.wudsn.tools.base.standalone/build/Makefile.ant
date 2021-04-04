@@ -193,7 +193,8 @@
 		<mkdir dir="${appDir}" />
 		<!-- See the jarbundler documentation for details on the task -->
 		<!-- The ".icns" file was created using https://iconverticons.com/online/ -->
-		<jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${icnsFilePath}" useJavaXKey="true" mainclass="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M" stubfile="${applicationName}">
+		<!-- The "-XstartOnFirstThread" VM parameter is required for 64-bit macOS, see https://www.eclipse.org/swt/macosx/ -->
+		<jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${icnsFilePath}" useJavaXKey="true" mainclass="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M -XstartOnFirstThread" stubfile="${applicationName}">
 		</jarbundler>
 		<copy tofile="${appDir}/Contents/MacOS/${applicationName}" overwrite="true">
 			<fileset file="build/macos/universalJavaApplicationStub" />
@@ -268,7 +269,7 @@
 	</target>
 
 	<!-- ZIP code and source from Eclipse workspace to "out" folder.
-	     The regular "zip" task cannot preserve the executable flags for Unix, therefore we use a "tar "
+	     The regular "zip" task cannot preserve the executable flags for Unix, therefore we use a "tar"
 	-->
 	<target name="create_platform_tar_gz">
 		<fail unless="applicationNameLowerCase" />
