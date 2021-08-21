@@ -1,9 +1,6 @@
 /*
  * Hello, a Java test program
- * Copyright (C) 2020 Peter Dell
- *
- * Copyright (C) 2006, 2009 Jordi Bergenthal, pestatije(-at_)users.sourceforge.net
- * The official javahexeditor site is sourceforge.net/projects/javahexeditor
+ * Copyright (C) 2020 - 2021 Peter Dell
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
