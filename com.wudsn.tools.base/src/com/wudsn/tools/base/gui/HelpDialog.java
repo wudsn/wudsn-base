@@ -28,6 +28,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.UnsupportedCharsetException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
@@ -51,7 +53,7 @@ import com.wudsn.tools.base.repository.NLS;
  */
 public final class HelpDialog extends SimpleDialog {
 
-	public final static class VersionResourceModifier implements ResourceModifier {
+	private final static class VersionResourceModifier implements ResourceModifier {
 		public VersionResourceModifier() {
 
 		}
@@ -77,11 +79,11 @@ public final class HelpDialog extends SimpleDialog {
 	private String path;
 	private int width;
 	private int height;
-	private ResourceModifier resourceModifier;
+	private List<ResourceModifier> resourceModifierList;
 
 	JEditorPane jep;
 
-	public HelpDialog(JFrame parent, String path, int width, int height, ResourceModifier resourceModifier) {
+	public HelpDialog(JFrame parent, String path, int width, int height, List<ResourceModifier> resourceModifierList) {
 		super(parent, Texts.HelpDialog_Title, false);
 		if (path == null) {
 			throw new IllegalArgumentException("Parameter 'path' must not be null.");
@@ -89,8 +91,13 @@ public final class HelpDialog extends SimpleDialog {
 		this.path = path;
 		this.width = width;
 		this.height = height;
-		resourceModifier = new VersionResourceModifier();
-		this.resourceModifier = resourceModifier;
+		this.resourceModifierList = new ArrayList<ResourceModifier>(2);
+		this.resourceModifierList.add(new VersionResourceModifier());
+
+		if (resourceModifierList != null) {
+			this.resourceModifierList.addAll(resourceModifierList);
+		}
+		;
 	}
 
 	@Override
@@ -145,15 +152,14 @@ public final class HelpDialog extends SimpleDialog {
 	/**
 	 * Sets the page content based on an URL.
 	 * 
-	 * @param url
-	 *            The URL, not <code>null</code>.
+	 * @param url The URL, not <code>null</code>.
 	 */
 	void setPage(URL url) {
 		if (url == null) {
 			throw new IllegalArgumentException("Parameter 'url' must not be null.");
 		}
 		try {
-			url = new URL(url, "", ResourceUtility.createStreamHandler(resourceModifier));
+			url = new URL(url, "", ResourceUtility.createStreamHandler(resourceModifierList));
 			jep.setPage(url);
 		} catch (IOException ex) {
 			jep.setText(ex.getMessage());

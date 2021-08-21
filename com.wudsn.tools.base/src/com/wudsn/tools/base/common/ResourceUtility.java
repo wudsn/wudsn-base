@@ -30,6 +30,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLStreamHandler;
+import java.util.List;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
@@ -46,16 +47,18 @@ public final class ResourceUtility {
 
 	private final static class ResourceURLStreamHandler extends URLStreamHandler {
 
-		ResourceModifier resourceModifier;
+		private List<ResourceModifier> resourceModifierList;
 
 		/**
 		 * Creates a new handler.
 		 * 
-		 * @param resourceModifier
-		 *            The resource modifier or <code>null</code>.
+		 * @param resourceModifier The resource modifier list, not <code>null</code>.
 		 */
-		public ResourceURLStreamHandler(ResourceModifier resourceModifier) {
-			this.resourceModifier = resourceModifier;
+		public ResourceURLStreamHandler(List<ResourceModifier> resourceModifierList) {
+			if (resourceModifierList == null) {
+				throw new IllegalArgumentException("Parameter resourceModifierList must not be null.");
+			}
+			this.resourceModifierList = resourceModifierList;
 		}
 
 		@Override
@@ -118,7 +121,7 @@ public final class ResourceUtility {
 					if (data == null) {
 						data = ("Invalid URL: " + url).getBytes();
 					} else {
-						if (resourceModifier != null) {
+						for (ResourceModifier resourceModifier : resourceModifierList) {
 							data = resourceModifier.modifyResource(url, data);
 							if (data == null) {
 								data = ("Resource modified returned null for URL: " + url).getBytes();
@@ -175,12 +178,15 @@ public final class ResourceUtility {
 	/**
 	 * Creates a new handler.
 	 * 
-	 * @param resourceModifier
-	 *            The resource modifier or <code>null</code>.
+	 * @param resourceModifierList A list of resource modifiers, not
+	 *                             <code>null</code>.
 	 * @return The handler, not <code>null</code>.
 	 */
-	public static URLStreamHandler createStreamHandler(ResourceModifier resourceModifier) {
-		return new ResourceURLStreamHandler(resourceModifier);
+	public static URLStreamHandler createStreamHandler(List<ResourceModifier> resourceModifierList) {
+		if (resourceModifierList == null) {
+			throw new IllegalArgumentException("Parameter resourceModifierList must not be null.");
+		}
+		return new ResourceURLStreamHandler(resourceModifierList);
 
 	}
 
@@ -196,8 +202,7 @@ public final class ResourceUtility {
 	 * <a href="https://bugs.sun.com/view_bug.do?bug_id=4523159">JDK-4523159 :
 	 * getResourceAsStream on jars in path with "!"</a>.
 	 * 
-	 * @param path
-	 *            The path of the resource to load, not <code>null</code>.
+	 * @param path The path of the resource to load, not <code>null</code>.
 	 * @return The input stream or <code>null</code> if the source was not found.
 	 */
 	private static InputStream getInputStream(String path) {
@@ -233,8 +238,7 @@ public final class ResourceUtility {
 	/**
 	 * Loads a resource as byte array.
 	 * 
-	 * @param path
-	 *            The resource path, not empty, not <code>null</code>.
+	 * @param path The resource path, not empty, not <code>null</code>.
 	 * @return The binary resource content or <code>null</code> if the resource was
 	 *         not found.
 	 */
@@ -272,8 +276,7 @@ public final class ResourceUtility {
 	/**
 	 * Loads a resource as string.
 	 * 
-	 * @param path
-	 *            The resource path, not empty, not <code>null</code>.
+	 * @param path The resource path, not empty, not <code>null</code>.
 	 * @return The resource content or <code>null</code> if the resource was not
 	 *         found.
 	 */

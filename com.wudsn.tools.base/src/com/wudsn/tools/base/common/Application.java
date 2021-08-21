@@ -80,15 +80,15 @@ public final class Application {
 
 	}
 
-	public static void createInstance(String urlString, String jarFileName, String versionPath) {
+	public static void createInstance(String urlString, String jarFileName, Class<?> mainClass) {
 		if (urlString == null) {
 			throw new IllegalArgumentException("Parameter 'urlString' must not be null.");
 		}
 		if (jarFileName == null) {
 			throw new IllegalArgumentException("Parameter 'jarFileName' must not be null.");
 		}
-		if (versionPath == null) {
-			throw new IllegalArgumentException("Parameter 'versionPath' must not be null.");
+		if (mainClass == null) {
+			throw new IllegalArgumentException("Parameter 'mainClass' must not be null.");
 		}
 		if (instance != null) {
 			throw new IllegalStateException("An application with URL '" + urlString + "' was already created.");
@@ -96,7 +96,7 @@ public final class Application {
 		instance = new Application();
 		instance.urlString = urlString;
 		instance.jarFileName = jarFileName;
-		instance.versionPath = versionPath;
+		instance.versionPath = mainClass.getName().replace('.', '/')+".version";
 
 		// Ensure native look and feel also for popups resulting from early
 		// errors.
