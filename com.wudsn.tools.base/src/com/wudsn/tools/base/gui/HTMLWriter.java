@@ -81,6 +81,13 @@ public final class HTMLWriter {
 		builder.append(text);
 	}
 
+	public void writeEncodedText(String text) {
+		if (text == null) {
+			throw new IllegalArgumentException("Parameter 'text' must not be null.");
+		}
+		writeText(getHTMLEncodedString(text));
+	}
+
 	public void beginTable() {
 		beginTable(true);
 	}
@@ -148,6 +155,13 @@ public final class HTMLWriter {
 		end();
 	}
 
+	public void writeEncodedTableCell(String text) {
+		if (text == null) {
+			throw new IllegalArgumentException("Parameter 'text' must not be null.");
+		}
+		writeTableCell(getHTMLEncodedString(text));
+	}
+
 	public void beginList() {
 		begin("ul", null);
 	}
@@ -206,4 +220,52 @@ public final class HTMLWriter {
 		}
 		return builder.toString();
 	}
+
+	public static String getHTMLEncodedString(String text) {
+		if (text == null) {
+			return "";
+		}
+		StringBuffer sb = new StringBuffer(text.length());
+		boolean lastWasBlankChar = false;
+		int len = text.length();
+		char c;
+		for (int i = 0; i < len; i++) {
+			c = text.charAt(i);
+			if (c == ' ') {
+				if (lastWasBlankChar) {
+					lastWasBlankChar = false;
+					sb.append(" ");
+				} else {
+					lastWasBlankChar = true;
+					sb.append(' ');
+				}
+			} else {
+				lastWasBlankChar = false;
+				if (c == '"') {
+					sb.append("\"");
+				} else if (c == '&') {
+					sb.append("&");
+				} else if (c == '<') {
+					sb.append("<");
+				} else if (c == '>') {
+					sb.append(">");
+				} else if (c == 'n') {
+					sb.append("n");
+				} else if (c == 39) { // check for apostrophe character
+					sb.append("'");
+				} else {
+					int ci = 0xffff & c;
+					if (ci < 160) {
+						sb.append(c);
+					} else {
+						sb.append("&#");
+						sb.append(new Integer(ci).toString());
+						sb.append(';');
+					}
+				}
+			}
+		}
+		return sb.toString();
+	}
+
 }
