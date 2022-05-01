@@ -50,6 +50,9 @@ public final class Messages extends NLS {
 	public static Message E217;
 	public static Message E218;
 	public static Message E219;
+	public static Message E220;
+	public static Message E221;
+	public static Message E222;
 
 	// Console and parser
 	public static Message E250;

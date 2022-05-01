@@ -103,7 +103,7 @@ public final class FileUtility {
 	 * Gets the (canonical) absolute path of a file.
 	 * 
 	 * @param filePath
-	 *            The file path, not <code>null</code>.
+	 *                     The file path, not <code>null</code>.
 	 * @return The canonical) absolute path of the file
 	 */
 	public static String getAbsolutePath(String filePath) {
@@ -125,10 +125,11 @@ public final class FileUtility {
 	 * Creates a simple file extension based filter.
 	 * 
 	 * @param fileExtension
-	 *            The file extension, not empty and not <code>null</code>. Must
-	 *            start with a period.
+	 *                              The file extension, not empty and not
+	 *                              <code>null</code>. Must start with a period.
 	 * @param filterDescription
-	 *            The filter description, not empty and not <code>null</code>.
+	 *                              The filter description, not empty and not
+	 *                              <code>null</code>.
 	 * @return
 	 */
 	public static FileFilter createFileExtensionFileFilter(final String fileExtension, final String filterDescription) {
@@ -159,10 +160,10 @@ public final class FileUtility {
 	 * Normalizes a file extension to a given standard extension.
 	 * 
 	 * @param file
-	 *            The file, not <code>null</code>.
+	 *                          The file, not <code>null</code>.
 	 * @param fileExtension
-	 *            The file extension, not empty and not <code>null</code>. Must
-	 *            start with a period.
+	 *                          The file extension, not empty and not
+	 *                          <code>null</code>. Must start with a period.
 	 * @return The new file with normalized file extension.
 	 */
 	public static File normalizeFileExtension(File file, String fileExtension) {
@@ -194,10 +195,10 @@ public final class FileUtility {
 	 * Opens an input stream for reading.
 	 * 
 	 * @param ioFile
-	 *            The file, not <code>null</code>.
+	 *                   The file, not <code>null</code>.
 	 * @return The input stream, not <code>null</code>.
 	 * @throws CoreException
-	 *             If the file does not exist or cannot be read.
+	 *                           If the file does not exist or cannot be read.
 	 */
 	public static InputStream openInputStream(File ioFile) throws CoreException {
 		InputStream inputStream;
@@ -231,20 +232,22 @@ public final class FileUtility {
 	 * Reads the content of a file as byte array.
 	 * 
 	 * @param ioFile
-	 *            The file, not <code>null</code>.
+	 *                                   The file, not <code>null</code>.
 	 * @param maxSize
-	 *            The maximum number of character to read or
-	 *            {@link #MAX_SIZE_UNLIMITED}.
+	 *                                   The maximum number of character to read or
+	 *                                   {@link #MAX_SIZE_UNLIMITED}.
 	 * @param errorOnMaxSizeExceeded
-	 *            If <code>true</code>, an error will be thrown in case the
-	 *            specified maximum number of bytes is exceeded. If
-	 *            <code>false</code>, the content will be truncated to the specified
-	 *            maximum size (plus the internal buffer size).
+	 *                                   If <code>true</code>, an error will be
+	 *                                   thrown in case the specified maximum number
+	 *                                   of bytes is exceeded. If
+	 *                                   <code>false</code>, the content will be
+	 *                                   truncated to the specified maximum size
+	 *                                   (plus the internal buffer size).
 	 * 
 	 * @return The content of the file, may be empty, not <code>null</code>.
 	 * 
 	 * @throws CoreException
-	 *             If the file does not exist or cannot be read.
+	 *                           If the file does not exist or cannot be read.
 	 */
 	public static byte[] readBytes(File ioFile, long maxSize, boolean errorOnMaxSizeExceeded) throws CoreException {
 		InputStream inputStream;
@@ -315,11 +318,11 @@ public final class FileUtility {
 	 * Close an input stream.
 	 * 
 	 * @param ioFile
-	 *            The file, not <code>null</code>.
+	 *                        The file, not <code>null</code>.
 	 * @param inputStream
-	 *            The input stream,not <code>null</code>.
+	 *                        The input stream,not <code>null</code>.
 	 * @throws CoreException
-	 *             If the output stream cannot be closed.
+	 *                           If the output stream cannot be closed.
 	 */
 	public static void closeInputStream(File ioFile, InputStream inputStream) throws CoreException {
 
@@ -343,10 +346,11 @@ public final class FileUtility {
 	 * Opens an output stream for writing.
 	 * 
 	 * @param ioFile
-	 *            The file, not <code>null</code>.
+	 *                   The file, not <code>null</code>.
 	 * @return The output stream, not <code>null</code>.
 	 * @throws CoreException
-	 *             If the file does not exist or cannot be created or overwritten.
+	 *                           If the file does not exist or cannot be created or
+	 *                           overwritten.
 	 */
 	public static OutputStream openOutputStream(File ioFile) throws CoreException {
 		OutputStream outputStream;
@@ -385,11 +389,12 @@ public final class FileUtility {
 	 * Write a byte array to a file.
 	 * 
 	 * @param ioFile
-	 *            The file, not <code>null</code>.
+	 *                    The file, not <code>null</code>.
 	 * @param content
-	 *            The content of the file, may be empty, not <code>null</code>.
+	 *                    The content of the file, may be empty, not
+	 *                    <code>null</code>.
 	 * @throws CoreException
-	 *             If the file does not exist or cannot be read.
+	 *                           If the file does not exist or cannot be read.
 	 */
 	public static void writeBytes(File ioFile, byte[] content) throws CoreException {
 		OutputStream outputStream;
@@ -414,18 +419,18 @@ public final class FileUtility {
 	 * Write a byte array to a file.
 	 * 
 	 * @param ioFile
-	 *            The file, not <code>null</code>.
+	 *                         The file, not <code>null</code>.
 	 * @param outputStream
-	 *            The output stream,not <code>null</code>.
+	 *                         The output stream,not <code>null</code>.
 	 * @param content
-	 *            The content, not <code>null</code>.
+	 *                         The content, not <code>null</code>.
 	 * @param offset
-	 *            The start offset from which the content is written, a non-negative
-	 *            integer.
+	 *                         The start offset from which the content is written, a
+	 *                         non-negative integer.
 	 * @param length
-	 *            The number of bytes to write, a non-negative integer.
+	 *                         The number of bytes to write, a non-negative integer.
 	 * @throws CoreException
-	 *             If the file cannot be created or written.
+	 *                           If the file cannot be created or written.
 	 */
 	public static void writeBytes(File ioFile, OutputStream outputStream, byte[] content, int offset, int length)
 			throws CoreException {
@@ -461,11 +466,11 @@ public final class FileUtility {
 	 * Close an output stream.
 	 * 
 	 * @param ioFile
-	 *            The file, not <code>null</code>.
+	 *                         The file, not <code>null</code>.
 	 * @param outputStream
-	 *            The output stream,not <code>null</code>.
+	 *                         The output stream,not <code>null</code>.
 	 * @throws CoreException
-	 *             If the output stream cannot be closed.
+	 *                           If the output stream cannot be closed.
 	 */
 	public static void closeOutputStream(File ioFile, OutputStream outputStream) throws CoreException {
 
@@ -489,13 +494,13 @@ public final class FileUtility {
 	 * Reads the content of a file as string.
 	 * 
 	 * @param ioFile
-	 *            The file, not <code>null</code>.
+	 *                    The file, not <code>null</code>.
 	 * @param maxSize
-	 *            The maximum number of character to read or
-	 *            {@link #MAX_SIZE_UNLIMITED}.
+	 *                    The maximum number of character to read or
+	 *                    {@link #MAX_SIZE_UNLIMITED}.
 	 * @return The content of the file, may be empty, not <code>null</code>.
 	 * @throws CoreException
-	 *             If the file does not exist or cannot be read.
+	 *                           If the file does not exist or cannot be read.
 	 */
 	public static String readString(File ioFile, long maxSize) throws CoreException {
 		InputStream inputStream;
@@ -530,16 +535,17 @@ public final class FileUtility {
 	 * Reads a string from an input stream.
 	 * 
 	 * @param filePath
-	 *            The file path to be used in error messages.
+	 *                        The file path to be used in error messages.
 	 * @param inputStream
-	 *            The input stream, not <code>null</code>.
+	 *                        The input stream, not <code>null</code>.
 	 * @param maxSize
-	 *            The maximum number of bytes to read, a non-negative integer
-	 *            or @link #MAX_SIZE_UNLIMITED}, see also {@link #MAX_SIZE_1MB}.
+	 *                        The maximum number of bytes to read, a non-negative
+	 *                        integer or @link #MAX_SIZE_UNLIMITED}, see also
+	 *                        {@link #MAX_SIZE_1MB}.
 	 * @return The string, may be empty, not <code>null</code>.
 	 * @throws CoreException
-	 *             in case the file cannot be read. the iNput stream has been closed
-	 *             in this case.
+	 *                           in case the file cannot be read. the iNput stream
+	 *                           has been closed in this case.
 	 */
 	public static String readString(String filePath, InputStream inputStream, long maxSize) throws CoreException {
 
@@ -595,11 +601,12 @@ public final class FileUtility {
 	 * Write a string to a file.
 	 * 
 	 * @param ioFile
-	 *            The file, not <code>null</code>.
+	 *                    The file, not <code>null</code>.
 	 * @param content
-	 *            The content of the file, may be empty, not <code>null</code>.
+	 *                    The content of the file, may be empty, not
+	 *                    <code>null</code>.
 	 * @throws CoreException
-	 *             If the file does not exist or cannot be read.
+	 *                           If the file does not exist or cannot be read.
 	 */
 	public static void writeString(File ioFile, String content) throws CoreException {
 		OutputStream outputStream;
@@ -650,6 +657,85 @@ public final class FileUtility {
 			}
 		}
 		return;
+	}
+
+	private static void deleteFile(File file) throws CoreException {
+
+		if (file.exists()) {
+			if (file.isFile()) {
+
+				boolean deleted = file.delete();
+				if (!deleted) {
+					// ERROR: Cannot delete file '{0}'.
+					throw new CoreException(Messages.E220, file.getAbsolutePath());
+				}
+			} else {
+				// ERROR: '{0}' is no file
+				throw new CoreException(Messages.E219, file.getAbsolutePath());
+			}
+		}
+	}
+
+	private static void deleteFolder(File folder) throws CoreException {
+
+		if (folder.exists()) {
+			if (!folder.isFile()) {
+
+				boolean deleted = folder.delete();
+				if (!deleted) {
+					// ERROR: Cannot delete folder '{0}'.
+					throw new CoreException(Messages.E222, folder.getAbsolutePath());
+				}
+			} else {
+				// ERROR: '{0}' is no folder
+				throw new CoreException(Messages.E221, folder.getAbsolutePath());
+			}
+		}
+	}
+
+	public static void deleteFileOrFolder(File fileOrFolder) throws CoreException {
+		if (fileOrFolder == null) {
+			throw new IllegalArgumentException("Parameter 'fileOrFolder' must not be null.");
+		}
+
+		if (fileOrFolder.exists()) {
+			if (fileOrFolder.isFile()) {
+				deleteFile(fileOrFolder);
+
+			} else {
+				File folder = fileOrFolder;
+				File files[] = folder.listFiles();
+				if (files != null) {
+					for (File file : files) {
+						deleteFileOrFolder(file);
+					}
+				}
+				deleteFolder(folder);
+			}
+		}
+
+	}
+
+	public static void createFolder(File folder) throws CoreException {
+		if (folder == null) {
+			throw new IllegalArgumentException("Parameter 'folder' must not be null.");
+		}
+
+		if (folder.exists()) {
+			if (folder.isFile()) {
+
+				// E201='{0}' is no folder but a file.
+				throw new CoreException(Messages.E201, folder.getAbsolutePath());
+
+			}
+
+		} else {
+			boolean created = folder.mkdirs();
+			if (!created) {
+				// Cannot create folder '{0}'.
+				throw new CoreException(Messages.E202, folder.getAbsolutePath());
+			}
+		}
 	}
 
 	public static void copyFile(File sourceFile, File targetFile) throws CoreException {
