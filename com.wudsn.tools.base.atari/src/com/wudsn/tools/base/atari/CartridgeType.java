@@ -28,11 +28,10 @@ import com.wudsn.tools.base.repository.ValueSet;
 
 /**
  * Values representing all known cartridge types as defined in <a href=
- * "https://sourceforge.net/p/atari800/source/ci/master/tree/src/cartridge.h"
+ * "https://github.com/atari800/atari800/blob/master/src/cartridge_info.h"
  * >Atari800</a> by Tomasz Krasuski (Kr0tki). Their properties are described in
- * <a href=
- * "https://sourceforge.net/p/atari800/source/ci/master/tree/DOC/cart.txt"
- * >cart.txt<a/>.
+ * <a href= "https://github.com/atari800/atari800/blob/master/DOC/cart.txt"
+ * >cart.txt<a/>. This file was latest updated on 2022-05-01.
  * 
  * @author Tomasz Krasuski
  * @author Peter Dell
@@ -110,158 +109,174 @@ import com.wudsn.tools.base.repository.ValueSet;
  *        CARTRIDGE_ATRAX_128      = 68,
  *        CARTRIDGE_ADAWLIAH_32    = 69,
  *        CARTRIDGE_ADAWLIAH_64    = 70,
- *        CARTRIDGE_LAST_SUPPORTED = 70
+ *        CARTRIDGE_5200_SUPER_64  = 71,
+ *        CARTRIDGE_5200_SUPER_128 = 72,
+ *        CARTRIDGE_5200_SUPER_256 = 73,
+ *        CARTRIDGE_5200_SUPER_512 = 74,
+ *        CARTRIDGE_ATMAX_NEW_1024 = 75,
+ *        CARTRIDGE_TYPE_COUNT     = 76
  * };
  *         </pre>
- * 
+ *
  *         <pre>
- * #define CARTRIDGE_STD_8_DESC         "Standard 8 KB cartridge"
- * #define CARTRIDGE_STD_16_DESC        "Standard 16 KB cartridge"
- * #define CARTRIDGE_OSS_034M_16_DESC   "OSS two chip 16 KB cartridge (034M)"
- * #define CARTRIDGE_5200_32_DESC       "Standard 32 KB 5200 cartridge"
- * #define CARTRIDGE_DB_32_DESC         "DB 32 KB cartridge"
- * #define CARTRIDGE_5200_EE_16_DESC    "Two chip 16 KB 5200 cartridge"
- * #define CARTRIDGE_5200_40_DESC       "Bounty Bob 40 KB 5200 cartridge"
- * #define CARTRIDGE_WILL_64_DESC       "64 KB Williams cartridge"
- * #define CARTRIDGE_EXP_64_DESC        "Express 64 KB cartridge"
- * #define CARTRIDGE_DIAMOND_64_DESC    "Diamond 64 KB cartridge"
- * #define CARTRIDGE_SDX_64_DESC        "SpartaDOS X 64 KB cartridge"
- * #define CARTRIDGE_XEGS_32_DESC       "XEGS 32 KB cartridge"
- * #define CARTRIDGE_XEGS_64_DESC       "XEGS 64 KB cartridge"
- * #define CARTRIDGE_XEGS_128_DESC      "XEGS 128 KB cartridge"
- * #define CARTRIDGE_OSS_M091_16_DESC   "OSS one chip 16 KB cartridge"
- * #define CARTRIDGE_5200_NS_16_DESC    "One chip 16 KB 5200 cartridge"
- * #define CARTRIDGE_ATRAX_128_DEC_DESC "Decoded Atrax 128 KB cartridge"
- * #define CARTRIDGE_BBSB_40_DESC       "Bounty Bob 40 KB cartridge"
- * #define CARTRIDGE_5200_8_DESC        "Standard 8 KB 5200 cartridge"
- * #define CARTRIDGE_5200_4_DESC        "Standard 4 KB 5200 cartridge"
- * #define CARTRIDGE_RIGHT_8_DESC       "Right slot 8 KB cartridge"
- * #define CARTRIDGE_WILL_32_DESC       "32 KB Williams cartridge"
- * #define CARTRIDGE_XEGS_256_DESC      "XEGS 256 KB cartridge"
- * #define CARTRIDGE_XEGS_512_DESC      "XEGS 512 KB cartridge"
- * #define CARTRIDGE_XEGS_1024_DESC     "XEGS 1 MB cartridge"
- * #define CARTRIDGE_MEGA_16_DESC       "MegaCart 16 KB cartridge"
- * #define CARTRIDGE_MEGA_32_DESC       "MegaCart 32 KB cartridge"
- * #define CARTRIDGE_MEGA_64_DESC       "MegaCart 64 KB cartridge"
- * #define CARTRIDGE_MEGA_128_DESC      "MegaCart 128 KB cartridge"
- * #define CARTRIDGE_MEGA_256_DESC      "MegaCart 256 KB cartridge"
- * #define CARTRIDGE_MEGA_512_DESC      "MegaCart 512 KB cartridge"
- * #define CARTRIDGE_MEGA_1024_DESC     "MegaCart 1 MB cartridge"
- * #define CARTRIDGE_SWXEGS_32_DESC     "Switchable XEGS 32 KB cartridge"
- * #define CARTRIDGE_SWXEGS_64_DESC     "Switchable XEGS 64 KB cartridge"
- * #define CARTRIDGE_SWXEGS_128_DESC    "Switchable XEGS 128 KB cartridge"
- * #define CARTRIDGE_SWXEGS_256_DESC    "Switchable XEGS 256 KB cartridge"
- * #define CARTRIDGE_SWXEGS_512_DESC    "Switchable XEGS 512 KB cartridge"
- * #define CARTRIDGE_SWXEGS_1024_DESC   "Switchable XEGS 1 MB cartridge"
- * #define CARTRIDGE_PHOENIX_8_DESC     "Phoenix 8 KB cartridge"
- * #define CARTRIDGE_BLIZZARD_16_DESC   "Blizzard 16 KB cartridge"
- * #define CARTRIDGE_ATMAX_128_DESC     "Atarimax 128 KB Flash cartridge"
- * #define CARTRIDGE_ATMAX_1024_DESC    "Atarimax 1 MB Flash cartridge"
- * #define CARTRIDGE_SDX_128_DESC       "SpartaDOS X 128 KB cartridge"
- * #define CARTRIDGE_OSS_8_DESC         "OSS 8 KB cartridge"
- * #define CARTRIDGE_OSS_043M_16_DESC   "OSS two chip 16 KB cartridge (043M)"
- * #define CARTRIDGE_BLIZZARD_4_DESC    "Blizzard 4 KB cartridge"
- * #define CARTRIDGE_AST_32_DESC        "AST 32 KB cartridge"
- * #define CARTRIDGE_ATRAX_SDX_64_DESC  "Atrax SDX 64 KB cartridge"
- * #define CARTRIDGE_ATRAX_SDX_128_DESC "Atrax SDX 128 KB cartridge"
- * #define CARTRIDGE_TURBOSOFT_64_DESC  "Turbosoft 64 KB cartridge"
- * #define CARTRIDGE_TURBOSOFT_128_DESC "Turbosoft 128 KB cartridge"
- * #define CARTRIDGE_ULTRACART_32_DESC  "Ultracart 32 KB cartridge"
- * #define CARTRIDGE_LOW_BANK_8_DESC    "Low bank 8 KB cartridge"
- * #define CARTRIDGE_SIC_128_DESC       "SIC! 128 KB cartridge"
- * #define CARTRIDGE_SIC_256_DESC       "SIC! 256 KB cartridge"
- * #define CARTRIDGE_SIC_512_DESC       "SIC! 512 KB cartridge"
- * #define CARTRIDGE_STD_2_DESC         "Standard 2 KB cartridge"
- * #define CARTRIDGE_STD_4_DESC         "Standard 4 KB cartridge"
- * #define CARTRIDGE_RIGHT_4_DESC       "Right slot 4 KB cartridge"
- * #define CARTRIDGE_BLIZZARD_32_DESC   "Blizzard 32 KB cartridge"
- * #define CARTRIDGE_MEGAMAX_2048_DESC  "MegaMax 2 MB cartridge"
- * #define CARTRIDGE_THECART_128M_DESC  "The!Cart 128 MB cartridge"
- * #define CARTRIDGE_MEGA_4096_DESC     "Flash MegaCart 4 MB cartridge"
- * #define CARTRIDGE_MEGA_2048_DESC     "MegaCart 2 MB cartridge"
- * #define CARTRIDGE_THECART_32M_DESC   "The!Cart 32 MB cartridge"
- * #define CARTRIDGE_THECART_64M_DESC   "The!Cart 64 MB cartridge"
- * #define CARTRIDGE_XEGS_8F_64_DESC    "XEGS 64 KB cartridge (banks 8-15)"
- * #define CARTRIDGE_ATRAX_128_DESC     "Atrax 128 KB cartridge"
- * #define CARTRIDGE_ADAWLIAH_32_DESC   "aDawliah 32 KB cartridge"
- * #define CARTRIDGE_ADAWLIAH_64_DESC   "aDawliah 64 KB cartridge"
+cart_t const CARTRIDGES[CARTRIDGE_TYPE_COUNT] = {
+	{ "NONE",                                      0 },
+	{ "Standard 8 KB cartridge",                   8 },
+	{ "Standard 16 KB cartridge",                 16 },
+	{ "OSS two chip 16 KB cartridge (034M)",      16 },
+	{ "Standard 32 KB 5200 cartridge",            32 },
+	{ "DB 32 KB cartridge",                       32 },
+	{ "Two chip 16 KB 5200 cartridge",            16 },
+	{ "Bounty Bob 40 KB 5200 cartridge",          40 },
+	{ "64 KB Williams cartridge",                 64 },
+	{ "Express 64 KB cartridge",                  64 },
+	{ "Diamond 64 KB cartridge",                  64 },
+	{ "SpartaDOS X 64 KB cartridge",              64 },
+	{ "XEGS 32 KB cartridge",                     32 },
+	{ "XEGS 64 KB cartridge (banks 0-7)",         64 },
+	{ "XEGS 128 KB cartridge",                   128 },
+	{ "OSS one chip 16 KB cartridge",             16 },
+	{ "One chip 16 KB 5200 cartridge",            16 },
+	{ "Decoded Atrax 128 KB cartridge",          128 },
+	{ "Bounty Bob 40 KB cartridge",               40 },
+	{ "Standard 8 KB 5200 cartridge",              8 },
+	{ "Standard 4 KB 5200 cartridge",              4 },
+	{ "Right slot 8 KB cartridge",                 8 },
+	{ "32 KB Williams cartridge",                 32 },
+	{ "XEGS 256 KB cartridge",                   256 },
+	{ "XEGS 512 KB cartridge",                   512 },
+	{ "XEGS 1 MB cartridge",                    1024 },
+	{ "MegaCart 16 KB cartridge",                 16 },
+	{ "MegaCart 32 KB cartridge",                 32 },
+	{ "MegaCart 64 KB cartridge",                 64 },
+	{ "MegaCart 128 KB cartridge",               128 },
+	{ "MegaCart 256 KB cartridge",               256 }, 
+	{ "MegaCart 512 KB cartridge",               512 },
+	{ "MegaCart 1 MB cartridge",                1024 },
+	{ "Switchable XEGS 32 KB cartridge",          32 },
+	{ "Switchable XEGS 64 KB cartridge",          64 }, 
+	{ "Switchable XEGS 128 KB cartridge",        128 },
+	{ "Switchable XEGS 256 KB cartridge",        256 },
+	{ "Switchable XEGS 512 KB cartridge",        512 },
+	{ "Switchable XEGS 1 MB cartridge",         1024 },
+	{ "Phoenix 8 KB cartridge",                    8 },
+	{ "Blizzard 16 KB cartridge",                 16 },
+	{ "Atarimax 128 KB Flash cartridge",         128 },
+	{ "Atarimax 1 MB Flash cartridge (old)",    1024 },
+	{ "SpartaDOS X 128 KB cartridge",            128 },
+	{ "OSS 8 KB cartridge",                        8 },
+	{ "OSS two chip 16 KB cartridge (043M)",      16 },
+	{ "Blizzard 4 KB cartridge",                   4 },
+	{ "AST 32 KB cartridge",                      32 },
+	{ "Atrax SDX 64 KB cartridge",                64 },
+	{ "Atrax SDX 128 KB cartridge",              128 },
+	{ "Turbosoft 64 KB cartridge",                64 }, 
+	{ "Turbosoft 128 KB cartridge",              128 },
+	{ "Ultracart 32 KB cartridge",                32 },
+	{ "Low bank 8 KB cartridge",                   8 }, 
+	{ "SIC! 128 KB cartridge",                   128 },
+	{ "SIC! 256 KB cartridge",                   256 },
+	{ "SIC! 512 KB cartridge",                   512 },
+	{ "Standard 2 KB cartridge",                   2 }, 
+	{ "Standard 4 KB cartridge",                   4 },
+	{ "Right slot 4 KB cartridge",                 4 },
+	{ "Blizzard 32 KB cartridge",                 32 }, 
+	{ "MegaMax 2 MB cartridge",                 2048 },
+	{ "The!Cart 128 MB cartridge",          128*1024 },
+	{ "Flash MegaCart 4 MB cartridge",        4*1024 },
+	{ "MegaCart 2 MB cartridge",              2*1024 },
+	{ "The!Cart 32 MB cartridge",            32*1024 },
+	{ "The!Cart 64 MB cartridge",            64*1024 },
+	{ "XEGS 64 KB cartridge (banks 8-15)",        64 },
+	{ "Atrax 128 KB cartridge",                  128 },
+	{ "aDawliah 32 KB cartridge",                 32 },
+	{ "aDawliah 64 KB cartridge",                 64 },
+	{ "Super Cart 64 KB 5200 cartridge",          64 },
+	{ "Super Cart 128 KB 5200 cartridge",        128 },
+	{ "Super Cart 256 KB 5200 cartridge",        256 },
+	{ "Super Cart 512 KB 5200 cartridge",        512 },
+	{ "Atarimax 1 MB Flash cartridge (new)",    1024 }
  *         </pre>
  */
 public final class CartridgeType extends ValueSet {
 
 	public static final CartridgeType UNKNOWN;
 
-	public static final CartridgeType CARTRIDGE_STD_8;
-	public static final CartridgeType CARTRIDGE_STD_16;
-	public static final CartridgeType CARTRIDGE_OSS_034M_16;
-	public static final CartridgeType CARTRIDGE_5200_32;
-	public static final CartridgeType CARTRIDGE_DB_32;
-	public static final CartridgeType CARTRIDGE_5200_EE_16;
-	public static final CartridgeType CARTRIDGE_5200_40;
-	public static final CartridgeType CARTRIDGE_WILL_64;
-	public static final CartridgeType CARTRIDGE_EXP_64;
-	public static final CartridgeType CARTRIDGE_DIAMOND_64;
-	public static final CartridgeType CARTRIDGE_SDX_64;
-	public static final CartridgeType CARTRIDGE_XEGS_32;
-	public static final CartridgeType CARTRIDGE_XEGS_64;
-	public static final CartridgeType CARTRIDGE_XEGS_128;
-	public static final CartridgeType CARTRIDGE_OSS_M091_16;
-	public static final CartridgeType CARTRIDGE_5200_NS_16;
-	public static final CartridgeType CARTRIDGE_ATRAX_DEC_128;
-	public static final CartridgeType CARTRIDGE_BBSB_40;
-	public static final CartridgeType CARTRIDGE_5200_8;
-	public static final CartridgeType CARTRIDGE_5200_4;
-	public static final CartridgeType CARTRIDGE_RIGHT_8;
-	public static final CartridgeType CARTRIDGE_WILL_32;
-	public static final CartridgeType CARTRIDGE_XEGS_256;
-	public static final CartridgeType CARTRIDGE_XEGS_512;
-	public static final CartridgeType CARTRIDGE_XEGS_1024;
-	public static final CartridgeType CARTRIDGE_MEGA_16;
-	public static final CartridgeType CARTRIDGE_MEGA_32;
-	public static final CartridgeType CARTRIDGE_MEGA_64;
-	public static final CartridgeType CARTRIDGE_MEGA_128;
-	public static final CartridgeType CARTRIDGE_MEGA_256;
-	public static final CartridgeType CARTRIDGE_MEGA_512;
-	public static final CartridgeType CARTRIDGE_MEGA_1024;
-	public static final CartridgeType CARTRIDGE_SWXEGS_32;
-	public static final CartridgeType CARTRIDGE_SWXEGS_64;
-	public static final CartridgeType CARTRIDGE_SWXEGS_128;
-	public static final CartridgeType CARTRIDGE_SWXEGS_256;
-	public static final CartridgeType CARTRIDGE_SWXEGS_512;
-	public static final CartridgeType CARTRIDGE_SWXEGS_1024;
-	public static final CartridgeType CARTRIDGE_PHOENIX_8;
-	public static final CartridgeType CARTRIDGE_BLIZZARD_16;
-	public static final CartridgeType CARTRIDGE_ATMAX_128;
-	public static final CartridgeType CARTRIDGE_ATMAX_1024;
-	public static final CartridgeType CARTRIDGE_SDX_128;
-	public static final CartridgeType CARTRIDGE_OSS_8;
-	public static final CartridgeType CARTRIDGE_OSS_043M_16;
-	public static final CartridgeType CARTRIDGE_BLIZZARD_4;
-	public static final CartridgeType CARTRIDGE_AST_32;
-	public static final CartridgeType CARTRIDGE_ATRAX_SDX_64;
-	public static final CartridgeType CARTRIDGE_ATRAX_SDX_128;
-	public static final CartridgeType CARTRIDGE_TURBOSOFT_64;
-	public static final CartridgeType CARTRIDGE_TURBOSOFT_128;
-	public static final CartridgeType CARTRIDGE_ULTRACART_32;
-	public static final CartridgeType CARTRIDGE_LOW_BANK_8;
-	public static final CartridgeType CARTRIDGE_SIC_128;
-	public static final CartridgeType CARTRIDGE_SIC_256;
-	public static final CartridgeType CARTRIDGE_SIC_512;
-	public static final CartridgeType CARTRIDGE_STD_2;
-	public static final CartridgeType CARTRIDGE_STD_4;
-	public static final CartridgeType CARTRIDGE_RIGHT_4;
-	public static final CartridgeType CARTRIDGE_BLIZZARD_32;
-	public static final CartridgeType CARTRIDGE_MEGAMAX_2048;
-	public static final CartridgeType CARTRIDGE_THECART_128M;
-	public static final CartridgeType CARTRIDGE_MEGA_4096;
-	public static final CartridgeType CARTRIDGE_MEGA_2048;
-	public static final CartridgeType CARTRIDGE_THECART_32M;
-	public static final CartridgeType CARTRIDGE_THECART_64M;
-	public static final CartridgeType CARTRIDGE_XEGS_8F_64;
-	public static final CartridgeType CARTRIDGE_ATRAX_128;
-	public static final CartridgeType CARTRIDGE_ADAWLIAH_32;
-	public static final CartridgeType CARTRIDGE_ADAWLIAH_64;
-
+	public static final CartridgeType CARTRIDGE_STD_8; // 1
+	public static final CartridgeType CARTRIDGE_STD_16; // 2
+	public static final CartridgeType CARTRIDGE_OSS_034M_16; // 3
+	public static final CartridgeType CARTRIDGE_5200_32; // 4
+	public static final CartridgeType CARTRIDGE_DB_32; // 5
+	public static final CartridgeType CARTRIDGE_5200_EE_16; // 6
+	public static final CartridgeType CARTRIDGE_5200_40; // 7
+	public static final CartridgeType CARTRIDGE_WILL_64; // 8
+	public static final CartridgeType CARTRIDGE_EXP_64; // 9
+	public static final CartridgeType CARTRIDGE_DIAMOND_64; // 10
+	public static final CartridgeType CARTRIDGE_SDX_64; // 11
+	public static final CartridgeType CARTRIDGE_XEGS_32; // 12
+	public static final CartridgeType CARTRIDGE_XEGS_64; // 13
+	public static final CartridgeType CARTRIDGE_XEGS_128; // 14
+	public static final CartridgeType CARTRIDGE_OSS_M091_16; // 15
+	public static final CartridgeType CARTRIDGE_5200_NS_16; // 16
+	public static final CartridgeType CARTRIDGE_ATRAX_DEC_128; // 17
+	public static final CartridgeType CARTRIDGE_BBSB_40; // 18
+	public static final CartridgeType CARTRIDGE_5200_8; // 19
+	public static final CartridgeType CARTRIDGE_5200_4; // 20
+	public static final CartridgeType CARTRIDGE_RIGHT_8; // 21
+	public static final CartridgeType CARTRIDGE_WILL_32; // 22
+	public static final CartridgeType CARTRIDGE_XEGS_256; // 23
+	public static final CartridgeType CARTRIDGE_XEGS_512; // 24
+	public static final CartridgeType CARTRIDGE_XEGS_1024; // 25
+	public static final CartridgeType CARTRIDGE_MEGA_16; // 26
+	public static final CartridgeType CARTRIDGE_MEGA_32; // 27
+	public static final CartridgeType CARTRIDGE_MEGA_64; // 28
+	public static final CartridgeType CARTRIDGE_MEGA_128; // 29
+	public static final CartridgeType CARTRIDGE_MEGA_256; // 30
+	public static final CartridgeType CARTRIDGE_MEGA_512; // 31
+	public static final CartridgeType CARTRIDGE_MEGA_1024; // 32
+	public static final CartridgeType CARTRIDGE_SWXEGS_32; // 33
+	public static final CartridgeType CARTRIDGE_SWXEGS_64; // 34
+	public static final CartridgeType CARTRIDGE_SWXEGS_128; // 35
+	public static final CartridgeType CARTRIDGE_SWXEGS_256; // 36
+	public static final CartridgeType CARTRIDGE_SWXEGS_512; // 37
+	public static final CartridgeType CARTRIDGE_SWXEGS_1024; // 38
+	public static final CartridgeType CARTRIDGE_PHOENIX_8; // 39
+	public static final CartridgeType CARTRIDGE_BLIZZARD_16; // 40
+	public static final CartridgeType CARTRIDGE_ATMAX_128; // 41
+	public static final CartridgeType CARTRIDGE_ATMAX_1024; // 42
+	public static final CartridgeType CARTRIDGE_SDX_128; // 43
+	public static final CartridgeType CARTRIDGE_OSS_8; // 44
+	public static final CartridgeType CARTRIDGE_OSS_043M_16; // 45
+	public static final CartridgeType CARTRIDGE_BLIZZARD_4; // 46
+	public static final CartridgeType CARTRIDGE_AST_32; // 47
+	public static final CartridgeType CARTRIDGE_ATRAX_SDX_64; // 48
+	public static final CartridgeType CARTRIDGE_ATRAX_SDX_128; // 49
+	public static final CartridgeType CARTRIDGE_TURBOSOFT_64; // 50
+	public static final CartridgeType CARTRIDGE_TURBOSOFT_128; // 51
+	public static final CartridgeType CARTRIDGE_ULTRACART_32; // 52
+	public static final CartridgeType CARTRIDGE_LOW_BANK_8; // 53
+	public static final CartridgeType CARTRIDGE_SIC_128; // 54
+	public static final CartridgeType CARTRIDGE_SIC_256; // 55
+	public static final CartridgeType CARTRIDGE_SIC_512; // 56
+	public static final CartridgeType CARTRIDGE_STD_2; // 57
+	public static final CartridgeType CARTRIDGE_STD_4; // 58
+	public static final CartridgeType CARTRIDGE_RIGHT_4; // 59
+	public static final CartridgeType CARTRIDGE_BLIZZARD_32; // 60
+	public static final CartridgeType CARTRIDGE_MEGAMAX_2048; // 61
+	public static final CartridgeType CARTRIDGE_THECART_128M; // 62
+	public static final CartridgeType CARTRIDGE_MEGA_4096; // 63
+	public static final CartridgeType CARTRIDGE_MEGA_2048; // 64
+	public static final CartridgeType CARTRIDGE_THECART_32M; // 65
+	public static final CartridgeType CARTRIDGE_THECART_64M; // 66
+	public static final CartridgeType CARTRIDGE_XEGS_8F_64; // 67
+	public static final CartridgeType CARTRIDGE_ATRAX_128; // 68
+	public static final CartridgeType CARTRIDGE_ADAWLIAH_32; // 69
+	public static final CartridgeType CARTRIDGE_ADAWLIAH_64; // 70
+	public static final CartridgeType CARTRIDGE_5200_SUPER_64; // 71
+	public static final CartridgeType CARTRIDGE_5200_SUPER_128; // 72
+	public static final CartridgeType CARTRIDGE_5200_SUPER_256; // 73
+	public static final CartridgeType CARTRIDGE_5200_SUPER_512; // 74
+	public static final CartridgeType CARTRIDGE_ATMAX_NEW_1024; // 75
 	// Instances
 	private static final Map<String, CartridgeType> values;
 
@@ -318,6 +333,9 @@ public final class CartridgeType extends ValueSet {
 		// ResetCartState(CARTRIDGE_image_t *cart) </>
 		final int initial_bank_0 = 0;
 		final int initial_bank_1 = 1;
+		final int initial_bank_3 = 3;
+		final int initial_bank_7 = 7;
+		final int initial_bank_15 = 15;
 		final int initial_bank_127 = 127;
 		final int initial_bank_254 = 254;
 
@@ -480,6 +498,18 @@ public final class CartridgeType extends ValueSet {
 				adr_a000, initial_bank_0, block_size_none);
 		CARTRIDGE_ADAWLIAH_64 = add(70, "CARTRIDGE_ADAWLIAH_64", Platform.ATARI_800, 64, bank_size_2000, offset_0000,
 				adr_a000, initial_bank_0, block_size_none);
+
+		CARTRIDGE_5200_SUPER_64 = add(71, "CARTRIDGE_5200_SUPER_64", Platform.ATARI_5200, 64, bank_size_8000,
+				offset_0000, adr_4000, initial_bank_1, block_size_none);
+		CARTRIDGE_5200_SUPER_128 = add(72, "CARTRIDGE_5200_SUPER_128", Platform.ATARI_5200, 128, bank_size_8000,
+				offset_0000, adr_4000, initial_bank_3, block_size_none);
+		CARTRIDGE_5200_SUPER_256 = add(73, "CARTRIDGE_5200_SUPER_256", Platform.ATARI_5200, 256, bank_size_8000,
+				offset_0000, adr_4000, initial_bank_7, block_size_none);
+		CARTRIDGE_5200_SUPER_512 = add(74, "CARTRIDGE_5200_SUPER_512", Platform.ATARI_5200, 512, bank_size_8000,
+				offset_0000, adr_4000, initial_bank_15, block_size_none);
+		CARTRIDGE_ATMAX_NEW_1024 = add(75, "CARTRIDGE_ATMAX_NEW_1024", Platform.ATARI_800, 1024, bank_size_2000,
+				offset_0000, adr_a000, initial_bank_0, block_size_10000);
+
 		initializeClass(CartridgeType.class, ValueSets.class);
 	}
 
@@ -529,7 +559,7 @@ public final class CartridgeType extends ValueSet {
 	 * Gets a value set instance by its numeric ID.
 	 * 
 	 * @param numbericId
-	 *            The numeric ID.
+	 *                       The numeric ID.
 	 * @return The value set instance or <code>null</code>.
 	 */
 	public static CartridgeType getInstance(int numbericId) {
@@ -545,7 +575,7 @@ public final class CartridgeType extends ValueSet {
 	 * Gets a value set instance by its id.
 	 * 
 	 * @param id
-	 *            The id, not <code>null</code>.
+	 *               The id, not <code>null</code>.
 	 * @return The value set instance or <code>null</code>.
 	 */
 	public static CartridgeType getInstance(String id) {
