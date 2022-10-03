@@ -500,15 +500,15 @@ public final class CartridgeType extends ValueSet {
 				adr_a000, initial_bank_0, block_size_none);
 
 		CARTRIDGE_5200_SUPER_64 = add(71, "CARTRIDGE_5200_SUPER_64", Platform.ATARI_5200, 64, bank_size_8000,
-				offset_0000, adr_4000, initial_bank_1, block_size_none);
+				initial_bank_1 * bank_size_8000, adr_4000, initial_bank_1, block_size_none);
 		CARTRIDGE_5200_SUPER_128 = add(72, "CARTRIDGE_5200_SUPER_128", Platform.ATARI_5200, 128, bank_size_8000,
-				offset_0000, adr_4000, initial_bank_3, block_size_none);
+				initial_bank_3 * bank_size_8000, adr_4000, initial_bank_3, block_size_none);
 		CARTRIDGE_5200_SUPER_256 = add(73, "CARTRIDGE_5200_SUPER_256", Platform.ATARI_5200, 256, bank_size_8000,
-				offset_0000, adr_4000, initial_bank_7, block_size_none);
+				initial_bank_7 * bank_size_8000, adr_4000, initial_bank_7, block_size_none);
 		CARTRIDGE_5200_SUPER_512 = add(74, "CARTRIDGE_5200_SUPER_512", Platform.ATARI_5200, 512, bank_size_8000,
-				offset_0000, adr_4000, initial_bank_15, block_size_none);
+				initial_bank_15 * bank_size_8000, adr_4000, initial_bank_15, block_size_none);
 		CARTRIDGE_ATMAX_NEW_1024 = add(75, "CARTRIDGE_ATMAX_NEW_1024", Platform.ATARI_800, 1024, bank_size_2000,
-				offset_0000, adr_a000, initial_bank_0, block_size_10000);
+				initial_bank_0 * bank_size_2000, adr_a000, initial_bank_0, block_size_10000);
 
 		initializeClass(CartridgeType.class, ValueSets.class);
 	}
