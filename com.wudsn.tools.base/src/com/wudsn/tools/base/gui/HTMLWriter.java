@@ -163,13 +163,6 @@ public final class HTMLWriter {
 		end();
 	}
 
-	private static String appendStyle(String style, String additionalStyle) {
-		if (StringUtility.isSpecified(style) && !style.endsWith(";") && StringUtility.isSpecified(additionalStyle)) {
-			style += ";";
-		}
-		return style + additionalStyle;
-	}
-
 	public void writeEncodedTableCell(String text) {
 		if (text == null) {
 			throw new IllegalArgumentException("Parameter 'text' must not be null.");
@@ -281,6 +274,13 @@ public final class HTMLWriter {
 			}
 		}
 		return sb.toString();
+	}
+
+	private static String appendStyle(String style, String additionalStyle) {
+		if (StringUtility.isSpecified(style) && !style.endsWith(";") && StringUtility.isSpecified(additionalStyle)) {
+			style += ";";
+		}
+		return style + additionalStyle;
 	}
 
 }
