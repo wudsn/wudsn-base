@@ -22,13 +22,15 @@ package com.wudsn.tools.base.gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.wudsn.tools.base.common.StringUtility;
+
 /**
  * Convenience HTML writer.
  * 
  * @author Peter Dell
  */
 public final class HTMLWriter {
-	private static final String BORDER_STYLE = "border-style:solid;border-width:1px;border-collapse:collapse;";
+	private static final String BORDER_STYLE = "border-style:solid;border-width:1px;border-collapse:collapse";
 
 	private StringBuilder builder;
 	private List<String> stack;
@@ -117,7 +119,7 @@ public final class HTMLWriter {
 	public void writeTableRowCode(String header, String text) {
 		beginTableRow();
 		writeTableHeader(header);
-		begin("td", "style=\"vertical-align:top;font-family:Courier New, Courier, monospace;border:1px solid;\"");
+		begin("td", "style=\"vertical-align:top;font-family:Courier New, Courier, monospace;border:1px solid\"");
 
 		// Cell content must not be empty, otherwise the border is not
 		// displayed.
@@ -147,12 +149,25 @@ public final class HTMLWriter {
 	}
 
 	public void writeTableCell(String text) {
+		writeTableCell(text, "");
+	}
+
+	public void writeTableCell(String text, String style) {
 		if (text == null) {
 			throw new IllegalArgumentException("Parameter 'text' must not be null.");
 		}
-		begin("td", "style=\"" + (tableBorder ? BORDER_STYLE : "") + ";white-space:nowrap;\"");
+		String fullStyle = (tableBorder ? BORDER_STYLE : "");
+		fullStyle = appendStyle(fullStyle, style);
+		begin("td", "style=\"" + fullStyle + "\"");
 		builder.append(text);
 		end();
+	}
+
+	private static String appendStyle(String style, String additionalStyle) {
+		if (StringUtility.isSpecified(style) && !style.endsWith(";") && StringUtility.isSpecified(additionalStyle)) {
+			style += ";";
+		}
+		return style + additionalStyle;
 	}
 
 	public void writeEncodedTableCell(String text) {
