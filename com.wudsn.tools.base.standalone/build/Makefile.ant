@@ -4,7 +4,7 @@
 	<taskdef name="jarbundler" classname="com.ultramixer.jarbundler.JarBundler" />
 
 	<!-- ANT 1.7 is required  -->
-	<target name="create_standalone_executables">
+	<target name="create_standalone_executable">
 
 		<fail unless="applicationFolder" />
 		<fail unless="applicationName" />
@@ -28,94 +28,46 @@
 		<fail unless="version" />
 
 		<fail unless="outFolder" />
+		<fail unless="platformOS" />
+		<fail unless="platformArchitecture" />
+		<fail unless="platformBits" />
 
 		<echo message="Creating version '${version}' of release ${release} of '${applicationName}' in ${releaseYears} by ${authors}." />
 
 		<mkdir dir="${outFolder}" />
 
+		<!-- Determine readable text fpr ${platformOS} -->
+		<condition property="platformOSText" value="Windows">
+			<equals arg1="${platformOS}" arg2="win32" />
+		</condition>
+		<condition property="platformOSText" value="Linux">
+			<equals arg1="${platformOS}" arg2="linux" />
+		</condition>
+		<condition property="platformOSText" value="macOS">
+			<equals arg1="${platformOS}" arg2="macos" />
+		</condition>
+
+		<property name="platform" value="${platformOS}-${platformArchitecture}_${platformBits}" />
+		<property name="platformText" value="${platformOSText} ${platformArchitecture} (${platformBits})" />
 		<antcall target="create_platform_jar">
-			<param name="platform" value="linux-x86_32" />
-			<param name="platformText" value="Linux - x86 (32-bit)" />
-		</antcall>
-		<antcall target="create_platform_jar">
-			<param name="platform" value="linux-x86_64" />
-			<param name="platformText" value="Linux - x86 (64-bit)" />
-		</antcall>
-		<antcall target="create_platform_jar">
-			<param name="platform" value="macos-x86_32" />
-			<param name="platformText" value="Mac OS - x86 (32-bit)" />
-		</antcall>
-		<antcall target="create_platform_jar">
-			<param name="platform" value="macos-x86_64" />
-			<param name="platformText" value="Mac OS - x86 (64-bit)" />
-		</antcall>
-		<antcall target="create_platform_jar">
-			<param name="platform" value="win32-x86_32" />
-			<param name="platformText" value="Windows - x86 (32-bit)" />
-		</antcall>
-		<antcall target="create_platform_jar">
-			<param name="platform" value="win32-x86_64" />
-			<param name="platformText" value="Windows - x86 (64-bit)" />
+			<param name="platform" value="${platform}" />
+			<param name="platformText" value="${platformText}" />
 		</antcall>
 
 		<!-- Create exe wrappers/scripts -->
 
-		<!-- Copy Linux shell script -->
-		<antcall target="create_linux_script">
-			<param name="platform" value="linux-x86_32" />
-			<param name="jreRuntimeBits" value="32" />
-		</antcall>
-		<antcall target="create_linux_script">
-			<param name="platform" value="linux-x86_64" />
-			<param name="jreRuntimeBits" value="64" />
-		</antcall>
-
-		<!-- Create Mac OS X app folder -->
-		<antcall target="create_macos_app">
-			<param name="platform" value="macos-x86_32" />
-			<param name="jreRuntimeBits" value="32" />
-		</antcall>
-		<antcall target="create_macos_app">
-			<param name="platform" value="macos-x86_64" />
-			<param name="jreRuntimeBits" value="64" />
-		</antcall>
 
 		<!-- Create Windows executable -->
-		<antcall target="create_windows_executable">
-			<param name="platform" value="win32-x86_32" />
-			<param name="jreRuntimeBits" value="32" />
-		</antcall>
-		<antcall target="create_windows_executable">
-			<param name="platform" value="win32-x86_64" />
-			<param name="jreRuntimeBits" value="64" />
+		<antcall target="create_for_${platformOS}">
+			<param name="platform" value="${platform}" />
+			<param name="jreRuntimeBits" value="${platformBits}" />
 		</antcall>
 
 		<!-- Remove jars that have been wrapped before zipping -->
-		<delete file="${outFolder}/linux-x86_32/${applicationName}.jar" failonerror="true" />
-		<delete file="${outFolder}/linux-x86_64/${applicationName}.jar" failonerror="true" />
-		<delete file="${outFolder}/macos-x86_32/${applicationName}.jar" failonerror="true" />
-		<delete file="${outFolder}/macos-x86_64/${applicationName}.jar" failonerror="true" />
-		<delete file="${outFolder}/win32-x86_32/${applicationName}.jar" failonerror="true" />
-		<delete file="${outFolder}/win32-x86_64/${applicationName}.jar" failonerror="true" />
+		<delete file="${outFolder}/${platform}/${applicationName}.jar" failonerror="true" />
 
-		<!-- Create zip files for upload -->
-		<antcall target="create_platform_tar_gz">
-			<param name="platform" value="linux-x86_32" />
-		</antcall>
-		<antcall target="create_platform_tar_gz">
-			<param name="platform" value="linux-x86_64" />
-		</antcall>
-		<antcall target="create_platform_tar_gz">
-			<param name="platform" value="macos-x86_32" />
-		</antcall>
-		<antcall target="create_platform_tar_gz">
-			<param name="platform" value="macos-x86_64" />
-		</antcall>
-		<antcall target="create_platform_zip">
-			<param name="platform" value="win32-x86_32" />
-		</antcall>
-		<antcall target="create_platform_zip">
-			<param name="platform" value="win32-x86_64" />
+		<antcall target="create_platform_${platformArchiveFormat}">
+			<param name="platform" value="${platform}" />
 		</antcall>
 
 	</target>
@@ -170,7 +122,7 @@
 		<echo message="${versionText}. (C) ${releaseYears} ${authors}. Visit ${applicationSupportURL} for details." file="${readmeFile}" />
 	</target>
 
-	<target name="create_linux_script">
+	<target name="create_for_linux">
 		<antcall target="create_readme" />
 		<property name="applicationFile" value="${outFolder}/${platform}/${applicationName}" />
 
@@ -180,7 +132,7 @@
 		</concat>
 	</target>
 
-	<target name="create_macos_app">
+	<target name="create_for_macos">
 		<antcall target="create_readme" />
 		<property name="applicationFile" value="${outFolder}/${platform}/${applicationName}" />
 
@@ -201,7 +153,7 @@
 		</copy>
 	</target>
 
-	<target name="create_windows_executable">
+	<target name="create_for_win32">
 		<antcall target="create_readme" />
 		<property name="applicationFile" value="${outFolder}/${platform}/${applicationName}" />
 
@@ -255,6 +207,8 @@
 		<delete dir="${outFolder}/${platform}" />
 	</target>
 
+	<!-- ZIP code and source from Eclipse workspace to "out" folder.
+	-->
 	<target name="create_platform_zip">
 		<fail unless="applicationNameLowerCase" />
 		<fail unless="platform" />
@@ -268,8 +222,8 @@
 		<antcall target="delete_platform_folder" />
 	</target>
 
-	<!-- ZIP code and source from Eclipse workspace to "out" folder.
-	     The regular "zip" task cannot preserve the executable flags for Unix, therefore we use a "tar"
+	<!-- TAR and GZIP code and source from Eclipse workspace to "out" folder.
+	     The regular "zip" task cannot preserve the executable flags for Unix, therefore we use "tar"
 	-->
 	<target name="create_platform_tar_gz">
 		<fail unless="applicationNameLowerCase" />
