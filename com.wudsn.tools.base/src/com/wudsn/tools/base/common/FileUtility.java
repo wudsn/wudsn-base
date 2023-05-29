@@ -304,7 +304,7 @@ public final class FileUtility {
 			result = bos.toByteArray();
 
 		} catch (IOException ex) {
-			// ERROR: Cannot read content of file '{0}'. Original error message:
+			// ERROR: Cannot read the content of file '{0}'. Original error message:
 			// {1}
 			throw new CoreException(Messages.E206, filePath, ex.getLocalizedMessage());
 
@@ -456,7 +456,7 @@ public final class FileUtility {
 		try {
 			outputStream.write(content, offset, length);
 		} catch (IOException ex) {
-			// ERROR: Cannot write content of file '{0}'. Original error
+			// ERROR: Cannot write the content of file '{0}'. Original error
 			// message: {1}
 			throw new CoreException(Messages.E212, ioFile.getAbsolutePath(), ex.getLocalizedMessage());
 		}
@@ -644,7 +644,7 @@ public final class FileUtility {
 			writer.close();
 
 		} catch (IOException ex) {
-			// ERROR: Cannot write content of file '{0}'. Original error
+			// ERROR: Cannot write the content of file '{0}'. Original error
 			// message: {1}
 			throw new CoreException(Messages.E212, filePath, ex.getLocalizedMessage());
 		} finally {
@@ -666,7 +666,7 @@ public final class FileUtility {
 
 				boolean deleted = file.delete();
 				if (!deleted) {
-					// ERROR: Cannot delete file '{0}'.
+					// ERROR: Cannot delete the file '{0}'.
 					throw new CoreException(Messages.E220, file.getAbsolutePath());
 				}
 			} else {
@@ -757,7 +757,7 @@ public final class FileUtility {
 				try {
 					count = inputStream.read(buffer);
 				} catch (IOException ex) {
-					// ERROR: Cannot read content of file '{0}'. Original error
+					// ERROR: Cannot read the content of file '{0}'. Original error
 					// message: {1}
 					throw new CoreException(Messages.E206, sourceFile.getAbsolutePath(), ex.getLocalizedMessage());
 				}
@@ -766,7 +766,7 @@ public final class FileUtility {
 					try {
 						outputStream.write(buffer, 0, count);
 					} catch (IOException ex) {
-						// ERROR Cannot write content of file '{0}'. Original
+						// ERROR Cannot write the content of file '{0}'. Original
 						// error message: {1}
 						throw new CoreException(Messages.E212, sourceFile.getAbsolutePath(), ex.getLocalizedMessage());
 					}

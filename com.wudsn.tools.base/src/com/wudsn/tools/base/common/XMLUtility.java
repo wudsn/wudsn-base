@@ -106,17 +106,17 @@ public final class XMLUtility {
 		try {
 			parser.parse(inputStream, xmlHandler);
 		} catch (SAXParseException ex) {
-			// ERROR: Cannot create parser for file '{0}'. Error in line
+			// ERROR: Cannot create a parser for file '{0}'. Error in line
 			// {1}, column {2}.
 			messageQueue.sendMessage(file, null, Messages.E218, file.getAbsolutePath(),
 					TextUtility.formatAsDecimal(ex.getLineNumber()), TextUtility.formatAsDecimal(ex.getColumnNumber()));
 			return;
 		} catch (SAXException ex) {
-			// ERROR: Cannot create parser for file '{0}': {1}.
+			// ERROR: Cannot create a parser for file '{0}': {1}.
 			messageQueue.sendMessage(file, null, Messages.E217, file.getAbsolutePath(), ex.getMessage());
 			return;
 		} catch (IOException ex) {
-			// ERROR: Cannot create parser for file '{0}': {1}.
+			// ERROR: Cannot create a parser for file '{0}': {1}.
 			messageQueue.sendMessage(file, null, Messages.E217, file.getAbsolutePath(), ex.getMessage());
 			return;
 		} finally {

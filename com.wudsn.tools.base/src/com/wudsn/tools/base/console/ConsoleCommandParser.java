@@ -122,7 +122,7 @@ public final class ConsoleCommandParser {
 									}
 								} else {
 									if (!parametersSpecified) {
-										// ERROR:No parameters specified for command '{0}'.
+										// ERROR:No parameters specified for the command '{0}'.
 										messageQueue.sendMessage(this, null, Messages.E253, commandName);
 									} else {
 										ConsoleCommandParameter parameter = command.getParameters().get(0);
