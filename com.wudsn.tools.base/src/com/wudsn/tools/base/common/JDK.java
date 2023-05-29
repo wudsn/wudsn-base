@@ -137,12 +137,12 @@ public final class JDK {
 
 	}
 
-	public interface ComboBoxModel<E> extends javax.swing.ComboBoxModel {
+	public interface ComboBoxModel<E> extends javax.swing.ComboBoxModel<E> {
 
 	}
 
 	@SuppressWarnings("serial")
-	public static class DefaultComboBoxModel<E> extends javax.swing.DefaultComboBoxModel implements ComboBoxModel<E> {
+	public static class DefaultComboBoxModel<E> extends javax.swing.DefaultComboBoxModel<E> implements ComboBoxModel<E> {
 
 		public DefaultComboBoxModel() {
 			super();
@@ -159,7 +159,7 @@ public final class JDK {
 	}
 
 	@SuppressWarnings("serial")
-	public static class JComboBox<E> extends javax.swing.JComboBox {
+	public static class JComboBox<E> extends javax.swing.JComboBox<E> {
 		public JComboBox() {
 			super();
 		}
