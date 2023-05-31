@@ -32,33 +32,8 @@
 
 		<property name="buildFolder" location="../../WUDSN-Base/com.wudsn.tools.base.standalone" />
 
-
-		<ant dir="${buildFolder}" antfile="build/Makefile.ant" target="create_standalone_executable">
-
-			<property name="platformOS" value="win32" />
-			<property name="platformArchitecture" value="x86" />
-			<property name="platformBits" value="64" />
-			<!-- "zip" or "tar_gz" -->
-			<property name="platformArchiveFormat" value="zip" />
+		<ant dir="${buildFolder}" antfile="build/Makefile.ant" target="create_standalone_executables">
 		</ant>
-
-		<ant dir="${buildFolder}" antfile="build/Makefile.ant" target="create_standalone_executable">
-
-			<property name="platformOS" value="linux" />
-			<property name="platformArchitecture" value="x86" />
-			<property name="platformBits" value="64" />
-			<!-- "zip" or "tar_gz" -->
-			<property name="platformArchiveFormat" value="tar_gz" />
-		</ant>
-		
-        <ant dir="${buildFolder}" antfile="build/Makefile.ant" target="create_standalone_executable">
-
-            <property name="platformOS" value="macos" />
-            <property name="platformArchitecture" value="x86" />
-            <property name="platformBits" value="64" />
-            <!-- "zip" or "tar_gz" -->
-            <property name="platformArchiveFormat" value="tar_gz" />
-        </ant>
 	</target>
 
 </project>

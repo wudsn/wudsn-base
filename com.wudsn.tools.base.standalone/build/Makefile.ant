@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project name="Create Executables based on runnable Jars" basedir=".." default="create_standalone_executables">
+<!-- This ANT file provides taks which can be call from a consuming project. -->
+<project name="Create Executables based on runnable Jars" basedir="..">
+	<!-- ANT 1.7 is required  -->
 	<!-- The .jar file with the jarbundler task must be add in the ANT path in the preferences  -->
 	<taskdef name="jarbundler" classname="com.ultramixer.jarbundler.JarBundler" />
 
-	<!-- ANT 1.7 is required  -->
-	<target name="create_standalone_executable">
-
+	<target name="create_standalone_executables">
 		<fail unless="applicationFolder" />
 		<fail unless="applicationName" />
 		<fail unless="applicationNameLowerCase" />
@@ -27,10 +27,50 @@
 		<fail unless="release" />
 		<fail unless="version" />
 
+		<ant dir="${buildFolder}" antfile="build/Makefile.ant" target="create_standalone_executable">
+
+			<property name="platformOS" value="win32" />
+			<property name="platformArchitecture" value="x86_64" />
+			<property name="platformBits" value="64" />
+			<property name="platformArchiveFormat" value="zip" />
+		</ant>
+
+		<ant dir="${buildFolder}" antfile="build/Makefile.ant" target="create_standalone_executable">
+
+			<property name="platformOS" value="linux" />
+			<property name="platformArchitecture" value="x86_64" />
+			<property name="platformBits" value="64" />
+			<property name="platformArchiveFormat" value="tar_gz" />
+		</ant>
+
+		<ant dir="${buildFolder}" antfile="build/Makefile.ant" target="create_standalone_executable">
+
+			<property name="platformOS" value="macos" />
+			<property name="platformArchitecture" value="aarch64" />
+			<property name="platformBits" value="64" />
+			<property name="platformArchiveFormat" value="tar_gz" />
+		</ant>
+
+		<ant dir="${buildFolder}" antfile="build/Makefile.ant" target="create_standalone_executable">
+
+			<property name="platformOS" value="macos" />
+			<property name="platformArchitecture" value="x86_64" />
+			<property name="platformBits" value="64" />
+			<property name="platformArchiveFormat" value="tar_gz" />
+		</ant>
+	</target>
+
+	<target name="create_standalone_executable">
+
 		<fail unless="outFolder" />
+		<!-- Possible values are "linux", "macos", "win32" -->
 		<fail unless="platformOS" />
+		<!-- Possible values are "x86_64", "aarch64" -->
 		<fail unless="platformArchitecture" />
+		<!-- Possible values are "32", "64" -->
 		<fail unless="platformBits" />
+		<!-- Possible values are "zip", "tar_gz" -->
+		<fail unless="platformArchiveFormat" />
 
 		<echo message="Creating version '${version}' of release ${release} of '${applicationName}' in ${releaseYears} by ${authors}." />
 
@@ -47,7 +87,7 @@
 			<equals arg1="${platformOS}" arg2="macos" />
 		</condition>
 
-		<property name="platform" value="${platformOS}-${platformArchitecture}_${platformBits}" />
+		<property name="platform" value="${platformOS}-${platformArchitecture}" />
 		<property name="platformText" value="${platformOSText} ${platformArchitecture} (${platformBits})" />
 		<antcall target="create_platform_jar">
 			<param name="platform" value="${platform}" />
@@ -58,7 +98,7 @@
 
 
 		<!-- Create Windows executable -->
-		<antcall target="create_for_${platformOS}">
+		<antcall target="create_for_${platformOS}_${platformArchitecture}">
 			<param name="platform" value="${platform}" />
 			<param name="jreRuntimeBits" value="${platformBits}" />
 		</antcall>
@@ -122,7 +162,7 @@
 		<echo message="${versionText}. (C) ${releaseYears} ${authors}. Visit ${applicationSupportURL} for details." file="${readmeFile}" />
 	</target>
 
-	<target name="create_for_linux">
+	<target name="create_for_linux_x86_64">
 		<antcall target="create_readme" />
 		<property name="applicationFile" value="${outFolder}/${platform}/${applicationName}" />
 
@@ -132,7 +172,7 @@
 		</concat>
 	</target>
 
-	<target name="create_for_macos">
+	<target name="create_for_macos_generic">
 		<antcall target="create_readme" />
 		<property name="applicationFile" value="${outFolder}/${platform}/${applicationName}" />
 
@@ -146,14 +186,23 @@
 		<!-- See the jarbundler documentation for details on the task -->
 		<!-- The ".icns" file was created using https://iconverticons.com/online/ -->
 		<!-- In the past, the "-XstartOnFirstThread" VM parameter was required for 64-bit macOS, see https://www.eclipse.org/swt/macosx/ -->
-        <jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${icnsFilePath}" useJavaXKey="true" mainclass="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M" stubfile="${applicationName}">
+		<jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${icnsFilePath}" useJavaXKey="true" mainclass="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M" stubfile="${applicationName}">
 		</jarbundler>
 		<copy tofile="${appDir}/Contents/MacOS/${applicationName}" overwrite="true">
 			<fileset file="build/macos/universalJavaApplicationStub" />
 		</copy>
 	</target>
 
-	<target name="create_for_win32">
+	<target name="create_for_macos_aarch64">
+		<antcall target="create_for_macos_generic" />
+	</target>
+
+
+	<target name="create_for_macos_x86_64">
+		<antcall target="create_for_macos_generic" />
+	</target>
+
+	<target name="create_for_win32_x86_64">
 		<antcall target="create_readme" />
 		<property name="applicationFile" value="${outFolder}/${platform}/${applicationName}" />
 
