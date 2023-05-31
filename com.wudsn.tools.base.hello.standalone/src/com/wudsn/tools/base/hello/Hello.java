@@ -18,6 +18,7 @@
  */
 package com.wudsn.tools.base.hello;
 
+import java.awt.EventQueue;
 import java.awt.Frame;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -33,6 +34,7 @@ import java.net.URLClassLoader;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 import java.util.TreeSet;
 
@@ -57,7 +59,7 @@ public final class Hello {
 	 * Point of entry to the stand-alone version
 	 *
 	 * @param args
-	 *            optional first String: name of a file to edit
+	 *                 optional first String: name of a file to edit
 	 */
 	public static void main(String[] args) throws Throwable {
 		Hello instance = new Hello();
@@ -80,11 +82,13 @@ public final class Hello {
 	private Hello() {
 		bos = new ByteArrayOutputStream();
 		printStream = new PrintStream(bos) {
+			@Override
 			public void write(int b) {
 				super.write(b);
 				System.out.write(b);
 			}
 
+			@Override
 			public void write(byte buf[], int off, int len) {
 				super.write(buf, off, len);
 				System.out.write(buf, off, len);
@@ -96,7 +100,7 @@ public final class Hello {
 	 * Point of entry to the stand-alone version
 	 *
 	 * @param args
-	 *            The command line arguments, not <code>null</code>.
+	 *                 The command line arguments, not <code>null</code>.
 	 */
 	private void run(String[] args) {
 		Class<?> clazz = getClass();
@@ -171,7 +175,24 @@ public final class Hello {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		showLongTextMessageInDialog(null, text, title);
+
+		Map<Thread, StackTraceElement[]> allStacktraces = Thread.getAllStackTraces();
+		for (Map.Entry<Thread, StackTraceElement[]> entry : allStacktraces.entrySet()) {
+			System.err.println(entry.getKey().getId() + " - " + entry.getKey().getName());
+			for (StackTraceElement stackTraceElement : entry.getValue()) {
+				System.err.println(stackTraceElement.getFileName() + "/" + stackTraceElement.getMethodName() + "/"
+						+ stackTraceElement.getLineNumber());
+			}
+		}
+		Thread.dumpStack();
+		final String finalTitle = title;
+		final String finalText = text;
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				showLongTextMessageInDialog(null, finalText, finalTitle);
+			}
+		});
 	}
 
 	private void println() {
@@ -205,7 +226,7 @@ public final class Hello {
 		}
 	}
 
-	private void showLongTextMessageInDialog(Frame frame, String longMessage, String title) {
+	private static void showLongTextMessageInDialog(Frame frame, String longMessage, String title) {
 		JTextArea textArea = new JTextArea(32, 64);
 		textArea.setText(longMessage);
 		textArea.setEditable(false);
