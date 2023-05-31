@@ -145,8 +145,8 @@
 		<mkdir dir="${appDir}" />
 		<!-- See the jarbundler documentation for details on the task -->
 		<!-- The ".icns" file was created using https://iconverticons.com/online/ -->
-		<!-- The "-XstartOnFirstThread" VM parameter is required for 64-bit macOS, see https://www.eclipse.org/swt/macosx/ -->
-		<jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${icnsFilePath}" useJavaXKey="true" mainclass="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M -XstartOnFirstThread" stubfile="${applicationName}">
+		<!-- In the past, the "-XstartOnFirstThread" VM parameter was required for 64-bit macOS, see https://www.eclipse.org/swt/macosx/ -->
+        <jarbundler dir="${outFolder}/${platform}/" name="${applicationName}" copyright="(C) ${releaseYears} ${authors}" shortname="${applicationTitle}" build="${version}" icon="${icnsFilePath}" useJavaXKey="true" mainclass="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader" jar="${jarFile}" jvmversion="${jreMinVersion}+" vmoptions="-Xms256M -Xmx256M" stubfile="${applicationName}">
 		</jarbundler>
 		<copy tofile="${appDir}/Contents/MacOS/${applicationName}" overwrite="true">
 			<fileset file="build/macos/universalJavaApplicationStub" />
