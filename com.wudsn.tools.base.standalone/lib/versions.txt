@@ -1,3 +1,4 @@
 This folder contains the SWT library versions from https://download.eclipse.org/eclipse/downloads.
-More specifically from https://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.27-202303020300/swt-4.27-win32-win32-x86_64.zip
-- <platform>/swt.jar               is version 4.958 from 2013-05-02
+More specifically from https://archive.eclipse.org/eclipse/downloads/drops4/R-4.20-202106111600/#SWT
+The Eclipse version 4.20 is the most recent only which only requires Java 8 instead of Java 11 or newer
+- <platform>/swt.jar               is version 4.944 from 2021-06-01, Java 8, class file version 52
