@@ -73,8 +73,12 @@ public final class ClassPathUtility {
 		URI uri = getJarURI();
 
 		File result = null;
-		if (uri != null) {
-			result = new File(uri);
+		if (uri != null && uri.getScheme().equals("file")) {
+			try {
+				result = new File(uri);
+			} catch (IllegalArgumentException ex) {
+				throw new IllegalArgumentException("Cannot get JAR file for URI \'" + uri.toString() + "\'.");
+			}
 		}
 		return result;
 	}
