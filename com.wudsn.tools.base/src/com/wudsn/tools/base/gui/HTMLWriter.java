@@ -139,6 +139,13 @@ public final class HTMLWriter {
 		writeTableRowCode(header, text);
 	}
 
+	public void writeEncodedTableHeader(String text) {
+		if (text == null) {
+			throw new IllegalArgumentException("Parameter 'text' must not be null.");
+		}
+		writeTableHeader(getHTMLEncodedString(text));
+	}
+
 	public void writeTableHeader(String text) {
 		if (text == null) {
 			throw new IllegalArgumentException("Parameter 'text' must not be null.");
@@ -164,10 +171,14 @@ public final class HTMLWriter {
 	}
 
 	public void writeEncodedTableCell(String text) {
+		writeEncodedTableCell(text, "");
+	}
+
+	public void writeEncodedTableCell(String text, String style) {
 		if (text == null) {
 			throw new IllegalArgumentException("Parameter 'text' must not be null.");
 		}
-		writeTableCell(getHTMLEncodedString(text));
+		writeTableCell(getHTMLEncodedString(text), style);
 	}
 
 	public void beginList() {
