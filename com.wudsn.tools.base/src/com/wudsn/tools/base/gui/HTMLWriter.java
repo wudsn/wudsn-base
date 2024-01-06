@@ -263,15 +263,11 @@ public final class HTMLWriter {
 				if (c == '"') {
 					sb.append("\"");
 				} else if (c == '&') {
-					sb.append("&");
+					sb.append("&amp;");
 				} else if (c == '<') {
-					sb.append("<");
+					sb.append("&lt;");
 				} else if (c == '>') {
-					sb.append(">");
-				} else if (c == 'n') {
-					sb.append("n");
-				} else if (c == 39) { // check for apostrophe character
-					sb.append("'");
+					sb.append("&gt;");
 				} else {
 					int ci = 0xffff & c;
 					if (ci < 160) {
