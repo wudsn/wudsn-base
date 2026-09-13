@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- This ANT file provides taks which can be call from a consuming project. -->
+<!-- This ANT file provides taks which can be called from a consuming project. -->
 <project name="Create Executables based on runnable Jars" basedir="..">
 	<!-- ANT 1.7 is required  -->
 	<!-- The .jar file with the jarbundler task must be add in the ANT path in the preferences  -->
@@ -13,7 +13,7 @@
 		<fail unless="applicationSupportURL" />
 		<fail unless="applicationMainClass" />
 
-		<!-- Library related properies must be defined, but can be empty. -->
+		<!-- Library-related properies must be defined, but can be empty. -->
 		<fail unless="applicationLibFolder" />
 		<fail unless="applicationLibList" />
 		<fail unless="applicationPlatformLib" />
