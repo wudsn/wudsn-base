@@ -24,25 +24,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.wudsn.tools.base.ValueSets;
-
 public abstract class ValueSet extends NLS implements Comparable<ValueSet> {
 
 	protected final String id;
 	protected String text;
 	protected final int sortKey;
-
-	/**
-	 * Initialize the given class from its properties files.
-	 * 
-	 * @param clazz
-	 *            The class, not <code>null</code>.
-	 * @param containerClazz
-	 *            The contain class where the NLS information is stored.
-	 */
-	protected static void initializeClass(Class<? extends ValueSet> clazz, Class<? extends ValueSets> containerClazz) {
-		NLS.initializeClass(clazz, containerClazz);
-	}
 
 	protected ValueSet(String id, int sortKey) {
 		this(id, id, sortKey);
