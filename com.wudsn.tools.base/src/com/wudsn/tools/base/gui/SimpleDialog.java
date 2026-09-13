@@ -38,7 +38,6 @@ import com.wudsn.tools.base.Actions;
  * 
  * @author Peter Dell
  */
-@SuppressWarnings("serial")
 public abstract class SimpleDialog {
 
 	public static final String ACTION_COMMAND_OK = "OK";

@@ -300,7 +300,6 @@ public final class ElementFactory {
 
 	}
 
-	@SuppressWarnings("serial")
 	public static TableCellRenderer createNumberTableCellRenderer() {
 		DefaultTableCellRenderer renderer;
 		renderer = new DefaultTableCellRenderer() {
@@ -318,7 +317,6 @@ public final class ElementFactory {
 		return renderer;
 	}
 
-	@SuppressWarnings("serial")
 	public static TableCellRenderer createMemorySizeTableCellRenderer() {
 		DefaultTableCellRenderer renderer;
 		renderer = new DefaultTableCellRenderer() {
