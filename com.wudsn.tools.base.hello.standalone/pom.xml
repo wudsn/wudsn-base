@@ -16,13 +16,72 @@
 
 	<name>WUDSN Tools Base Hello Standalone</name>
 
+	<properties>
+		<swt.artifactId>org.eclipse.swt.win32.win32.x86_64</swt.artifactId>
+		<swt.systemPath>${project.basedir}/../com.wudsn.tools.base.standalone/lib/win32-x86_64/swt.jar</swt.systemPath>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>swt-windows</id>
+			<activation>
+				<os>
+					<family>windows</family>
+				</os>
+			</activation>
+			<properties>
+				<swt.artifactId>org.eclipse.swt.win32.win32.x86_64</swt.artifactId>
+				<swt.systemPath>${project.basedir}/../com.wudsn.tools.base.standalone/lib/win32-x86_64/swt.jar</swt.systemPath>
+			</properties>
+		</profile>
+		<profile>
+			<id>swt-linux</id>
+			<activation>
+				<os>
+					<family>unix</family>
+					<name>linux</name>
+				</os>
+			</activation>
+			<properties>
+				<swt.artifactId>org.eclipse.swt.gtk.linux.x86_64</swt.artifactId>
+				<swt.systemPath>${project.basedir}/../com.wudsn.tools.base.standalone/lib/linux-x86_64/swt.jar</swt.systemPath>
+			</properties>
+		</profile>
+		<profile>
+			<id>swt-macos-x86_64</id>
+			<activation>
+				<os>
+					<family>mac</family>
+					<arch>x86_64</arch>
+				</os>
+			</activation>
+			<properties>
+				<swt.artifactId>org.eclipse.swt.cocoa.macosx.x86_64</swt.artifactId>
+				<swt.systemPath>${project.basedir}/../com.wudsn.tools.base.standalone/lib/macos-x86_64/swt.jar</swt.systemPath>
+			</properties>
+		</profile>
+		<profile>
+			<id>swt-macos-aarch64</id>
+			<activation>
+				<os>
+					<family>mac</family>
+					<arch>aarch64</arch>
+				</os>
+			</activation>
+			<properties>
+				<swt.artifactId>org.eclipse.swt.cocoa.macosx.aarch64</swt.artifactId>
+				<swt.systemPath>${project.basedir}/../com.wudsn.tools.base.standalone/lib/macos-aarch64/swt.jar</swt.systemPath>
+			</properties>
+		</profile>
+	</profiles>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.platform</groupId>
-			<artifactId>org.eclipse.swt.win32.win32.x86_64</artifactId>
+			<artifactId>${swt.artifactId}</artifactId>
 			<version>local</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/../com.wudsn.tools.base.standalone/lib/win32-x86_64/swt.jar</systemPath>
+			<systemPath>${swt.systemPath}</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.equinox</groupId>
