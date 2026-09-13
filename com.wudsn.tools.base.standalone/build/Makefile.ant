@@ -27,6 +27,12 @@
 		<fail unless="release" />
 		<fail unless="version" />
 
+		<!-- Compile the consuming Maven project once; all four platform jars below reuse target/classes. -->
+		<exec executable="cmd" dir="${applicationFolder}" failonerror="true" failifexecutionfails="true">
+			<arg value="/c" />
+			<arg value="mvn -q compile" />
+		</exec>
+
 		<ant dir="${buildFolder}" antfile="build/Makefile.ant" target="create_standalone_executable">
 
 			<property name="platformOS" value="win32" />
