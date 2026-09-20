@@ -33,6 +33,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JRootPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JToggleButton;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -100,8 +101,31 @@ public final class ElementFactory {
 	}
 
 	/**
+	 * Creates a new toggle button, e.g. for a standalone on/off control that
+	 * is not a menu item (so {@link #createCheckBoxMenuItem(Action)} does
+	 * not apply) and not backed by an {@code actionCommand} - like {@link
+	 * #createButton(Action, boolean)}, its state is normally read via
+	 * {@link javax.swing.AbstractButton#isSelected()} from its own listener.
+	 *
+	 * @param action
+	 *            The action, not <code>null</code>.
+	 * @param withMnemonic
+	 *            <code>true</code> if the mnemonic shall use added,
+	 *            <code>false</code> otherwise.
+	 * @return The new toggle button, not <code>null</code>.
+	 */
+	public static JToggleButton createToggleButton(Action action, boolean withMnemonic) {
+		if (action == null) {
+			throw new IllegalArgumentException("Parameter 'action' must not be null.");
+		}
+		JToggleButton result = new JToggleButton();
+		setButtonTextAndMnemonic(result, action.getLabel(), withMnemonic, action.getToolTip());
+		return result;
+	}
+
+	/**
 	 * Creates a new menu item.
-	 * 
+	 *
 	 * @param action
 	 *            The action, not <code>null</code>.
 	 * @return The new menu item, not <code>null</code>.
