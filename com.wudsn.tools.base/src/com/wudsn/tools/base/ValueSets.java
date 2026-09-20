@@ -21,7 +21,7 @@ package com.wudsn.tools.base;
 
 /**
  * ValueSet repository container. As opposed to other NLS repository types,
- * value set share common properties files represented by a sub-class of the
+ * value sets share common properties files represented by a sub-class of the
  * {@link ValueSets} container class.
  * 
  * @author Peter Dell
