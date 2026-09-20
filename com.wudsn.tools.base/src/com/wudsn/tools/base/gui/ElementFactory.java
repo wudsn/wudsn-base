@@ -26,6 +26,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -140,6 +141,26 @@ public final class ElementFactory {
 		setButtonTextAndMnemonic(result, label, true, action.getToolTip());
 		result.setActionCommand(actionCommand);
 		result.setAccelerator(action.getAccelerator());
+		return result;
+	}
+
+	/**
+	 * Creates a new check box menu item. There is no {@code actionCommand}
+	 * parameter, unlike {@link #createMenuItem(Action, String)}: a check box
+	 * menu item's state is normally read via {@link
+	 * javax.swing.AbstractButton#isSelected()} from its own listener rather
+	 * than dispatched on an action command.
+	 *
+	 * @param action
+	 *            The action, not <code>null</code>.
+	 * @return The new check box menu item, not <code>null</code>.
+	 */
+	public static JCheckBoxMenuItem createCheckBoxMenuItem(Action action) {
+		if (action == null) {
+			throw new IllegalArgumentException("Parameter 'action' must not be null.");
+		}
+		JCheckBoxMenuItem result = new JCheckBoxMenuItem();
+		setButtonTextAndMnemonic(result, action);
 		return result;
 	}
 
