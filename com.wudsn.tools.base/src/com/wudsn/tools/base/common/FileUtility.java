@@ -69,6 +69,13 @@ public final class FileUtility {
 
 		@Override
 		public boolean accept(File file) {
+			// TODO: This comparison is case-sensitive, unlike
+			// javax.swing.filechooser.FileNameExtensionFilter's case-insensitive
+			// extension matching - a file named e.g. "TEST.WRK" is silently hidden
+			// by a ".wrk" filter on a case-sensitive filesystem. Fix by comparing
+			// case-insensitively (e.g. via String#regionMatches) once this is
+			// prioritized; left as-is for now since none of this library's current
+			// callers have hit it in practice.
 			return file.isDirectory() || file.getName().endsWith(fileExtension);
 		}
 
