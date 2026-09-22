@@ -33,7 +33,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
-import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.wudsn.tools.base.Messages;
 
@@ -44,46 +44,6 @@ import com.wudsn.tools.base.Messages;
  */
 public final class FileUtility {
 
-	/**
-	 * Extended file filter that provides access to the filter extension.
-	 * 
-	 */
-	public final static class FileExtensionFileFilter extends javax.swing.filechooser.FileFilter {
-		private String fileExtension;
-		private String fullFilterDescription;
-
-		FileExtensionFileFilter(String fileExtension, String fullFilterDescription) {
-			if (fileExtension == null) {
-				throw new IllegalArgumentException("Parameter 'fileExtension' must not be null.");
-			}
-			if (fullFilterDescription == null) {
-				throw new IllegalArgumentException("Parameter 'fullFilterDescription' must not be null.");
-			}
-			this.fileExtension = fileExtension;
-			this.fullFilterDescription = fullFilterDescription;
-		}
-
-		public String getFileExtension() {
-			return fileExtension;
-		}
-
-		@Override
-		public boolean accept(File file) {
-			// TODO: This comparison is case-sensitive, unlike
-			// javax.swing.filechooser.FileNameExtensionFilter's case-insensitive
-			// extension matching - a file named e.g. "TEST.WRK" is silently hidden
-			// by a ".wrk" filter on a case-sensitive filesystem. Fix by comparing
-			// case-insensitively (e.g. via String#regionMatches) once this is
-			// prioritized; left as-is for now since none of this library's current
-			// callers have hit it in practice.
-			return file.isDirectory() || file.getName().endsWith(fileExtension);
-		}
-
-		@Override
-		public String getDescription() {
-			return fullFilterDescription;
-		}
-	}
 
 	/**
 	 * Intentionally read an unlimited amount of bytes.
@@ -139,7 +99,7 @@ public final class FileUtility {
 	 *                              <code>null</code>.
 	 * @return
 	 */
-	public static FileFilter createFileExtensionFileFilter(final String fileExtension, final String filterDescription) {
+	public static FileNameExtensionFilter createFileNameExtensionFilter(final String fileExtension, final String filterDescription) {
 		if (fileExtension == null) {
 			throw new IllegalArgumentException("Parameter 'fileExtension' must not be null.");
 		}
@@ -157,7 +117,7 @@ public final class FileUtility {
 
 		}
 		final String fullFilterDescription = filterDescription + " (*" + fileExtension + ")";
-		FileExtensionFileFilter fileExtensionFilefilter = new FileExtensionFileFilter(fileExtension,
+		FileNameExtensionFilter fileExtensionFilefilter = new FileNameExtensionFilter(fileExtension,
 				fullFilterDescription);
 		return fileExtensionFilefilter;
 

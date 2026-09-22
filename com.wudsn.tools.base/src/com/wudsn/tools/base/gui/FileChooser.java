@@ -26,10 +26,10 @@ import java.io.FilenameFilter;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.wudsn.tools.base.common.JDK;
 import com.wudsn.tools.base.common.StringUtility;
-import com.wudsn.tools.base.common.FileUtility.FileExtensionFileFilter;
 
 /**
  * File chooser that uses JFileChooser or JFileDialog depending on which looks
@@ -220,9 +220,9 @@ public abstract class FileChooser {
 			if (selectedFile != null) {
 				fileDialog.setFile(selectedFile.getName());
 			} else {
-				if (fileFilter instanceof FileExtensionFileFilter) {
-					FileExtensionFileFilter fileExtensionFileFilter = (FileExtensionFileFilter) fileFilter;
-					fileDialog.setFile("*" + fileExtensionFileFilter.getFileExtension());
+				if (fileFilter instanceof FileNameExtensionFilter) {
+					FileNameExtensionFilter fileExtensionFileFilter = (FileNameExtensionFilter) fileFilter;
+					// TODO fileDialog.setFile("*" + fileExtensionFileFilter.getFileExtension());
 				} else {
 					fileDialog.setFile(null);
 				}

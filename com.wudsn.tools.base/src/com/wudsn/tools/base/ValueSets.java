@@ -24,6 +24,8 @@ package com.wudsn.tools.base;
  * value sets share common properties files represented by a sub-class of the
  * {@link ValueSets} container class.
  * 
+ * TODO: Check is this can become an enum class
+ * 
  * @author Peter Dell
  */
 public class ValueSets {
