@@ -18,6 +18,7 @@
  */
 package com.wudsn.tools.base.gui;
 
+import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 
@@ -29,7 +30,7 @@ import java.awt.event.ActionEvent;
 public final class KeyStroke {
 
 	/**
-	 * M1 is the COMMAND key on MacOS X, and the CTRL key on most other platforms.
+	 * M1 is the COMMAND key on macOS, and the CTRL key on most other platforms.
 	 */
 	public static final int M1;
 
@@ -39,13 +40,14 @@ public final class KeyStroke {
 	public static final int M2;
 
 	/**
-	 * M3 is the Option key on MacOS X, and the ALT key on most other platforms.
+	 * M3 is the Option key on macOS, and the ALT key on most other platforms.
 	 */
 	public static final int M3;
 
 	static {
 
-		M1 = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
+		M1 = GraphicsEnvironment.isHeadless() ? ActionEvent.CTRL_MASK
+				: Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
 		M2 = ActionEvent.SHIFT_MASK;
 		M3 = ActionEvent.ALT_MASK;
 	}
