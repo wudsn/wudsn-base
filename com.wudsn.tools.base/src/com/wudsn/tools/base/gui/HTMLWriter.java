@@ -274,7 +274,7 @@ public final class HTMLWriter {
 						sb.append(c);
 					} else {
 						sb.append("&#");
-						sb.append(new Integer(ci).toString());
+						sb.append( Integer.toString(ci));
 						sb.append(';');
 					}
 				}

@@ -47,7 +47,7 @@ public final class KeyStroke {
 	static {
 
 		M1 = GraphicsEnvironment.isHeadless() ? ActionEvent.CTRL_MASK
-				: Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
+				: Toolkit.getDefaultToolkit().getMenuShortcutKeyMask(); // TODO: > Java 1.8 getMenuShortcutKeyMaskEx
 		M2 = ActionEvent.SHIFT_MASK;
 		M3 = ActionEvent.ALT_MASK;
 	}

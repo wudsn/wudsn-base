@@ -149,7 +149,9 @@ public abstract class NLS {
 		Map<String, Object> fieldsMap = new HashMap<String, Object>(length);
 		for (int i = 0; i < length; i++) {
 			Field field = fieldArray[i];
-			if (!field.isAccessible()) {
+			// TODO > Java 1.8
+			// if (!field.canAccess(NLS.class)) {
+				if (!field.isAccessible()) {
 				field.setAccessible(true);
 			}
 			fieldsMap.put(fieldArray[i].getName(), field);
