@@ -281,6 +281,30 @@ public final class ElementFactory {
 	}
 
 	public static JLabel createLabel(DataType dataType, JComponent field) {
+		JLabel result = new JLabel();
+		applyLabel(result, dataType, field);
+		return result;
+	}
+
+	/**
+	 * Applies a {@link DataType}'s label text, mnemonic and tool tip to an
+	 * existing {@link JLabel}, mutating it in place instead of constructing a
+	 * new one - for a dialog that reuses one {@code JLabel} field across
+	 * multiple {@code DataType}s depending on runtime state, rather than
+	 * binding a label to a {@code DataType} once at construction via {@link
+	 * #createLabel(DataType, JComponent)}.
+	 *
+	 * @param label
+	 *            The label, not <code>null</code>.
+	 * @param dataType
+	 *            The data type, not <code>null</code>.
+	 * @param field
+	 *            The field the label is for, not <code>null</code>.
+	 */
+	public static void applyLabel(JLabel label, DataType dataType, JComponent field) {
+		if (label == null) {
+			throw new IllegalArgumentException("Parameter 'label' must not be null.");
+		}
 		if (dataType == null) {
 			throw new IllegalArgumentException("Parameter 'dataType' must not be null.");
 		}
@@ -299,17 +323,13 @@ public final class ElementFactory {
 					+ "' if not between 'A' and 'Z'.");
 		}
 
-		text = dataType.getLabelWithoutMnemonics();
-		JLabel result = new JLabel(text);
-		result.setDisplayedMnemonic(c);
-		result.setDisplayedMnemonicIndex(index);
-		result.setLabelFor(field);
+		label.setText(dataType.getLabelWithoutMnemonics());
+		label.setDisplayedMnemonic(c);
+		label.setDisplayedMnemonicIndex(index);
+		label.setLabelFor(field);
 
 		String toolTip = dataType.getToolTip();
-		if (StringUtility.isSpecified(toolTip)) {
-			result.setToolTipText(dataType.getToolTip());
-		}
-		return result;
+		label.setToolTipText(StringUtility.isSpecified(toolTip) ? toolTip : null);
 	}
 
 	/**
@@ -323,7 +343,7 @@ public final class ElementFactory {
 	 */
 	public static JCheckBox createCheckBox(DataType dataType) {
 		JCheckBox result = new JCheckBox();
-		applyDataTypeLabel(result, dataType);
+		applyLabel(result, dataType);
 		return result;
 	}
 
@@ -338,11 +358,25 @@ public final class ElementFactory {
 	 */
 	public static JRadioButton createRadioButton(DataType dataType) {
 		JRadioButton result = new JRadioButton();
-		applyDataTypeLabel(result, dataType);
+		applyLabel(result, dataType);
 		return result;
 	}
 
-	private static void applyDataTypeLabel(AbstractButton button, DataType dataType) {
+	/**
+	 * Applies a {@link DataType}'s label text, mnemonic and tool tip to an
+	 * existing self-labeled button ({@link JCheckBox}/{@link JRadioButton}),
+	 * mutating it in place instead of constructing a new one - the
+	 * {@code AbstractButton} counterpart of {@link #applyLabel(JLabel,
+	 * DataType, JComponent)}, without a separate field to point a label at,
+	 * since these buttons carry their own text instead of being paired with
+	 * one.
+	 *
+	 * @param button
+	 *            The button, not <code>null</code>.
+	 * @param dataType
+	 *            The data type, not <code>null</code>.
+	 */
+	public static void applyLabel(AbstractButton button, DataType dataType) {
 		if (button == null) {
 			throw new IllegalArgumentException("Parameter 'button' must not be null.");
 		}
@@ -365,9 +399,7 @@ public final class ElementFactory {
 		button.setDisplayedMnemonicIndex(index);
 
 		String toolTip = dataType.getToolTip();
-		if (StringUtility.isSpecified(toolTip)) {
-			button.setToolTipText(toolTip);
-		}
+		button.setToolTipText(StringUtility.isSpecified(toolTip) ? toolTip : null);
 	}
 
 	public static Box createButtonBar() {
