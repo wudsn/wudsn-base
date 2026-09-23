@@ -26,11 +26,13 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JRadioButton;
 import javax.swing.JRootPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JToggleButton;
@@ -308,6 +310,64 @@ public final class ElementFactory {
 			result.setToolTipText(dataType.getToolTip());
 		}
 		return result;
+	}
+
+	/**
+	 * Creates a new check box, self-labeled from a {@link DataType} (text,
+	 * mnemonic, tool tip) rather than paired with a separate {@link JLabel}
+	 * the way {@link #createLabel(DataType, JComponent)} is.
+	 *
+	 * @param dataType
+	 *            The data type, not <code>null</code>.
+	 * @return The new check box, not <code>null</code>.
+	 */
+	public static JCheckBox createCheckBox(DataType dataType) {
+		JCheckBox result = new JCheckBox();
+		applyDataTypeLabel(result, dataType);
+		return result;
+	}
+
+	/**
+	 * Creates a new radio button, self-labeled from a {@link DataType} (text,
+	 * mnemonic, tool tip) rather than paired with a separate {@link JLabel}
+	 * the way {@link #createLabel(DataType, JComponent)} is.
+	 *
+	 * @param dataType
+	 *            The data type, not <code>null</code>.
+	 * @return The new radio button, not <code>null</code>.
+	 */
+	public static JRadioButton createRadioButton(DataType dataType) {
+		JRadioButton result = new JRadioButton();
+		applyDataTypeLabel(result, dataType);
+		return result;
+	}
+
+	private static void applyDataTypeLabel(AbstractButton button, DataType dataType) {
+		if (button == null) {
+			throw new IllegalArgumentException("Parameter 'button' must not be null.");
+		}
+		if (dataType == null) {
+			throw new IllegalArgumentException("Parameter 'dataType' must not be null.");
+		}
+		String text = dataType.getLabel();
+		int index = text.indexOf('&');
+		if (index == -1) {
+			throw new RuntimeException("No '&' contained in label text '" + text + "'.");
+		}
+		char c = text.charAt(index + 1);
+		c = Character.toUpperCase(c);
+		if (c < KeyEvent.VK_A || c > KeyEvent.VK_Z) {
+			throw new RuntimeException(
+					"Mnemonic character '" + c + "' contained in label text '" + text + "' is not between 'A' and 'Z'.");
+		}
+		button.setText(dataType.getLabelWithoutMnemonics());
+		button.setMnemonic(c);
+		button.setDisplayedMnemonicIndex(index);
+
+		String toolTip = dataType.getToolTip();
+		if (StringUtility.isSpecified(toolTip)) {
+			button.setToolTipText(toolTip);
+		}
 	}
 
 	public static Box createButtonBar() {
