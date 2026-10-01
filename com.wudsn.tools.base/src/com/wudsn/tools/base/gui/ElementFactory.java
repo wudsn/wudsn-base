@@ -158,13 +158,15 @@ public final class ElementFactory {
 			throw new IllegalArgumentException("Parameter 'actionCommand' must not be null.");
 		}
 		JMenuItem result = new JMenuItem();
-		result.setIconTextGap(0);
-		// Add some spaces to ensure the accelerator key text is separated
-		String label = action.getLabel();
-		if (action.getAccelerator() != null) {
-			label += "   ";
-		}
-		setButtonTextAndMnemonic(result, label, true, action.getToolTip());
+		// The icon text gap is left at the look and feel's default (4 pixels on Windows).
+		// Setting it to 0 used to make every item 16 pixels narrower than the look and
+		// feel intends, because the menu item layout uses that one value as the gap in
+		// four places at once - including the gap between the label and the accelerator.
+		// The label was padded with three spaces to compensate, which only worked when
+		// the accelerator came from the action: an accelerator set by the caller
+		// afterwards left the label touching it, and three spaces recovered only 10 of
+		// the 16 pixels anyway, so the last character of a long accelerator was clipped.
+		setButtonTextAndMnemonic(result, action.getLabel(), true, action.getToolTip());
 		result.setActionCommand(actionCommand);
 		result.setAccelerator(action.getAccelerator());
 		return result;
