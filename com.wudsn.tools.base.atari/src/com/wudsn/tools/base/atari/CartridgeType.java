@@ -392,6 +392,9 @@ public final class CartridgeType extends ValueSet {
 				initial_bank_0, block_size_none);
 		CARTRIDGE_5200_8 = add(19, "CARTRIDGE_5200_8", Platform.ATARI_5200, 8, bank_size_2000, offset_0000, adr_a000,
 				initial_bank_0, block_size_none);
+		// TODO: The 4 KB ROM appears at $8000, $9000, $A000 and $B000 (cart.txt).
+		// The initial bank address should be $B000, the mirror that holds the
+		// title and vectors at $BFE8-$BFFF, not $A000.
 		CARTRIDGE_5200_4 = add(20, "CARTRIDGE_5200_4", Platform.ATARI_5200, 4, bank_size_1000, offset_0000, adr_a000,
 				initial_bank_0, block_size_none);
 		// Autostart for CARTRIDGE_RIGHT_8 only works with Atari 800 / OS-A or
@@ -446,6 +449,9 @@ public final class CartridgeType extends ValueSet {
 				initial_bank_0, block_size_none);
 		CARTRIDGE_OSS_043M_16 = add(45, "CARTRIDGE_OSS_043M_16", Platform.ATARI_800, 16, bank_size_1000, offset_3000,
 				adr_b000, initial_bank_0, block_size_none);
+		// TODO: The 4 KB ROM appears at $A000 and $B000 (cart.txt). The initial
+		// bank address should be $B000, the mirror that holds the cartridge
+		// header at $BFFA-$BFFF, not $A000.
 		CARTRIDGE_BLIZZARD_4 = add(46, "CARTRIDGE_BLIZZARD_4", Platform.ATARI_800, 4, bank_size_1000, offset_0000,
 				adr_a000, initial_bank_0, block_size_none);
 		CARTRIDGE_AST_32 = add(47, "CARTRIDGE_AST_32", Platform.ATARI_800, 32, bank_size_0100, offset_0000, adr_a000,
