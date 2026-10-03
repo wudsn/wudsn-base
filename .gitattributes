@@ -1,0 +1,35 @@
+# Line endings: LF in the repository, the platform's own in the working tree
+# (CRLF on Windows, what Eclipse writes there) - the same rules as in dis6502.
+# Declaring it ends the per-file LF/CRLF warnings and stops an editor or
+# script from committing the other convention.
+* text=auto
+
+# Always text, whatever their content looks like.
+*.java text
+*.properties text
+*.md text
+*.xml text
+*.txt text
+*.csv text
+*.html text
+*.ant text
+*.prefs text
+*.launch text
+*.classpath text
+*.project text
+.gitignore text
+.gitattributes text
+
+# Shell scripts keep LF in every working tree, also on Windows: they run on
+# Linux and macOS, where a CR breaks them.
+*.sh text eol=lf
+universalJavaApplicationStub text eol=lf
+
+# Always binary.
+*.png binary
+*.ico binary
+*.icns binary
+*.jar binary
+*.zip binary
+*.gz binary
+*.ods binary
