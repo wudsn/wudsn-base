@@ -32,6 +32,12 @@ import com.wudsn.tools.base.repository.ValueSet;
  * >Atari800</a> by Tomasz Krasuski (Kr0tki). Their properties are described in
  * <a href= "https://github.com/atari800/atari800/blob/master/DOC/cart.txt"
  * >cart.txt<a/>. This file was latest updated on 2022-05-01.
+ * <p>
+ * TODO: Update the list from the upstream cart.txt (atari800 master, last
+ * changed 2025-12-23), which defines types up to 160: 76-112 (e.g. 16 KB
+ * Williams, SIC+, Corina, XE Multicart, Ram-Cart, J(atari)Cart, DCart),
+ * 159 (alternative Bounty Bob 40 KB 5200 mapping) and 160 (JRC64
+ * interleaved). The Corina sizes (1032/520 KB) are not a multiple of 8 KB.
  * 
  * @author Tomasz Krasuski
  * @author Peter Dell
