@@ -30,6 +30,24 @@ public final class CartridgeFileUtility {
 	public static final int CART_HEADER_SIZE = 16;
 
 	/**
+	 * Atrax SDX (48, 49): the encoded image's address bit for each address bit
+	 * of the plain image, see cart.txt.
+	 */
+	private static final int[] ATRAX_SDX_ADDRESS_BITS = { 6, 7, 12, 15, 14, 13, 8, 5, 4, 3, 0, 1, 2, 9, 11, 10, 16 };
+
+	/** Atrax SDX (48, 49): the encoded byte's bit for each bit of the plain byte. */
+	private static final int[] ATRAX_SDX_DATA_BITS = { 4, 0, 5, 1, 7, 6, 3, 2 };
+
+	/**
+	 * Atrax 128 (68): the encoded image's address bit for each address bit of
+	 * the plain image, see cart.txt.
+	 */
+	private static final int[] ATRAX_128_ADDRESS_BITS = { 5, 6, 7, 12, 0, 1, 2, 3, 4, 8, 10, 11, 9, 13, 14, 15, 16 };
+
+	/** Atrax 128 (68): the encoded byte's bit for each bit of the plain byte. */
+	private static final int[] ATRAX_128_DATA_BITS = { 5, 6, 2, 4, 0, 1, 7, 3 };
+
+	/**
 	 * Creation is private.
 	 */
 	private CartridgeFileUtility() {
@@ -82,6 +100,92 @@ public final class CartridgeFileUtility {
 		byte[] newContent = new byte[newLength];
 		System.arraycopy(content, CART_HEADER_SIZE, newContent, 0, newLength);
 		return newContent;
+	}
+
+	/**
+	 * Encodes a plain cartridge image into the interleaved form of an Atrax
+	 * cartridge type, as read directly from its ROM chip.
+	 *
+	 * @param cartridgeType
+	 *            The cartridge type, one for which
+	 *            {@link CartridgeType#isAtraxInterleaved()} is
+	 *            <code>true</code>.
+	 * @param content
+	 *            The plain content, not <code>null</code>.
+	 * @return The new, encoded content, not <code>null</code>.
+	 */
+	public static byte[] encodeAtraxContent(CartridgeType cartridgeType, byte[] content) {
+		return permuteAtraxContent(cartridgeType, content, true);
+	}
+
+	/**
+	 * Decodes the interleaved image of an Atrax cartridge type into the plain
+	 * image, as seen by the CPU. Inverse of {@link #encodeAtraxContent}.
+	 *
+	 * @param cartridgeType
+	 *            The cartridge type, one for which
+	 *            {@link CartridgeType#isAtraxInterleaved()} is
+	 *            <code>true</code>.
+	 * @param content
+	 *            The encoded content, not <code>null</code>.
+	 * @return The new, plain content, not <code>null</code>.
+	 */
+	public static byte[] decodeAtraxContent(CartridgeType cartridgeType, byte[] content) {
+		return permuteAtraxContent(cartridgeType, content, false);
+	}
+
+	private static byte[] permuteAtraxContent(CartridgeType cartridgeType, byte[] content, boolean encode) {
+		if (cartridgeType == null) {
+			throw new IllegalArgumentException("Parameter 'cartridgeType' must not be null.");
+		}
+		if (content == null) {
+			throw new IllegalArgumentException("Parameter 'content' must not be null.");
+		}
+		int[] addressBits;
+		int[] dataBits;
+		if (cartridgeType == CartridgeType.CARTRIDGE_ATRAX_SDX_64
+				|| cartridgeType == CartridgeType.CARTRIDGE_ATRAX_SDX_128) {
+			addressBits = ATRAX_SDX_ADDRESS_BITS;
+			dataBits = ATRAX_SDX_DATA_BITS;
+		} else if (cartridgeType == CartridgeType.CARTRIDGE_ATRAX_128) {
+			addressBits = ATRAX_128_ADDRESS_BITS;
+			dataBits = ATRAX_128_DATA_BITS;
+		} else {
+			throw new IllegalArgumentException(
+					"Parameter 'cartridgeType' must be an Atrax interleaved type. Specified value is " + cartridgeType
+							+ ".");
+		}
+		if (content.length > 1 << addressBits.length || Integer.bitCount(content.length) != 1) {
+			throw new IllegalArgumentException("Parameter 'content' must have a size that is a power of 2 up to "
+					+ (1 << addressBits.length) + ". Specified size is " + content.length + ".");
+		}
+
+		byte[] result = new byte[content.length];
+		for (int address = 0; address < content.length; address++) {
+			int value = content[address] & 0xff;
+			if (encode) {
+				result[permuteBits(address, addressBits, true)] = (byte) permuteBits(value, dataBits, true);
+			} else {
+				result[permuteBits(address, addressBits, false)] = (byte) permuteBits(value, dataBits, false);
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Moves bit i of a plain value to bit bits[i] (encode), or bit bits[i] of an
+	 * encoded value back to bit i (decode).
+	 */
+	private static int permuteBits(int value, int[] bits, boolean encode) {
+		int result = 0;
+		for (int i = 0; i < bits.length; i++) {
+			if (encode) {
+				result |= ((value >>> i) & 1) << bits[i];
+			} else {
+				result |= ((value >>> bits[i]) & 1) << i;
+			}
+		}
+		return result;
 	}
 
 	/**

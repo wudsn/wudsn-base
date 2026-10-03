@@ -19,9 +19,11 @@
 package com.wudsn.tools.base.atari;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 
 import com.wudsn.tools.base.repository.ValueSet;
@@ -38,6 +40,10 @@ import com.wudsn.tools.base.repository.ValueSet;
  * Williams, SIC+, Corina, XE Multicart, Ram-Cart, J(atari)Cart, DCart),
  * 159 (alternative Bounty Bob 40 KB 5200 mapping) and 160 (JRC64
  * interleaved). The Corina sizes (1032/520 KB) are not a multiple of 8 KB.
+ * <p>
+ * {@link #getBankRegions()} describes where the banks of a type appear in the
+ * CPU address space, as described in cart.txt. It complements the initial
+ * bank fields, which describe only the bank visible after power-on.
  * 
  * @author Tomasz Krasuski
  * @author Peter Dell
@@ -206,6 +212,95 @@ cart_t const CARTRIDGES[CARTRIDGE_TYPE_COUNT] = {
  */
 public final class CartridgeType extends ValueSet {
 
+	/**
+	 * A part of a cartridge image whose banks of {@link #getBankSize()} bytes
+	 * appear in the CPU address space: bank {@code i} of the region at
+	 * {@code getAddresses().get(i % getAddresses().size())}. Most regions have
+	 * one address; SIC! cartridges alternate between two.
+	 * {@link #getMirrorAddresses()} lists further addresses where the same data
+	 * appears, e.g. a 4 KB ROM repeated in an 8 KB window.
+	 * <p>
+	 * A plain class rather than a record, so the sources stay compilable at the
+	 * Java 8 level the Eclipse projects of WUDSN Base and its dependents use.
+	 */
+	public static final class BankRegion {
+
+		private final int offset;
+		private final int size;
+		private final int bankSize;
+		private final List<Integer> addresses;
+		private final List<Integer> mirrorAddresses;
+
+		/**
+		 * Creation is public.
+		 *
+		 * @param offset          The offset of the region in the image, a
+		 *                        non-negative integer.
+		 * @param size            The size of the region in bytes, a positive
+		 *                        multiple of {@code bankSize}.
+		 * @param bankSize        The size of one bank in bytes, a positive integer.
+		 * @param addresses       The CPU addresses of the banks, not empty.
+		 * @param mirrorAddresses The CPU addresses of the mirrors, may be empty,
+		 *                        not <code>null</code>.
+		 */
+		public BankRegion(int offset, int size, int bankSize, List<Integer> addresses,
+				List<Integer> mirrorAddresses) {
+			if (addresses == null || addresses.isEmpty()) {
+				throw new IllegalArgumentException("Parameter 'addresses' must not be null or empty.");
+			}
+			if (mirrorAddresses == null) {
+				throw new IllegalArgumentException("Parameter 'mirrorAddresses' must not be null.");
+			}
+			this.offset = offset;
+			this.size = size;
+			this.bankSize = bankSize;
+			this.addresses = Collections.unmodifiableList(new ArrayList<Integer>(addresses));
+			this.mirrorAddresses = Collections.unmodifiableList(new ArrayList<Integer>(mirrorAddresses));
+		}
+
+		public int getOffset() {
+			return offset;
+		}
+
+		public int getSize() {
+			return size;
+		}
+
+		public int getBankSize() {
+			return bankSize;
+		}
+
+		public List<Integer> getAddresses() {
+			return addresses;
+		}
+
+		public List<Integer> getMirrorAddresses() {
+			return mirrorAddresses;
+		}
+
+		@Override
+		public boolean equals(Object object) {
+			if (!(object instanceof BankRegion)) {
+				return false;
+			}
+			BankRegion other = (BankRegion) object;
+			return offset == other.offset && size == other.size && bankSize == other.bankSize
+					&& addresses.equals(other.addresses) && mirrorAddresses.equals(other.mirrorAddresses);
+		}
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(Integer.valueOf(offset), Integer.valueOf(size), Integer.valueOf(bankSize), addresses,
+					mirrorAddresses);
+		}
+
+		@Override
+		public String toString() {
+			return "BankRegion[offset=" + offset + ", size=" + size + ", bankSize=" + bankSize + ", addresses="
+					+ addresses + ", mirrorAddresses=" + mirrorAddresses + "]";
+		}
+	}
+
 	public static final CartridgeType UNKNOWN;
 
 	public static final CartridgeType CARTRIDGE_STD_8; // 1
@@ -297,6 +392,9 @@ public final class CartridgeType extends ValueSet {
 	private int initialBankNumber;
 
 	private int flashBlockSize;
+
+	private List<BankRegion> bankRegions = Collections.emptyList();
+	private boolean atraxInterleaved;
 
 	static {
 
@@ -394,7 +492,8 @@ public final class CartridgeType extends ValueSet {
 				initial_bank_0, block_size_none);
 		// TODO: The 4 KB ROM appears at $8000, $9000, $A000 and $B000 (cart.txt).
 		// The initial bank address should be $B000, the mirror that holds the
-		// title and vectors at $BFE8-$BFFF, not $A000.
+		// title and vectors at $BFE8-$BFFF, not $A000, as in getBankRegions().
+		// CartridgeTypeSampleCreator in TheCartStudio builds its samples from it.
 		CARTRIDGE_5200_4 = add(20, "CARTRIDGE_5200_4", Platform.ATARI_5200, 4, bank_size_1000, offset_0000, adr_a000,
 				initial_bank_0, block_size_none);
 		// Autostart for CARTRIDGE_RIGHT_8 only works with Atari 800 / OS-A or
@@ -451,7 +550,8 @@ public final class CartridgeType extends ValueSet {
 				adr_b000, initial_bank_0, block_size_none);
 		// TODO: The 4 KB ROM appears at $A000 and $B000 (cart.txt). The initial
 		// bank address should be $B000, the mirror that holds the cartridge
-		// header at $BFFA-$BFFF, not $A000.
+		// header at $BFFA-$BFFF, not $A000, as in getBankRegions().
+		// CartridgeTypeSampleCreator in TheCartStudio builds its samples from it.
 		CARTRIDGE_BLIZZARD_4 = add(46, "CARTRIDGE_BLIZZARD_4", Platform.ATARI_800, 4, bank_size_1000, offset_0000,
 				adr_a000, initial_bank_0, block_size_none);
 		CARTRIDGE_AST_32 = add(47, "CARTRIDGE_AST_32", Platform.ATARI_800, 32, bank_size_0100, offset_0000, adr_a000,
@@ -522,6 +622,73 @@ public final class CartridgeType extends ValueSet {
 		CARTRIDGE_ATMAX_NEW_1024 = add(75, "CARTRIDGE_ATMAX_NEW_1024", Platform.ATARI_800, 1024, bank_size_2000,
 				initial_bank_0 * bank_size_2000, adr_a000, initial_bank_0, block_size_10000);
 
+		// Bank regions, see cart.txt. Types with one window for all banks.
+		for (CartridgeType cartridgeType : Arrays.asList(CARTRIDGE_STD_2, CARTRIDGE_STD_4, CARTRIDGE_STD_8,
+				CARTRIDGE_STD_16, CARTRIDGE_RIGHT_4, CARTRIDGE_RIGHT_8, CARTRIDGE_LOW_BANK_8, CARTRIDGE_PHOENIX_8,
+				CARTRIDGE_BLIZZARD_16, CARTRIDGE_BLIZZARD_32, CARTRIDGE_WILL_32, CARTRIDGE_WILL_64, CARTRIDGE_EXP_64,
+				CARTRIDGE_DIAMOND_64, CARTRIDGE_SDX_64, CARTRIDGE_SDX_128, CARTRIDGE_ATRAX_DEC_128,
+				CARTRIDGE_ATRAX_SDX_64, CARTRIDGE_ATRAX_SDX_128, CARTRIDGE_ATRAX_128, CARTRIDGE_ATMAX_128,
+				CARTRIDGE_ATMAX_1024, CARTRIDGE_ATMAX_NEW_1024, CARTRIDGE_TURBOSOFT_64, CARTRIDGE_TURBOSOFT_128,
+				CARTRIDGE_ULTRACART_32, CARTRIDGE_ADAWLIAH_32, CARTRIDGE_ADAWLIAH_64, CARTRIDGE_MEGA_16,
+				CARTRIDGE_MEGA_32, CARTRIDGE_MEGA_64, CARTRIDGE_MEGA_128, CARTRIDGE_MEGA_256, CARTRIDGE_MEGA_512,
+				CARTRIDGE_MEGA_1024, CARTRIDGE_MEGA_2048, CARTRIDGE_MEGA_4096, CARTRIDGE_MEGAMAX_2048,
+				CARTRIDGE_THECART_32M, CARTRIDGE_THECART_64M, CARTRIDGE_THECART_128M, CARTRIDGE_5200_32,
+				CARTRIDGE_5200_NS_16, CARTRIDGE_5200_SUPER_64, CARTRIDGE_5200_SUPER_128, CARTRIDGE_5200_SUPER_256,
+				CARTRIDGE_5200_SUPER_512)) {
+			cartridgeType.setBankRegions(
+					region(0, cartridgeType.getSize(), cartridgeType.bankSize, cartridgeType.initialBankAddress));
+		}
+
+		// Atrax images store address and data lines interleaved; the regions apply to
+		// the decoded image, see CartridgeFileUtility.decodeAtraxContent().
+		CARTRIDGE_ATRAX_SDX_64.atraxInterleaved = true;
+		CARTRIDGE_ATRAX_SDX_128.atraxInterleaved = true;
+		CARTRIDGE_ATRAX_128.atraxInterleaved = true;
+
+		// 4 KB and 8 KB ROMs repeated in their window. The address is the mirror that
+		// ends at $BFFF and holds the vectors.
+		CARTRIDGE_BLIZZARD_4.setBankRegions(mirroredRegion(0, 0x1000, 0x1000, adr_b000, adr_a000));
+		CARTRIDGE_5200_4.setBankRegions(mirroredRegion(0, 0x1000, 0x1000, adr_b000, adr_8000, adr_9000, adr_a000));
+		CARTRIDGE_5200_8.setBankRegions(mirroredRegion(0, 0x2000, 0x2000, adr_a000, adr_8000));
+
+		// The last 8 KB bank fixed at $A000, the others switched at $8000.
+		for (CartridgeType cartridgeType : Arrays.asList(CARTRIDGE_DB_32, CARTRIDGE_XEGS_32, CARTRIDGE_XEGS_64,
+				CARTRIDGE_XEGS_8F_64, CARTRIDGE_XEGS_128, CARTRIDGE_XEGS_256, CARTRIDGE_XEGS_512, CARTRIDGE_XEGS_1024,
+				CARTRIDGE_SWXEGS_32, CARTRIDGE_SWXEGS_64, CARTRIDGE_SWXEGS_128, CARTRIDGE_SWXEGS_256,
+				CARTRIDGE_SWXEGS_512, CARTRIDGE_SWXEGS_1024)) {
+			int fixedOffset = cartridgeType.getSize() - 0x2000;
+			cartridgeType.setBankRegions(region(0, fixedOffset, 0x2000, adr_8000),
+					region(fixedOffset, 0x2000, 0x2000, adr_a000));
+		}
+
+		// OSS: 4 KB banks, one fixed at $B000, the others switched at $A000.
+		CARTRIDGE_OSS_034M_16.setBankRegions(region(0, 0x3000, 0x1000, adr_a000),
+				region(0x3000, 0x1000, 0x1000, adr_b000));
+		CARTRIDGE_OSS_043M_16.setBankRegions(region(0, 0x3000, 0x1000, adr_a000),
+				region(0x3000, 0x1000, 0x1000, adr_b000));
+		CARTRIDGE_OSS_M091_16.setBankRegions(region(0, 0x1000, 0x1000, adr_b000),
+				region(0x1000, 0x3000, 0x1000, adr_a000));
+		CARTRIDGE_OSS_8.setBankRegions(region(0, 0x1000, 0x1000, adr_b000), region(0x1000, 0x1000, 0x1000, adr_a000));
+
+		// Bounty Bob Strikes Back: two windows of four 4 KB banks, and the last 8 KB fixed.
+		CARTRIDGE_BBSB_40.setBankRegions(region(0, 0x4000, 0x1000, adr_8000),
+				region(0x4000, 0x4000, 0x1000, adr_9000), region(0x8000, 0x2000, 0x2000, adr_a000));
+		CARTRIDGE_5200_40.setBankRegions(region(0, 0x4000, 0x1000, adr_4000),
+				region(0x4000, 0x4000, 0x1000, 0x5000), mirroredRegion(0x8000, 0x2000, 0x2000, adr_a000, adr_8000));
+
+		// Two chip 16 KB 5200: each 8 KB chip repeated in one half of $4000-$BFFF.
+		CARTRIDGE_5200_EE_16.setBankRegions(mirroredRegion(0, 0x2000, 0x2000, adr_4000, 0x6000),
+				mirroredRegion(0x2000, 0x2000, 0x2000, adr_a000, adr_8000));
+
+		// SIC!: 16 KB banks of two 8 KB halves, the even one at $8000, the odd one at
+		// $A000.
+		for (CartridgeType cartridgeType : Arrays.asList(CARTRIDGE_SIC_128, CARTRIDGE_SIC_256, CARTRIDGE_SIC_512)) {
+			cartridgeType.setBankRegions(region(0, cartridgeType.getSize(), 0x2000, adr_8000, adr_a000));
+		}
+
+		// CARTRIDGE_AST_32 shows its 256-byte banks only through $D500-$D5FF; no
+		// regions.
+
 		initializeClass(CartridgeType.class, ValueSets.class);
 	}
 
@@ -539,6 +706,20 @@ public final class CartridgeType extends ValueSet {
 		this.initialBankAddress = initialBankAddress;
 		this.initialBankNumber = initialBankNumber;
 		this.flashBlockSize = flashBlockSize;
+	}
+
+	private static BankRegion region(int offset, int size, int bankSize, Integer... addresses) {
+		return new BankRegion(offset, size, bankSize, Arrays.asList(addresses), Collections.<Integer>emptyList());
+	}
+
+	private static BankRegion mirroredRegion(int offset, int size, int bankSize, int address,
+			Integer... mirrorAddresses) {
+		return new BankRegion(offset, size, bankSize, Collections.singletonList(Integer.valueOf(address)),
+				Arrays.asList(mirrorAddresses));
+	}
+
+	private void setBankRegions(BankRegion... bankRegions) {
+		this.bankRegions = Collections.unmodifiableList(Arrays.asList(bankRegions));
 	}
 
 	private static CartridgeType add(int numericId, String id, Platform platform, int sizeInKB, int bankSize,
@@ -624,6 +805,16 @@ public final class CartridgeType extends ValueSet {
 		return sizeInKB;
 	}
 
+	/**
+	 * Gets the (file) size of the module in bytes.
+	 *
+	 * @return The (file) size of the module in bytes or 0 if the size is not
+	 *         defined/variable.
+	 */
+	public int getSize() {
+		return sizeInKB * 1024;
+	}
+
 	public int getBankSize() {
 		return bankSize;
 	}
@@ -649,6 +840,29 @@ public final class CartridgeType extends ValueSet {
 	 */
 	public int getFlashBlockSize() {
 		return flashBlockSize;
+	}
+
+	/**
+	 * Gets the regions of the (decoded) image and where their banks appear in the
+	 * CPU address space, see {@link BankRegion}. Together, the regions cover the
+	 * whole image without gaps, in the order of their offsets.
+	 *
+	 * @return The unmodifiable list of regions, not <code>null</code>. Empty if
+	 *         the mapping is not known (AST 32 KB, {@link #UNKNOWN}).
+	 */
+	public List<BankRegion> getBankRegions() {
+		return bankRegions;
+	}
+
+	/**
+	 * Determines if the image stores address and data lines interleaved, so it
+	 * must be decoded with {@link CartridgeFileUtility#decodeAtraxContent} before
+	 * {@link #getBankRegions()} applies.
+	 *
+	 * @return <code>true</code> for the Atrax types 48, 49 and 68.
+	 */
+	public boolean isAtraxInterleaved() {
+		return atraxInterleaved;
 	}
 
 	/**
