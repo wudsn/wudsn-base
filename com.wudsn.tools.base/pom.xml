@@ -15,4 +15,25 @@
 	<packaging>jar</packaging>
 
 	<name>WUDSN Tools Base</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.8.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<testSourceDirectory>test</testSourceDirectory>
+		<plugins>
+			<!-- Pinned to a version whose JUnit Platform provider is in the offline repository. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.2.5</version>
+			</plugin>
+		</plugins>
+	</build>
 </project>
