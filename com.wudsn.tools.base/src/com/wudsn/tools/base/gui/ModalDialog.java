@@ -21,6 +21,7 @@ package com.wudsn.tools.base.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,17 +31,34 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 import com.wudsn.tools.base.Actions;
 
 /**
- * Simple modal dialog with "OK" and "Cancel" buttons.
- * 
+ * A modal dialog with "OK" and "Cancel" buttons, shown once.
+ * <p>
+ * A subclass builds its form in the constructor, either in {@link
+ * #fieldsPane} (a {@link SpringLayout} panel at the top, e.g. with {@link
+ * SpringUtilities}) or as its own panel added at {@link BorderLayout#CENTER}
+ * of the content pane. It shows itself with {@link #showModal(JComponent)}
+ * and then reads {@link #okPressed}.
+ * <ul>
+ * <li>OK runs {@link #dataFromUi()}, {@link #dataToUi()} and {@link
+ * #validateOK()}; if that returns <code>false</code>, the dialog stays
+ * open.</li>
+ * <li>Cancel, Escape and the window's close box close it with {@link
+ * #okPressed} <code>false</code>, as does {@link #close()}, which a subclass
+ * calls from a button of its own.</li>
+ * <li>OK is the default button. OK and Cancel have their mnemonics.</li>
+ * <li>{@link #addButtonBarButton(JButton)} adds buttons at the left of the
+ * button bar.</li>
+ * <li>{@link #showModal(JComponent)} disposes the dialog once it is closed: a
+ * modal dialog is created for one use.</li>
+ * </ul>
+ *
  * @author Peter Dell
- * 
  */
 @SuppressWarnings("serial")
 public abstract class ModalDialog extends JDialog implements ActionListener {
@@ -53,8 +71,17 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 
 	protected transient boolean okPressed;
 
-	public ModalDialog(JFrame parent, String title) {
-		super(parent, title, true);
+	/**
+	 * Creates the dialog.
+	 * 
+	 * @param owner
+	 *            The window the dialog belongs to and is centered on, or
+	 *            <code>null</code>.
+	 * @param title
+	 *            The title, not <code>null</code>.
+	 */
+	public ModalDialog(Window owner, String title) {
+		super(owner, title, ModalityType.APPLICATION_MODAL);
 
 		Container pane = getContentPane();
 		JPanel dataPane = new JPanel(new BorderLayout());
@@ -62,7 +89,7 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 		fieldsPane = new JPanel(new SpringLayout());
 		dataPane.add(fieldsPane, BorderLayout.NORTH);
 
-		okButton = ElementFactory.createButton(Actions.ButtonBar_OK, false);
+		okButton = ElementFactory.createButton(Actions.ButtonBar_OK, true);
 		Action cancelAction = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -71,7 +98,7 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 			}
 		};
 		cancelButton = new JButton(cancelAction);
-		ElementFactory.setButtonText(cancelButton, Actions.ButtonBar_Cancel);
+		ElementFactory.setButtonTextAndMnemonic(cancelButton, Actions.ButtonBar_Cancel);
 
 		buttonBar = ElementFactory.createButtonBar();
 		buttonBar.add(okButton);
@@ -90,6 +117,12 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 		buttonBar.add(button, 0);
 	}
 
+	/**
+	 * Shows the dialog and blocks until it is closed, then disposes it.
+	 * 
+	 * @param focusField
+	 *            The field to focus first, not <code>null</code>.
+	 */
 	protected final void showModal(JComponent focusField) {
 		if (focusField == null) {
 			throw new IllegalArgumentException("Parameter 'focusField' must not be null.");
@@ -100,6 +133,13 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 		setLocationRelativeTo(getParent());
 		focusField.requestFocus();
 		setVisible(true);
+		dispose();
+	}
+
+	/** Closes the dialog without OK, e.g. from a button of the subclass that ends the dialog with its own result. */
+	protected final void close() {
+		okPressed = false;
+		setVisible(false);
 	}
 
 	protected void dataFromUi() {
@@ -121,6 +161,7 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 			dataFromUi();
 			dataToUi();
 			if (!validateOK()) {
+				okPressed = false; // Still open: the close box must not count as OK.
 				return;
 			}
 		}
