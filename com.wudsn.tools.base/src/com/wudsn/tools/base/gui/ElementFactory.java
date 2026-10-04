@@ -407,7 +407,7 @@ public final class ElementFactory {
 	public static Box createButtonBar() {
 		Box buttonBar = Box.createHorizontalBox();
 		buttonBar.add(Box.createHorizontalGlue());
-		buttonBar.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 5));
+		buttonBar.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
 		return buttonBar;
 	}

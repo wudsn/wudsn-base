@@ -83,6 +83,10 @@ public class ModalDialogTest {
 		void closeFromSubclass() {
 			close();
 		}
+
+		JButton okButtonOfSubclass() {
+			return getOKButton();
+		}
 	}
 
 	private TestDialog dialog;
@@ -228,6 +232,7 @@ public class ModalDialogTest {
 	public void testButtons() throws Exception {
 		dialog = new TestDialog();
 		assertTrue(okButton() == dialog.getRootPane().getDefaultButton());
+		assertTrue(okButton() == dialog.okButtonOfSubclass());
 		assertNotEquals(0, okButton().getMnemonic());
 		assertNotEquals(0, cancelButton().getMnemonic());
 
@@ -244,6 +249,13 @@ public class ModalDialogTest {
 		}
 		assertEquals("[First, Second, " + text(Actions.ButtonBar_OK) + ", " + text(Actions.ButtonBar_Cancel) + "]",
 				order.toString());
+
+		// Neighboring buttons are BUTTON_GAP apart.
+		dialog.pack();
+		AbstractButton firstButton = findButton(dialog.getContentPane(), "First");
+		AbstractButton secondButton = findButton(dialog.getContentPane(), "Second");
+		assertEquals(ModalDialog.BUTTON_GAP, secondButton.getX() - (firstButton.getX() + firstButton.getWidth()));
+		assertEquals(ModalDialog.BUTTON_GAP, cancelButton().getX() - (okButton().getX() + okButton().getWidth()));
 		dialog.dispose();
 	}
 }

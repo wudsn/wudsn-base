@@ -51,9 +51,11 @@ import com.wudsn.tools.base.Actions;
  * <li>Cancel, Escape and the window's close box close it with {@link
  * #okPressed} <code>false</code>, as does {@link #close()}, which a subclass
  * calls from a button of its own.</li>
- * <li>OK is the default button. OK and Cancel have their mnemonics.</li>
+ * <li>OK is the default button. OK and Cancel have their mnemonics. {@link
+ * #getOKButton()} gives the OK button, e.g. to disable it while the input is
+ * incomplete, or to click it on a double click in a list.</li>
  * <li>{@link #addButtonBarButton(JButton)} adds buttons at the left of the
- * button bar.</li>
+ * button bar. Neighboring buttons are {@value #BUTTON_GAP} pixels apart.</li>
  * <li>{@link #showModal(JComponent)} disposes the dialog once it is closed: a
  * modal dialog is created for one use.</li>
  * </ul>
@@ -62,6 +64,9 @@ import com.wudsn.tools.base.Actions;
  */
 @SuppressWarnings("serial")
 public abstract class ModalDialog extends JDialog implements ActionListener {
+
+	/** The space between neighboring buttons of the button bar, in pixels. */
+	public static final int BUTTON_GAP = 5;
 
 	protected final JPanel fieldsPane;
 
@@ -102,6 +107,7 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 
 		buttonBar = ElementFactory.createButtonBar();
 		buttonBar.add(okButton);
+		buttonBar.add(Box.createHorizontalStrut(BUTTON_GAP));
 		buttonBar.add(cancelButton);
 		pane.add(buttonBar, BorderLayout.SOUTH);
 
@@ -110,10 +116,16 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 		ElementFactory.setDialogDefaultButtons(getRootPane(), okButton, cancelButton.getAction());
 	}
 
+	/** The OK button, e.g. to enable it only for complete input. */
+	protected final JButton getOKButton() {
+		return okButton;
+	}
+
 	protected final void addButtonBarButton(JButton button) {
 		if (button == null) {
 			throw new IllegalArgumentException("Parameter 'button' must not be null.");
 		}
+		buttonBar.add(Box.createHorizontalStrut(BUTTON_GAP), 0);
 		buttonBar.add(button, 0);
 	}
 
