@@ -37,7 +37,9 @@ import javax.swing.SpringLayout;
 import com.wudsn.tools.base.Actions;
 
 /**
- * A modal dialog with "OK" and "Cancel" buttons, shown once.
+ * A modal dialog with "OK" and "Cancel" buttons, shown once - or with "OK"
+ * only, for an information dialog such as "About" (see {@link
+ * #ModalDialog(Window, String, boolean)}).
  * <p>
  * A subclass builds its form in the constructor, either in {@link
  * #fieldsPane} (a {@link SpringLayout} panel at the top, e.g. with {@link
@@ -72,9 +74,21 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 
 	private Box buttonBar;
 	private final JButton okButton;
-	private final JButton cancelButton;
 
 	protected transient boolean okPressed;
+
+	/**
+	 * Creates the dialog with "OK" and "Cancel".
+	 * 
+	 * @param owner
+	 *            The window the dialog belongs to and is centered on, or
+	 *            <code>null</code>.
+	 * @param title
+	 *            The title, not <code>null</code>.
+	 */
+	public ModalDialog(Window owner, String title) {
+		this(owner, title, true);
+	}
 
 	/**
 	 * Creates the dialog.
@@ -84,8 +98,13 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 	 *            <code>null</code>.
 	 * @param title
 	 *            The title, not <code>null</code>.
+	 * @param cancelButton
+	 *            <code>true</code> for "OK" and "Cancel", <code>false</code>
+	 *            for "OK" only, e.g. for an "About" dialog. Without "Cancel",
+	 *            Escape and the close box still close the dialog, with
+	 *            {@link #okPressed} <code>false</code>.
 	 */
-	public ModalDialog(Window owner, String title) {
+	public ModalDialog(Window owner, String title, boolean cancelButton) {
 		super(owner, title, ModalityType.APPLICATION_MODAL);
 
 		Container pane = getContentPane();
@@ -102,18 +121,19 @@ public abstract class ModalDialog extends JDialog implements ActionListener {
 
 			}
 		};
-		cancelButton = new JButton(cancelAction);
-		ElementFactory.setButtonTextAndMnemonic(cancelButton, Actions.ButtonBar_Cancel);
-
 		buttonBar = ElementFactory.createButtonBar();
 		buttonBar.add(okButton);
-		buttonBar.add(Box.createHorizontalStrut(BUTTON_GAP));
-		buttonBar.add(cancelButton);
+		if (cancelButton) {
+			JButton button = new JButton(cancelAction);
+			ElementFactory.setButtonTextAndMnemonic(button, Actions.ButtonBar_Cancel);
+			buttonBar.add(Box.createHorizontalStrut(BUTTON_GAP));
+			buttonBar.add(button);
+		}
 		pane.add(buttonBar, BorderLayout.SOUTH);
 
 		okButton.addActionListener(this);
 
-		ElementFactory.setDialogDefaultButtons(getRootPane(), okButton, cancelButton.getAction());
+		ElementFactory.setDialogDefaultButtons(getRootPane(), okButton, cancelAction);
 	}
 
 	/** The OK button, e.g. to enable it only for complete input. */

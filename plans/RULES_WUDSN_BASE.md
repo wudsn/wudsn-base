@@ -79,7 +79,8 @@ uses it for its main menu and toolbars (`RmtMainMenu`, `RmtCommandId`).
   (packs, centers, blocks, then disposes the dialog), the hooks
   `dataToUi()`/`dataFromUi()`/`validateOK()`, the result `okPressed`, and
   for special cases `getOKButton()`, `addButtonBarButton(button)` (at the
-  left) and `close()` (ends the dialog without OK).
+  left) and `close()` (ends the dialog without OK). With `cancelButton`
+  false, it has OK only.
 - **`com.wudsn.tools.base.gui.MRUMenu`** - fills a menu from a
   `com.wudsn.tools.base.common.MRUList` (numbered items, disabled when
   empty).
@@ -127,7 +128,10 @@ uses it for its main menu and toolbars (`RmtMainMenu`, `RmtCommandId`).
   bar with `addButtonBarButton`, and a button that ends the dialog with
   its own result sets a flag and calls `close()`. Do not give a dialog a
   fixed size - `showModal` packs it; give its list or text area a
-  preferred size instead. Only dialogs that are not OK/Cancel dialogs
-  extend `JDialog` directly (in DIS6502: `AboutDialog`, `AssembleDialog`,
-  `DisassemblyProgressDialog`, which wire Escape with its
+  preferred size instead. An information dialog such as "About" uses
+  the OK-only variant, `ModalDialog(owner, title, false)`: no Cancel
+  button, Escape and the close box still close it. Only dialogs that are
+  neither (a progress dialog, a dialog with repeatable actions) extend
+  `JDialog` directly (in DIS6502: `AssembleDialog` and
+  `DisassemblyProgressDialog`; the latter wires Escape with DIS6502's
   `ElementUtilities.closeOnEscape`).

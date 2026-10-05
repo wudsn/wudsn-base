@@ -49,7 +49,8 @@ import com.wudsn.tools.base.Actions;
 /**
  * Shows a {@link ModalDialog} and drives it while it is open - one step per
  * timer tick inside its modal loop - through OK with a failing and a passing
- * check, Cancel, Escape, the close box and {@link ModalDialog#close()}.
+ * check, Cancel, Escape, the close box and {@link ModalDialog#close()} -
+ * and the variant with "OK" only.
  * Needs a display; skipped when headless.
  */
 public class ModalDialogTest {
@@ -61,7 +62,11 @@ public class ModalDialogTest {
 		int validateCount;
 
 		TestDialog() {
-			super(null, "Test");
+			this(true);
+		}
+
+		TestDialog(boolean cancelButton) {
+			super(null, "Test", cancelButton);
 			getContentPane().add(field, BorderLayout.CENTER);
 		}
 
@@ -226,6 +231,51 @@ public class ModalDialogTest {
 				dialog.closeFromSubclass();
 			}
 		}));
+	}
+
+	@Test
+	public void testOKOnly() throws Exception {
+		dialog = new TestDialog(false);
+		assertTrue(cancelButton() == null);
+		assertTrue(okButton() == dialog.getRootPane().getDefaultButton());
+		int buttons = 0;
+		for (Component component : okButton().getParent().getComponents()) {
+			if (component instanceof AbstractButton) {
+				buttons++;
+			}
+		}
+		assertEquals(1, buttons);
+		dialog.dispose();
+
+		// OK closes with okPressed.
+		dialog = new TestDialog(false);
+		dialog.valid = true;
+		assertTrue(showWith(new Runnable() {
+			@Override
+			public void run() {
+				okButton().doClick();
+			}
+		}));
+
+		// Escape and the close box still close it, without.
+		dialog = new TestDialog(false);
+		dialog.valid = true;
+		assertFalse(showWith(new Runnable() {
+			@Override
+			public void run() {
+				dialog.getRootPane().getActionMap().get("CANCEL")
+						.actionPerformed(new ActionEvent(dialog, ActionEvent.ACTION_PERFORMED, "CANCEL"));
+			}
+		}));
+		dialog = new TestDialog(false);
+		dialog.valid = true;
+		assertFalse(showWith(new Runnable() {
+			@Override
+			public void run() {
+				dialog.dispatchEvent(new WindowEvent(dialog, WindowEvent.WINDOW_CLOSING));
+			}
+		}));
+		assertFalse(dialog.isDisplayable());
 	}
 
 	@Test
