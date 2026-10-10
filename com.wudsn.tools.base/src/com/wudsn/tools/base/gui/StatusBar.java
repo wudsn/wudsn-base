@@ -108,7 +108,7 @@ public final class StatusBar implements MessageQueueRenderer {
 			}
 			label.setIcon(icon);
 			label.setText(messageQueueEntry.getMessageText());
-			label.setToolTipText(messageQueueEntry.getMessage().getId() + ": " + label.getText());
+			label.setToolTipText(messageQueueEntry.getMessage().getFullId() + ": " + label.getText());
 		}
 
 	}

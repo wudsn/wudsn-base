@@ -29,6 +29,9 @@ import com.wudsn.tools.base.repository.NLS;
  */
 public final class Messages extends NLS {
 
+	/** The user-defined short upper-case identifier prefixing all message numbers of this class. */
+	public static final String ID = "ATARI"; // WUDSN Base Atari library
+
 	// Reading cartridge images
 	/** A raw image whose size has no standard cartridge type: the size. */
 	public static Message E700;

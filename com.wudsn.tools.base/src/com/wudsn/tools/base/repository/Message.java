@@ -33,15 +33,22 @@ public final class Message {
 	public static final int ERROR = 3;
 
 	private String id;
+	private String number;
 	private int severity;
 	private String shortText;
 
-	Message(String id, int severity, String shortText) {
+	Message(String id, String number, int severity, String shortText) {
 		if (id == null) {
 			throw new IllegalArgumentException("Parameter 'id' must not be null.");
 		}
-		if (StringUtility.isEmpty(id)) {
-			throw new IllegalArgumentException("Parameter 'id' must not be empty.");
+		if (!id.matches("[A-Z]{2,5}")) {
+			throw new IllegalArgumentException("Parameter 'id' must be 2 to 5 upper-case letters but is '" + id + "'.");
+		}
+		if (number == null) {
+			throw new IllegalArgumentException("Parameter 'number' must not be null.");
+		}
+		if (!number.matches("[0-9]{3}")) {
+			throw new IllegalArgumentException("Parameter 'number' must be a 3-digit string but is '" + number + "'.");
 		}
 		switch (severity) {
 		case STATUS:
@@ -58,12 +65,30 @@ public final class Message {
 			throw new IllegalArgumentException("Parameter 'shortText' must not be empty.");
 		}
 		this.id = id;
+		this.number = number;
 		this.severity = severity;
 		this.shortText = shortText;
 	}
 
-	public String getId() {
-		return id;
+	/**
+	 * Gets the 3-digit message number, unique within the messages repository
+	 * class. The severity is not part of the number; it is carried by the
+	 * repository field name's first letter and by {@link #getSeverity()}.
+	 *
+	 * @return The 3-digit message number, not <code>null</code>.
+	 */
+	public String getNumber() {
+		return number;
+	}
+
+	/**
+	 * Gets the full message identifier composed of the repository class's
+	 * <code>ID</code> and the message number, for example "DMO-003".
+	 *
+	 * @return The full message identifier, not <code>null</code>.
+	 */
+	public String getFullId() {
+		return id + "-" + number;
 	}
 
 	public int getSeverity() {
