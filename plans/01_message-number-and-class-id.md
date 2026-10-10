@@ -1,4 +1,4 @@
-# Plan: Message "number" field and class-level "ID" prefix
+# Plan: Message "number" field and class-level "AREA" prefix
 
 Written 2026-10-10. Requested in the context of migrating ASMA
 (asma.atari.org) onto WUDSN Base, whose message codes already follow the
@@ -20,6 +20,15 @@ modifier rule. Areas assigned (3 letters, enforced since the same-day follow-up)
 RMT declares no own messages repository and needed no change. All four
 repositories build green.
 
+**Review 2026-10-10:** the text below is updated to the executed state
+(`AREA`, exactly 3 letters); the plan was first written with `ID` and 2-4
+characters. `NLSMessagesTest` now covers the rules: `Message`'s own
+checks, a test repository class loaded by `NLS`, and the load-time checks,
+which moved into the package-private `NLS.getMessagesArea` and
+`NLS.getMessageNumber` for that - a failing check makes `NLS` log and exit
+the JVM, so they are tested directly. Removing any one check fails a
+test.
+
 ## Current state
 
 - `com.wudsn.tools.base.repository.Message` has a private `String id` with
@@ -37,7 +46,7 @@ repositories build green.
    3-digit number string (e.g. `"123"`). The severity letter stays part of
    the repository field name only - it is already carried separately in the
    `severity` field.
-2. **Add a class-level `ID` to every messages repository class**: a
+2. **Add a class-level `AREA` to every messages repository class**: a
    user-defined upper-case identifier of exactly 3 letters, declared in Java source (not
    in the `.properties` file), e.g.
 
@@ -47,7 +56,7 @@ repositories build green.
 
    Examples: `DMZ` (Demozoo), `RMT` (RASTER Music Tracker), `SAP` (SAP
    file handling), `DIS` (DIS6502), `TCS` (The!Cart Studio).
-3. `NLS.initializeClass` reads the declaring class's `ID` field reflectively
+3. `NLS.initializeClass` reads the declaring class's `AREA` field reflectively
    and passes it into the `Message` constructor; `Message` offers the full
    identifier for display, composed as `<AREA>-<number>` (e.g. `DMZ-003`).
    `Console` and `StatusBar` switch from `getId()` to `getIdentifier()`.
@@ -55,8 +64,7 @@ repositories build green.
 ## Fail-fast rules (enforced by NLS at class load, like the existing checks)
 
 - A messages repository class that declares `Message` fields must declare
-  `public static final String ID`, non-empty, upper-case letters only
-  (suggested 2-4 characters).
+  `public static final String AREA` of exactly 3 upper-case letters.
 - The numeric part of every `Message` field name must be exactly 3 digits,
   and must be unique within the class regardless of the severity letter
   (`E110` and `I110` in one class would collide to `XXX-110` and are
@@ -65,21 +73,21 @@ repositories build green.
 ## Impact
 
 - **Base**: `Message` (field rename, constructor, new full-id accessor,
-  `toString`), `NLS` (read `ID`, strip the severity letter, uniqueness
+  `toString`), `NLS` (read `AREA`, strip the severity letter, uniqueness
   check), `Console`, `StatusBar`; check `MessageQueueRenderer`/table
   columns for further `getId()` consumers.
 - **Applications** (compile break by design, fail-fast at load otherwise):
-  DIS6502, RMT and The!Cart Studio each add the one-line `ID` constant to
+  DIS6502, RMT and The!Cart Studio each add the one-line `AREA` constant to
   their messages repository classes; any direct `getId()` callers switch
   to `getNumber()` or the full identifier.
 - **`.properties` files are unchanged** - the keys remain the field names
   including the severity letter.
 - **ASMA phase 2** (asma.atari.org `plans/06_wudsn-base-migration.md`)
   builds directly on this: its existing codes map 1:1 to repository
-  classes with `ID = "SAP"`, `"COM"`, `"DMO"`, `"EXP"` and 3-digit
+  classes with `AREA = "SAP"`, `"COM"`, `"DMO"`, `"EXP"` and 3-digit
   numbers, so the visible codes stay identical after the migration.
 
-## Open decisions
+## Decided
 
-- Whether `ValueSets`/`DataTypes` repository classes should carry the same
-  `ID` for consistency (out of scope here unless decided otherwise).
+- `ValueSets`/`DataTypes` repository classes do not carry an `AREA` - out
+  of scope (see "Status").

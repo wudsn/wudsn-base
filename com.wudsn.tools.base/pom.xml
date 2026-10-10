@@ -27,6 +27,15 @@
 
 	<build>
 		<testSourceDirectory>test</testSourceDirectory>
+		<!-- Test repository classes have their .properties files next to them, as in src. -->
+		<testResources>
+			<testResource>
+				<directory>test</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
 		<plugins>
 			<!-- Pinned to a version whose JUnit Platform provider is in the offline repository. -->
 			<plugin>

@@ -30,6 +30,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.Properties;
 
 import com.wudsn.tools.base.common.Log;
@@ -277,16 +278,7 @@ public abstract class NLS {
 							if (messagesArea == null) {
 								messagesArea = getMessagesArea(clazz);
 							}
-							String number = prefix.substring(1);
-							if (!number.matches("[0-9]{3}")) {
-								throw new RuntimeException("Message field '" + prefix + "' of class '"
-										+ clazz.getName()
-										+ "' must be named as a severity letter followed by a 3-digit number.");
-							}
-							if (!messageNumbers.add(number)) {
-								throw new RuntimeException("Message number '" + number + "' of field '" + prefix
-										+ "' is not unique in class '" + clazz.getName() + "'.");
-							}
+							String number = getMessageNumber(clazz, prefix, messageNumbers);
 							String shortText = getString(properties, prefix, "", true);
 							objectValue = new Message(messagesArea, number, severity, shortText);
 
@@ -332,8 +324,11 @@ public abstract class NLS {
 	 * @param clazz
 	 *            The messages repository class, not <code>null</code>.
 	 * @return The area, not empty and not <code>null</code>.
+	 * @throws RuntimeException
+	 *             If the field is missing, not "public static final String", or
+	 *             not exactly 3 upper-case letters. Package-private for tests.
 	 */
-	private static String getMessagesArea(Class<?> clazz) {
+	static String getMessagesArea(Class<?> clazz) {
 		Field areaField;
 		try {
 			areaField = clazz.getDeclaredField("AREA");
@@ -358,6 +353,38 @@ public abstract class NLS {
 					+ "' must be exactly 3 upper-case letters but is '" + area + "'.");
 		}
 		return area;
+	}
+
+	/**
+	 * Gets the 3-digit number of a message field - the field name without its
+	 * severity letter, e.g. "123" for "E123" - and records it in {@code
+	 * messageNumbers}, since the number must be unique in the class whatever
+	 * the severity: "E110" and "I110" would both be shown as "XXX-110".
+	 *
+	 * @param clazz
+	 *            The messages repository class, not <code>null</code>.
+	 * @param fieldName
+	 *            The name of the message field, not <code>null</code>.
+	 * @param messageNumbers
+	 *            The numbers of the class's message fields so far, not
+	 *            <code>null</code>.
+	 * @return The 3-digit number, not <code>null</code>.
+	 * @throws RuntimeException
+	 *             If the field name is not a severity letter followed by 3
+	 *             digits, or if the number was used before. Package-private
+	 *             for tests.
+	 */
+	static String getMessageNumber(Class<?> clazz, String fieldName, Set<String> messageNumbers) {
+		String number = fieldName.substring(1);
+		if (!number.matches("[0-9]{3}")) {
+			throw new RuntimeException("Message field '" + fieldName + "' of class '" + clazz.getName()
+					+ "' must be named as a severity letter followed by a 3-digit number.");
+		}
+		if (!messageNumbers.add(number)) {
+			throw new RuntimeException("Message number '" + number + "' of field '" + fieldName
+					+ "' is not unique in class '" + clazz.getName() + "'.");
+		}
+		return number;
 	}
 
 	private static String getString(Properties[] properties, String prefix, String suffix, boolean mandatory) {
