@@ -43,7 +43,7 @@ public class MessagesTest {
 	public void testMessages() throws Exception {
 		Set<String> fieldNames = new TreeSet<String>();
 		for (Field field : Messages.class.getFields()) {
-			// Final fields like the class's ID constant are not NLS-populated,
+			// Final fields like the class's AREA constant are not NLS-populated,
 			// mirroring the modifier rule in NLS.initializeClass.
 			if (Modifier.isStatic(field.getModifiers()) && !Modifier.isFinal(field.getModifiers())) {
 				assertNotNull(field.get(null), field.getName());

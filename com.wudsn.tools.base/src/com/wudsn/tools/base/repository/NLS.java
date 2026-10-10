@@ -207,7 +207,7 @@ public abstract class NLS {
 			error = true;
 		} else {
 			clazz = entry.clazz;
-			String messagesId = null;
+			String messagesArea = null;
 			HashSet<String> messageNumbers = new HashSet<String>();
 			for (Field field : fieldArray) {
 				String prefix = field.getName();
@@ -274,8 +274,8 @@ public abstract class NLS {
 							default:
 								throw new RuntimeException("Unsupported message type '" + firstChar + "'.");
 							}
-							if (messagesId == null) {
-								messagesId = getMessagesId(clazz);
+							if (messagesArea == null) {
+								messagesArea = getMessagesArea(clazz);
 							}
 							String number = prefix.substring(1);
 							if (!number.matches("[0-9]{3}")) {
@@ -288,7 +288,7 @@ public abstract class NLS {
 										+ "' is not unique in class '" + clazz.getName() + "'.");
 							}
 							String shortText = getString(properties, prefix, "", true);
-							objectValue = new Message(messagesId, number, severity, shortText);
+							objectValue = new Message(messagesArea, number, severity, shortText);
 
 						} else {
 							throw new RuntimeException("Unsupported field type " + field.getType() + ".");
@@ -303,11 +303,11 @@ public abstract class NLS {
 				} else {
 					// Value sets can have arbitrary additional attributes, and a
 					// messages repository class declares its "public static final
-					// String ID" constant, which is read by getMessagesId() and
+					// String AREA" constant, which is read by getMessagesArea() and
 					// not populated from the properties.
-					boolean isMessagesIdConstant = field.getName().equals("ID")
+					boolean isMessagesAreaConstant = field.getName().equals("AREA")
 							&& Modifier.isFinal(field.getModifiers()) && field.getType() == String.class;
-					if (!ValueSet.class.isAssignableFrom(clazz) && !isMessagesIdConstant) {
+					if (!ValueSet.class.isAssignableFrom(clazz) && !isMessagesAreaConstant) {
 						Log.logError(
 								"Cannot set value for field '{0}' of class '{1}'. Field is not public static or final.",
 								new Object[] { field.getName(), clazz.getName() }, null);
@@ -324,40 +324,40 @@ public abstract class NLS {
 	}
 
 	/**
-	 * Gets the value of the mandatory "public static final String ID" field
+	 * Gets the value of the mandatory "public static final String AREA" field
 	 * of a messages repository class: the user-defined short upper-case
 	 * identifier (2 to 5 letters) that prefixes all message numbers of the
 	 * class, for example "DMO" for Demozoo or "RMT" for RASTER Music Tracker.
 	 *
 	 * @param clazz
 	 *            The messages repository class, not <code>null</code>.
-	 * @return The ID, not empty and not <code>null</code>.
+	 * @return The area, not empty and not <code>null</code>.
 	 */
-	private static String getMessagesId(Class<?> clazz) {
-		Field idField;
+	private static String getMessagesArea(Class<?> clazz) {
+		Field areaField;
 		try {
-			idField = clazz.getDeclaredField("ID");
+			areaField = clazz.getDeclaredField("AREA");
 		} catch (NoSuchFieldException ex) {
 			throw new RuntimeException("Class '" + clazz.getName()
-					+ "' declares Message fields but no 'public static final String ID' field.", ex);
+					+ "' declares Message fields but no 'public static final String AREA' field.", ex);
 		}
-		int modifiers = idField.getModifiers();
+		int modifiers = areaField.getModifiers();
 		if (!Modifier.isPublic(modifiers) || !Modifier.isStatic(modifiers) || !Modifier.isFinal(modifiers)
-				|| idField.getType() != String.class) {
+				|| areaField.getType() != String.class) {
 			throw new RuntimeException(
-					"Field 'ID' of class '" + clazz.getName() + "' must be declared 'public static final String'.");
+					"Field 'AREA' of class '" + clazz.getName() + "' must be declared 'public static final String'.");
 		}
-		String id;
+		String area;
 		try {
-			id = (String) idField.get(null);
+			area = (String) areaField.get(null);
 		} catch (IllegalAccessException ex) {
-			throw new RuntimeException("Field 'ID' of class '" + clazz.getName() + "' is not accessible.", ex);
+			throw new RuntimeException("Field 'AREA' of class '" + clazz.getName() + "' is not accessible.", ex);
 		}
-		if (id == null || !id.matches("[A-Z]{2,5}")) {
-			throw new RuntimeException("Field 'ID' of class '" + clazz.getName()
-					+ "' must be 2 to 5 upper-case letters but is '" + id + "'.");
+		if (area == null || !area.matches("[A-Z]{2,5}")) {
+			throw new RuntimeException("Field 'AREA' of class '" + clazz.getName()
+					+ "' must be 2 to 5 upper-case letters but is '" + area + "'.");
 		}
-		return id;
+		return area;
 	}
 
 	private static String getString(Properties[] properties, String prefix, String suffix, boolean mandatory) {

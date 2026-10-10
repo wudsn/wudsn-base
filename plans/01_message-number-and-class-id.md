@@ -4,12 +4,14 @@ Written 2026-10-10. Requested in the context of migrating ASMA
 (asma.atari.org) onto WUDSN Base, whose message codes already follow the
 pattern this plan introduces (`SAP-110`, `DMO-003`, `COM-001`, ...).
 
-**Status: executed 2026-10-10.** Decisions: the full-identifier accessor is
+**Status: executed 2026-10-10.** Naming review on the same day: the constant
+was renamed from `ID` to the more descriptive `AREA` (with `getArea()` on
+`Message`), avoiding the ID/getId() casing debate entirely. Decisions: the full-identifier accessor is
 `getFullId()` (`getId()` was removed, `getNumber()` added);
 `ValueSets`/`DataTypes` stay out of scope. Implementation notes beyond the
 plan: NLS's field loop treats any non-populatable field as a load-time
-error, so the `ID` constant got a narrow exemption (exactly
-`public static final String ID`) to keep the typo-catching strict for
+error, so the `AREA` constant got a narrow exemption (exactly
+`public static final String AREA`) to keep the typo-catching strict for
 everything else; `MessagesTest` now skips final fields, mirroring the NLS
 modifier rule. IDs assigned: `BASE` (com.wudsn.tools.base), `ATARI`
 (com.wudsn.tools.base.atari), `DIS` (DIS6502), `TCS` (The!Cart Studio);

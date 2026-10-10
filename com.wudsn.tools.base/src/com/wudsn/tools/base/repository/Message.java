@@ -32,17 +32,17 @@ public final class Message {
 	public static final int INFO = 2;
 	public static final int ERROR = 3;
 
-	private String id;
+	private String area;
 	private String number;
 	private int severity;
 	private String shortText;
 
-	Message(String id, String number, int severity, String shortText) {
-		if (id == null) {
-			throw new IllegalArgumentException("Parameter 'id' must not be null.");
+	Message(String area, String number, int severity, String shortText) {
+		if (area == null) {
+			throw new IllegalArgumentException("Parameter 'area' must not be null.");
 		}
-		if (!id.matches("[A-Z]{2,5}")) {
-			throw new IllegalArgumentException("Parameter 'id' must be 2 to 5 upper-case letters but is '" + id + "'.");
+		if (!area.matches("[A-Z]{2,5}")) {
+			throw new IllegalArgumentException("Parameter 'area' must be 2 to 5 upper-case letters but is '" + area + "'.");
 		}
 		if (number == null) {
 			throw new IllegalArgumentException("Parameter 'number' must not be null.");
@@ -64,7 +64,7 @@ public final class Message {
 		if (StringUtility.isEmpty(shortText)) {
 			throw new IllegalArgumentException("Parameter 'shortText' must not be empty.");
 		}
-		this.id = id;
+		this.area = area;
 		this.number = number;
 		this.severity = severity;
 		this.shortText = shortText;
@@ -82,13 +82,24 @@ public final class Message {
 	}
 
 	/**
-	 * Gets the full message identifier composed of the repository class's
-	 * <code>ID</code> and the message number, for example "DMO-003".
+	 * Gets the area: the user-defined short upper-case identifier of the
+	 * messages repository class declared as its <code>AREA</code> constant,
+	 * for example "DMO" for Demozoo.
+	 * 
+	 * @return The area, not <code>null</code>.
+	 */
+	public String getArea() {
+		return area;
+	}
+
+	/**
+	 * Gets the full message identifier composed of the area and the message
+	 * number, for example "DMO-003".
 	 *
 	 * @return The full message identifier, not <code>null</code>.
 	 */
 	public String getFullId() {
-		return id + "-" + number;
+		return area + "-" + number;
 	}
 
 	public int getSeverity() {
