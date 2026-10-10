@@ -41,8 +41,8 @@ public final class Message {
 		if (area == null) {
 			throw new IllegalArgumentException("Parameter 'area' must not be null.");
 		}
-		if (!area.matches("[A-Z]{2,5}")) {
-			throw new IllegalArgumentException("Parameter 'area' must be 2 to 5 upper-case letters but is '" + area + "'.");
+		if (!area.matches("[A-Z]{3}")) {
+			throw new IllegalArgumentException("Parameter 'area' must be exactly 3 upper-case letters but is '" + area + "'.");
 		}
 		if (number == null) {
 			throw new IllegalArgumentException("Parameter 'number' must not be null.");
@@ -84,7 +84,7 @@ public final class Message {
 	/**
 	 * Gets the area: the user-defined short upper-case identifier of the
 	 * messages repository class declared as its <code>AREA</code> constant,
-	 * for example "DMO" for Demozoo.
+	 * for example "DMZ" for Demozoo.
 	 * 
 	 * @return The area, not <code>null</code>.
 	 */
@@ -94,11 +94,11 @@ public final class Message {
 
 	/**
 	 * Gets the full message identifier composed of the area and the message
-	 * number, for example "DMO-003".
+	 * number, for example "DMZ-003".
 	 *
 	 * @return The full message identifier, not <code>null</code>.
 	 */
-	public String getFullId() {
+	public String getIdentifier() {
 		return area + "-" + number;
 	}
 

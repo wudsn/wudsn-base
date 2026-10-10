@@ -30,7 +30,7 @@ import com.wudsn.tools.base.repository.NLS;
 public final class Messages extends NLS {
 
 	/** The user-defined short upper-case area identifier prefixing all message numbers of this class. */
-	public static final String AREA = "ATARI"; // WUDSN Base Atari library
+	public static final String AREA = "ATA"; // WUDSN Base Atari library
 
 	// Reading cartridge images
 	/** A raw image whose size has no standard cartridge type: the size. */

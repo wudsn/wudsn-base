@@ -2,19 +2,21 @@
 
 Written 2026-10-10. Requested in the context of migrating ASMA
 (asma.atari.org) onto WUDSN Base, whose message codes already follow the
-pattern this plan introduces (`SAP-110`, `DMO-003`, `COM-001`, ...).
+pattern this plan introduces (`SAP-110`, `DMZ-003`, `COM-001`, ...).
 
 **Status: executed 2026-10-10.** Naming review on the same day: the constant
 was renamed from `ID` to the more descriptive `AREA` (with `getArea()` on
 `Message`), avoiding the ID/getId() casing debate entirely. Decisions: the full-identifier accessor is
-`getFullId()` (`getId()` was removed, `getNumber()` added);
+`getIdentifier()` (renamed from the initially chosen `getFullId()` on the
+same day; `getId()` was removed, `getNumber()` added);
 `ValueSets`/`DataTypes` stay out of scope. Implementation notes beyond the
 plan: NLS's field loop treats any non-populatable field as a load-time
 error, so the `AREA` constant got a narrow exemption (exactly
 `public static final String AREA`) to keep the typo-catching strict for
 everything else; `MessagesTest` now skips final fields, mirroring the NLS
-modifier rule. IDs assigned: `BASE` (com.wudsn.tools.base), `ATARI`
-(com.wudsn.tools.base.atari), `DIS` (DIS6502), `TCS` (The!Cart Studio);
+modifier rule. Areas assigned (3 letters, enforced since the same-day follow-up): `BAS`
+(com.wudsn.tools.base), `ATA` (com.wudsn.tools.base.atari), `DIS`
+(DIS6502), `TCS` (The!Cart Studio);
 RMT declares no own messages repository and needed no change. All four
 repositories build green.
 
@@ -36,19 +38,19 @@ repositories build green.
    the repository field name only - it is already carried separately in the
    `severity` field.
 2. **Add a class-level `ID` to every messages repository class**: a
-   user-defined short upper-case identifier, declared in Java source (not
+   user-defined upper-case identifier of exactly 3 letters, declared in Java source (not
    in the `.properties` file), e.g.
 
    ```java
-   public static final String ID = "DMO"; // Demozoo
+   public static final String AREA = "DMZ"; // Demozoo
    ```
 
-   Examples: `DMO` (Demozoo), `RMT` (RASTER Music Tracker), `SAP` (SAP
+   Examples: `DMZ` (Demozoo), `RMT` (RASTER Music Tracker), `SAP` (SAP
    file handling), `DIS` (DIS6502), `TCS` (The!Cart Studio).
 3. `NLS.initializeClass` reads the declaring class's `ID` field reflectively
    and passes it into the `Message` constructor; `Message` offers the full
-   identifier for display, composed as `<ID>-<number>` (e.g. `DMO-003`).
-   `Console` and `StatusBar` switch from `getId()` to the full identifier.
+   identifier for display, composed as `<AREA>-<number>` (e.g. `DMZ-003`).
+   `Console` and `StatusBar` switch from `getId()` to `getIdentifier()`.
 
 ## Fail-fast rules (enforced by NLS at class load, like the existing checks)
 
@@ -79,8 +81,5 @@ repositories build green.
 
 ## Open decisions
 
-- Name of the full-identifier accessor (`getFullId()` vs. `getDisplayId()`
-  vs. overriding what `getId()` meant - the latter avoids churn in
-  consumers but silently changes displayed output).
 - Whether `ValueSets`/`DataTypes` repository classes should carry the same
   `ID` for consistency (out of scope here unless decided otherwise).

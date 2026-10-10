@@ -51,7 +51,7 @@ public final class Console implements MessageQueueRenderer {
 
 	private void setStatus(MessageQueueEntry messageQueueEntry) {
 		int severity = messageQueueEntry.getMessage().getSeverity();
-		String messageText = messageQueueEntry.getMessage().getFullId() + " - " + messageQueueEntry.getMessageText();
+		String messageText = messageQueueEntry.getMessage().getIdentifier() + " - " + messageQueueEntry.getMessageText();
 		switch (severity) {
 		case Message.STATUS:
 		case Message.INFO:

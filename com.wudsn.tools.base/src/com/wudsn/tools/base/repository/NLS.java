@@ -326,8 +326,8 @@ public abstract class NLS {
 	/**
 	 * Gets the value of the mandatory "public static final String AREA" field
 	 * of a messages repository class: the user-defined short upper-case
-	 * identifier (2 to 5 letters) that prefixes all message numbers of the
-	 * class, for example "DMO" for Demozoo or "RMT" for RASTER Music Tracker.
+	 * identifier (exactly 3 letters) that prefixes all message numbers of the
+	 * class, for example "DMZ" for Demozoo or "RMT" for RASTER Music Tracker.
 	 *
 	 * @param clazz
 	 *            The messages repository class, not <code>null</code>.
@@ -353,9 +353,9 @@ public abstract class NLS {
 		} catch (IllegalAccessException ex) {
 			throw new RuntimeException("Field 'AREA' of class '" + clazz.getName() + "' is not accessible.", ex);
 		}
-		if (area == null || !area.matches("[A-Z]{2,5}")) {
+		if (area == null || !area.matches("[A-Z]{3}")) {
 			throw new RuntimeException("Field 'AREA' of class '" + clazz.getName()
-					+ "' must be 2 to 5 upper-case letters but is '" + area + "'.");
+					+ "' must be exactly 3 upper-case letters but is '" + area + "'.");
 		}
 		return area;
 	}
