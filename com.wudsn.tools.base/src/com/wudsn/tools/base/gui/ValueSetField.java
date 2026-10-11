@@ -27,6 +27,15 @@ import com.wudsn.tools.base.common.JDK.DefaultComboBoxModel;
 import com.wudsn.tools.base.common.JDK.JComboBox;
 import com.wudsn.tools.base.repository.ValueSet;
 
+/**
+ * A combo box for choosing exactly one value of a {@link ValueSet}.
+ * <p>
+ * TODO: Add a ValueSetSelectionField for filters: a multi-selection field
+ * that takes and returns an array of ValueSet instances and has an implicit
+ * "All" entry, standing for no restriction. Requested by asma.atari.org plan
+ * 13, whose browser filters use a combo box with an "All" entry in the
+ * meantime.
+ */
 @SuppressWarnings("serial")
 public final class ValueSetField<T extends ValueSet> extends JComboBox<T> {
 
