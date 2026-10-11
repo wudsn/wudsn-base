@@ -56,6 +56,15 @@ public final class ApplicationSettingsSection {
 		preferences.putInt(keyName, value);
 	}
 
+	/** The keys of this section, in no particular order, not {@code null}. */
+	public String[] getKeys() {
+		try {
+			return preferences.keys();
+		} catch (BackingStoreException ex) {
+			throw new IllegalStateException(ex);
+		}
+	}
+
 	/** Deletes every key in this section, so a later {@code getXxx} call falls back to its own coded default again. */
 	public void clear() {
 		try {

@@ -19,12 +19,14 @@
 
 package com.wudsn.tools.base.common;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Arrays;
 import java.util.prefs.BackingStoreException;
 
 import org.junit.jupiter.api.AfterEach;
@@ -82,7 +84,13 @@ public class ApplicationSettingsTest {
 		ApplicationSettingsSection other = new ApplicationSettings(testSettings.getRoot()).getSection("Values");
 		assertEquals("value", other.getString("Text", "default"));
 
+		String[] keys = section.getKeys();
+		Arrays.sort(keys);
+		assertArrayEquals(new String[] { "Size", "Text" }, keys);
+		settings.flush();
+
 		section.clear();
+		assertEquals(0, section.getKeys().length);
 		assertEquals("default", section.getString("Text", "default"));
 		assertEquals(12, section.getUnsignedInt("Size", 12));
 	}

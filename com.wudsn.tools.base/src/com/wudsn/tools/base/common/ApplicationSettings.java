@@ -21,6 +21,7 @@ package com.wudsn.tools.base.common;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 /**
@@ -50,6 +51,20 @@ public final class ApplicationSettings {
 	/** The root node the sections are kept under. */
 	public Preferences getRoot() {
 		return root;
+	}
+
+	/**
+	 * Writes all sections through to the backing store, e.g. on exit.
+	 *
+	 * @throws IllegalStateException
+	 *             If the backing store fails.
+	 */
+	public void flush() {
+		try {
+			root.flush();
+		} catch (BackingStoreException ex) {
+			throw new IllegalStateException(ex);
+		}
 	}
 
 	/** The section {@code name}, created on first use and the same instance afterwards. */
