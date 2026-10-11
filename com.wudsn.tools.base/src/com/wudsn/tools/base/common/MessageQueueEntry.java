@@ -26,7 +26,6 @@ public final class MessageQueueEntry {
 
 	private Object owner;
 	private Attribute attribute;
-	private int severity;
 	private Message message;
 	private String[] parameters;
 	private Exception cause;
@@ -67,11 +66,14 @@ public final class MessageQueueEntry {
 	@Override
 	public String toString() {
 		String messageText = getMessageText();
+		int severity = message.getSeverity();
 		switch (severity) {
 		case Message.STATUS:
 			return "INFO: " + messageText;
 		case Message.INFO:
 			return "INFO: " + messageText;
+		case Message.WARNING:
+			return "WARNING: " + messageText;
 		case Message.ERROR:
 			return "ERROR: " + messageText;
 		}

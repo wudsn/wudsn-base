@@ -32,6 +32,7 @@ public final class TestMessages extends NLS {
 	public static Message E001;
 	public static Message I002;
 	public static Message S003;
+	public static Message W004;
 
 	static {
 		initializeClass(TestMessages.class, null);

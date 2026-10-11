@@ -31,6 +31,8 @@ public final class Message {
 	public static final int STATUS = 1;
 	public static final int INFO = 2;
 	public static final int ERROR = 3;
+	/** A hint that something should be checked, but is not an error. Field prefix "W". */
+	public static final int WARNING = 4;
 
 	private String area;
 	private String number;
@@ -53,6 +55,7 @@ public final class Message {
 		switch (severity) {
 		case STATUS:
 		case INFO:
+		case WARNING:
 		case ERROR:
 			break;
 		default:
@@ -115,6 +118,8 @@ public final class Message {
 		switch (severity) {
 		case INFO:
 			return "INFO: " + shortText;
+		case WARNING:
+			return "WARNING: " + shortText;
 		case ERROR:
 			return "ERROR: " + shortText;
 		}

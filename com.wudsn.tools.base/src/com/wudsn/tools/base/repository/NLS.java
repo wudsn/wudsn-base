@@ -269,6 +269,9 @@ public abstract class NLS {
 							case 'I':
 								severity = Message.INFO;
 								break;
+							case 'W':
+								severity = Message.WARNING;
+								break;
 							case 'E':
 								severity = Message.ERROR;
 								break;

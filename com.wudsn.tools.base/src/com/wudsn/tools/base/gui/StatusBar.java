@@ -32,6 +32,7 @@ import com.wudsn.tools.base.repository.Message;
 public final class StatusBar implements MessageQueueRenderer {
 
 	private Icon iconInfo;
+	private Icon iconWarning;
 	private Icon iconError;
 	private JLabel label;
 
@@ -41,6 +42,7 @@ public final class StatusBar implements MessageQueueRenderer {
 	public StatusBar() {
 
 		iconInfo = ElementFactory.createImageIcon("icons/status-info-16x16.png");
+		iconWarning = ElementFactory.createImageIcon("icons/status-warning-16x16.png");
 		iconError = ElementFactory.createImageIcon("icons/status-error-16x16.png");
 		label = new JLabel();
 		label.setHorizontalAlignment(SwingConstants.LEADING);
@@ -63,6 +65,8 @@ public final class StatusBar implements MessageQueueRenderer {
 
 		if (messageQueue.containsError()) {
 			setStatus(messageQueue.getFirstError());
+		} else if (messageQueue.containsWarning()) {
+			setStatus(messageQueue.getFirstWarning());
 		} else if (messageQueue.containsInfo()) {
 			setStatus(messageQueue.getFirstInfo());
 		} else {
@@ -99,6 +103,9 @@ public final class StatusBar implements MessageQueueRenderer {
 				break;
 			case Message.INFO:
 				icon = iconInfo;
+				break;
+			case Message.WARNING:
+				icon = iconWarning;
 				break;
 			case Message.ERROR:
 				icon = iconError;

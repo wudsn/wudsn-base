@@ -20,10 +20,17 @@ package com.wudsn.tools.base.console;
 
 import com.wudsn.tools.base.common.MessageQueue;
 import com.wudsn.tools.base.common.MessageQueueEntry;
+import com.wudsn.tools.base.common.MessageQueueListener;
 import com.wudsn.tools.base.common.MessageQueueRenderer;
 import com.wudsn.tools.base.repository.Message;
 
-public final class Console implements MessageQueueRenderer {
+/**
+ * Renders messages on the console: infos on stdout, warnings and errors on
+ * stderr, each as "&lt;AREA&gt;-&lt;number&gt; - &lt;text&gt;". As a
+ * {@link MessageQueueListener}, it prints every message when it is sent, e.g.
+ * for the live output of a long-running console tool.
+ */
+public final class Console implements MessageQueueRenderer, MessageQueueListener {
 
 	public Console() {
 
@@ -49,6 +56,14 @@ public final class Console implements MessageQueueRenderer {
 
 	}
 
+	@Override
+	public void messageSent(MessageQueueEntry messageQueueEntry) {
+		if (messageQueueEntry == null) {
+			throw new IllegalArgumentException("Parameter 'messageQueueEntry' must not be null.");
+		}
+		setStatus(messageQueueEntry);
+	}
+
 	private void setStatus(MessageQueueEntry messageQueueEntry) {
 		int severity = messageQueueEntry.getMessage().getSeverity();
 		String messageText = messageQueueEntry.getMessage().getIdentifier() + " - " + messageQueueEntry.getMessageText();
@@ -56,6 +71,10 @@ public final class Console implements MessageQueueRenderer {
 		case Message.STATUS:
 		case Message.INFO:
 			println("INFO:  " + messageText);
+			break;
+		case Message.WARNING:
+			System.err.println("WARNING: " + messageText);
+			System.err.flush();
 			break;
 		case Message.ERROR:
 			System.err.println("ERROR: " + messageText);

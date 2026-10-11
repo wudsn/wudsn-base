@@ -105,6 +105,10 @@ public class NLSMessagesTest {
 
 		assertEquals("TST-003", TestMessages.S003.getIdentifier());
 		assertEquals(Message.STATUS, TestMessages.S003.getSeverity());
+
+		assertEquals("TST-004", TestMessages.W004.getIdentifier());
+		assertEquals(Message.WARNING, TestMessages.W004.getSeverity());
+		assertEquals("WARNING: Entry {0} should be checked.", TestMessages.W004.toString());
 	}
 
 	@Test
