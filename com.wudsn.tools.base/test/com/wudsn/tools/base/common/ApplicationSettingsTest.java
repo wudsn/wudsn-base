@@ -89,6 +89,10 @@ public class ApplicationSettingsTest {
 		assertArrayEquals(new String[] { "Size", "Text" }, keys);
 		settings.flush();
 
+		section.remove("Text");
+		assertEquals("default", section.getString("Text", "default"));
+		assertArrayEquals(new String[] { "Size" }, section.getKeys());
+
 		section.clear();
 		assertEquals(0, section.getKeys().length);
 		assertEquals("default", section.getString("Text", "default"));

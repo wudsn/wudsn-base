@@ -56,6 +56,11 @@ public final class ApplicationSettingsSection {
 		preferences.putInt(keyName, value);
 	}
 
+	/** Deletes the key, so a later {@code getXxx} call falls back to its coded default again. */
+	public void remove(String keyName) {
+		preferences.remove(keyName);
+	}
+
 	/** The keys of this section, in no particular order, not {@code null}. */
 	public String[] getKeys() {
 		try {
